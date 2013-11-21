@@ -7,6 +7,10 @@
   <version>1.0-SNAPSHOT</version>
   <name>cukes-groovy-mvn</name>
   <url>http://maven.apache.org</url>
+  <build>
+   <sourceDirectory>src/test/features</sourceDirectory>
+   <sourceDirectory>src/test/groovy</sourceDirectory>
+  </build>
   <dependencies>
     <dependency>
         <groupId>info.cukes</groupId>
