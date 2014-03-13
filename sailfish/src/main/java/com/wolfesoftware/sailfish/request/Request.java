@@ -2,7 +2,9 @@ package com.wolfesoftware.sailfish.request;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 import com.wolfesoftware.sailfish.request.annotation.Timed;
 import com.wolfesoftware.sailfish.worker.UnitOfWork;
@@ -18,30 +20,30 @@ public class Request implements UnitOfWork<String> {
 	@Override
 	@Timed
 	public String go() {
-		InputStreamReader inputStreamReader = null;
+		HttpURLConnection connection = null;
 		try {
 			long startTime = System.currentTimeMillis();
-			inputStreamReader = new InputStreamReader(url.openConnection()
-					.getInputStream());
-			String result = "";
-			System.out.println("Got: " + url + " Exceution time:"
+			connection = (HttpURLConnection) url.openConnection();
+			String responseCode = connection.getResponseCode() + "";
+			String output = "Got: " + url + " response code: " + responseCode
+					+ " Exceution time:"
 					+ (System.currentTimeMillis() - startTime)
-					+ " milliseconds");
-			return result;
+					+ " milliseconds";
+			System.out.println(output);
+			return responseCode;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		} finally {
-			try {
-				inputStreamReader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			connection.disconnect();
 		}
 	}
 
-	private String readAndOutput(InputStreamReader inputStreamReader)
+	private String readAndOutput(URLConnection urlConnection)
 			throws IOException {
+		InputStreamReader inputStreamReader = null;
+		inputStreamReader = new InputStreamReader(
+				urlConnection.getInputStream());
 		int character;
 		String result = "";
 		while ((character = inputStreamReader.read()) != -1) {
