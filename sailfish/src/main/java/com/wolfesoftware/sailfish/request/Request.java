@@ -18,20 +18,35 @@ public class Request implements UnitOfWork<String> {
 	@Override
 	@Timed
 	public String go() {
+		InputStreamReader inputStreamReader = null;
 		try {
-			InputStreamReader inputStreamReader = new InputStreamReader(url
-					.openConnection().getInputStream());
-			int character;
+			long startTime = System.currentTimeMillis();
+			inputStreamReader = new InputStreamReader(url.openConnection()
+					.getInputStream());
 			String result = "";
-			while ((character = inputStreamReader.read()) != -1) {
-				result += (char) character;
-			}
-			// System.out.println("Finished:" + result);
+			System.out.println("Got: " + url + " Exceution time:"
+					+ (System.currentTimeMillis() - startTime)
+					+ " milliseconds");
 			return result;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			try {
+				inputStreamReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
+	private String readAndOutput(InputStreamReader inputStreamReader)
+			throws IOException {
+		int character;
+		String result = "";
+		while ((character = inputStreamReader.read()) != -1) {
+			result += (char) character;
+		}
+		return result;
+	}
 }
