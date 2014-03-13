@@ -15,7 +15,7 @@ public class SailFish {
 		System.out.println("Running SailFish with file: " + fileName
 				+ " thread count: " + threadCount);
 		SailFish sailfish = new SailFish();
-		File logFile = new File("/tmp/urls.log");
+		File logFile = new File(fileName);
 		System.out.println(logFile.getAbsolutePath());
 		sailfish.go(logFile, threadCount);
 	}
