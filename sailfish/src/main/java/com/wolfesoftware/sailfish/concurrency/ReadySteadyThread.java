@@ -3,14 +3,16 @@ package com.wolfesoftware.sailfish.concurrency;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.wolfesoftware.sailfish.concurrency.worker.factory.WorkerFactory;
+
 public class ReadySteadyThread{
 
 	private int i;
-	private WorkerFactory threadFactory;
+	private WorkerFactory workerFactory;
 
 	public ReadySteadyThread(int i, WorkerFactory threadFactory) {
 		this.i = i;
-		this.threadFactory=threadFactory;
+		this.workerFactory=threadFactory;
 	}
 
 	/*
@@ -18,14 +20,14 @@ public class ReadySteadyThread{
 	 */
 	public void go() {
 		ExecutorService executor = Executors.newFixedThreadPool(i);
-		//long startTime = System.currentTimeMillis();
+		long startTime = System.currentTimeMillis();
 		for (int x=0;x<i;x++){
-			executor.execute(this.threadFactory.getThread());
+			executor.execute(this.workerFactory.getWorker());
 		}
 		executor.shutdown();
 		while (!executor.isTerminated()) {
 		}
-		//System.out.println(System.currentTimeMillis() - startTime);
+		System.out.println(System.currentTimeMillis() - startTime);
 	}
 }
 

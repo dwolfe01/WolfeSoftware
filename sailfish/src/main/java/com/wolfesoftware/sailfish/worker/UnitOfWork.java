@@ -1,7 +1,7 @@
 package com.wolfesoftware.sailfish.worker;
 
-public interface UnitOfWork {
+public interface UnitOfWork<T> {
 
-	String go();
+	T go();
 
 }
