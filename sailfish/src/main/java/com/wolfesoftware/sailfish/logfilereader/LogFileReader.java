@@ -1,4 +1,4 @@
-package com.wolfesoftware.logfilereader;
+package com.wolfesoftware.sailfish.logfilereader;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.wolfesoftware.logfilereader;
+package com.wolfesoftware.sailfish.logfilereader;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 
 //TODO: make this an integration test?
 public class LogFileTest {

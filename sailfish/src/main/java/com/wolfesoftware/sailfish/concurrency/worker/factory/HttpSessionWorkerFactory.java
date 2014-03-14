@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.wolfesoftware.logfilereader.LogFileReader;
+import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.request.Request;
 import com.wolfesoftware.sailfish.worker.Worker;
 

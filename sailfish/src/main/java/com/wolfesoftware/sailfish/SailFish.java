@@ -3,9 +3,9 @@ package com.wolfesoftware.sailfish;
 import java.io.File;
 import java.io.IOException;
 
-import com.wolfesoftware.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpSessionWorkerFactory;
+import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 
 public class SailFish {
 
