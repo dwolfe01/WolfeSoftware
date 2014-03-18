@@ -13,6 +13,8 @@ import org.mockito.MockitoAnnotations;
 public class CookieTinTest {
 
 	private static final String cookieString = "sailfish=fastfish";
+	private static final String secondCookieString = "EuCookie=isInEU";
+	
 	@Mock
 	HttpURLConnection urlConnection;
 	CookieTin cookies;
@@ -24,6 +26,7 @@ public class CookieTinTest {
 		Mockito.when(urlConnection.getHeaderFieldKey(1)).thenReturn(
 				"Set-Cookie");
 		Mockito.when(urlConnection.getHeaderField(1)).thenReturn(cookieString);
+		
 	}
 
 	@Test
@@ -37,6 +40,18 @@ public class CookieTinTest {
 		cookies.getCookiesFromUrlConnection(urlConnection);
 		cookies.setCookiesOnUrlConnection(urlConnection);
 		Mockito.verify(urlConnection).setRequestProperty(CookieTin.COOKIE,
-				cookieString);
+				cookieString + ";");
 	}
+	
+	@Test
+	public void shouldSetMultipleCookiesOnUrlConnection() {
+		Mockito.when(urlConnection.getHeaderFieldKey(2)).thenReturn(
+				"Set-Cookie");
+		Mockito.when(urlConnection.getHeaderField(2)).thenReturn(secondCookieString);
+		cookies.getCookiesFromUrlConnection(urlConnection);
+		cookies.setCookiesOnUrlConnection(urlConnection);
+		Mockito.verify(urlConnection).setRequestProperty(CookieTin.COOKIE,
+				cookieString + ";" + secondCookieString  + ";");
+	}
+	
 }

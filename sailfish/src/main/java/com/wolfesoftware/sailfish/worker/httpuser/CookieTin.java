@@ -7,6 +7,7 @@ import java.util.List;
 
 /*
  * This currently only works if there is only one site setting the cookies
+ * It also treats all cookies the same regadless of URL - to be improved!!
  * There could otherwise be a clash in names of cookies
  */
 public class CookieTin {
@@ -32,16 +33,17 @@ public class CookieTin {
 	}
 
 	public void setCookiesOnUrlConnection(HttpURLConnection connection) {
-		for (String cookie : cookies) {
-			connection.setRequestProperty(COOKIE,
-					getBitOfCoookieToSendBackToServer(cookie));
-			System.out.println("set cookies on request"
-					+ getBitOfCoookieToSendBackToServer(cookie));
-		}
+		String cookieStringToSetOnURL = "";
+		cookieStringToSetOnURL = getAllCookiesAsOneString(cookieStringToSetOnURL);
+		connection.setRequestProperty(COOKIE,cookieStringToSetOnURL);
+		System.out.println("set cookies on request: " + cookieStringToSetOnURL);
 	}
 
-	private String getBitOfCoookieToSendBackToServer(String cookie) {
-		return cookie.split(";")[0];
+	private String getAllCookiesAsOneString(String cookieStringToSetOnURL) {
+		for (String cookie : cookies) {
+			cookieStringToSetOnURL += cookie  + ";";
+		}
+		return cookieStringToSetOnURL;
 	}
 
 }
