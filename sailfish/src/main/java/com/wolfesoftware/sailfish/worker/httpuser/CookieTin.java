@@ -19,10 +19,11 @@ public class CookieTin {
 		for (int i = 1; (headerKey = urlConnection.getHeaderFieldKey(i)) != null; i++) {
 			if (headerKey.equals("Set-Cookie")) {
 				cookies.add(urlConnection.getHeaderField(i));
+				// // delete me
+				String headerValue = urlConnection.getHeaderField(i);
+				System.out.println("get cookies from response" + headerKey
+						+ ":" + headerValue);
 			}
-			// // delete me
-			String headerValue = urlConnection.getHeaderField(i);
-			System.out.println(headerKey + ":" + headerValue);
 		}
 	}
 
@@ -34,7 +35,8 @@ public class CookieTin {
 		for (String cookie : cookies) {
 			connection.setRequestProperty(COOKIE,
 					getBitOfCoookieToSendBackToServer(cookie));
-			System.out.println(getBitOfCoookieToSendBackToServer(cookie));
+			System.out.println("set cookies on request"
+					+ getBitOfCoookieToSendBackToServer(cookie));
 		}
 	}
 
