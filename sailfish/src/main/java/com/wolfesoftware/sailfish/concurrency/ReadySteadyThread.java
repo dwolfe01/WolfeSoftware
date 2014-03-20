@@ -29,6 +29,7 @@ public class ReadySteadyThread {
 		while (!executor.isTerminated()) {
 		}
 		if (workerFactory.isThereAnyMoreWorkToDo()) {
+			System.out.println("All threads completed, kicking them off again");
 			this.go();
 		} else {
 			System.out.println("ReadySteadyThreadCompleted"

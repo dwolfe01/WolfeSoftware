@@ -46,7 +46,7 @@ public class Request implements UnitOfWork<String> {
 	private String doOutput(long startTime, String responseCode) {
 		String output = "Got: " + url + " response code: " + responseCode
 				+ " Exceution time:" + (System.currentTimeMillis() - startTime)
-				+ " milliseconds \n";
+				+ " milliseconds";
 		return output;
 	}
 

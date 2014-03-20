@@ -2,7 +2,9 @@ package com.wolfesoftware.sailfish.concurrency.worker.factory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.request.Request;
@@ -17,7 +19,7 @@ import com.wolfesoftware.sailfish.worker.httpuser.HttpUser;
 public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 
 	volatile int positionInRequests;
-	ArrayList<Request> requests;
+	List<Request> requests;
 
 	public void setUrls(LogFileReader logFileReader) throws IOException {
 		Iterator<String> iterator = logFileReader.iterator();
@@ -25,6 +27,8 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 		while (iterator.hasNext()) {
 			requests.add(new Request(iterator.next()));
 		}
+		requests = Collections.synchronizedList(requests);
+		System.out.println("Number of requests = " + requests.size());
 	}
 
 	public Runnable getWorker() {
@@ -37,7 +41,7 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 		try{
 			 return requests.get(positionInRequests++);
 		}catch (Exception e){
-			System.out.println(this.getClass().getCanonicalName() + " finished");
+			this.setIsThereAnyMoreWorkToDo(false);
 			return null;
 		}
 	}

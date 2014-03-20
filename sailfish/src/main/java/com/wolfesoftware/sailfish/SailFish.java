@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
-import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpSessionWorkerFactory;
+import com.wolfesoftware.sailfish.concurrency.worker.factory.AdvancedHttpSessionWorkerFactory;
+import com.wolfesoftware.sailfish.concurrency.worker.factory.SimpleHttpSessionWorkerFactory;
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 
 public class SailFish {
@@ -22,9 +23,9 @@ public class SailFish {
 
 	private void go(File logFile, int threadCount) throws IOException {
 		LogFileReader logFileReader = new LogFileReader(logFile);
-		HttpSessionWorkerFactory httpSessionWorkerFactory = new HttpSessionWorkerFactory();
-		httpSessionWorkerFactory.setUrls(logFileReader);
-		new ReadySteadyThread(threadCount, httpSessionWorkerFactory).go();
+		AdvancedHttpSessionWorkerFactory factory = new AdvancedHttpSessionWorkerFactory();
+		factory.setUrls(logFileReader);
+		new ReadySteadyThread(threadCount, factory).go();
 	}
 
 }

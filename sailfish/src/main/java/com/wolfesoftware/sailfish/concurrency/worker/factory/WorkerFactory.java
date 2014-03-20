@@ -8,10 +8,16 @@ import com.wolfesoftware.sailfish.worker.Worker;
  */
 public abstract class WorkerFactory {
 
+	private boolean isThereAnyMoreWorkToDo = true;
+
 	public abstract Runnable getWorker();
 
 	public boolean isThereAnyMoreWorkToDo() {
-		return false;
+		return isThereAnyMoreWorkToDo;
+	}
+	
+	public void setIsThereAnyMoreWorkToDo(boolean finished){
+		this.isThereAnyMoreWorkToDo = finished;
 	}
 
 	protected Runnable getAsThread(final Worker worker) {
