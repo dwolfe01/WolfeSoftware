@@ -20,6 +20,7 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 
 	volatile int positionInRequests;
 	List<Request> requests;
+	private int size;
 
 	public void setUrls(LogFileReader logFileReader) throws IOException {
 		Iterator<String> iterator = logFileReader.iterator();
@@ -28,12 +29,18 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 			requests.add(new Request(iterator.next()));
 		}
 		requests = Collections.synchronizedList(requests);
-		System.out.println("Number of requests = " + requests.size());
+		size = requests.size();
+		System.out.println("Number of requests = " + this.getSizeOfRequests());
+	}
+	
+	private int getSizeOfRequests(){
+		return size;
 	}
 
 	public Runnable getWorker() {
 			HttpUser user = new HttpUser();
 			user.establishSession(getNextRequest()).add(getNextRequest()).add(getNextRequest()).add(getNextRequest());
+			System.out.println("Processing about " + positionInRequests + " of " + getSizeOfRequests() +  "requests");
 			return this.getAsThread(user);
 	}
 
