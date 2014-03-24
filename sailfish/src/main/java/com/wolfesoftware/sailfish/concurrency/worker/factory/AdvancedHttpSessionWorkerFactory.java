@@ -3,12 +3,11 @@ package com.wolfesoftware.sailfish.concurrency.worker.factory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.request.Request;
-import com.wolfesoftware.sailfish.worker.Worker;
+import com.wolfesoftware.sailfish.worker.DoNothingRequest;
 import com.wolfesoftware.sailfish.worker.httpuser.HttpUser;
 
 /*
@@ -19,36 +18,42 @@ import com.wolfesoftware.sailfish.worker.httpuser.HttpUser;
 public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 
 	volatile int positionInRequests;
-	List<Request> requests;
+	List<Request> requests = new ArrayList<Request>();
 	private int size;
 
 	public void setUrls(LogFileReader logFileReader) throws IOException {
-		Iterator<String> iterator = logFileReader.iterator();
-		requests = new ArrayList<Request>();
-		while (iterator.hasNext()) {
-			requests.add(new Request(iterator.next()));
-		}
-		requests = Collections.synchronizedList(requests);
+		requests = Collections
+				.synchronizedList(logFileReader.getAsListOfUrls());
 		size = requests.size();
-		System.out.println("Number of requests = " + this.getSizeOfRequests());
 	}
-	
-	private int getSizeOfRequests(){
+
+	private int getSizeOfRequests() {
 		return size;
 	}
 
 	public Runnable getWorker() {
-			HttpUser user = new HttpUser();
-			user.establishSession(getNextRequest()).add(getNextRequest()).add(getNextRequest()).add(getNextRequest());
-			System.out.println("Processing about " + positionInRequests + " of " + getSizeOfRequests() +  "requests");
-			return this.getAsThread(user);
+		HttpUser user = new HttpUser();
+
+		user.establishSession(getNextRequest()).add(getNextRequest())
+				.add(getNextRequest()).add(getNextRequest());
+
+		System.out.println("Processing about " + positionInRequests + " of "
+				+ getSizeOfRequests() + "requests");
+		return this.getAsThread(user);
 	}
 
 	private Request getNextRequest() {
-		try{
-			 return requests.get(positionInRequests++);
-		}catch (Exception e){
-			this.setIsThereAnyMoreWorkToDo(false);
+		try {
+			if (this.isThereAnyMoreWorkToDo()) {
+				Request request = requests.get(positionInRequests++);
+				if (positionInRequests + 1 > getSizeOfRequests()) {
+					this.setIsThereAnyMoreWorkToDo(false);
+				}
+				return request;
+			} else {
+				return new DoNothingRequest();
+			}
+		} catch (Exception e) {
 			return null;
 		}
 	}

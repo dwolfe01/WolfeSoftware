@@ -4,14 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
+import com.wolfesoftware.sailfish.request.Request;
 
 //TODO: make this an integration test?
-public class LogFileTest {
+public class LogFileReaderTest {
 
 	private LogFileReader logFileReader;
 
@@ -35,8 +36,9 @@ public class LogFileTest {
 	}
 
 	@Test
-	public void shouldReturnListIterator() throws Exception {
-		logFileReader.iterator();
+	public void shouldReturnUrlsAsListOfRequests() throws IOException {
+		List<Request> asListOfUrls = logFileReader.getAsListOfUrls();
+		assertEquals(6, asListOfUrls.size());
 	}
 
 }

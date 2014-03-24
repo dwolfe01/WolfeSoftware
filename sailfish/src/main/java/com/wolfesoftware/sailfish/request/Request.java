@@ -62,16 +62,17 @@ public class Request implements UnitOfWork<String> {
 		}
 	}
 
-	// private String readAndOutput(final URLConnection urlConnection)
-	// throws IOException {
-	// InputStreamReader inputStreamReader = null;
-	// inputStreamReader = new InputStreamReader(
-	// urlConnection.getInputStream());
-	// int character;
-	// String result = "";
-	// while ((character = inputStreamReader.read()) != -1) {
-	// result += (char) character;
-	// }
-	// return result;
-	// }
 }
+
+// private String readAndOutput(final URLConnection urlConnection)
+// throws IOException {
+// InputStreamReader inputStreamReader = null;
+// inputStreamReader = new InputStreamReader(
+// urlConnection.getInputStream());
+// int character;
+// String result = "";
+// while ((character = inputStreamReader.read()) != -1) {
+// result += (char) character;
+// }
+// return result;
+// }

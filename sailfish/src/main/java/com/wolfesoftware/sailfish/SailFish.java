@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.AdvancedHttpSessionWorkerFactory;
-import com.wolfesoftware.sailfish.concurrency.worker.factory.SimpleHttpSessionWorkerFactory;
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 
 public class SailFish {

@@ -2,10 +2,12 @@ package com.wolfesoftware.sailfish.logfilereader;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+
+import com.wolfesoftware.sailfish.request.Request;
 
 //TODO: make this an integration test?
 public class LogFileReader {
@@ -24,8 +26,11 @@ public class LogFileReader {
 		return lines.get(index);
 	}
 
-	public Iterator<String> iterator() {
-		return (Iterator<String>) lines.iterator();
+	public List<Request> getAsListOfUrls() throws IOException {
+		List<Request> requests = new ArrayList<Request>();
+		for (int x = 0; x < lines.size(); x++) {
+			requests.add(new Request(lines.get(x)));
+		}
+		return requests;
 	}
-
 }
