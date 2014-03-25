@@ -6,39 +6,49 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
+import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.request.Request;
 
 //TODO: make this an integration test?
 public class LogFileReaderTest {
 
-	private LogFileReader logFileReader;
-
-	@Before
-	public void setup() throws IOException {
+	@Test
+	public void shouldReadLogFileAndOutputSize() throws BadLogFileException {
 		File logFile = new File(getClass().getClassLoader()
 				.getResource("urls.log").getFile());
-		logFileReader = new LogFileReader(logFile);
-	}
-
-	@Test
-	public void shouldReadLogFileAndOutputSize() throws Exception {
+		LogFileReader logFileReader = new LogFileReader(logFile);
 		assertEquals(6, logFileReader.getSize());
 	}
 
 	@Test
-	public void shouldReadFirstAndLastStringFromLogFile() throws Exception {
+	public void shouldReadFirstAndLastStringFromLogFile()
+			throws BadLogFileException {
+		File logFile = new File(getClass().getClassLoader()
+				.getResource("urls.log").getFile());
+		LogFileReader logFileReader = new LogFileReader(logFile);
 		assertEquals("http://www.google.co.uk", logFileReader.get(0));
 		assertEquals("http://www.theguardian.com",
 				logFileReader.get(logFileReader.getSize() - 1));
 	}
 
 	@Test
-	public void shouldReturnUrlsAsListOfRequests() throws IOException {
+	public void shouldReturnUrlsAsListOfRequests() throws BadLogFileException,
+			IOException {
+		File logFile = new File(getClass().getClassLoader()
+				.getResource("urls.log").getFile());
+		LogFileReader logFileReader = new LogFileReader(logFile);
 		List<Request> asListOfUrls = logFileReader.getAsListOfUrls();
 		assertEquals(6, asListOfUrls.size());
+	}
+
+	@Test(expected = IOException.class)
+	public void shouldErrorOnMalformedUrlInLogFile() throws BadLogFileException {
+		File logFile = new File(getClass().getClassLoader()
+				.getResource("urlsWithMalformedUrl.log").getFile());
+		LogFileReader logFileReader = new LogFileReader(logFile);
+		logFileReader.getAsListOfUrls();
 	}
 
 }

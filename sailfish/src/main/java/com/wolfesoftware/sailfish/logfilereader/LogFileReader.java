@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.request.Request;
 
 //TODO: make this an integration test?
@@ -14,8 +15,12 @@ public class LogFileReader {
 
 	List<String> lines;
 
-	public LogFileReader(File logFile) throws IOException {
-		lines = FileUtils.readLines(logFile);
+	public LogFileReader(File logFile) throws BadLogFileException {
+		try {
+			lines = FileUtils.readLines(logFile);
+		} catch (IOException e) {
+			throw new BadLogFileException();
+		}
 	}
 
 	public int getSize() {
@@ -26,10 +31,14 @@ public class LogFileReader {
 		return lines.get(index);
 	}
 
-	public List<Request> getAsListOfUrls() throws IOException {
+	public List<Request> getAsListOfUrls() throws BadLogFileException {
 		List<Request> requests = new ArrayList<Request>();
 		for (int x = 0; x < lines.size(); x++) {
-			requests.add(new Request(lines.get(x)));
+			try {
+				requests.add(new Request(lines.get(x)));
+			} catch (IOException e) {
+				throw new BadLogFileException();
+			}
 		}
 		return requests;
 	}

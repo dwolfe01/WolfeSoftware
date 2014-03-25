@@ -48,6 +48,17 @@ public class AdvancedHttpSessionWorkerFactoryTest {
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
 	}
 
+	@Test
+	public void shouldReturnTwoWorkersWithSevenRequestsAndOneDoNothingRequestAndSetFinishedToTrue()
+			throws Exception {
+		List<Request> requests = createArrayListOfRequests(7);
+		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
+		factory.setUrls(logFileReader);
+		factory.getWorker();
+		factory.getWorker();
+		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+
 	private List<Request> createArrayListOfRequests(int numberOfRequests)
 			throws IOException {
 		List<Request> requests = new ArrayList<Request>();

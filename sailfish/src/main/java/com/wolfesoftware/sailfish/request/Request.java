@@ -22,6 +22,9 @@ public class Request implements UnitOfWork<String> {
 		this.cookieTin = cookies;
 	}
 
+	public Request() {
+	}
+
 	@Override
 	@Timed
 	public String go() {
