@@ -3,6 +3,8 @@ package com.wolfesoftware.sailfish.concurrency;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.pmw.tinylog.Logger;
+
 import com.wolfesoftware.sailfish.concurrency.worker.factory.WorkerFactory;
 
 public class ReadySteadyThread {
@@ -29,10 +31,10 @@ public class ReadySteadyThread {
 		while (!executor.isTerminated()) {
 		}
 		if (workerFactory.isThereAnyMoreWorkToDo()) {
-			System.out.println("All threads completed, kicking them off again");
+			Logger.info("All threads completed, kicking them off again");
 			this.go();
 		} else {
-			System.out.println("ReadySteadyThreadCompleted"
+			Logger.info("ReadySteadyThreadCompleted"
 					+ (System.currentTimeMillis() - startTime));
 		}
 	}

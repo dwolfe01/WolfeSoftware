@@ -5,6 +5,8 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pmw.tinylog.Logger;
+
 /*
  * This currently only works if there is only one site setting the cookies
  * It also treats all cookies the same regadless of URL - to be improved!!
@@ -22,8 +24,8 @@ public class CookieTin {
 				cookies.add(urlConnection.getHeaderField(i));
 				// // delete me
 				String headerValue = urlConnection.getHeaderField(i);
-				System.out.println("get cookies from response" + headerKey
-						+ ":" + headerValue);
+				Logger.info("get cookies from response" + headerKey + ":"
+						+ headerValue);
 			}
 		}
 	}
@@ -35,13 +37,13 @@ public class CookieTin {
 	public void setCookiesOnUrlConnection(HttpURLConnection connection) {
 		String cookieStringToSetOnURL = "";
 		cookieStringToSetOnURL = getAllCookiesAsOneString(cookieStringToSetOnURL);
-		connection.setRequestProperty(COOKIE,cookieStringToSetOnURL);
-		System.out.println("set cookies on request: " + cookieStringToSetOnURL);
+		connection.setRequestProperty(COOKIE, cookieStringToSetOnURL);
+		Logger.info("set cookies on request: " + cookieStringToSetOnURL);
 	}
 
 	private String getAllCookiesAsOneString(String cookieStringToSetOnURL) {
 		for (String cookie : cookies) {
-			cookieStringToSetOnURL += cookie  + ";";
+			cookieStringToSetOnURL += cookie + ";";
 		}
 		return cookieStringToSetOnURL;
 	}

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.pmw.tinylog.Logger;
+
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.request.Request;
@@ -33,9 +35,8 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 
 	public Runnable getWorker() {
 		HttpUser user = new HttpUser();
-		System.out.println("Current position in request list"
-				+ positionInRequests + " of " + getSizeOfRequests()
-				+ "requests");
+		Logger.info("Current position in request list" + positionInRequests
+				+ " of " + getSizeOfRequests() + "requests");
 
 		user.establishSession(getNextRequest()).add(getNextRequest())
 				.add(getNextRequest()).add(getNextRequest());

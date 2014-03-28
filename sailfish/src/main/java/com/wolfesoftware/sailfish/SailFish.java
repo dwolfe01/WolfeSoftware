@@ -2,6 +2,8 @@ package com.wolfesoftware.sailfish;
 
 import java.io.File;
 
+import org.pmw.tinylog.Logger;
+
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.AdvancedHttpSessionWorkerFactory;
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
@@ -13,11 +15,11 @@ public class SailFish {
 			BadLogFileException {
 		String fileName = args[0];
 		int threadCount = Integer.parseInt(args[1]);
-		System.out.println("Running SailFish with file: " + fileName
+		Logger.info("Running SailFish with file: " + fileName
 				+ " thread count: " + threadCount);
 		SailFish sailfish = new SailFish();
 		File logFile = new File(fileName);
-		System.out.println(logFile.getAbsolutePath());
+		Logger.info(logFile.getAbsolutePath());
 		sailfish.go(logFile, threadCount);
 	}
 

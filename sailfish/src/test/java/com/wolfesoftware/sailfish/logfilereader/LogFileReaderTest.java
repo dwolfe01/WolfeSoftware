@@ -43,7 +43,7 @@ public class LogFileReaderTest {
 		assertEquals(6, asListOfUrls.size());
 	}
 
-	@Test(expected = IOException.class)
+	@Test(expected = BadLogFileException.class)
 	public void shouldErrorOnMalformedUrlInLogFile() throws BadLogFileException {
 		File logFile = new File(getClass().getClassLoader()
 				.getResource("urlsWithMalformedUrl.log").getFile());

@@ -18,11 +18,22 @@
 		<groupId>org.mockito</groupId>
 		<artifactId>mockito-all</artifactId>
 		<version>1.8.4</version>
+		<scope>test</scope>
 	</dependency>
  	<dependency>
 		<groupId>org.apache.commons</groupId>
 		<artifactId>commons-io</artifactId>
 		<version>1.3.2</version>
+	</dependency>
+	<dependency>
+  		<groupId>org.tinylog</groupId>
+  		<artifactId>tinylog</artifactId>
+ 		 <version>0.8.1</version>
+	</dependency>
+	<dependency>
+  		<groupId>org.tinylog</groupId>
+  		<artifactId>log4j-facade</artifactId>
+  		<version>0.8.1</version>
 	</dependency>
   	</dependencies>
   	<build>
