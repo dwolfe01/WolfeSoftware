@@ -38,7 +38,7 @@ public class Request implements UnitOfWork<String> {
 			String responseCode = connection.getResponseCode() + "";
 			getCookies(connection);
 			String output = doOutput(startTime, responseCode);
-			Logger.info(output);
+			//Logger.info(output);
 			return responseCode;
 		} catch (IOException e) {
 			e.printStackTrace();
