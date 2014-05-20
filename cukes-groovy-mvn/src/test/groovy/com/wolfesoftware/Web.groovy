@@ -1,6 +1,5 @@
 package com.wolfesoftware
 
-
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
 import static org.junit.Assert.assertEquals
@@ -13,6 +12,6 @@ this.metaClass.mixin(EN)
 Given(~'I go to (.*)'){ String url -> 
 	HtmlUnitDriver driver = new HtmlUnitDriver();
 	driver.get(url)
-	print driver.getPageSource();
+	new File('target/test.htm').write(driver.getPageSource())
 }
 
