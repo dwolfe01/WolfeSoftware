@@ -11,6 +11,8 @@ public class ReadySteadyThread {
 
 	private int i;
 	private WorkerFactory workerFactory;
+	long startTime;
+	ExecutorService executor;
 
 	public ReadySteadyThread(int i, WorkerFactory threadFactory) {
 		this.i = i;
@@ -22,8 +24,12 @@ public class ReadySteadyThread {
 	 * workerfactory has more work to do then it should call itself again
 	 */
 	public void go() {
-		ExecutorService executor = Executors.newFixedThreadPool(i);
-		long startTime = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();
+		execute();
+	}
+
+	private void execute() {
+		executor = Executors.newFixedThreadPool(i);
 		for (int x = 0; x < i; x++) {
 			executor.execute(this.workerFactory.getWorker());
 		}
@@ -32,7 +38,7 @@ public class ReadySteadyThread {
 		}
 		if (workerFactory.isThereAnyMoreWorkToDo()) {
 			Logger.info("All threads completed, kicking them off again");
-			this.go();
+			this.execute();
 		} else {
 			Logger.info("ReadySteadyThreadCompleted"
 					+ (System.currentTimeMillis() - startTime));
