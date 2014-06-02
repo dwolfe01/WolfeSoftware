@@ -24,32 +24,29 @@ public class ReadySteadyThreadTest {
 
 	@Test
 	public void shouldCreateManyThreads() throws Exception {
+		Mockito.when(workerFactory.isThereAnyMoreWorkToDo()).thenReturn(true,
+				true, true, true, true, true, true, true, true, true, false);
 		new ReadySteadyThread(10, workerFactory).go();
+		Mockito.verify(worker, Mockito.times(10)).run();
+	}
+
+	@Test
+	public void shouldCreateThreadsCorrectlyWhenPoolSizeIsSmallerThanAmountOfWorkers()
+			throws Exception {
+		Mockito.when(workerFactory.isThereAnyMoreWorkToDo()).thenReturn(true,
+				true, true, true, true, true, true, true, true, true, false);
+		new ReadySteadyThread(2, workerFactory).go();
 		Mockito.verify(workerFactory, Mockito.times(10)).getWorker();
 		Mockito.verify(worker, Mockito.times(10)).run();
 	}
 
 	@Test
-	public void shouldCreateThreadsTwiceIfTheWorkerFactoryHasMoreWorkToDoAfterTheFirstSetOFThreadsHaveCompleted()
-			throws Exception {
-		Mockito.when(workerFactory.isThereAnyMoreWorkToDo()).thenReturn(true,
-				false);
-		new ReadySteadyThread(10, workerFactory).go();
-		Mockito.verify(workerFactory, Mockito.times(20)).getWorker();
-		Mockito.verify(workerFactory, Mockito.times(2))
-				.isThereAnyMoreWorkToDo();
-		Mockito.verify(worker, Mockito.times(20)).run();
-	}
-
-	@Test
-	public void shouldCreateThreadsThriceIfTheWorkerFactoryHasMoreWorkToDoAfterTheFirstSetOFThreadsHaveCompleted()
+	public void shouldCreateThreadsCorrectlyWhenPoolSizeIsLargerThanAmountOfWorkers()
 			throws Exception {
 		Mockito.when(workerFactory.isThereAnyMoreWorkToDo()).thenReturn(true,
 				true, false);
-		new ReadySteadyThread(5, workerFactory).go();
-		Mockito.verify(workerFactory, Mockito.times(15)).getWorker();
-		Mockito.verify(workerFactory, Mockito.times(3))
-				.isThereAnyMoreWorkToDo();
-		Mockito.verify(worker, Mockito.times(15)).run();
+		new ReadySteadyThread(50, workerFactory).go();
+		Mockito.verify(workerFactory, Mockito.times(2)).getWorker();
+		Mockito.verify(worker, Mockito.times(2)).run();
 	}
 }

@@ -27,9 +27,15 @@ public class SailFish {
 
 	private void go(File logFile, int threadCount) throws BadLogFileException {
 		LogFileReader logFileReader = new LogFileReader(logFile);
+		AdvancedHttpSessionWorkerFactory factory = createFactory(logFileReader);
+		new ReadySteadyThread(threadCount, factory).go();
+	}
+
+	private AdvancedHttpSessionWorkerFactory createFactory(
+			LogFileReader logFileReader) throws BadLogFileException {
 		AdvancedHttpSessionWorkerFactory factory = new AdvancedHttpSessionWorkerFactory();
 		factory.setUrls(logFileReader);
-		new ReadySteadyThread(threadCount, factory).go();
+		return factory;
 	}
 
 }
