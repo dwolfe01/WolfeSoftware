@@ -12,6 +12,8 @@ import com.wolfesoftware.sailfish.request.Request;
 
 public class HttpUserTest {
 
+	private static final String HTTP_REFERER_COM = "http://referer.com";
+
 	HttpUser httpUser;
 
 	@Mock
@@ -21,6 +23,8 @@ public class HttpUserTest {
 	public void before() {
 		MockitoAnnotations.initMocks(this);
 		httpUser = new HttpUser();
+		Mockito.when(request.go()).thenReturn("200");
+		Mockito.when(request.getUrl()).thenReturn(HTTP_REFERER_COM);
 	}
 
 	@Test
@@ -34,6 +38,15 @@ public class HttpUserTest {
 		httpUser.add(request).add(request);
 		httpUser.go();
 		Mockito.verify(request, Mockito.times(2)).go();
+	}
+
+	@Test
+	public void shouldMaintainRefererAsBeingTheRequestThatGeneratedTheLast200Response()
+			throws Exception {
+		httpUser.add(request).add(request);
+		httpUser.go();
+		assertEquals(HTTP_REFERER_COM, httpUser.getReferer());
+		Mockito.verify(request, Mockito.times(1)).setReferer(HTTP_REFERER_COM);
 	}
 
 	/*

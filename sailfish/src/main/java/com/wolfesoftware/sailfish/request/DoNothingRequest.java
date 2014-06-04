@@ -1,13 +1,10 @@
-package com.wolfesoftware.sailfish.worker;
+package com.wolfesoftware.sailfish.request;
 
 import org.pmw.tinylog.Logger;
-
-import com.wolfesoftware.sailfish.request.Request;
 
 public class DoNothingRequest extends Request {
 
 	public DoNothingRequest() {
-		super();
 	}
 
 	@Override

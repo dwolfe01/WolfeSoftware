@@ -8,8 +8,8 @@ import org.pmw.tinylog.Logger;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
+import com.wolfesoftware.sailfish.request.DoNothingRequest;
 import com.wolfesoftware.sailfish.request.Request;
-import com.wolfesoftware.sailfish.worker.DoNothingRequest;
 import com.wolfesoftware.sailfish.worker.httpuser.HttpUser;
 
 /*
