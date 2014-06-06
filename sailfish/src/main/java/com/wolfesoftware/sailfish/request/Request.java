@@ -5,8 +5,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.pmw.tinylog.Logger;
-
 import com.wolfesoftware.sailfish.request.annotation.Timed;
 import com.wolfesoftware.sailfish.worker.UnitOfWork;
 import com.wolfesoftware.sailfish.worker.httpuser.CookieTin;
@@ -42,7 +40,7 @@ public class Request implements UnitOfWork<String> {
 			String responseCode = connection.getResponseCode() + "";
 			getCookies(connection);
 			// Logger.info(readAndOutput(connection));
-			Logger.info(doOutput(startTime, responseCode));
+			// Logger.info(doOutput(startTime, responseCode));
 			return responseCode;
 		} catch (IOException e) {
 			e.printStackTrace();
