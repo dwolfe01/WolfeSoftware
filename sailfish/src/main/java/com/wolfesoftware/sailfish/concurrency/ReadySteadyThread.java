@@ -40,6 +40,9 @@ public class ReadySteadyThread {
 				executor.shutdown();
 			} else if (executor.getActiveCount() < executor
 					.getMaximumPoolSize()) {
+				// System.out.println("activeCount: " +
+				// executor.getActiveCount()
+				// + " max Pool size:" + executor.getMaximumPoolSize());
 				executor.execute(this.workerFactory.getWorker());
 			}
 		}

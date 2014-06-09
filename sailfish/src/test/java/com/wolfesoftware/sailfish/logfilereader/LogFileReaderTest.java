@@ -19,7 +19,7 @@ public class LogFileReaderTest {
 		File logFile = new File(getClass().getClassLoader()
 				.getResource("urls.log").getFile());
 		LogFileReader logFileReader = new LogFileReader(logFile);
-		assertEquals(6, logFileReader.getSize());
+		assertEquals(102, logFileReader.getSize());
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class LogFileReaderTest {
 				.getResource("urls.log").getFile());
 		LogFileReader logFileReader = new LogFileReader(logFile);
 		List<Request> asListOfUrls = logFileReader.getAsListOfUrls();
-		assertEquals(6, asListOfUrls.size());
+		assertEquals(102, asListOfUrls.size());
 	}
 
 	@Test(expected = BadLogFileException.class)

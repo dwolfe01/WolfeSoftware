@@ -29,6 +29,7 @@ public class RequestTest {
 	// assertEquals(true, cookieTin.size() >= 1);
 	// }
 
+	// never have a unit test dependent on a third party!!!
 	@Test
 	public void shouldSendBackToServerListOfCookies() throws Exception {
 		CookieTin cookieTin = new CookieTin();
