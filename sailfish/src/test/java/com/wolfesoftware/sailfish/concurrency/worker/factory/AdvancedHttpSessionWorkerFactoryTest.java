@@ -6,14 +6,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.core.AnyOf;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
 import org.mockito.MockitoAnnotations;
+import org.pmw.tinylog.Configurator;
+import org.pmw.tinylog.LoggingLevel;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.request.Request;
+import com.wolfesoftware.sailfish.worker.httpuser.TestLogWriter;
 
 public class AdvancedHttpSessionWorkerFactoryTest {
 
@@ -21,6 +27,8 @@ public class AdvancedHttpSessionWorkerFactoryTest {
 
 	@Mock
 	LogFileReader logFileReader;
+	@Mock
+	TestLogWriter logWriter;
 	String logFileRequest = "http://localhost";
 
 	@Before
@@ -57,6 +65,20 @@ public class AdvancedHttpSessionWorkerFactoryTest {
 		factory.getWorker();
 		factory.getWorker();
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+	
+	@Test
+	@Ignore 
+	//for the life of me I cannot get anyOf to work aaaaah.
+	public void shouldLogInfoEvery1000Request() throws Exception{
+		List<Request> requests = createArrayListOfRequests(2010);
+		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
+		factory.setUrls(logFileReader);
+		Configurator.defaultConfig().writer(logWriter).activate();
+		while(factory.isThereAnyMoreWorkToDo()){
+			factory.getWorker();
+		}
+		Mockito.verify(logWriter, Mockito.times(2)).write(LoggingLevel.INFO,"");
 	}
 
 	private List<Request> createArrayListOfRequests(int numberOfRequests)

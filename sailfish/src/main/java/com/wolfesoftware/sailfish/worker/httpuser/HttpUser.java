@@ -19,7 +19,7 @@ public class HttpUser extends Worker implements Loggable {
 	Request establishSessionRequest = null;
 	List<Request> session = new ArrayList<Request>();
 	private long waitTime = 0;
-	private long loggingThreshold = 3000;
+	private long loggingThreshold = 6000;
 	CookieTin cookieTin = new CookieTin();
 	protected String referer;
 
@@ -45,6 +45,8 @@ public class HttpUser extends Worker implements Loggable {
 		String responseCode = request.go();
 		if (responseCode.startsWith("2")) {
 			this.setReferer(request.getUrl());
+		} else {
+			Logger.info("$$$$$ Response code: " + responseCode + " URL" + request.getUrl());
 		}
 		pause();
 	}
@@ -95,7 +97,7 @@ public class HttpUser extends Worker implements Loggable {
 				}
 			}
 			Logger.info(urls);
-			Logger.info("************************* Number of Sessions = "
+			Logger.info("***** Number of Sessions = "
 					+ numberOfTimesIHaveBeenCreatedRoughly);
 		}
 	}

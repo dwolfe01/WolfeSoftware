@@ -22,6 +22,7 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 	volatile int positionInRequests;
 	List<Request> requests = new ArrayList<Request>();
 	private int size;
+	private int howOftenToLogInfo = 1000;
 
 	public void setUrls(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections
@@ -35,13 +36,19 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 
 	public Runnable getWorker() {
 		HttpUser user = new HttpUser();
-		Logger.info("Current position in request list" + positionInRequests
-				+ " of " + getSizeOfRequests() + "requests");
+		doOutput();
 
 		user.establishSession(getNextRequest()).add(getNextRequest())
 				.add(getNextRequest()).add(getNextRequest());
 
 		return this.getAsThread(user);
+	}
+
+	private void doOutput() {
+		if (positionInRequests % howOftenToLogInfo ==0){
+		Logger.info("Current position in request list" + positionInRequests
+				+ " of " + getSizeOfRequests() + "requests");
+		}
 	}
 
 	private Request getNextRequest() {

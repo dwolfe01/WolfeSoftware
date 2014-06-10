@@ -3,13 +3,12 @@ package com.wolfesoftware.sailfish.worker.httpuser;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.pmw.tinylog.Configurator;
-import org.pmw.tinylog.LoggingLevel;
-import org.pmw.tinylog.writers.LoggingWriter;
 
 import com.wolfesoftware.sailfish.request.Request;
 
@@ -85,10 +84,6 @@ public class HttpUserTest {
 		assertEquals("", logWriter.getMessage());
 	}
 
-	/*
-	 * I couldn't really work out how to test Thread.sleep was being called.
-	 * This is a bad test.
-	 */
 	@Test
 	public void shouldLogIfTimeToProcessIsBiggerThanLoggingThreshold()
 			throws Exception {
@@ -101,29 +96,4 @@ public class HttpUserTest {
 		Mockito.verify(request, Mockito.times(2)).go();
 		assertEquals(true, logWriter.getMessage().length() > 1);
 	}
-}
-
-class TestLogWriter implements LoggingWriter {
-
-	private String message = "";
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void write(LoggingLevel arg0, String arg1) {
-		setMessage(arg1);
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 }
