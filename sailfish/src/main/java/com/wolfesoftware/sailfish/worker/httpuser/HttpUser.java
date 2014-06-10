@@ -14,12 +14,31 @@ import com.wolfesoftware.sailfish.worker.loggable.Loggable;
  */
 public class HttpUser extends Worker implements Loggable {
 
-	private static volatile long numberOfTimesIHaveBeenCreatedRoughly;
+	private static volatile long numberOfTimesIHaveBeenCreatedRoughly;// these
+																		// statics
+																		// mean
+																		// that
+																		// HttpUser
+																		// can
+																		// only
+																		// be
+																		// used
+																		// by
+																		// one
+																		// worker
+																		// factory
+																		// within
+																		// a JVM
+																		// -
+																		// this
+																		// is
+																		// bad
+	private static volatile long totalExceutionTime;
 
 	Request establishSessionRequest = null;
 	List<Request> session = new ArrayList<Request>();
 	private long waitTime = 0;
-	private long loggingThreshold = 6000;
+	private long loggingThreshold = 10000;// 10 seconds
 	CookieTin cookieTin = new CookieTin();
 	protected String referer;
 
@@ -37,7 +56,9 @@ public class HttpUser extends Worker implements Loggable {
 		for (Request request : session) {
 			makeRequestAndSetReferer(request);
 		}
-		doOutput(startTime);
+		long executionTime = System.currentTimeMillis() - startTime;
+		HttpUser.totalExceutionTime += executionTime;
+		doOutput(executionTime);
 	}
 
 	private void makeRequestAndSetReferer(Request request) {
@@ -46,7 +67,8 @@ public class HttpUser extends Worker implements Loggable {
 		if (responseCode.startsWith("2")) {
 			this.setReferer(request.getUrl());
 		} else {
-			Logger.info("$$$$$ Response code: " + responseCode + " URL" + request.getUrl());
+			Logger.info("$$$$$ Response code: " + responseCode + " URL"
+					+ request.getUrl());
 		}
 		pause();
 	}
@@ -80,10 +102,9 @@ public class HttpUser extends Worker implements Loggable {
 		}
 	}
 
-	private void doOutput(long startTime) {
-		long processingTime = System.currentTimeMillis() - startTime;
-		if (processingTime > loggingThreshold) {
-			String output = "HttpUser Session Time:" + processingTime
+	private void doOutput(long executionTime) {
+		if (executionTime > loggingThreshold) {
+			String output = "HttpUser Session Time:" + executionTime
 					+ " milliseconds";
 			Logger.info(output);
 			String urls = "";
@@ -100,6 +121,11 @@ public class HttpUser extends Worker implements Loggable {
 			Logger.info("***** Number of Sessions = "
 					+ numberOfTimesIHaveBeenCreatedRoughly);
 		}
+	}
+
+	public static double getThroughPutPerHttpUserInSeconds() {
+		return HttpUser.numberOfTimesIHaveBeenCreatedRoughly
+				/ (HttpUser.totalExceutionTime / 1000);
 	}
 
 	public String getReferer() {

@@ -15,8 +15,8 @@ public abstract class WorkerFactory {
 	public boolean isThereAnyMoreWorkToDo() {
 		return isThereAnyMoreWorkToDo;
 	}
-	
-	public void setIsThereAnyMoreWorkToDo(boolean finished){
+
+	public void setIsThereAnyMoreWorkToDo(boolean finished) {
 		this.isThereAnyMoreWorkToDo = finished;
 	}
 

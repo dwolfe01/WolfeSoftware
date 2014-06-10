@@ -45,9 +45,11 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 	}
 
 	private void doOutput() {
-		if (positionInRequests % howOftenToLogInfo ==0){
-		Logger.info("Current position in request list" + positionInRequests
-				+ " of " + getSizeOfRequests() + "requests");
+		if (positionInRequests % howOftenToLogInfo == 1) {
+			Logger.info("Current position in request list" + positionInRequests
+					+ " of " + getSizeOfRequests() + "requests"
+					+ " throughput per HttpSession: "
+					+ HttpUser.getThroughPutPerHttpUserInSeconds());
 		}
 	}
 
