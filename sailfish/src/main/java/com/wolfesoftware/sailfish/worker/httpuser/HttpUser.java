@@ -11,6 +11,7 @@ import com.wolfesoftware.sailfish.worker.loggable.Loggable;
 
 /*
  * A fluent API for creating a user http session, this creates a session and runs through a list of requests in order observing any wait times
+ * This combines too much logging reponsibility
  */
 public class HttpUser extends Worker implements Loggable {
 
@@ -43,7 +44,7 @@ public class HttpUser extends Worker implements Loggable {
 	protected String referer;
 
 	public HttpUser() {
-		this.numberOfTimesIHaveBeenCreatedRoughly++;
+		HttpUser.numberOfTimesIHaveBeenCreatedRoughly++;
 	}
 
 	public void go() {
@@ -67,6 +68,7 @@ public class HttpUser extends Worker implements Loggable {
 		if (responseCode.startsWith("2")) {
 			this.setReferer(request.getUrl());
 		} else {
+			if (!responseCode.equals("404"))//not really bothered about 404s here 
 			Logger.info("$$$$$ Response code: " + responseCode + " URL"
 					+ request.getUrl());
 		}
@@ -124,8 +126,12 @@ public class HttpUser extends Worker implements Loggable {
 	}
 
 	public static double getThroughPutPerHttpUserInSeconds() {
-		return HttpUser.numberOfTimesIHaveBeenCreatedRoughly
-				/ (HttpUser.totalExceutionTime / 1000);
+		System.out.println("HttpUser.numberOfTimesIHaveBeenCreatedRoughly"+HttpUser.numberOfTimesIHaveBeenCreatedRoughly);
+		System.out.println("HttpUser.totalExceutionTime"+HttpUser.totalExceutionTime);
+		if (HttpUser.numberOfTimesIHaveBeenCreatedRoughly>0 && HttpUser.totalExceutionTime>0){//protect against a divide by zero
+			return HttpUser.totalExceutionTime / HttpUser.numberOfTimesIHaveBeenCreatedRoughly;
+		} 
+		return 0.0;
 	}
 
 	public String getReferer() {

@@ -22,7 +22,7 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 	volatile int positionInRequests;
 	List<Request> requests = new ArrayList<Request>();
 	private int size;
-	private int howOftenToLogInfo = 1000;
+	private int howOftenToLogInfo = 100;
 
 	public void setUrls(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections
@@ -45,8 +45,8 @@ public class AdvancedHttpSessionWorkerFactory extends WorkerFactory {
 	}
 
 	private void doOutput() {
-		if (positionInRequests % howOftenToLogInfo == 1) {
-			Logger.info("Current position in request list" + positionInRequests
+		if (positionInRequests % howOftenToLogInfo == 0) {
+			Logger.info("&&&&& Current position in request list" + positionInRequests
 					+ " of " + getSizeOfRequests() + "requests"
 					+ " throughput per HttpSession: "
 					+ HttpUser.getThroughPutPerHttpUserInSeconds());
