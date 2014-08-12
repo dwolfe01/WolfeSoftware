@@ -12,7 +12,7 @@ import com.wolfesoftware.sailfish.worker.httpuser.CookieTin;
 public class Request implements UnitOfWork<String> {
 
 	URL url;
-	public String referer;
+	public String referer = "";
 
 	protected CookieTin cookieTin = null;
 
@@ -34,6 +34,7 @@ public class Request implements UnitOfWork<String> {
 		HttpURLConnection connection = null;
 		try {
 			long startTime = System.currentTimeMillis();
+			HttpURLConnection.setFollowRedirects(false);
 			connection = (HttpURLConnection) url.openConnection();
 			setCookies(connection);
 			connection.setRequestProperty("REFERER", this.getReferer());
@@ -86,7 +87,11 @@ public class Request implements UnitOfWork<String> {
 	}
 
 	public String getUrl() {
-		return url.toString();
+		if (null!=url){
+			return url.toString();
+		}else{
+			return "no url";
+		}
 	}
 
 	public void setReferer(String referer) {
