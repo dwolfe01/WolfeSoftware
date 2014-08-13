@@ -65,6 +65,7 @@ public class HttpUser extends Worker implements Loggable {
 	private void makeRequestAndSetReferer(Request request) {
 		request.setReferer(this.getReferer());
 		String responseCode = request.go();
+		//let's handle redirects here
 		if (responseCode.startsWith("2")) {
 			this.setReferer(request.getUrl());
 		} else {
