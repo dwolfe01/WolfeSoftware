@@ -21,7 +21,7 @@ public class ExerciseAnywhereArticle {
 				.newFixedThreadPool(numberOfThreads);
 		for (int x = 0; x < numberOfThreads; x++) {
 			String url = String.format(
-					"http://qap.onlinelibrary.wiley.com/enhanced/doi/%s/",
+					args[0],
 					doi[random.nextInt(doi.length)]);
 			executor.execute(new Request().setUrl(url));
 		}
