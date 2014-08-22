@@ -1,0 +1,20 @@
+{
+fields : ["request","@timestamp"],
+from : 0, 
+size : 10000000,
+query : {
+    filtered: {
+        query : {
+            match_all : {}
+        },
+        filter: {
+            range : {
+                "@timestamp": {
+                    "gt" : "%s",
+                    "lt" : "%s"
+                }
+            }
+        }
+     }
+}
+}

@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Logger;
+import org.pmw.tinylog.writers.FileWriter;
 
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.AdvancedHttpSessionWorkerFactory;
@@ -14,7 +15,14 @@ public class SailFish {
 
 	public static void main(String[] args) throws BadLogFileException,
 			BadLogFileException {
-		Configurator.defaultConfig().formatPattern("{message}").activate();//should be moved to properties file
+		Configurator.defaultConfig().formatPattern("{date}-{message}")
+				.activate();// should
+		// be
+		// moved
+		// to
+		// properties
+		// file
+		Configurator.defaultConfig().writer(new FileWriter("output.txt"));
 		String fileName = args[0];
 		int threadCount = Integer.parseInt(args[1]);
 		Logger.info("Running SailFish with file: " + fileName
