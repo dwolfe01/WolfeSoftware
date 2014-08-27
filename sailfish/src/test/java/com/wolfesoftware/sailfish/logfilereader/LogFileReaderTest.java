@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Test;
 
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
-import com.wolfesoftware.sailfish.request.Request;
 
 //TODO: make this an integration test?
 public class LogFileReaderTest {
@@ -19,7 +18,17 @@ public class LogFileReaderTest {
 		File logFile = new File(getClass().getClassLoader()
 				.getResource("urls.log").getFile());
 		LogFileReader logFileReader = new LogFileReader(logFile);
-		assertEquals(102, logFileReader.getSize());
+		assertEquals(6, logFileReader.getSize());
+	}
+
+	@Test
+	public void shouldReturnUrlsAsListOfRequests() throws BadLogFileException,
+			IOException {
+		File logFile = new File(getClass().getClassLoader()
+				.getResource("urls.log").getFile());
+		LogFileReader logFileReader = new LogFileReader(logFile);
+		List<String> asListOfUrls = logFileReader.getAsListOfUrls();
+		assertEquals(6, asListOfUrls.size());
 	}
 
 	@Test
@@ -31,24 +40,6 @@ public class LogFileReaderTest {
 		assertEquals("http://www.google.co.uk", logFileReader.get(0));
 		assertEquals("http://www.theguardian.com",
 				logFileReader.get(logFileReader.getSize() - 1));
-	}
-
-	@Test
-	public void shouldReturnUrlsAsListOfRequests() throws BadLogFileException,
-			IOException {
-		File logFile = new File(getClass().getClassLoader()
-				.getResource("urls.log").getFile());
-		LogFileReader logFileReader = new LogFileReader(logFile);
-		List<Request> asListOfUrls = logFileReader.getAsListOfUrls();
-		assertEquals(102, asListOfUrls.size());
-	}
-
-	@Test(expected = BadLogFileException.class)
-	public void shouldErrorOnMalformedUrlInLogFile() throws BadLogFileException {
-		File logFile = new File(getClass().getClassLoader()
-				.getResource("urlsWithMalformedUrl.log").getFile());
-		LogFileReader logFileReader = new LogFileReader(logFile);
-		logFileReader.getAsListOfUrls();
 	}
 
 }

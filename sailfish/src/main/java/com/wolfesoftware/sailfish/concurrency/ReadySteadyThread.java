@@ -4,8 +4,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.pmw.tinylog.Logger;
-
 import com.wolfesoftware.sailfish.concurrency.worker.factory.WorkerFactory;
 
 public class ReadySteadyThread {
@@ -33,20 +31,21 @@ public class ReadySteadyThread {
 		executor = new ThreadPoolExecutor(numberOfThreads, numberOfThreads, 0L,
 				TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 		while (!executor.isTerminated()) {
-			boolean thereAnyMoreWorkToDo = workerFactory
-					.isThereAnyMoreWorkToDo();
-			if (!thereAnyMoreWorkToDo) {// nothing left to do so might as shut
-										// it down
-				executor.shutdown();
-			} else if (executor.getActiveCount() < executor
-					.getMaximumPoolSize()) {
-				// System.out.println("activeCount: " +
-				// executor.getActiveCount()
-				// + " max Pool size:" + executor.getMaximumPoolSize());
-				executor.execute(this.workerFactory.getWorker());
+			if (weHaveAnAvailableThread(executor)) {
+				boolean thereAnyMoreWorkToDo = workerFactory
+						.isThereAnyMoreWorkToDo();
+				if (!thereAnyMoreWorkToDo) {// nothing left to do
+					executor.shutdown();
+				} else {
+					executor.execute(this.workerFactory.getWorker());
+				}
 			}
 		}
-		Logger.info("ReadySteadyThreadCompleted"
+		System.out.println("ReadySteadyThreadCompleted"
 				+ (System.currentTimeMillis() - startTime));
+	}
+
+	private boolean weHaveAnAvailableThread(ThreadPoolExecutor executor) {
+		return executor.getActiveCount() < executor.getMaximumPoolSize();
 	}
 }
