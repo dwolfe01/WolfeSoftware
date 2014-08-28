@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 
-//TODO: make this an integration test?
 public class LogFileReaderTest {
 
 	@Test
