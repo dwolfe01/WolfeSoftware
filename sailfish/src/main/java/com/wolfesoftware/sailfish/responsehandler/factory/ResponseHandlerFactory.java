@@ -8,19 +8,38 @@ import com.wolfesoftware.sailfish.runnable.httpuser.SystemOutResponseHandler;
 
 public class ResponseHandlerFactory {
 
-	private String handler = "";
+	public static ResponseHandlers currentResponseHandler = ResponseHandlers.DEFAULT;
 
-	public ResponseHandlerFactory(String handler) {
-		this.handler = handler;
+	public static void setHandler(ResponseHandlers handler) {
+		currentResponseHandler = handler;
 	}
 
-	public ResponseHandlerFactory() {
+	public static ResponseHandler<StatusLine> getInstanceOfResponseHandler() {
+		return currentResponseHandler.getNewHandler();
 	}
 
-	public ResponseHandler<StatusLine> getInstanceOfResponseHandler() {
-		if (handler.equals("SystemOut")) {
-			return new SystemOutResponseHandler();
-		}
-		return new QuickCloseResponseHandler();
-	}
+	public enum ResponseHandlers {
+		DEFAULT() {
+			@Override
+			public ResponseHandler<StatusLine> getNewHandler() {
+				return new QuickCloseResponseHandler();
+			}
+		},
+		SYSTEMOUT() {
+			@Override
+			public ResponseHandler<StatusLine> getNewHandler() {
+				return new SystemOutResponseHandler();
+			}
+		},
+		QUICKCLOSE() {
+			@Override
+			public ResponseHandler<StatusLine> getNewHandler() {
+				return new QuickCloseResponseHandler();
+			}
+		};
+
+		public abstract ResponseHandler<StatusLine> getNewHandler();
+
+	};
+
 }

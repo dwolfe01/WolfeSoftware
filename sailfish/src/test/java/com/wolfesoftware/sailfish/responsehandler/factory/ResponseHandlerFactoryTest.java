@@ -14,8 +14,9 @@ public class ResponseHandlerFactoryTest {
 	@Test
 	public void shouldCreateResponseHandlersOfTypeQuickCloseResponseHandler()
 			throws Exception {
-		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory();
-		ResponseHandler<StatusLine> responseHandler = responseHandlerFactory
+		ResponseHandlerFactory
+				.setHandler(ResponseHandlerFactory.ResponseHandlers.DEFAULT);
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
 				.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof QuickCloseResponseHandler);
 	}
@@ -23,9 +24,9 @@ public class ResponseHandlerFactoryTest {
 	@Test
 	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandler()
 			throws Exception {
-		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(
-				"SystemOut");
-		ResponseHandler<StatusLine> responseHandler = responseHandlerFactory
+		ResponseHandlerFactory
+				.setHandler(ResponseHandlerFactory.ResponseHandlers.SYSTEMOUT);
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
 				.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof SystemOutResponseHandler);
 	}

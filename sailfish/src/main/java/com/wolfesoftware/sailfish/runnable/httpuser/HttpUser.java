@@ -23,8 +23,6 @@ public class HttpUser implements Runnable {
 	private HttpClient httpClient;
 	List<String> requests = new ArrayList<String>();
 	private long waitTime = 0;
-	private ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(
-			"SystemOut");
 
 	public HttpUser() {
 		HttpUser.numberOfTimesIHaveBeenCreatedRoughly++;
@@ -47,7 +45,7 @@ public class HttpUser implements Runnable {
 	}
 
 	private void makeRequest(long startTime, String request) {
-		ResponseHandler<StatusLine> responseHandler = responseHandlerFactory
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
 				.getInstanceOfResponseHandler();
 		try {
 			StatusLine statusLine = httpClient.execute(new HttpGet(request),
