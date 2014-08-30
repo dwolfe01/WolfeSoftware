@@ -8,7 +8,7 @@ public abstract class WorkerFactory {
 
 	private boolean isThereAnyMoreWorkToDo = true;
 
-	public abstract Runnable getWorker();
+	public abstract Runnable getWorker() throws Exception;
 
 	public boolean isThereAnyMoreWorkToDo() {
 		return isThereAnyMoreWorkToDo;

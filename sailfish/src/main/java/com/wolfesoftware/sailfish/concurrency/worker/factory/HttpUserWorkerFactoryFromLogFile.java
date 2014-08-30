@@ -1,5 +1,6 @@
 package com.wolfesoftware.sailfish.concurrency.worker.factory;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +14,7 @@ import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
  * potentially reads from an tomcat access log file to generate different
  * types of sessions on each call to getWorker
  */
-public class HttpUserWorkerFactory extends WorkerFactory {
+public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
 	volatile int positionInRequests;
 	List<String> requests = new ArrayList<String>();
@@ -30,10 +31,18 @@ public class HttpUserWorkerFactory extends WorkerFactory {
 	}
 
 	@Override
-	public Runnable getWorker() {
+	public HttpUser getWorker() {
 		final HttpUser user = new HttpUser();
-		user.add(getNextRequest()).add(getNextRequest()).add(getNextRequest())
-				.add(getNextRequest());
+		String url = "";
+		try {
+			for (int x = 0; x < 4; x++) {
+				url = getNextRequest();
+				user.add(url);
+			}
+		} catch (MalformedURLException e) {
+			System.out.println("Problem with: " + url);
+			e.printStackTrace();
+		}
 		return user;
 	}
 

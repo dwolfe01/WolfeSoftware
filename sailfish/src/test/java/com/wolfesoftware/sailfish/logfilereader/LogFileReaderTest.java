@@ -37,7 +37,7 @@ public class LogFileReaderTest {
 				.getResource("urls.log").getFile());
 		LogFileReader logFileReader = new LogFileReader(logFile);
 		assertEquals("http://www.google.co.uk", logFileReader.get(0));
-		assertEquals("http://www.theguardian.com",
+		assertEquals("htp://www.theguardian.com",
 				logFileReader.get(logFileReader.getSize() - 1));
 	}
 

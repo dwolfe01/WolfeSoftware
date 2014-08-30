@@ -1,6 +1,8 @@
 package com.wolfesoftware.sailfish.runnable.httpuser;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,33 +20,41 @@ import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory
 
 public class HttpUser implements Runnable {
 
-	private static volatile long numberOfTimesIHaveBeenCreatedRoughly;
-	private static volatile long totalExceutionTime;
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	private HttpClient httpClient;
 	List<String> requests = new ArrayList<String>();
+
 	private long waitTime = 0;
 
 	public HttpUser() {
-		HttpUser.numberOfTimesIHaveBeenCreatedRoughly++;
 		httpClient = HttpClients.createDefault();
 	}
 
 	public HttpUser(HttpClient httpClient) {
-		HttpUser.numberOfTimesIHaveBeenCreatedRoughly++;
 		this.httpClient = httpClient;
 	}
 
 	public void run() {
 		long startTime = System.currentTimeMillis();
 		for (String request : requests) {
-			makeRequest(startTime, request);
+			makeRequest(request);
 			pause();
 		}
 		long executionTime = System.currentTimeMillis() - startTime;
-		HttpUser.totalExceutionTime += executionTime;
+		System.out.println(this.id + " completed " + executionTime);
 	}
 
-	private void makeRequest(long startTime, String request) {
+	private void makeRequest(String request) {
+		long startTime = System.currentTimeMillis();
 		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
 				.getInstanceOfResponseHandler();
 		try {
@@ -56,13 +66,9 @@ public class HttpUser implements Runnable {
 		}
 	}
 
-	private void doOutput(long startTime, String request, StatusLine statusLine) {
-		System.out.println(statusLine + " " + request + " took "
-				+ (System.currentTimeMillis() - startTime));
-	}
-
-	public HttpUser add(String request) {
+	public HttpUser add(String request) throws MalformedURLException {
 		if (request != null && !request.equals("")) {
+			new URL(request);
 			requests.add(request);
 		}
 		return this;
@@ -71,6 +77,18 @@ public class HttpUser implements Runnable {
 	public HttpUser setWaitTimeInMilliseconds(long sleepTime) {
 		this.waitTime = sleepTime;
 		return this;
+	}
+
+	public List<String> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(List<String> requests) {
+		this.requests = requests;
+	}
+
+	public String getRequest(int index) {
+		return requests.get(index);
 	}
 
 	private void pause() {
@@ -83,4 +101,8 @@ public class HttpUser implements Runnable {
 		}
 	}
 
+	private void doOutput(long startTime, String request, StatusLine statusLine) {
+		System.out.println(statusLine + " " + request + " took "
+				+ (System.currentTimeMillis() - startTime));
+	}
 }

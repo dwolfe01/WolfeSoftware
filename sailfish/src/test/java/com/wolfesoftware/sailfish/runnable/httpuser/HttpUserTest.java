@@ -2,11 +2,13 @@ package com.wolfesoftware.sailfish.runnable.httpuser;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
@@ -75,10 +77,26 @@ public class HttpUserTest {
 		assertTrue(totalExecutionTime > 50);
 	}
 
-	// @Test(expected = MalformedUrlException.class)
-	// public void shouldThrowAnExceptionIfTheRequestIsNotAURL() throws
-	// Exception {
-	//
-	// }
+	@Test
+	@SuppressWarnings("unchecked")
+	// due to difficulties around matchers and generic classes
+	public void shouldMakeNoRequestsIfURLsAreEmptyString()
+			throws ClientProtocolException, IOException {
+		// given
+		httpUser = new HttpUser(httpClient);
+		httpUser.add("");
+		httpUser.add("");
+		// when
+		httpUser.run();
+		// then
+		verify(httpClient, never()).execute(isA(HttpUriRequest.class),
+				isA(ResponseHandler.class));
+	}
+
+	@Test(expected = MalformedURLException.class)
+	public void shouldThrowAnExceptionIfTheRequestIsNotAURL() throws Exception {
+		httpUser = new HttpUser(httpClient);
+		httpUser.add("htp:/www.bad.url.com");
+	}
 
 }

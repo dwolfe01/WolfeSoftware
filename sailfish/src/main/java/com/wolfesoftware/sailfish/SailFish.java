@@ -3,7 +3,7 @@ package com.wolfesoftware.sailfish;
 import java.io.File;
 
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
-import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactory;
+import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactoryFromLogFile;
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 
@@ -23,13 +23,13 @@ public class SailFish {
 
 	private void go(File logFile, int threadCount) throws BadLogFileException {
 		LogFileReader logFileReader = new LogFileReader(logFile);
-		HttpUserWorkerFactory factory = createFactory(logFileReader);
+		HttpUserWorkerFactoryFromLogFile factory = createFactory(logFileReader);
 		new ReadySteadyThread(threadCount, factory).go();
 	}
 
-	private HttpUserWorkerFactory createFactory(LogFileReader logFileReader)
+	private HttpUserWorkerFactoryFromLogFile createFactory(LogFileReader logFileReader)
 			throws BadLogFileException {
-		HttpUserWorkerFactory factory = new HttpUserWorkerFactory();
+		HttpUserWorkerFactoryFromLogFile factory = new HttpUserWorkerFactoryFromLogFile();
 		factory.setUrls(logFileReader);
 		return factory;
 	}

@@ -14,9 +14,9 @@ import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 
-public class HttpUserWorkerFactoryTest {
+public class HttpUserWorkerFactoryFromLogFileTest {
 
-	HttpUserWorkerFactory factory = new HttpUserWorkerFactory();
+	HttpUserWorkerFactoryFromLogFile factory = new HttpUserWorkerFactoryFromLogFile();
 
 	@Mock
 	LogFileReader logFileReader;
@@ -48,9 +48,20 @@ public class HttpUserWorkerFactoryTest {
 	}
 
 	@Test
-	public void shouldReturnTwoWorkersWithSevenRequestsAndOneDoNothingRequestAndSetFinishedToTrue()
+	public void shouldReturnTwoWorkersWithSevenRequestsAndSetFinishedToTrue()
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(7);
+		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
+		factory.setUrls(logFileReader);
+		factory.getWorker();
+		factory.getWorker();
+		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+
+	@Test
+	public void shouldReturnOneWorkerWithAllRequestsAndCallToGetWorkerShouldNotFailAndSetFinishedToTrue()
+			throws Exception {
+		List<String> requests = createArrayListOfRequests(4);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
 		factory.setUrls(logFileReader);
 		factory.getWorker();

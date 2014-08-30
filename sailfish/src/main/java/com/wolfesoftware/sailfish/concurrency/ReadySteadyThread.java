@@ -37,7 +37,11 @@ public class ReadySteadyThread {
 				if (!thereAnyMoreWorkToDo) {// nothing left to do
 					executor.shutdown();
 				} else {
-					executor.execute(this.workerFactory.getWorker());
+					try {
+						executor.execute(this.workerFactory.getWorker());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
