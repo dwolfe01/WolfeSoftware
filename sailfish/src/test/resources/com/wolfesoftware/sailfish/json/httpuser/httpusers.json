@@ -1,0 +1,21 @@
+[
+	{
+		"id": "Simple User",
+		"requests": 
+		[
+			"http://www.twitter.com",
+			"http://www.facebook.com",
+			"http://www.vice.com"
+		]
+	},
+
+	{
+		"id": "Simple User 2",
+		"requests": 
+		[
+			"http://www.coca-cola.com",
+			"http://www.asparagus.com",
+			"http://www.vice.com"
+		]
+	}
+]

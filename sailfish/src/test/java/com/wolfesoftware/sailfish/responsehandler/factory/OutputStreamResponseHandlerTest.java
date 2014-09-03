@@ -1,4 +1,4 @@
-package com.wolfesoftware.sailfish.runnable.httpuser;
+package com.wolfesoftware.sailfish.responsehandler.factory;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-public class SystemOutResponseHandlerTest {
+public class OutputStreamResponseHandlerTest {
 
 	@Mock
 	HttpResponse response;
@@ -30,7 +30,7 @@ public class SystemOutResponseHandlerTest {
 	@Test
 	public void shouldWriteToOutputStream() throws Exception {
 		// given
-		SystemOutResponseHandler responseHandler = new SystemOutResponseHandler(
+		OutputStreamResponseHandler responseHandler = new OutputStreamResponseHandler(
 				os);
 		Mockito.when(response.getEntity()).thenReturn(stringEntity);
 		// when

@@ -1,4 +1,4 @@
-package com.wolfesoftware.sailfish.runnable.httpuser;
+package com.wolfesoftware.sailfish.responsehandler.factory;
 
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import com.wolfesoftware.sailfish.runnable.httpuser.QuickCloseResponseHandler;
 
 public class QuickCloseResponseHandlerTest {
 

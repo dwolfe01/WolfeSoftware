@@ -1,0 +1,9 @@
+[{
+	"id": "Simple User",
+	"requests": 
+	[
+		"http://www.bbc.co.uk",
+		"http://www.dailymail.co.uk",
+		"http://www.sky.com"
+	]
+}]

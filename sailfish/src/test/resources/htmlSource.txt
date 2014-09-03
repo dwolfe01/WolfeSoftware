@@ -1,0 +1,1240 @@
+            <h3>Nigerian Pygmy Goats!</h3>
+            <p>We spent two blissful days in Massachusetts crawling around the grass with these guys.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/nigerian-pygmy-goats" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 14']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/nigerian-pygmy-goats/e4e3d39e26100b55ac966e4ee442d9d2_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/sugar-gliders" data-id="sugar-gliders" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fsugar-gliders" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fsugar-gliders%26topic%3Dstuff%26aid%3Dsugar-gliders%26auth%3DAnnette+Lamothe-Ramos%26keywords%3Dthe+cute+show%2Canimals%2Csugar+gliders%2CCute%21%26ac%3Dno%26country%3Den_uk%26contentId%3DV5Yms2NTp7gG1cVoKdTvULcz8TQySTVZ" data-ooyala-id="V5Yms2NTp7gG1cVoKdTvULcz8TQySTVZ" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-63932">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/sugar-gliders" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 15']);">
+            <h3>Sugar Gliders!</h3>
+            <p>Meet our fashion editor's sugar gliders, Sonny and Cher.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/sugar-gliders" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 15']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/sugar-gliders/c8ffc53ea03a47fac3f8ff1d45dfbe5f_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/burrolandia" data-id="burrolandia" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fburrolandia" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fburrolandia%26topic%3Dstuff%26aid%3Dburrolandia%26auth%3DVICE+Staff%26keywords%3DCute+Show%2Cdonkeys%2CBurrolandia%26ac%3Dno%26country%3Den_uk%26contentId%3DB1eW8xNTogBq0J2LnaDqSMRYvhfNlLGn" data-ooyala-id="B1eW8xNTogBq0J2LnaDqSMRYvhfNlLGn" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-62991">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/burrolandia" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 16']);">
+            <h3>Burrolandia!</h3>
+            <p>A haven for cute and cuddly donkeys. </p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/burrolandia" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 16']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/burrolandia/c411c427f2201d75e6a66d51e32b9194_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/dog-circus" data-id="dog-circus" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fdog-circus" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fdog-circus%26topic%3Dstuff%26aid%3Ddog-circus%26auth%3DVICE+Staff%26keywords%3Dthe+cute+show%2Cdogs%2Ccircus%2Cjapan%2Ctalented+bitches%26ac%3Dno%26country%3Den_uk%26contentId%3Ds3N3h4NDr7_oXacfue1SLg2r-oJMKMb3" data-ooyala-id="s3N3h4NDr7_oXacfue1SLg2r-oJMKMb3" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-62456">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/dog-circus" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 17']);">
+            <h3>Dog Circus!</h3>
+            <p>They're the most talented Japanese dogs since Hachikō.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/dog-circus" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 17']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/dog-circus/10a2fb36019b7a24ae099f2f0ceb48d2_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/prague-ratters" data-id="prague-ratters" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fprague-ratters" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fprague-ratters%26topic%3Dstuff%26aid%3Dprague-ratters%26auth%3D%26keywords%3Dthe+cute+show%2Cdogs%2CPrague%26ac%3Dno%26country%3Den_uk%26contentId%3DU2cTVwNDohZn4N7YZYwBMyQLTkpwEYgS" data-ooyala-id="U2cTVwNDohZn4N7YZYwBMyQLTkpwEYgS" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-61047">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/prague-ratters" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 18']);">
+            <h3>Prague Ratters!</h3>
+            <p>A tiny breed with a big heart.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/prague-ratters" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 18']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/prague-ratters/a49e01d06de1ca989a3d1618240ccf3e_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/neapolitan-mastiffs" data-id="neapolitan-mastiffs" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fneapolitan-mastiffs" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fneapolitan-mastiffs%26topic%3Dstuff%26aid%3Dneapolitan-mastiffs%26auth%3D%26keywords%3Dthe+cute+show%2Cdogs%2Cmastiffs%2Cnaples%2CItaly%26ac%3Dno%26country%3Den_uk%26contentId%3DprNzFvNDpaTEO3gnNdOoGFivL2MrZsuU" data-ooyala-id="prNzFvNDpaTEO3gnNdOoGFivL2MrZsuU" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-60696">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/neapolitan-mastiffs" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 19']);">
+            <h3>Neapolitan Mastiffs!</h3>
+            <p>A huge animal with a massive head and skin to spare.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/neapolitan-mastiffs" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 19']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/neapolitan-mastiffs/71353af4b21a65b62cd79e559624ef87_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/lovely-owls" data-id="lovely-owls" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Flovely-owls" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Flovely-owls%26topic%3Dstuff%26aid%3Dlovely-owls%26auth%3DVICE+Staff%26keywords%3Dthe+cute+show%2COwls%2CFalconieri+delle+Orobie%26ac%3Dno%26country%3Den_uk%26contentId%3Dw5eGxsNDov0-5mAKJE6_fvFBCKkRC6iL" data-ooyala-id="w5eGxsNDov0-5mAKJE6_fvFBCKkRC6iL" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-59853">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/lovely-owls" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 20']);">
+            <h3>Lovely Owls!</h3>
+            <p>Meet Molla. She is an Internet star and her name means 'spring' in Italian.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/lovely-owls" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 20']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/lovely-owls/11131490907d5a71b3870ad38f302fa5_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/puggles" data-id="puggles" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fpuggles" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fpuggles%26topic%3Dstuff%26aid%3Dpuggles%26auth%3DVICE+Staff%26keywords%3Dthe+cute+show%2Ca+puggle+is+a+baby+platypus%2CAustralia%26ac%3Dno%26country%3Den_uk%26contentId%3DM0MDdqNDqmz9m8TQBYBmKZdARfApWwVz" data-ooyala-id="M0MDdqNDqmz9m8TQBYBmKZdARfApWwVz" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-59434">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/puggles" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 21']);">
+            <h3>Puggles!</h3>
+            <p>Who knew that baby platypuses would be so cute?</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/puggles" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 21']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/puggles/b01c4fea2eda7b452ed07fe478a12514_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/pet-kingdom" data-id="pet-kingdom" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fpet-kingdom" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fpet-kingdom%26topic%3Dstuff%26aid%3Dpet-kingdom%26auth%3DVICE+Staff%26keywords%3Dthe+cute+show%2Cmonkeys%2Cthieving+monkeys%2Clemurs%26ac%3Dno%26country%3Den_uk%26contentId%3DU2eXJmNDqMR8JEwIHHeugQ_epJ3BaZcN" data-ooyala-id="U2eXJmNDqMR8JEwIHHeugQ_epJ3BaZcN" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-58878">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/pet-kingdom" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 22']);">
+            <h3>Pet Kingdom!</h3>
+            <p>Watch out for that thieving capuchin monkey named Ella.</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/pet-kingdom" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 22']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/pet-kingdom/6d226e8968c0dea410a792a889d9204e_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div><div class="item" data-aid="the-cute-show" data-shareurl="http://www.vice.com/en_uk/the-cute-show/boar-piglets" data-id="boar-piglets" data-ad-rule="1" data-description-url="http%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fboar-piglets" data-cust-params="embdom%3Dhttp%3A%2F%2Fwww.vice.com%2Fen_uk%2Fthe-cute-show%2Fboar-piglets%26topic%3Dstuff%26aid%3Dboar-piglets%26auth%3D%26keywords%3Dthe+cute+show%2Cboars%2Cdog+moms%26ac%3Dno%26country%3Den_uk%26contentId%3Dc3eGhmNDqnMzZiL52mzOrb5zztMXzJEA" data-ooyala-id="c3eGhmNDqnMzZiL52mzOrb5zztMXzJEA" data-youtube-id="" data-vr-contentbox="vice-homepage-hero-slide-58387">
+    <div class="caption">
+        <a href="/en_uk/the-cute-show/boar-piglets" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 23']);">
+            <h3>Boar Piglets!</h3>
+            <p>These little rascals sure do love their surrogate momma... who's a dog!</p>
+            <p class="read-more">Watch More</p>
+        </a>
+    </div>
+            <div class="media">
+            <a href="/en_uk/the-cute-show/boar-piglets" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Carousel', 'Item 23']);">
+                                    <img class="video" src="http://assets.vice.com/content-images/article/boar-piglets/bb89b7132f85c90d3112b2aaca7b7b60_vice_640x360.jpg" alt="">
+                                <span class="overlay overlay-video"></span>
+            </a>
+        </div>
+    </div></div><div class="keys" style="display:none" title="/en_uk"><span>122718</span><span>123061</span><span>123032</span><span>123022</span><span>122947</span><span>122945</span><span>122915</span><span>122725</span><span>122886</span><span>122908</span><span>97182</span><span>83161</span><span>71867</span><span>71372</span><span>68269</span><span>63932</span><span>62991</span><span>62456</span><span>61047</span><span>60696</span><span>59853</span><span>59434</span><span>58878</span><span>58387</span></div>
+</div>    </div>
+    <div class="right">
+        <div class="tabs-nav">
+            <a class="selected">
+                <span class="tab-wrap">
+                                            <span class="subtitle">
+                            Featured                        </span> 
+                        Editors' Picks                                    </span>
+            </a>
+                            <a>
+                    <span class="tab-wrap">
+                        <span class="subtitle">
+                            Featured Series                        </span>
+                        The Cute Show                    </span>
+                </a>
+                        <div class="clb"></div>
+        </div>
+        <div class="tabs-content-wrap">
+            <div class="tabs-content" data-vr-zone="vice-homepage-hero-tab-editors-picks">
+                <div id="yw2" class="list-view">
+<div class="tabs-content-inner-wrap">
+<div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122718">
+            <a class="selected" data-id="london-bikelife-427">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/london-bikelife-427/Screen-Shot-2014-08-29-at-12-08-51_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">Rule Britannia</p>
+        <h3>London BikeLife</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-123061">
+            <a data-id="carlijn-jacobs-reinvents-camp-en-brings-it-back-to-life-321">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/carlijn-jacobs-reinvents-camp-en-brings-it-back-to-life-321/Screen-Shot-2014-08-29-at-16-38-22_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>Photographer Carlijn Jacobs Is Reinventing Camp</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-123032">
+            <a data-id="a-refresher-on-how-to-behave-in-a-nightclub-111">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/a-refresher-on-how-to-behave-in-a-nightclub-111/Screen-Shot-2014-08-29-at-14-01-14_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>A Refresher On How to Behave in a Nightclub</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-123022">
+            <a data-id="date-rape-nail-polish-bertie-brandes-111">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/date-rape-nail-polish-bertie-brandes-111/nails_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>Everyone's Losing Their Shit About a Nail Polish that Detects Date Rape Drugs</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122947">
+            <a data-id="oscar-candon-interview-152">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/oscar-candon-interview-152/oscar_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>Fuck You and Your Penny Board</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122945">
+            <a data-id="vice-and-the-criterion-collection-presents-martin-scorsese-on-the-films-of-roberto-rossellini-851">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/vice-and-the-criterion-collection-presents-martin-scorsese-on-the-films-of-roberto-rossellini-851/scorsese-copy_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">VICE Special</p>
+        <h3>VICE and the Criterion Collection Present: Martin Scorsese on the Films of Roberto Rossellini</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122915">
+            <a data-id="we-must-risk-delight-after-a-summer-full-of-monsters">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/we-must-risk-delight/WeMustRiskDelight_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>Risking Delight After a Summer Full of Monsters</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122725">
+            <a data-id="slum-tourism-katie-engelhart-412">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/slum-tourism-katie-engelhart-412/924355af67c793be0eb3ba2d8291bdf9-vice-670_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>Is Slum Tourism Really All That Bad?</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122886">
+            <a data-id="vanishing-point-joel-golby-273">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/vanishing-point-joel-golby-273/Screen-Shot-2014-08-28-at-11-44-08_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">The Film That Made Me... </p>
+        <h3>'Vanishing Point' Was the Film That Made Me Wanna Go Out in a Blaze of Glory</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-122908">
+            <a data-id="months-before-he-died-i-spent-one-drunk-night-interviewing-tony-wilson-322">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/months-before-he-died-i-spent-one-drunk-night-interviewing-tony-wilson-322/Screen-Shot-2014-08-28-at-14-06-08_vice_120x60.jpg" alt="">
+                    </div>
+        <p class="series">Vice Blog</p>
+        <h3>Months Before He Died, I Spent One Drunk Night Interviewing Tony Wilson</h3>
+    </a>
+</div></div><div class="keys" style="display:none" title="/en_uk"><span>122718</span><span>123061</span><span>123032</span><span>123022</span><span>122947</span><span>122945</span><span>122915</span><span>122725</span><span>122886</span><span>122908</span></div>
+</div>            </div>
+            <div class="tabs-content" data-vr-zone="vice-homepage-hero-tab-featured-series">
+                <div id="yw3" class="list-view">
+<div class="tabs-content-inner-wrap">
+<div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-97182">
+            <a class="selected" data-id="elephant-land">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/elephant-land/elephant-land_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Elephant Land!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-83161">
+            <a data-id="capybara-the-cute-show">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/capybara-the-cute-show/5918aafef9d95c54849f38fc647e1141_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Capybara Bathhouse!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-71867">
+            <a data-id="wiener-dog-races">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/wiener-dog-races/d7d741666a7f0480195327cf6ae21de8_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Wiener Dog Races!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-71372">
+            <a data-id="surfing-dogs">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/surfing-dogs/995249c6c5ad9c82d7e8160000e9b8c4_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Surfing Dogs!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-68269">
+            <a data-id="nigerian-pygmy-goats">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/nigerian-pygmy-goats/e4e3d39e26100b55ac966e4ee442d9d2_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Nigerian Pygmy Goats!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-63932">
+            <a data-id="sugar-gliders">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/sugar-gliders/c8ffc53ea03a47fac3f8ff1d45dfbe5f_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Sugar Gliders!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-62991">
+            <a data-id="burrolandia">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/burrolandia/c411c427f2201d75e6a66d51e32b9194_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Burrolandia!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-62456">
+            <a data-id="dog-circus">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/dog-circus/10a2fb36019b7a24ae099f2f0ceb48d2_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Dog Circus!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-61047">
+            <a data-id="prague-ratters">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/prague-ratters/a49e01d06de1ca989a3d1618240ccf3e_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Prague Ratters!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-60696">
+            <a data-id="neapolitan-mastiffs">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/neapolitan-mastiffs/71353af4b21a65b62cd79e559624ef87_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Neapolitan Mastiffs!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-59853">
+            <a data-id="lovely-owls">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/lovely-owls/11131490907d5a71b3870ad38f302fa5_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Lovely Owls!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-59434">
+            <a data-id="puggles">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/puggles/b01c4fea2eda7b452ed07fe478a12514_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Puggles!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-58878">
+            <a data-id="pet-kingdom">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/pet-kingdom/6d226e8968c0dea410a792a889d9204e_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Pet Kingdom!</h3>
+    </a>
+</div><div class="item" data-vr-contentbox="vice-homepage-hero-tab-item-58387">
+            <a data-id="boar-piglets">
+            <div class="media">
+            <img src="http://assets.vice.com/content-images/article/boar-piglets/bb89b7132f85c90d3112b2aaca7b7b60_vice_120x60.jpg" alt="">
+                            <span class="overlay overlay-video"></span>
+                                    </div>
+        <p class="series">The Cute Show</p>
+        <h3>Boar Piglets!</h3>
+    </a>
+</div></div><div class="keys" style="display:none" title="/en_uk"><span>97182</span><span>83161</span><span>71867</span><span>71372</span><span>68269</span><span>63932</span><span>62991</span><span>62456</span><span>61047</span><span>60696</span><span>59853</span><span>59434</span><span>58878</span><span>58387</span></div>
+</div>            </div>
+        </div>
+    </div>
+    <div class="clb"></div>
+</div></div>            <div class="columns ab_columns">
+                <div class="ab_column_wrap homepage_content">
+                    <div class="a_column column main_column">
+                        <div class="vice_today" data-vr-zone="vice-homepage-vice-today-en_uk" id="vice-today">
+<h1 class="vice_today">VICE Today</h1>
+<div id="yw4" class="list-view">
+<ul class="story_list shows_grid_list">
+
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123069">
+            <a class="story_thumbnail" href="/en_uk/read/florida-teens-got-caught-in-a-snapchat-fueled-robbery-829" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 1']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/florida-teens-caught-in-snapchat-fueled-robbery-829/hanson-cash_vice_220x124.jpg">
+                            </a>
+                        <h4>
+                <a href="/en_uk/columns/this-week-in-teens">
+                    This Week in Teens                </a>
+            </h4>
+                <h2>
+                            <a href="/en_uk/read/florida-teens-got-caught-in-a-snapchat-fueled-robbery-829" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 1']);" >
+                            Florida Teenagers Got Caught in a Snapchat-Fueled Robbery            </a>
+        </h2>
+        <p>A 15-year-old boy got a Snapchat of his cousin holding a stack of cash, so he and four of his friends decided to rob his cousin's house.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author"><a href="/en_uk/author/hanson-o-haver">Hanson O'Haver</a></span>
+                            <span class="category">
+                    <a href="/en_uk/news">News</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123070">
+            <a class="story_thumbnail" href="/en_uk/read/old-farm-derby-ipswich-norwich-rivalry-015" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 2']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/old-farm-derby-ipswich-norwich-rivalry-015/DSC-0137_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/old-farm-derby-ipswich-norwich-rivalry-015" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 2']);" >
+                            Prostitute Stranglers vs Sister Fuckers at the Old Farm Derby            </a>
+        </h2>
+        <p>Ipswich fans and Norwich fans hate each other's guts.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author">James Baines, Photos: Jake Lewis</span>
+                            <span class="category">
+                    <a href="/en_uk/sports">Sports</a>
+                </span>
+                    </div>
+    </li>    <div class="ad_centering_wrap ad_list_view">
+    <div class="ad_wrap" data-cb-ad-id="ListView">
+        <!-- Beginning Async AdSlot 7 for Ad unit vice.com  ### size: [[640,290]] -->
+        <!-- Adslot's refresh function: googletag.pubads().refresh([gptadslots[7]]) -->
+        <div id='div-gpt-ad-site-index-homepage-7'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-site-index-homepage-7');
+                });
+            </script>
+        </div>
+        <!-- End AdSlot 7 -->
+    </div>
+</div>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123073">
+            <a class="story_thumbnail" href="/en_uk/read/we-asked-an-iraqi-teen-what-she-thinks-of-isis-and-america-829" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 3']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/we-asked-an-iraqi-teen-what-she-thinks-of-isis-and-america-829/IMG-8133--2--1_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/we-asked-an-iraqi-teen-what-she-thinks-of-isis-and-america-829" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 3']);" >
+                            We Asked an Iraqi Teen What She Thinks of ISIS and America            </a>
+        </h2>
+        <p>Islamic militants killed 28 women on her street, but after coming to the United States, this Iraqi teen girl said it's Americans who seem depressed.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author">Zach Schwartz</span>
+                            <span class="category">
+                    <a href="/en_uk/stuff">Stuff</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123056">
+            <a class="story_thumbnail" href="/en_uk/read/hasidic-rock-band-bulletproof-stockings-just-want-an-all-girl-party" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 4']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/hasidic-rock-band-bulletproof-stockings-just-want-an-all-girl-party/bps2_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/hasidic-rock-band-bulletproof-stockings-just-want-an-all-girl-party" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 4']);" >
+                            Hasidic Rock Band Bulletproof Stockings Just Want an All Girl Party            </a>
+        </h2>
+        <p>I met with bandmates Dalia and Perl to talk about feminism, performing for gentiles and keeping the Torah.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author"><a href="/en_uk/author/erica-euse">Erica Euse</a></span>
+                            <span class="category">
+                    <a href="/en_uk/music">Music</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123077">
+            <a class="story_thumbnail" href="/en_uk/read/cry-baby-of-the-week-babysitter-arson-piracy-fast-furious" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 5']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/cry-baby-of-the-week-babysitter-arson-piracy-fast-furious/Cry-Baby-of-the-Week-VICE-Martha-Dreher_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/cry-baby-of-the-week-babysitter-arson-piracy-fast-furious" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 5']);" >
+                            Cry-Baby of the Week            </a>
+        </h2>
+        <p>This week: A woman allegedly set fire to a house because she didn't like the kids she was babysitting and another got sent to prison for pirating a movie.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author"><a href="/en_uk/author/jamieleecurtistaete">Jamie Lee Curtis Taete</a></span>
+                            <span class="category">
+                    <a href="/en_uk/stuff">Stuff</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123022">
+            <a class="story_thumbnail" href="/en_uk/read/date-rape-nail-polish-bertie-brandes-111" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 6']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/date-rape-nail-polish-bertie-brandes-111/nails_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/date-rape-nail-polish-bertie-brandes-111" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 6']);" >
+                            Everyone's Losing Their Shit About a Nail Polish that Detects Date Rape Drugs            </a>
+        </h2>
+        <p>Rapists will always exist. What's so terrible about an invention that protects you?</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author"><a href="/en_uk/author/bertie-brandes">Bertie Brandes</a></span>
+                            <span class="category">
+                    <a href="/en_uk/news">News</a>
+                </span>
+                    </div>
+    </li>
+<li class="story story-large" data-vr-contentbox="vice-vicetoday-article-121767">
+            <a class="story_thumbnail" href="/en_uk/vice-news/after-the-flood-mines-and-mass-graves-in-bosnia-219" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 7']);" >
+                        <div class="story_thumbnail_large"><img alt="" src="http://assets.vice.com/content-images/article/after-the-flood-mines-and-mass-graves-in-bosnia-219/bosnia_vice_640x360.jpg"></div>
+                <span class="overlay overlay-video"></span>            </a>
+            <div class="caption">
+                            <a href="/en_uk/vice-news/after-the-flood-mines-and-mass-graves-in-bosnia-219" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 7']);" >
+                            <h2>Mines and Mass Graves in Bosnia</h2>
+                <p>Twenty years after war in the Balkans, this year's floods unearthed human remains and landmines.</p>
+                <p class="read-more">Watch More</p>
+            </a>
+        </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-122969">
+            <a class="story_thumbnail" href="/en_uk/read/why-obamas-new-international-climate-change-plan-is-probably-doomed-829" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 8']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/why-obamas-new-international-climate-change-plan-is-probably-doomed-829/hello-this-is-obama_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/why-obamas-new-international-climate-change-plan-is-probably-doomed-829" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 8']);" >
+                            Why Obama’s New International Climate Change Plan Is Probably Doomed            </a>
+        </h2>
+        <p>The US doesn't have the moral authority to shame the world into good behaviour.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author"><a href="/en_uk/author/matt-taylor">Matt Taylor</a></span>
+                            <span class="category">
+                    <a href="/en_uk/news">News</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123072">
+            <a class="story_thumbnail" href="http://noisey.vice.com/en_uk/blog/lets-give-it-up-for-these-two-heroes-trying-to-explain-rap-music-to-the-supreme-court" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 9']);" target="_blank">
+                        <img alt="" src="http://assets.vice.com/content-images/article/lets-give-it-up-for-these-two-heroes-trying-to-explain-rap-music-to-the-united-states-supreme-court-123/Screen-Shot-2014-08-29-at-18-08-42_vice_220x124.jpg">
+                        <span class="overlay overlay-external"></span>    </a>
+                    <h2>
+                            <a href="http://noisey.vice.com/en_uk/blog/lets-give-it-up-for-these-two-heroes-trying-to-explain-rap-music-to-the-supreme-court" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 9']);" target="_blank">
+                            Let's Give It Up for These Two Heroes Trying To Explain Rap Music To the United States Supreme Court            </a>
+        </h2>
+        <p>Whether you can use rap lyrics as evidence in court continues, thanks to these two rap scholars.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author">Noisey</span>
+                            <span class="category">
+                    <a href="/en_uk/music">Music</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123000">
+            <a class="story_thumbnail" href="/en_uk/read/this-guys-embarrassing-relationship-drama-is-killing-the-gamer-identity-828" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 10']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/embarrassing-drama-may-have-just-killed-gaming-culture-828/landscapeish_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/this-guys-embarrassing-relationship-drama-is-killing-the-gamer-identity-828" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 10']);" >
+                            This Guy's Embarrassing Relationship Drama Is Killing the 'Gamer' Identity            </a>
+        </h2>
+        <p>Misogyny is the virus, and this guy's drama is the carrier.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author"><a href="/en_uk/author/mike-pearl">Mike Pearl</a></span>
+                            <span class="category">
+                    <a href="/en_uk/stuff">Stuff</a>
+                </span>
+                    </div>
+    </li>
+<li class="story story-large" data-vr-contentbox="vice-vicetoday-article-122968">
+            <a class="story_thumbnail" href="/en_uk/read/the-plastic-microbeads-in-your-body-wash-are-fucking-up-the-great-lakes-392" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 11']);" >
+                        <div class="story_thumbnail_large"><img alt="" src="http://assets.vice.com/content-images/article/the-plastic-microbeads-in-your-body-wash-are-fucking-up-the-great-lakes-392/DSC02572_vice_640x360.jpg"></div>
+                            </a>
+            <div class="caption">
+                            <a href="/en_uk/read/the-plastic-microbeads-in-your-body-wash-are-fucking-up-the-great-lakes-392" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 11']);" >
+                            <h2>The Plastic Microbeads in Your Body Wash Are Fucking up the Great Lakes</h2>
+                <p>Buy different soap and save the earth.</p>
+                <p class="read-more">Read More</p>
+            </a>
+        </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123030">
+            <a class="story_thumbnail" href="http://munchies.vice.com/articles/the-best-cheese-is-the-one-that-gives-you-a-nosebleed/" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 12']);" target="_blank">
+                        <img alt="" src="http://assets.vice.com/content-images/article/this-cheese-gave-me-a-nosebleed-333/Screen-Shot-2014-08-29-at-13-53-19_vice_220x124.jpg">
+                        <span class="overlay overlay-external"></span>    </a>
+                    <h2>
+                            <a href="http://munchies.vice.com/articles/the-best-cheese-is-the-one-that-gives-you-a-nosebleed/" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 12']);" target="_blank">
+                            This Cheese Gave Me a Nosebleed            </a>
+        </h2>
+        <p>For those with a true cheese addiction, only the strongest, most sinus-searingly potent kind will do.</p>
+        <div class="story_meta">
+            <span>Aug 30 2014</span>
+
+            <span  class="author">MUNCHIES</span>
+                            <span class="category">
+                    <a href="/en_uk/food">Food</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-122942">
+            <a class="story_thumbnail" href="/en_uk/read/carnival-shoot-272" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 13']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/carnival-shoot-272/Screen-Shot-2014-08-29-at-16-23-12_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/carnival-shoot-272" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 13']);" >
+                            Notting Hill Carnival in 3D GIFs            </a>
+        </h2>
+        <p>Carnival's a stylish place to lose your mind mourning the summer.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">Stephanie Sian Smith</span>
+                            <span class="category">
+                    <a href="/en_uk/fashion">Fashion</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123053">
+            <a class="story_thumbnail" href="/en_uk/read/vortioxetine-depression-drug-alex-horne-194" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 14']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/vortioxetine-depression-drug-alex-horne-194/2811155478-358833495f-b_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/vortioxetine-depression-drug-alex-horne-194" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 14']);" >
+                            Could This New Drug Help to Alleviate Your Depression?            </a>
+        </h2>
+        <p>The creators reckon they've made a substance that can get your impaired memory back to normal.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">Alex Horne</span>
+                            <span class="category">
+                    <a href="/en_uk/stuff">Stuff</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123071">
+            <a class="story_thumbnail" href="http://noisey.vice.com/en_uk/blog/death-from-above-1979-interview-the-physical-world-2014" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 15']);" target="_blank">
+                        <img alt="" src="http://assets.vice.com/content-images/article/i-had-a-fear-that-we-were-going-to-be-too-late---death-from-above-1979-on-their-decade-long-hiatus/Screen-Shot-2014-08-29-at-18-05-30_vice_220x124.jpg">
+                        <span class="overlay overlay-external"></span>    </a>
+                    <h2>
+                            <a href="http://noisey.vice.com/en_uk/blog/death-from-above-1979-interview-the-physical-world-2014" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 15']);" target="_blank">
+                            Death From Above 1979 On Their Decade Long Hiatus            </a>
+        </h2>
+        <p>We meet the band at a plush hotel in London to talk about their new record.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">Noisey</span>
+                            <span class="category">
+                    <a href="/en_uk/music">Music</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123020">
+            <a class="story_thumbnail" href="/en_uk/read/xintiandi-demolition-residents-528" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 16']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/xintiandi-demolition-residents-528/Zup-Lian-Ying_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/xintiandi-demolition-residents-528" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 16']);" >
+                            Meet the Shanghai Residents Standing Up to China's Big Money            </a>
+        </h2>
+        <p>They’re staying in their homes as their neighbourhood crumbles around them.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">Jamie Fullerton, Photos: Peter Pan</span>
+                            <span class="category">
+                    <a href="/en_uk/news">News</a>
+                </span>
+                    </div>
+    </li>
+<li class="story story-large" data-vr-contentbox="vice-vicetoday-article-123039">
+            <a class="story_thumbnail" href="/en_uk/read/horror-gamings-renaissance-will-have-us-all-soiling-ourselves-321" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 17']);" >
+                        <div class="story_thumbnail_large"><img alt="" src="http://assets.vice.com/content-images/article/horror-gamings-renaissance-will-have-us-all-soiling-ourselves-321/VICE-horror_vice_640x360.jpg"></div>
+                            </a>
+            <div class="caption">
+                            <a href="/en_uk/read/horror-gamings-renaissance-will-have-us-all-soiling-ourselves-321" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 17']);" >
+                            <h2>Get Ready to Soil Yourself</h2>
+                <p>The next wave of horror games will scare you shitless.</p>
+                <p class="read-more">Read More</p>
+            </a>
+        </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123032">
+            <a class="story_thumbnail" href="http://thump.vice.com/en_uk/words/A-guide-to-club-etiquette" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 18']);" target="_blank">
+                        <img alt="" src="http://assets.vice.com/content-images/article/a-refresher-on-how-to-behave-in-a-nightclub-111/Screen-Shot-2014-08-29-at-14-01-14_vice_220x124.jpg">
+                        <span class="overlay overlay-external"></span>    </a>
+                    <h2>
+                            <a href="http://thump.vice.com/en_uk/words/A-guide-to-club-etiquette" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 18']);" target="_blank">
+                            A Refresher On How to Behave in a Nightclub            </a>
+        </h2>
+        <p>Just because it's dark doesn't mean you won't look like a prick.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">Thump</span>
+                            <span class="category">
+                    <a href="/en_uk/music">Music</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123061">
+            <a class="story_thumbnail" href="/en_uk/read/carlijn-jacobs-reinvents-camp-en-brings-it-back-to-life-321" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 19']);" >
+                        <img alt="" src="http://assets.vice.com/content-images/article/carlijn-jacobs-reinvents-camp-en-brings-it-back-to-life-321/Screen-Shot-2014-08-29-at-16-38-22_vice_220x124.jpg">
+                            </a>
+                    <h2>
+                            <a href="/en_uk/read/carlijn-jacobs-reinvents-camp-en-brings-it-back-to-life-321" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 19']);" >
+                            Photographer Carlijn Jacobs Is Reinventing Camp            </a>
+        </h2>
+        <p>To talk about camp "is to betray it", but we tried our luck anyway.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">Twan Stoffels</span>
+                            <span class="category">
+                    <a href="/en_uk/fashion">Fashion</a>
+                </span>
+                    </div>
+    </li>
+<li class="story " data-vr-contentbox="vice-vicetoday-article-123029">
+            <a class="story_thumbnail" href="http://munchies.vice.com/articles/the-1000-year-old-hangover-cure/" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 20']);" target="_blank">
+                        <img alt="" src="http://assets.vice.com/content-images/article/the-1000-year-old-hangover-cure-112/Screen-Shot-2014-08-29-at-13-49-12_vice_220x124.jpg">
+                        <span class="overlay overlay-external"></span>    </a>
+                    <h2>
+                            <a href="http://munchies.vice.com/articles/the-1000-year-old-hangover-cure/" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Item 20']);" target="_blank">
+                            The 1,000-Year-Old Hangover Cure            </a>
+        </h2>
+        <p>Take a page from the Arab world’s oldest cookbook and treat your hangover with some comfort food fit for a caliph.</p>
+        <div class="story_meta">
+            <span>Aug 29 2014</span>
+
+            <span  class="author">MUNCHIES</span>
+                            <span class="category">
+                    <a href="/en_uk/food">Food</a>
+                </span>
+                    </div>
+    </li></ul><div class="keys" style="display:none" title="/en_uk"><span>123069</span><span>123070</span><span>123073</span><span>123056</span><span>123077</span><span>123022</span><span>121767</span><span>122969</span><span>123072</span><span>123000</span><span>122968</span><span>123030</span><span>122942</span><span>123053</span><span>123071</span><span>123020</span><span>123039</span><span>123032</span><span>123061</span><span>123029</span></div>
+</div><div class="more_vice_today">
+    <a 
+        href="/en_uk/vice/viceArticle/index/Article_page/5" 
+        onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Today', 'Page 2 Link']);">More VICE Today</a>
+</div></div>                    </div>
+                    
+<!--googleoff: index-->
+                    <div class="b_column column sidebar_column" data-vr-zone="vice-homepage-sidebar-en_uk">
+                                                    <div class="sidebar_block sidebar-subscribe" id="yw5">
+<h3>Subscribe</h3>
+<p>Sign up to get regular updates from VICE.</p>
+<div class="newsletter">
+            <form action="http://viceland.us2.list-manage1.com/subscribe/post?u=1eb0f24c5997a6f159c13ab7a&amp;id=d5bfaa7b1c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+        <input type="text" name="EMAIL" class="required email" placeholder="Email" id="mce-EMAIL" value="">
+        <input type="submit" class="submit" value="Go">
+            
+    </form>
+</div>
+<div class="clb"></div></div>                        
+                        <div class="sidebar_block facebook-like" id="yw6">
+    <h3>Connect</h3>
+    <div class="social-button social-button-like">
+        <div class="fb-like" data-href="http://www.facebook.com/Vice" data-send="false" data-layout="button_count" data-width="88" data-show-faces="false" data-font="arial"></div>
+    </div>
+    
+
+    <div class="social-button social-button-follow social-button-follow-en_uk">
+        <a href="http://twitter.com/viceuk" class="twitter-follow-button" data-show-screen-name="false" data-show-count="true" data-link-color="42423B" data-width="150px" data-lang="en">Follow</a>
+    </div>
+`
+
+    <div class="social-button social-button-youtube">
+        <div class="g-ytsubscribe" data-channel="vice"></div>
+    </div>
+
+    <div class="social-button social-button-plusone">
+        <div class="g-follow" data-href="https://plus.google.com/+VICE" data-rel="publisher"></div>
+    </div>
+
+<div class="clb"></div>
+
+
+
+<div class="clb"></div></div>
+                        
+                        <div class="ad_medium_rect sidebar_block top-sidebar-ad">
+    <!-- Beginning Async AdSlot 2 for Ad unit vice.com/zone  ### size: [[300,250],[300,600],[320,50]] -->
+    <!-- Adslot's refresh function: googletag.pubads().refresh([gptadslots[2]]) -->
+    <div id='div-gpt-ad-site-index-homepage-2'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-site-index-homepage-2');
+            });
+        </script>
+    </div>
+    <!-- End AdSlot 2 -->
+</div>
+
+                        <div class="sidebar_dos_donts sidebar_block" id="yw7">
+<h3><a href="/en_uk/dos-and-donts">Dos & Don'ts</a></h3>
+<div id="yw8" class="list-view">
+<ul class="story_list">
+    <li class="story" data-vr-contentbox="vice-dndside-95033">
+        <a href="/en_uk/vice/dnd/95033">
+            <img src="http://assets.vice.com/content-images/article/dnd3562/do_vice_118x187.jpg" width="118" height="187" alt="" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Widget', 'DnD Portlet']);"/>
+            <span>Do</span>
+        </a>
+    </li>
+    <li class="story" data-vr-contentbox="vice-dndside-109898">
+        <a href="/en_uk/vice/dnd/109898">
+            <img src="http://assets.vice.com/content-images/article/dnd3735/OnlineDnDAprilDONT4_vice_118x187.jpg" width="118" height="187" alt="" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Widget', 'DnD Portlet']);"/>
+            <span>Don't</span>
+        </a>
+    </li>
+    <li class="story" data-vr-contentbox="vice-dndside-109902">
+        <a href="/en_uk/vice/dnd/109902">
+            <img src="http://assets.vice.com/content-images/article/dnd3737/OnlineDnDAprilDONT5_vice_118x187.jpg" width="118" height="187" alt="" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Widget', 'DnD Portlet']);"/>
+            <span>Don't</span>
+        </a>
+    </li>
+</ul><div class="keys" style="display:none" title="/en_uk"><span>95033</span><span>109898</span><span>109902</span></div>
+</div><div class="clb"></div></div>
+                        <div class="sidebar_block sidebar_magazine" id="yw9">
+<h3>Latest Issue</h3>
+<div class="story_wrap">
+            <h4><a href="/en_uk/magazine/21/7" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Widget', 'Issue Title']);">The Photo Issue </a></h4>
+        <ul class="story_list">
+                            <li class="story" data-vr-contentbox="vice-magazine-article-116372">
+            <a href="/en_uk/read/flat-death-0000390-v21n7">
+                <p class="title">Flat Death</p>
+            </a>
+        </li>
+                            <li class="story" data-vr-contentbox="vice-magazine-article-116332">
+            <a href="/en_uk/read/doubles-0000380-v21n7">
+                <p class="title">From the 2014 VICE Photo Issue: Doubles</p>
+            </a>
+        </li>
+                            <li class="story" data-vr-contentbox="vice-magazine-article-116230">
+            <a href="/en_uk/read/cover-girl-vogue-1975-2011-0000365-v21n7">
+                <p class="title">From the 2014 VICE Photo Issue: Cindy Sherman, Cover Girl (Vogue) 1975/2011</p>
+            </a>
+        </li>
+                <li class="story see-all" data-vr-contentbox="vice-magazine-seeall">
+            <a href="/en_uk/magazine/21/7" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Widget', 'Issue See All']);">
+                See all articles            </a>
+        </li>
+    </ul>
+    <div class="media" data-vr-contentbox="vice-magazine-image">
+        <a href="/en_uk/magazine/21/7" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Homepage Widget', 'Issue Cover']);">
+            <img src="http://assets.vice.com/content-images/magazine/no-slug/Screen-Shot-2014-08-06-at-11-49-13_vice_165x212.jpg" width="165" height="212" alt="">
+        </a>
+    </div>
+</div>
+</div>
+                        
+                        
+                        <div class="ad_medium_rect sidebar_block bottom-sidebar-ad">
+    <!-- Beginning Async AdSlot 3 for Ad unit vice.com/zone  ### size: [[300,250],[300,600],[320,50],[160,600]] -->
+    <!-- Adslot's refresh function: googletag.pubads().refresh([gptadslots[3]]) -->
+    <div id='div-gpt-ad-site-index-homepage-3'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-site-index-homepage-3');
+            });
+        </script>
+    </div>
+    <!-- End AdSlot 3 -->
+</div>
+                        <div class="vice-feed vice-feed-fixed" id="yw10">
+<div id="vice-feed-catcher"></div>
+<div id="vice-feed">
+    <div id="vice-feed-tabs" class="vice-feed-tabs">
+        <div class="tabs-nav">
+            <a class="selected"><span class="tab-wrap"><span class="subtitle">Popular</span> Past 24 Hours</span></a>
+            <a><span class="tab-wrap"><span class="subtitle">Popular</span> This week</span></a>
+            <div class="clb"></div>
+        </div>
+        <div class="tabs-content-wrap">
+            <div class="tabs-content">
+                <div id="yw11" class="list-view">
+<ul class="feed-list">
+<li data-vr-contentbox="vice-feedwidget-Popular 24-122886">
+    <a href="/en_uk/read/vanishing-point-joel-golby-273" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 1']);">
+        <p class="title">
+            <strong class="index">1.</strong>
+            The Film That Made Me... : 'Vanishing Point' Was the Film That Made Me Wanna Go Out in a Blaze of Glory        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122793">
+    <a href="/en_uk/read/we-talked-to-women-about-their-vaginas-827" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 2']);">
+        <p class="title">
+            <strong class="index">2.</strong>
+            Genitales: We Talked to Women About Their Vaginas        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122915">
+    <a href="/en_uk/read/we-must-risk-delight-after-a-summer-full-of-monsters" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 3']);">
+        <p class="title">
+            <strong class="index">3.</strong>
+            Risking Delight After a Summer Full of Monsters        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122612">
+    <a href="/en_uk/read/monica-heisey-musical-minds-123" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 4']);">
+        <p class="title">
+            <strong class="index">4.</strong>
+            Nick and JB Are Two Autistic Guys with the Best Music Show On the Internet        </p>
+    </a>
+</li><li class="video" data-vr-contentbox="vice-feedwidget-Popular 24-122718">
+    <a href="/en_uk/rule-britannia/london-bikelife-427" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 5']);">
+        <p class="title">
+            <strong class="index">5.</strong>
+            Rule Britannia: London BikeLife        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122752">
+    <a href="/en_uk/read/a-nice-magazine-hannah-moon-121" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 6']);">
+        <p class="title">
+            <strong class="index">6.</strong>
+            Ink Spots: 'A Nice Magazine' Does What It Says On the Cover        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122759">
+    <a href="/en_uk/read/leading-anti-marijuana-academics-are-paid-by-painkiller-drug-companies" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 7']);">
+        <p class="title">
+            <strong class="index">7.</strong>
+            Leading Anti-Marijuana Academics Are Paid by Painkiller Drug Companies        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122947">
+    <a href="/en_uk/read/oscar-candon-interview-152" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 8']);">
+        <p class="title">
+            <strong class="index">8.</strong>
+            Fuck You and Your Penny Board        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122645">
+    <a href="/en_uk/read/hollywoods-latest-garbage-our-tax-dollars-at-work-828" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 9']);">
+        <p class="title">
+            <strong class="index">9.</strong>
+            Hollywood's Latest Garbage: US Tax Dollars at Work        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular 24-122747">
+    <a href="/en_uk/read/meet-the-man-behind-londons-biggest-elite-sex-parties-179" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular 24 10']);">
+        <p class="title">
+            <strong class="index">10.</strong>
+            Meet the Man Behind London's Biggest 'Elite' Sex Parties        </p>
+    </a>
+</li></ul><div class="keys" style="display:none" title="/en_uk"><span>122886</span><span>122793</span><span>122915</span><span>122612</span><span>122718</span><span>122752</span><span>122759</span><span>122947</span><span>122645</span><span>122747</span></div>
+</div>            </div>
+            <div class="tabs-content">
+                <div id="yw12" class="list-view">
+<ul class="feed-list">
+<li class="video" data-vr-contentbox="vice-feedwidget-Popular Weekly-122718">
+    <a href="/en_uk/rule-britannia/london-bikelife-427" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 1']);">
+        <p class="title">
+            <strong class="index">1.</strong>
+            Rule Britannia: London BikeLife        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122747">
+    <a href="/en_uk/read/meet-the-man-behind-londons-biggest-elite-sex-parties-179" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 2']);">
+        <p class="title">
+            <strong class="index">2.</strong>
+            Meet the Man Behind London's Biggest 'Elite' Sex Parties        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122472">
+    <a href="/en_uk/read/stressful-situations-make-me-come-hard-143" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 3']);">
+        <p class="title">
+            <strong class="index">3.</strong>
+            Stress Makes Me Horny        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122628">
+    <a href="/en_uk/read/why-are-psychedelics-illegal-368" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 4']);">
+        <p class="title">
+            <strong class="index">4.</strong>
+            Tao of Terence: Why Are Psychedelics Illegal?        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122737">
+    <a href="/en_uk/read/scottish-independence-easterhouse-peter-geoghegan-743" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 5']);">
+        <p class="title">
+            <strong class="index">5.</strong>
+            Glasgow's Poor Are Fighting For a Fairer Scotland        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122690">
+    <a href="/en_uk/read/protecting-the-precious-flower-that-is-black-metal-827" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 6']);">
+        <p class="title">
+            <strong class="index">6.</strong>
+            Protecting the Precious Flower That Is Black Metal        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122789">
+    <a href="/en_uk/read/why-are-historians-so-afraid-of-fucking-468" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 7']);">
+        <p class="title">
+            <strong class="index">7.</strong>
+            Why Are Historians So Afraid of Fucking?        </p>
+    </a>
+</li><li class="video" data-vr-contentbox="vice-feedwidget-Popular Weekly-122462">
+    <a href="/en_uk/vice-profiles/animal-fuckers-219" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 8']);">
+        <p class="title">
+            <strong class="index">8.</strong>
+            Profiles by VICE: Animal Fuckers        </p>
+    </a>
+</li><li class="video" data-vr-contentbox="vice-feedwidget-Popular Weekly-122376">
+    <a href="/en_uk/vice-news/guantanamo-black-out-bay-865" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 9']);">
+        <p class="title">
+            <strong class="index">9.</strong>
+            VICE News: Guantanamo: Black Out Bay        </p>
+    </a>
+</li><li data-vr-contentbox="vice-feedwidget-Popular Weekly-122344">
+    <a href="/en_uk/read/cry-baby-of-the-week-a-guy-called-the-cops-because-a-stripper-wouldnt-have-sex-with-him" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Vice Feed', 'Popular Weekly 10']);">
+        <p class="title">
+            <strong class="index">10.</strong>
+            Cry-Baby of the Week        </p>
+    </a>
+</li></ul><div class="keys" style="display:none" title="/en_uk"><span>122718</span><span>122747</span><span>122472</span><span>122628</span><span>122737</span><span>122690</span><span>122789</span><span>122462</span><span>122376</span><span>122344</span></div>
+</div>            </div>
+        </div>
+    </div>
+</div></div>                    </div><!-- .b_column -->
+                    
+<!--googleon: index-->
+                    <div class="clb"></div>
+                </div><!-- .ab_column_wrap -->
+                <div class="clb"></div>
+            </div><!-- .columns -->
+            </div><!-- #main -->
+    <div class="clb"></div>
+</div><!-- .wrap -->
+	</div><!-- content -->
+</div>
+		<div class="footer" id="footer">
+<div class="counter_outer_wrap">
+	<div class="wrap">
+        
+<!--googleoff: index-->
+<div class="portlet" id="more">
+<div class="wrap">
+	<div class="inner_wrap" data-vr-zone="vice-morefromvice-en_uk">
+		<h3>More From VICE</h3>
+
+		<ul class="more_from_vice">
+			<li class="item" data-vr-contentbox="vice-morefromvice-747">
+    <a href="http://www.vice.com/en_uk/read/a-nice-magazine-hannah-moon-121" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Footer', 'More From Vice']);">
+        <img src="http://assets.vice.com/content-images/morefromvice/747/Screen-Shot-2014-08-28-at-16-29-13_vice_144x94.jpg" width="144" height="94" alt="">
+        <strong>'A Nice Magazine' Does What it Says On the Cover</strong>
+    </a>
+</li><li class="item" data-vr-contentbox="vice-morefromvice-741">
+    <a href="http://www.vice.com/en_uk/read/voss-water-is-bullshit-820" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Footer', 'More From Vice']);">
+        <img src="http://assets.vice.com/content-images/morefromvice/741/Screen-Shot-2014-08-27-at-12-57-36_vice_144x94.jpg" width="144" height="94" alt="">
+        <strong>Voss Water is Bullshit</strong>
+    </a>
+</li><li class="item" data-vr-contentbox="vice-morefromvice-742">
+    <a href="http://www.vice.com/en_uk/read/heroin-treatment-uk-methadone-171" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Footer', 'More From Vice']);">
+        <img src="http://assets.vice.com/content-images/morefromvice/742/Screen-Shot-2014-08-28-at-16-31-06_vice_144x94.jpg" width="144" height="94" alt="">
+        <strong>Britain Needs to Give Us Heroin Addicts Something More Than Methadone</strong>
+    </a>
+</li><li class="item" data-vr-contentbox="vice-morefromvice-744">
+    <a href="http://www.vice.com/en_uk/read/arguments-that-should-die-from-the-scottish-referendum-debate-093" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Footer', 'More From Vice']);">
+        <img src="http://assets.vice.com/content-images/morefromvice/744/Screen-Shot-2014-08-28-at-16-35-43_vice_144x94.jpg" width="144" height="94" alt="">
+        <strong>Stupid Arguments That Should Die For the Scottish Referendum Debate to Move Forward</strong>
+    </a>
+</li><li class="item" data-vr-contentbox="vice-morefromvice-749">
+    <a href="http://noisey.vice.com/en_uk/blog/one-drunk-night-interviewing-tony-wilson" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Footer', 'More From Vice']);">
+        <img src="http://assets.vice.com/content-images/morefromvice/749/Screen-Shot-2014-08-28-at-16-38-59_vice_144x94.jpg" width="144" height="94" alt="">
+        <strong>Months Before He Died, I Spent One Drunk Night Interviewing Tony Wilson</strong>
+    </a>
+</li><li class="item" data-vr-contentbox="vice-morefromvice-745">
+    <a href="http://www.vice.com/en_uk/read/we-talked-to-women-about-their-vaginas-827" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Footer', 'More From Vice']);">
+        <img src="http://assets.vice.com/content-images/morefromvice/745/Screen-Shot-2014-08-28-at-16-37-16_vice_144x94.jpg" width="144" height="94" alt="">
+        <strong>We Talked to Women About Their Vaginas</strong>
+    </a>
+</li>		</ul>
+
+        <div class="more-from-vice-ad-outer-wrap">
+    <div class="more-from-vice-ad-wrap" data-cb-ad-id="Footer_728x90">
+        <!-- Beginning Async AdSlot 4 for Ad unit vice.com/homepage  ### size: [[728,90]] -->
+        <!-- Adslot's refresh function: googletag.pubads().refresh([gptadslots[4]]) -->
+        <div id='div-gpt-ad-site-index-homepage-4'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-site-index-homepage-4');
+                });
+            </script>
+        </div>
+        <!-- End AdSlot 4 -->
+    </div>
+</div>
+	</div>
+	
+	<div class="clb"></div>
+</div></div>
+<!--googleon: index-->
+		<div class="footer-container footer-container-en_uk">
+			<div class="footer-nav" id="yw17">
+<span class="legal">
+    &copy; 2014 Vice Media Inc.
+</span>
+<ul>
+    <li><a href="/en_uk/about">About us</a></li>
+    <li><a href="/en_uk/jobs">Jobs</a></li>
+    <li><a href="/en_uk/about">Contact</a></li>
+    <li><a id="advertising_link" href="/en_uk/about">Advertising</a></li>
+    <li><a id="presskit_link" href="/en_uk/about">Press Kit</a></li>
+    <li><a href="http://vice.com/shane-smith">Founders</a></li>
+    <li><a href="/en_uk/privacy-policy">Privacy Policy</a></li>
+    <li><a href="/en_uk/terms-of-use">Terms of Use</a></li>
+</ul>
+</div>		</div>
+	</div><!-- .wrap -->
+	<div class="clb"></div>
+</div><!-- .counter_outer_wrap -->
+</div>			</div><!-- #doc -->
+			<div id="ad_gutter_left" data-cb-ad-id="Left_gutter">
+    <!-- Beginning Async AdSlot 5 for Ad unit vice.com  ### size: [[Left Gutter]] -->
+    <!-- Adslot's refresh function: googletag.pubads().refresh([gptadslots[5]]) -->
+    <div id='div-gpt-ad-site-index-homepage-5'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-site-index-homepage-5');
+            });
+        </script>
+    </div>
+    <!-- End AdSlot 5 -->
+</div>			<div id="ad_gutter_right" data-cb-ad-id="Right_gutter">
+    <!-- Beginning Async AdSlot 6 for Ad unit vice.com  ### size: [[Right Gutter]] -->
+    <!-- Adslot's refresh function: googletag.pubads().refresh([gptadslots[6]]) -->
+    <div id='div-gpt-ad-site-index-homepage-6'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-site-index-homepage-6');
+            });
+        </script>
+    </div>
+    <!-- End AdSlot 6 -->
+</div>		</div><!-- #window -->
+		<!-- begin chartbeat -->
+            <div class="portlet" id="yw18">
+<script type='text/javascript'>
+    var _sf_async_config={};
+    /** CONFIGURATION START **/
+    _sf_async_config.uid = 8233;
+    _sf_async_config.domain = 'vice.com';
+    _sf_async_config.videoType = 'ooyala';
+    _sf_async_config.sections = "en_uk"; 
+    _sf_async_config.authors = "";  
+    _sf_async_config.type = "index";   
+    /** CONFIGURATION END **/
+    (function(){
+         function loadChartbeat() {
+             window._sf_endpt=(new Date()).getTime();
+             var e = document.createElement('script');
+             e.setAttribute('language', 'javascript');
+             e.setAttribute('type', 'text/javascript');
+             e.setAttribute('src',
+                 (('https:' == document.location.protocol) ? 'https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/' : 'http://static.chartbeat.com/') + 'js/chartbeat_pub.js');
+             document.body.appendChild(e);
+             
+            e = document.createElement('script');   
+            e.setAttribute('language', 'javascript');
+            e.setAttribute('type', 'text/javascript');
+            e.setAttribute('src', '//static.chartbeat.com/js/chartbeat_video.js');
+            document.body.appendChild(e); 
+         }
+         var oldonload = window.onload;
+         window.onload = (typeof window.onload != 'function') ?
+         loadChartbeat : function() { oldonload(); loadChartbeat(); };
+     })();
+</script>
+</div>		<!-- end chartbeat -->
+        
+        <!-- begin google_plus -->
+<script>
+window.___gcfg = {
+    lang: 'en-US'
+};
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<!-- end google_plus -->
+        <!-- tumblr button js -->
+        <script src="http://platform.tumblr.com/v1/share.js"></script>
+
+        <!-- twitter widgets script -->
+        <script src="http://platform.twitter.com/widgets.js"></script>
+        <div class="tracker" id="tracker">
+<iframe src="/themes/vice/statics/html/tracker.html" height="1" width="1" id="iframe-tracker"></iframe>
+
+<!-- Fr MediaMetrie -->
+<script language="JavaScript">
+    function _eStat_Whap_loaded_func(){
+
+    	eStatWhap.serial('800000000001');
+
+    	eStatWhap.send();
+
+    }
+
+    (function() {
+    	var myscript = document.createElement('script');
+    	myscript.src = "http://w.estat.com/js/whap.js";
+    	myscript.setAttribute('async', 'true');
+    	var s = document.getElementsByTagName('script')[0];
+    	s.parentNode.insertBefore(myscript, s);
+    } )();
+</script>
+<!-- end Fr MediaMetrie -->
+
+</div>        <script>
+( function() {
+    if (!window.postMessage) {
+        return;
+    }
+    //  Load    YouTube’s   iframe  API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    //  Tell    Chartbeat   to  autodetect  the YouTube iframes
+    var _cbv = window._cbv || (window._cbv = []);
+    _cbv.push(['autoDetectYouTubeIframes']);
+}()); 
+</script>	<script type="text/javascript" src="/themes/vice/statics/yii_assets/listview/jquery.yiilistview.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery('#yw1').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+jQuery('#yw2').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+jQuery('#yw3').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+jQuery('#yw4').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+jQuery('#yw8').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+jQuery('#yw11').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+jQuery('#yw12').yiiListView({'ajaxUpdate':[],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'list-view-loading','sorterClass':'sorter'});
+});
+/*]]>*/
+</script>
+</body>
+</html>
+HTTP/1.1 200 OK http://www.vice.com took 2071
+Simple User completed 4540
+ReadySteadyThreadCompleted4543

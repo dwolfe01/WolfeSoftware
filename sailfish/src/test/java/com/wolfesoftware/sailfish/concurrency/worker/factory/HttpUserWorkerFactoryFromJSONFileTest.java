@@ -27,12 +27,44 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 			throws FileNotFoundException, IOException {
 		String jsonHttpUser = FileUtils
 				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/simplehttpuser.json"));
+						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpuser.json"));
 		factory.setJSON(jsonHttpUser);
 		HttpUser httpUser = factory.getWorker();
 		assertEquals("http://www.twitter.com", httpUser.getRequest(0));
 		assertEquals("http://www.facebook.com", httpUser.getRequest(1));
 		assertEquals("http://www.vice.com", httpUser.getRequest(2));
+		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+
+	@Test
+	public void shouldCreateTwoHttpUsersFromJSONFile()
+			throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils
+				.readFileToString(ResourceUtils
+						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+		factory.setJSON(jsonHttpUser);
+		HttpUser httpUser = factory.getWorker();
+		assertEquals("http://www.twitter.com", httpUser.getRequest(0));
+		assertEquals("http://www.facebook.com", httpUser.getRequest(1));
+		assertEquals("http://www.vice.com", httpUser.getRequest(2));
+		assertEquals(true, factory.isThereAnyMoreWorkToDo());
+		httpUser = factory.getWorker();
+		assertEquals("http://www.coca-cola.com", httpUser.getRequest(0));
+		assertEquals("http://www.asparagus.com", httpUser.getRequest(1));
+		assertEquals("http://www.vice.com", httpUser.getRequest(2));
+		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionIfCallGetWorkerWithNoMoreWorkToDo()
+			throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils
+				.readFileToString(ResourceUtils
+						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+		factory.setJSON(jsonHttpUser);
+		factory.getWorker();
+		factory.getWorker();
+		factory.getWorker();
 	}
 
 	@Test

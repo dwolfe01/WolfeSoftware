@@ -15,19 +15,30 @@ import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 
 	private String json;
-	HttpUser user;
+	HttpUser[] users;
+	int position;
 
 	@Override
 	public HttpUser getWorker() throws JsonParseException,
 			JsonMappingException, IOException {
-		this.setIsThereAnyMoreWorkToDo(false);
-		return user;
+		if (position + 1 == users.length) {
+			this.setIsThereAnyMoreWorkToDo(false);
+		}
+		return users[position++];
 	}
 
 	public void setJSON(String json) throws JsonParseException,
 			JsonMappingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		user = objectMapper.readValue(json, HttpUser.class);
+		users = objectMapper.readValue(json, HttpUser[].class);
+		this.setJson(json);
+	}
+
+	public String getJson() {
+		return json;
+	}
+
+	public void setJson(String json) {
 		this.json = json;
 	}
 
