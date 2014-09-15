@@ -20,7 +20,6 @@ import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory
 import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
-@Ignore
 public class SailFishIntegrationTest {
 
 	@Test
@@ -49,6 +48,7 @@ public class SailFishIntegrationTest {
 	}
 
 	@Test
+	@Ignore
 	public void createJSONFromListOfUrls() throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();

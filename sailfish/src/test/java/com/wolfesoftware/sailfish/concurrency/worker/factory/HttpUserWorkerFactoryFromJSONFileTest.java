@@ -55,6 +55,17 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
 	}
 
+	@Test
+	public void shouldCreateJustOutputHttpUsersFromJSONFile()
+			throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils
+				.readFileToString(ResourceUtils
+						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+		factory.setJSON(jsonHttpUser);
+		// JustOutputHttpUser httpUser = factory.getWorker();
+		// httpUser = factory.getWorker();
+	}
+
 	@Test(expected = RuntimeException.class)
 	public void shouldThrowExceptionIfCallGetWorkerWithNoMoreWorkToDo()
 			throws FileNotFoundException, IOException {
@@ -68,6 +79,7 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 	}
 
 	@Test
+	@Ignore
 	public void shouldConvertHttpUserToJSON() throws Exception {
 		HttpUser user = new HttpUser();
 		user.add("http://www.test.com").add("http://www.test.com");

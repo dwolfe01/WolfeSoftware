@@ -17,6 +17,7 @@ public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 	private String json;
 	HttpUser[] users;
 	int position;
+	Class<HttpUser[]> user = HttpUser[].class;
 
 	@Override
 	public HttpUser getWorker() throws JsonParseException,
@@ -30,7 +31,7 @@ public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 	public void setJSON(String json) throws JsonParseException,
 			JsonMappingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		users = objectMapper.readValue(json, HttpUser[].class);
+		users = objectMapper.readValue(json, user);
 		this.setJson(json);
 	}
 

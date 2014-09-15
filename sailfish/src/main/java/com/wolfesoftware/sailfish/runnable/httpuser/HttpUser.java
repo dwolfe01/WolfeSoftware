@@ -20,7 +20,16 @@ import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory
 
 public class HttpUser implements Runnable {
 
-	private String id;
+	protected String id;
+	protected String clientIP = "";
+
+	public String getClientIP() {
+		return clientIP;
+	}
+
+	public void setClientIP(String clientIP) {
+		this.clientIP = clientIP;
+	}
 
 	public String getId() {
 		return id;
@@ -53,7 +62,7 @@ public class HttpUser implements Runnable {
 		System.out.println(this.id + " completed " + executionTime);
 	}
 
-	private void makeRequest(String request) {
+	protected void makeRequest(String request) {
 		long startTime = System.currentTimeMillis();
 		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
 				.getInstanceOfResponseHandler();
