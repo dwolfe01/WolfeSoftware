@@ -10,13 +10,14 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.concurrency.worker.factory.WorkerFactory;
+import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
 public class ReadySteadyThreadTest {
 
 	@Mock
 	WorkerFactory workerFactory;
 	@Mock
-	Thread worker;
+	HttpUser worker;
 
 	@Before
 	public void setUp() throws Exception {

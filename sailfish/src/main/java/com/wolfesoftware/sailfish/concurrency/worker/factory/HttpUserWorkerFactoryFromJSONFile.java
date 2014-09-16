@@ -6,18 +6,20 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
+import com.wolfesoftware.sailfish.runnable.httpuser.JustOutputHttpUser;
 
 /*
  * This class creates a worker and also returns it. This will
  * potentially reads from an tomcat access log file to generate different
  * types of sessions on each call to getWorker
  */
+//TODO this should use generics to achieve the dry run functionality 
 public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 
 	private String json;
 	HttpUser[] users;
 	int position;
-	Class<HttpUser[]> user = HttpUser[].class;
+	Class<? extends HttpUser[]> user = HttpUser[].class;
 
 	@Override
 	public HttpUser getWorker() throws JsonParseException,
@@ -41,6 +43,14 @@ public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 
 	public void setJson(String json) {
 		this.json = json;
+	}
+
+	public void setDryRun(boolean b) {
+		if (b) {
+			user = JustOutputHttpUser[].class;
+		} else {
+			user = HttpUser[].class;
+		}
 	}
 
 }

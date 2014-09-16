@@ -1,4 +1,4 @@
-package com.wolfesoftware.sailfish;
+package com.wolfesoftware.sailfish.main;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,13 +22,13 @@ public class SailFishJSON {
 				+ " thread count: " + threadCount));
 		SailFishJSON sailfish = new SailFishJSON();
 		File jsonFile = new File(fileName);
-		System.out.println(jsonFile.getAbsolutePath());
 		sailfish.go(jsonFile, threadCount);
 	}
 
 	private void go(File jsonFile, int threadCount) throws BadLogFileException,
 			JsonParseException, JsonMappingException, IOException {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
+		factory.setDryRun(true);
 		factory.setJSON(FileUtils.readFileToString(jsonFile));
 		new ReadySteadyThread(10, factory).go();
 	}

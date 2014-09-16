@@ -7,6 +7,11 @@ public class JustOutputHttpUser extends HttpUser {
 
 	OutputStream out;
 
+	public JustOutputHttpUser() {
+		this.id = "JustOutputUser";
+		this.out = System.out;
+	}
+
 	public JustOutputHttpUser(OutputStream out) {
 		this.id = "JustOutputUser";
 		this.out = out;

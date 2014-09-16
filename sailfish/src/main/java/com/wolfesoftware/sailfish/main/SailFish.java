@@ -1,4 +1,4 @@
-package com.wolfesoftware.sailfish;
+package com.wolfesoftware.sailfish.main;
 
 import java.io.File;
 

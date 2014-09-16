@@ -15,6 +15,7 @@ public class LogFileReader {
 
 	List<String> lines;
 
+	@SuppressWarnings("unchecked")
 	public LogFileReader(File logFile) throws BadLogFileException {
 		try {
 			lines = FileUtils.readLines(logFile);

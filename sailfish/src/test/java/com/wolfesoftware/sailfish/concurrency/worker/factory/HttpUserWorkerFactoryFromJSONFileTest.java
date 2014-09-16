@@ -13,6 +13,7 @@ import org.springframework.util.ResourceUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
+import com.wolfesoftware.sailfish.runnable.httpuser.JustOutputHttpUser;
 
 public class HttpUserWorkerFactoryFromJSONFileTest {
 
@@ -30,7 +31,7 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 				.readFileToString(ResourceUtils
 						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpuser.json"));
 		factory.setJSON(jsonHttpUser);
-		HttpUser httpUser = factory.getWorker();
+		HttpUser httpUser = (HttpUser) factory.getWorker();
 		assertEquals("http://www.twitter.com", httpUser.getRequest(0));
 		assertEquals("http://www.facebook.com", httpUser.getRequest(1));
 		assertEquals("http://www.vice.com", httpUser.getRequest(2));
@@ -44,12 +45,12 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 				.readFileToString(ResourceUtils
 						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
 		factory.setJSON(jsonHttpUser);
-		HttpUser httpUser = factory.getWorker();
+		HttpUser httpUser = (HttpUser) factory.getWorker();
 		assertEquals("http://www.twitter.com", httpUser.getRequest(0));
 		assertEquals("http://www.facebook.com", httpUser.getRequest(1));
 		assertEquals("http://www.vice.com", httpUser.getRequest(2));
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
-		httpUser = factory.getWorker();
+		httpUser = (HttpUser) factory.getWorker();
 		assertEquals("http://www.coca-cola.com", httpUser.getRequest(0));
 		assertEquals("http://www.asparagus.com", httpUser.getRequest(1));
 		assertEquals("http://www.vice.com", httpUser.getRequest(2));
@@ -62,9 +63,9 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 		String jsonHttpUser = FileUtils
 				.readFileToString(ResourceUtils
 						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+		factory.setDryRun(true);
 		factory.setJSON(jsonHttpUser);
-		// JustOutputHttpUser httpUser = factory.getWorker();
-		// httpUser = factory.getWorker();
+		JustOutputHttpUser httpUser = (JustOutputHttpUser) factory.getWorker();
 	}
 
 	@Test(expected = RuntimeException.class)
