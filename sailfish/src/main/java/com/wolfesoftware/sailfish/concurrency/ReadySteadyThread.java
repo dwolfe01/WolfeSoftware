@@ -32,21 +32,23 @@ public class ReadySteadyThread {
 				TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 		while (!executor.isTerminated()) {
 			if (weHaveAnAvailableThread(executor)) {
-				boolean thereAnyMoreWorkToDo = workerFactory
-						.isThereAnyMoreWorkToDo();
-				if (!thereAnyMoreWorkToDo) {// nothing left to do
+				if (!workerFactory.isThereAnyMoreWorkToDo()) {
 					executor.shutdown();
 				} else {
-					try {
-						executor.execute(this.workerFactory.getWorker());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					addJobToExecutor();
 				}
 			}
 		}
 		System.out.println("ReadySteadyThreadCompleted"
 				+ (System.currentTimeMillis() - startTime));
+	}
+
+	private void addJobToExecutor() {
+		try {
+			executor.execute(this.workerFactory.getWorker());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private boolean weHaveAnAvailableThread(ThreadPoolExecutor executor) {

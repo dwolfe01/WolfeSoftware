@@ -13,20 +13,16 @@ import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 
 public class SailFishJSON {
 
-	public static void main(String[] args) throws BadLogFileException,
-			BadLogFileException, JsonParseException, JsonMappingException,
-			IOException {
+	public static void main(String[] args) throws BadLogFileException, BadLogFileException, JsonParseException, JsonMappingException, IOException {
 		String fileName = args[0];
 		int threadCount = Integer.parseInt(args[1]);
-		System.out.println(("Running SailFish with file: " + fileName
-				+ " thread count: " + threadCount));
+		System.out.println(("Running SailFish with file: " + fileName + " thread count: " + threadCount));
 		SailFishJSON sailfish = new SailFishJSON();
 		File jsonFile = new File(fileName);
 		sailfish.go(jsonFile, threadCount);
 	}
 
-	private void go(File jsonFile, int threadCount) throws BadLogFileException,
-			JsonParseException, JsonMappingException, IOException {
+	private void go(File jsonFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
 		factory.setDryRun(true);
 		factory.setJSON(FileUtils.readFileToString(jsonFile));

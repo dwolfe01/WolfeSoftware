@@ -21,6 +21,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.wolfesoftware.sailfish.responsehandler.factory.SystemOutResponseHandler;
+
 public class HttpUserTest {
 
 	HttpUser httpUser;
@@ -29,6 +31,7 @@ public class HttpUserTest {
 	HttpClient httpClient;
 	@Mock
 	StatusLine statusLine;
+	Class<? extends ResponseHandler<StatusLine>> systemOutResponseHandler = SystemOutResponseHandler.class;
 
 	@Before
 	public void before() {
@@ -36,31 +39,24 @@ public class HttpUserTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
 	// due to difficulties around matchers and generic classes
-	public void shouldMakeTwoRequests() throws ClientProtocolException,
-			IOException {
+	public void shouldMakeTwoRequests() throws ClientProtocolException, IOException {
 		// given
-		when(httpClient.execute(isA(HttpGet.class), isA(ResponseHandler.class)))
-				.thenReturn(statusLine);
+		when(httpClient.execute(isA(HttpGet.class), isA(systemOutResponseHandler))).thenReturn(statusLine);
 		httpUser = new HttpUser(httpClient);
 		httpUser.add("http://www.myurl.com");
 		httpUser.add("http://www.myurl2.com");
 		// when
 		httpUser.run();
 		// then
-		verify(httpClient, times(2)).execute(isA(HttpUriRequest.class),
-				isA(ResponseHandler.class));
+		verify(httpClient, times(2)).execute(isA(HttpUriRequest.class), isA(systemOutResponseHandler));
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
 	// due to difficulties around matchers and generic classes
-	public void shouldObserveWaitTimeMakeTwoRequests()
-			throws ClientProtocolException, IOException {
+	public void shouldObserveWaitTimeMakeTwoRequests() throws ClientProtocolException, IOException {
 		// given
-		when(httpClient.execute(isA(HttpGet.class), isA(ResponseHandler.class)))
-				.thenReturn(statusLine);
+		when(httpClient.execute(isA(HttpGet.class), isA(systemOutResponseHandler))).thenReturn(statusLine);
 		httpUser = new HttpUser(httpClient);
 		httpUser.add("http://www.myurl.com");
 		httpUser.add("http://www.myurl2.com");
@@ -78,10 +74,8 @@ public class HttpUserTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
 	// due to difficulties around matchers and generic classes
-	public void shouldMakeNoRequestsIfURLsAreEmptyString()
-			throws ClientProtocolException, IOException {
+	public void shouldMakeNoRequestsIfURLsAreEmptyString() throws ClientProtocolException, IOException {
 		// given
 		httpUser = new HttpUser(httpClient);
 		httpUser.add("");
@@ -89,8 +83,7 @@ public class HttpUserTest {
 		// when
 		httpUser.run();
 		// then
-		verify(httpClient, never()).execute(isA(HttpUriRequest.class),
-				isA(ResponseHandler.class));
+		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(systemOutResponseHandler));
 	}
 
 	@Test(expected = MalformedURLException.class)

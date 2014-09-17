@@ -24,54 +24,40 @@ public class ResponseHandlerFactoryTest {
 	}
 
 	@Test
-	public void shouldCreateResponseHandlersOfTypeQuickCloseResponseHandler()
-			throws Exception {
-		ResponseHandlerFactory
-				.setHandler(ResponseHandlerFactory.ResponseHandlers.DEFAULT);
-		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
-				.getInstanceOfResponseHandler();
+	public void shouldCreateResponseHandlersOfTypeQuickCloseResponseHandler() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.DEFAULT);
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof QuickCloseResponseHandler);
 	}
 
 	@Test
-	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandler()
-			throws Exception {
-		ResponseHandlerFactory
-				.setHandler(ResponseHandlerFactory.ResponseHandlers.SYSTEMOUT);
-		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
-				.getInstanceOfResponseHandler();
+	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandler() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.SYSTEMOUT);
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof SystemOutResponseHandler);
 	}
 
 	@Test
-	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandlerIfOutputStreamNotSet()
-			throws Exception {
-		ResponseHandlerFactory
-				.setHandler(ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM);
+	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandlerIfOutputStreamNotSet() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM);
+		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(null);
 		// set output stream here
-		SystemOutResponseHandler responseHandler = (SystemOutResponseHandler) ResponseHandlerFactory
-				.getInstanceOfResponseHandler();
+		SystemOutResponseHandler responseHandler = (SystemOutResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof SystemOutResponseHandler);
 	}
 
 	@Test
-	public void shouldCreateResponseHandlersOfTypeOutputStreamResponseHandlerIfOutputStreamISSet()
-			throws Exception {
-		ResponseHandlerFactory
-				.setHandler(ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM
-				.setOutputStream(os);
+	public void shouldCreateResponseHandlersOfTypeOutputStreamResponseHandlerIfOutputStreamISSet() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM);
+		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(os);
 		// set output stream here
-		OutputStreamResponseHandler responseHandler = (OutputStreamResponseHandler) ResponseHandlerFactory
-				.getInstanceOfResponseHandler();
+		OutputStreamResponseHandler responseHandler = (OutputStreamResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertEquals(responseHandler.getOs(), os);
 	}
 
 	@Test(expected = NoSuchMethodException.class)
-	public void shouldThrowExceptionIfSetOutputStreamIsCalledOnQuickCloseResponseHandler()
-			throws Exception {
-		ResponseHandlerFactory
-				.setHandler(ResponseHandlerFactory.ResponseHandlers.QUICKCLOSE);
+	public void shouldThrowExceptionIfSetOutputStreamIsCalledOnQuickCloseResponseHandler() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.QUICKCLOSE);
 		ResponseHandlerFactory.ResponseHandlers.QUICKCLOSE.setOutputStream(os);
 	}
 

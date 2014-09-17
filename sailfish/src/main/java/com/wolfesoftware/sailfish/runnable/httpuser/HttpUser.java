@@ -64,11 +64,9 @@ public class HttpUser implements Runnable {
 
 	protected void makeRequest(String request) {
 		long startTime = System.currentTimeMillis();
-		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory
-				.getInstanceOfResponseHandler();
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		try {
-			StatusLine statusLine = httpClient.execute(new HttpGet(request),
-					responseHandler);
+			StatusLine statusLine = httpClient.execute(new HttpGet(request), responseHandler);
 			doOutput(startTime, request, statusLine);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -111,7 +109,6 @@ public class HttpUser implements Runnable {
 	}
 
 	private void doOutput(long startTime, String request, StatusLine statusLine) {
-		System.out.println(statusLine + " " + request + " took "
-				+ (System.currentTimeMillis() - startTime));
+		System.out.println(statusLine + " " + request + " took " + (System.currentTimeMillis() - startTime));
 	}
 }
