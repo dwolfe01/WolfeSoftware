@@ -3,6 +3,8 @@ package com.wolfesoftware.sailfish.runnable.httpuser;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import com.wolfesoftware.sailfish.requests.Request;
+
 public class JustOutputHttpUser extends HttpUser {
 
 	OutputStream out;
@@ -17,9 +19,10 @@ public class JustOutputHttpUser extends HttpUser {
 		this.out = out;
 	}
 
-	protected void makeRequest(String request) {
+	@Override
+	protected void makeRequest(Request request) {
 		try {
-			out.write(request.getBytes());
+			out.write(request.toString().getBytes());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

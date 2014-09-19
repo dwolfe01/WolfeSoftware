@@ -1,0 +1,9 @@
+[{
+	"id": "Simple Post User",
+	"requests": 
+	[
+		["http://www.twitter.com", "POST"],
+		["http://www.twitter.com"]
+		
+	]
+}]

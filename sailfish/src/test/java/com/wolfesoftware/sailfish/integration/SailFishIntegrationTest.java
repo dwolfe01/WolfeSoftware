@@ -16,6 +16,7 @@ import org.springframework.util.ResourceUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactoryFromJSONFile;
+import com.wolfesoftware.sailfish.requests.GetRequest;
 import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
@@ -25,24 +26,18 @@ public class SailFishIntegrationTest {
 	@Test
 	public void shouldMakeHttpRequests() throws Exception {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
 		factory.setJSON(jsonHttpUser);
 		new ReadySteadyThread(10, factory).go();
 	}
 
 	@Test
-	public void shouldCreateJSONFileOfRequestsFromAURLAndWriteToFile()
-			throws Exception {
+	public void shouldCreateJSONFileOfRequestsFromAURLAndWriteToFile() throws Exception {
 		FileOutputStream fos = new FileOutputStream(new File("/tmp/output.txt"));
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
 		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM
-				.setOutputStream(fos);
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/scratch.json"));
+		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(fos);
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/scratch.json"));
 		factory.setJSON(jsonHttpUser);
 		new ReadySteadyThread(10, factory).go();
 	}
@@ -53,11 +48,8 @@ public class SailFishIntegrationTest {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
 		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM
-				.setOutputStream(baos);
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/scratch.json"));
+		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(baos);
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/scratch.json"));
 		factory.setJSON(jsonHttpUser);
 		new ReadySteadyThread(10, factory).go();
 		//
@@ -66,7 +58,7 @@ public class SailFishIntegrationTest {
 		for (String url : extractUrls) {
 			System.out.println(url);
 			HttpUser user = new HttpUser();
-			user.add(url);
+			user.addGetRequest(new GetRequest(url));
 			if (Math.random() > 0.8) {
 				mapper.writeValue(System.out, user);
 				user = new HttpUser();

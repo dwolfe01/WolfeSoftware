@@ -5,33 +5,34 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.wolfesoftware.sailfish.responsehandler.factory.SystemOutResponseHandler;
+import com.wolfesoftware.sailfish.requests.GetRequest;
+import com.wolfesoftware.sailfish.requests.PostRequest;
+import com.wolfesoftware.sailfish.responsehandler.factory.QuickCloseResponseHandler;
 
 public class HttpUserTest {
 
 	HttpUser httpUser;
+	Class<? extends ResponseHandler<StatusLine>> responseHandler = QuickCloseResponseHandler.class;
 
 	@Mock
 	HttpClient httpClient;
 	@Mock
-	StatusLine statusLine;
-	Class<? extends ResponseHandler<StatusLine>> systemOutResponseHandler = SystemOutResponseHandler.class;
+	GetRequest getRequest;
+	@Mock
+	PostRequest postRequest;
 
 	@Before
 	public void before() {
@@ -42,24 +43,33 @@ public class HttpUserTest {
 	// due to difficulties around matchers and generic classes
 	public void shouldMakeTwoRequests() throws ClientProtocolException, IOException {
 		// given
-		when(httpClient.execute(isA(HttpGet.class), isA(systemOutResponseHandler))).thenReturn(statusLine);
 		httpUser = new HttpUser(httpClient);
-		httpUser.add("http://www.myurl.com");
-		httpUser.add("http://www.myurl2.com");
+		httpUser.addGetRequest(getRequest);
+		httpUser.addGetRequest(getRequest);
 		// when
 		httpUser.run();
 		// then
-		verify(httpClient, times(2)).execute(isA(HttpUriRequest.class), isA(systemOutResponseHandler));
+		verify(getRequest, times(2)).makeRequest(httpClient);
+	}
+
+	@Test
+	public void shouldMakePOSTRequest() throws ClientProtocolException, IOException {
+		// given
+		httpUser = new HttpUser(httpClient);
+		httpUser.addPostRequest(postRequest);
+		// when
+		httpUser.run();
+		// then
+		verify(postRequest, times(1)).makeRequest(httpClient);
 	}
 
 	@Test
 	// due to difficulties around matchers and generic classes
 	public void shouldObserveWaitTimeMakeTwoRequests() throws ClientProtocolException, IOException {
 		// given
-		when(httpClient.execute(isA(HttpGet.class), isA(systemOutResponseHandler))).thenReturn(statusLine);
 		httpUser = new HttpUser(httpClient);
-		httpUser.add("http://www.myurl.com");
-		httpUser.add("http://www.myurl2.com");
+		httpUser.addGetRequest(getRequest);
+		httpUser.addGetRequest(getRequest);
 		// when
 		long startTime = System.currentTimeMillis();
 		httpUser.run();
@@ -78,18 +88,9 @@ public class HttpUserTest {
 	public void shouldMakeNoRequestsIfURLsAreEmptyString() throws ClientProtocolException, IOException {
 		// given
 		httpUser = new HttpUser(httpClient);
-		httpUser.add("");
-		httpUser.add("");
-		// when
 		httpUser.run();
 		// then
-		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(systemOutResponseHandler));
-	}
-
-	@Test(expected = MalformedURLException.class)
-	public void shouldThrowAnExceptionIfTheRequestIsNotAURL() throws Exception {
-		httpUser = new HttpUser(httpClient);
-		httpUser.add("htp:/www.bad.url.com");
+		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(responseHandler));
 	}
 
 }

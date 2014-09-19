@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.util.ResourceUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wolfesoftware.sailfish.requests.GetRequest;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 import com.wolfesoftware.sailfish.runnable.httpuser.JustOutputHttpUser;
 
@@ -25,55 +26,43 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 	}
 
 	@Test
-	public void shouldCreateHttpUserFromJSONFile()
-			throws FileNotFoundException, IOException {
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpuser.json"));
+	public void shouldCreateHttpUserFromJSONFile() throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpuser.json"));
 		factory.setJSON(jsonHttpUser);
 		HttpUser httpUser = (HttpUser) factory.getWorker();
-		assertEquals("http://www.twitter.com", httpUser.getRequest(0));
-		assertEquals("http://www.facebook.com", httpUser.getRequest(1));
-		assertEquals("http://www.vice.com", httpUser.getRequest(2));
+		assertEquals("http://www.twitter.com", httpUser.getRequest(0).toString());
+		assertEquals("http://www.facebook.com", httpUser.getRequest(1).toString());
+		assertEquals("http://www.vice.com", httpUser.getRequest(2).toString());
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
 	}
 
 	@Test
-	public void shouldCreateTwoHttpUsersFromJSONFile()
-			throws FileNotFoundException, IOException {
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+	public void shouldCreateTwoHttpUsersFromJSONFile() throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
 		factory.setJSON(jsonHttpUser);
 		HttpUser httpUser = (HttpUser) factory.getWorker();
-		assertEquals("http://www.twitter.com", httpUser.getRequest(0));
-		assertEquals("http://www.facebook.com", httpUser.getRequest(1));
-		assertEquals("http://www.vice.com", httpUser.getRequest(2));
+		assertEquals("http://www.twitter.com", httpUser.getRequest(0).toString());
+		assertEquals("http://www.facebook.com", httpUser.getRequest(1).toString());
+		assertEquals("http://www.vice.com", httpUser.getRequest(2).toString());
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
 		httpUser = (HttpUser) factory.getWorker();
-		assertEquals("http://www.coca-cola.com", httpUser.getRequest(0));
-		assertEquals("http://www.asparagus.com", httpUser.getRequest(1));
-		assertEquals("http://www.vice.com", httpUser.getRequest(2));
+		assertEquals("http://www.coca-cola.com", httpUser.getRequest(0).toString());
+		assertEquals("http://www.asparagus.com", httpUser.getRequest(1).toString());
+		assertEquals("http://www.vice.com", httpUser.getRequest(2).toString());
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
 	}
 
 	@Test
-	public void shouldCreateJustOutputHttpUsersFromJSONFile()
-			throws FileNotFoundException, IOException {
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+	public void shouldCreateJustOutputHttpUsersFromJSONFile() throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
 		factory.setDryRun(true);
 		factory.setJSON(jsonHttpUser);
 		JustOutputHttpUser httpUser = (JustOutputHttpUser) factory.getWorker();
 	}
 
 	@Test(expected = RuntimeException.class)
-	public void shouldThrowExceptionIfCallGetWorkerWithNoMoreWorkToDo()
-			throws FileNotFoundException, IOException {
-		String jsonHttpUser = FileUtils
-				.readFileToString(ResourceUtils
-						.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+	public void shouldThrowExceptionIfCallGetWorkerWithNoMoreWorkToDo() throws FileNotFoundException, IOException {
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
 		factory.setJSON(jsonHttpUser);
 		factory.getWorker();
 		factory.getWorker();
@@ -84,7 +73,7 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 	@Ignore
 	public void shouldConvertHttpUserToJSON() throws Exception {
 		HttpUser user = new HttpUser();
-		user.add("http://www.test.com").add("http://www.test.com");
+		user.addGetRequest(new GetRequest("http://www.test.com")).addGetRequest(new GetRequest("http://www.test.com"));
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(System.out, user);
 	}

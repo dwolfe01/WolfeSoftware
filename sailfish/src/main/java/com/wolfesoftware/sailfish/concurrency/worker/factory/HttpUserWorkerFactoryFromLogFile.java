@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
+import com.wolfesoftware.sailfish.requests.GetRequest;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
 /*
@@ -21,8 +22,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	private int size;
 
 	public void setUrls(LogFileReader logFileReader) throws BadLogFileException {
-		requests = Collections
-				.synchronizedList(logFileReader.getAsListOfUrls());
+		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
 		size = requests.size();
 	}
 
@@ -37,7 +37,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 		try {
 			for (int x = 0; x < 4; x++) {
 				url = getNextRequest();
-				user.add(url);
+				user.addGetRequest(new GetRequest(url));
 			}
 		} catch (MalformedURLException e) {
 			System.out.println("Problem with: " + url);

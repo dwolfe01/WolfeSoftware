@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.wolfesoftware.sailfish.requests.GetRequest;
+
 public class JustOutputHttpUserTest {
 
 	JustOutputHttpUser httpUser;
@@ -26,18 +28,15 @@ public class JustOutputHttpUserTest {
 
 	@Test
 	// due to difficulties around matchers and generic classes
-	public void shouldMakeTwoRequestsAndOutputToStream()
-			throws ClientProtocolException, IOException {
+	public void shouldMakeTwoRequestsAndOutputToStream() throws ClientProtocolException, IOException {
 		httpUser = new JustOutputHttpUser(out);
-		String request1 = "http://www.myurl.com";
-		httpUser.add(request1);
-		String request2 = "http://www.myurl2.com";
-		httpUser.add(request2);
+		String req = "http://www.myurl.com";
+		GetRequest request1 = new GetRequest(req);
+		GetRequest request2 = new GetRequest(req);
+		httpUser.addGetRequest(request1).addGetRequest(request2);
 		// when
 		httpUser.run();
 		// then
-		verify(out, times(1)).write(request1.getBytes());
-		verify(out, times(1)).write(request2.getBytes());
+		verify(out, times(2)).write(req.getBytes());
 	}
-
 }
