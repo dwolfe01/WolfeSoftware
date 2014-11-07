@@ -32,6 +32,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
 	@Override
 	public HttpUser getWorker() {
+		System.out.println("Number of requests:" + positionInRequests);
 		final HttpUser user = new HttpUser();
 		String url = "";
 		try {
