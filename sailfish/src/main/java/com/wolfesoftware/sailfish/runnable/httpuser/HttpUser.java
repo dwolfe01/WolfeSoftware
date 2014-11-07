@@ -83,9 +83,18 @@ public class HttpUser implements Runnable {
 		return requests;
 	}
 
-	public void setRequests(List<String> uris) throws MalformedURLException {
-		for (String uri : uris) {
-			this.addGetRequest(new GetRequest(uri));
+	public void setRequests(List<String[]> uris) throws MalformedURLException {
+		for (String[] uri : uris) {
+			if (uri.length == 1) {
+				this.addGetRequest(new GetRequest(uri[0]));
+			} else {
+				PostRequest pr = new PostRequest(uri[0]);
+				for (int x = 2; x < uri.length; x++) {
+					String[] nameValue = uri[x].split(":");
+					pr.addNameValuePostPair(nameValue[0], nameValue[1]);
+				}
+				this.addPostRequest(pr);
+			}
 		}
 	}
 

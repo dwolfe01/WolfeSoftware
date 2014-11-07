@@ -21,12 +21,24 @@ import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory
 import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
+@Ignore("there are no assertions here so these are just for sanity tests within IDE")
 public class SailFishIntegrationTest {
 
 	@Test
 	public void shouldMakeHttpRequests() throws Exception {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
 		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/httpusers.json"));
+		factory.setJSON(jsonHttpUser);
+		new ReadySteadyThread(10, factory).go();
+	}
+
+	@Test
+	public void shouldMakeHttpGetAndPostRequests() throws Exception {
+		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
+		String jsonHttpUser = FileUtils.readFileToString(ResourceUtils.getFile("classpath:com/wolfesoftware/sailfish/json/httpuser/post-httpuser.json"));
+		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
+		FileOutputStream fos = new FileOutputStream(new File("/Users/dwolfe/development/git/WolfeSoftware/sailfish/target/output.html"));
+		ResponseHandlers.OUTPUTSTREAM.setOutputStream(fos);
 		factory.setJSON(jsonHttpUser);
 		new ReadySteadyThread(10, factory).go();
 	}

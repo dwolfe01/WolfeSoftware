@@ -2,8 +2,8 @@
 	"id": "Simple User",
 	"requests": 
 	[
-		"http://www.twitter.com",
-		"http://www.facebook.com",
-		"http://www.vice.com"
+		["http://www.twitter.com"],
+		["http://www.facebook.com"],
+		["http://www.vice.com"]
 	]
 }]

@@ -1,0 +1,12 @@
+[{
+	"id": "CookieCrud User",
+	"requests": 
+	[
+		["http://localhost:9090/showcookies"],
+		["http://localhost:9090/addcookie/sailfish/perfomance/very_good"],
+		["http://localhost:9090/addcookie/sailfish1/perfomance/bad"],
+		["http://localhost:9090/addcookie/sailfish2/perfomance/great"],
+		["http://localhost:9090/addcookie/sailfish3/perfomance/indifferent"],
+		["http://localhost:9090/addcookie/sailfish4/perfomance/spicey"]
+	]
+}]
