@@ -24,7 +24,7 @@ public class ReadySteadyThread {
 	 */
 	public void go() {
 		startTime = System.currentTimeMillis();
-		execute();
+		this.execute();
 	}
 
 	private void execute() {
