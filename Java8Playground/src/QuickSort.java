@@ -39,7 +39,7 @@ public class QuickSort {
 			// of size
 			// 1 is in sorted order
 			return numbers;
-		// choose a pivot this is a non intelligent way of choosing a pivot.
+		// choose a pivot: this is a non intelligent way of choosing a pivot.
 		Integer myPivot = numbers.remove(0);
 		List<Integer> sortedList = new ArrayList<Integer>();
 		sortedList.addAll(quickSort(pivot(numbers, i -> i < myPivot)));

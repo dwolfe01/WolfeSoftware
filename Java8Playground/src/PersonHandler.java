@@ -54,7 +54,7 @@ public class PersonHandler {
 	}
 }
 
-class Person {
+public class Person {
 
 	public enum Sex {
 		MALE, FEMALE
