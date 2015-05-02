@@ -2,6 +2,7 @@ package com.wolfesoftware.sailfish.requests;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class SimpleRequest {
 
@@ -9,6 +10,7 @@ public class SimpleRequest {
 
 	public SimpleRequest(String uri) throws MalformedURLException {
 		if (uri != null && !uri.equals("")) {
+			URLEncoder.encode(uri);
 			new URL(uri);
 			this.uri = uri;
 		}
