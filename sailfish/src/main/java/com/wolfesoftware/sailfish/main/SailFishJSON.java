@@ -29,7 +29,7 @@ public class SailFishJSON {
 		//ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
 		factory.setDryRun(false);
 		factory.setJSON(FileUtils.readFileToString(jsonFile));
-		new ReadySteadyThread(10, factory).go();
+		new ReadySteadyThread(threadCount, factory).go();
 	}
 
 }
