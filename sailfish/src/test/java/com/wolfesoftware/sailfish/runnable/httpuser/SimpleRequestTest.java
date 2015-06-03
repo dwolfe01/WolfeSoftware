@@ -2,10 +2,12 @@ package com.wolfesoftware.sailfish.runnable.httpuser;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.wolfesoftware.sailfish.requests.SimpleRequest;
 
+@Ignore
 public class SimpleRequestTest {
 	
 	@Test

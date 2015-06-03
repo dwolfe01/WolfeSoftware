@@ -10,6 +10,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactoryFromJSONFile;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
+import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory.ResponseHandlers;
 
 public class SailFishJSON {
 
@@ -24,7 +26,8 @@ public class SailFishJSON {
 
 	private void go(File jsonFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		factory.setDryRun(true);
+		//ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
+		factory.setDryRun(false);
 		factory.setJSON(FileUtils.readFileToString(jsonFile));
 		new ReadySteadyThread(10, factory).go();
 	}
