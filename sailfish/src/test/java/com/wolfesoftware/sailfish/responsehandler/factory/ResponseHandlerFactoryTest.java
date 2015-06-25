@@ -54,6 +54,21 @@ public class ResponseHandlerFactoryTest {
 		OutputStreamResponseHandler responseHandler = (OutputStreamResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertEquals(responseHandler.getOs(), os);
 	}
+	
+	@Test
+	public void shouldCreateResponseHandlersOfTypePrintHeadersResponseHandlerIfOutputStreamISSet() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.PRINTHEADERS);
+		ResponseHandlerFactory.ResponseHandlers.PRINTHEADERS.setOutputStream(os);
+		// set output stream here
+		PrintHeadersResponseHandler responseHandler = (PrintHeadersResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
+		assertEquals(responseHandler.getOs(), os);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionIfNoOutputStreamSetonPrintHeadersResponseHandler() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.PRINTHEADERS);
+		ResponseHandlerFactory.getInstanceOfResponseHandler();
+	}
 
 	@Test(expected = NoSuchMethodException.class)
 	public void shouldThrowExceptionIfSetOutputStreamIsCalledOnQuickCloseResponseHandler() throws Exception {
