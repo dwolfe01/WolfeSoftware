@@ -34,3 +34,7 @@ Given(~'I see page title (.*)'){title ->
 	assertEquals(title,element.text)
 	//new File('target/test.htm').write(driver.getPageSource())
 }
+
+Then(~'I close the browser'){ ->
+	driver.close()
+}
