@@ -18,21 +18,18 @@ public class ReadySteadyThread {
 		this.workerFactory = threadFactory;
 	}
 
-	/*
-	 * This method is the actual bit that starts the threads If the
-	 * workerfactory has more work to do then it should call itself again
-	 */
 	public void go() {
 		startTime = System.currentTimeMillis();
 		this.execute();
 	}
 
+	/* this keeps adding runnable jobs from a workerfactory until the workerfactory indicates there is no more work to do*/
 	private void execute() {
 		executor = new ThreadPoolExecutor(numberOfThreads, numberOfThreads, 0L,
 				TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 		while (!executor.isTerminated()) {
 			if (weHaveAnAvailableThread(executor)) {
-				if (!workerFactory.isThereAnyMoreWorkToDo()) {
+				if (!workerFactory.isThereAnyMoreWorkToDo()) {//race condition here 
 					executor.shutdown();
 				} else {
 					addJobToExecutor();

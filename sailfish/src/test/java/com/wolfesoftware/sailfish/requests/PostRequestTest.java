@@ -19,9 +19,9 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.wolfesoftware.sailfish.responsehandler.factory.QuickCloseResponseHandler;
-import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory;
-import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory.ResponseHandlers;
+import com.wolfesoftware.sailfish.responsehandler.QuickCloseResponseHandler;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class PostRequestTest {
 

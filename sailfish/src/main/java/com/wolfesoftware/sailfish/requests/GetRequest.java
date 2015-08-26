@@ -9,7 +9,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 
-import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
 
 public class GetRequest extends SimpleRequest implements Request {
 

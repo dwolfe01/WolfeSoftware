@@ -15,7 +15,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
 
 public class PostRequest extends SimpleRequest implements Request {
 

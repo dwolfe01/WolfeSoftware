@@ -13,6 +13,12 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.wolfesoftware.sailfish.responsehandler.OutputStreamResponseHandler;
+import com.wolfesoftware.sailfish.responsehandler.PrintHeadersResponseHandler;
+import com.wolfesoftware.sailfish.responsehandler.QuickCloseResponseHandler;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.SystemOutResponseHandler;
+
 public class ResponseHandlerFactoryTest {
 
 	@Mock

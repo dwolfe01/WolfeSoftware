@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactoryFromJSONFile;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
-import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory;
-import com.wolfesoftware.sailfish.responsehandler.factory.ResponseHandlerFactory.ResponseHandlers;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class SailFishJSON {
 

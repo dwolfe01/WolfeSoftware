@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import com.wolfesoftware.sailfish.responsehandler.PrintHeadersResponseHandler;
+
 public class PrintHeadersResponseHandlerTest {
 
 	@Mock

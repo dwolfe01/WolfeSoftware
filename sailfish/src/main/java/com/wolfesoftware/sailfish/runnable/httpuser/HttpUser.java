@@ -20,26 +20,11 @@ import com.wolfesoftware.sailfish.requests.Request;
 public class HttpUser implements Runnable {
 
 	protected String id;
+
 	protected String clientIP = "";
-	private HttpClient httpClient;
+	protected HttpClient httpClient;
 	private List<Request> requests = new ArrayList<Request>();
 	private long waitTime = 0;
-
-	public String getClientIP() {
-		return clientIP;
-	}
-
-	public void setClientIP(String clientIP) {
-		this.clientIP = clientIP;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public HttpUser() {
 		httpClient = HttpClients.createDefault();
@@ -47,6 +32,14 @@ public class HttpUser implements Runnable {
 
 	public HttpUser(HttpClient httpClient) {
 		this.httpClient = httpClient;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public void run() {
@@ -112,8 +105,12 @@ public class HttpUser implements Runnable {
 		}
 	}
 
-	private void doOutput(long startTime, Request request, StatusLine statusLine) {
-		System.out.println(statusLine + " " + request + " took " + (System.currentTimeMillis() - startTime));
+	protected void doOutput(long startTime, Request request, StatusLine statusLine) {
+		System.out.println(statusLine + " " + request + " took " + getTimeTaken(startTime));
+	}
+
+	protected long getTimeTaken(long startTime) {
+		return System.currentTimeMillis() - startTime;
 	}
 
 	public HttpUser addPostRequest(PostRequest request) throws MalformedURLException {

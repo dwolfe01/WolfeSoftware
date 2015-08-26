@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.wolfesoftware.sailfish.responsehandler.QuickCloseResponseHandler;
+
 public class QuickCloseResponseHandlerTest {
 
 	@Mock
