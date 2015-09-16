@@ -5,20 +5,42 @@ import java.util.Map;
 
 public class UptimeHistory {
 	
-	Map<String,Long> history = new HashMap<String,Long>();
+	Map<String,Current> history = new HashMap<String,Current>();
 	
-	public void update(String responseCode, Long milliseconds) {
-		Long count = history.get(responseCode);
-		if (count==null){
-			history.put(responseCode, new Long(1));
+	public synchronized void update(String responseCode, Long milliseconds) {
+		Current current = history.get(responseCode);
+		if (current==null){
+			history.put(responseCode, new Current(1,0));
 		} else {
-			history.put(responseCode, new Long(count + 1));
+			current.updateCount();
+			current.updateMilliseconds(milliseconds);
 		}
-		String output = "";
-		for (Map.Entry<String,Long> entry : history.entrySet()) {
-			output += entry.getKey() + ", " + entry.getValue();
+		System.out.println("***Uptime***");
+		for (Map.Entry<String,Current> entry : history.entrySet()) {
+			System.out.println("Response:" + entry.getKey());
+			entry.getValue().output();
 		}
-		System.out.println(output);
+		System.out.println("******");
 	}
 
+}
+
+class Current{
+	Long count;
+	Long milliseconds;
+	
+	Current(long count, long millis){
+		this.count = count;
+		milliseconds = millis;
+	}
+	
+	void updateCount(){
+		count ++;
+	}
+	void updateMilliseconds(Long millis){
+		milliseconds+=millis;
+	}
+	void output(){
+		System.out.println("Count:" + count + " Average Milliseconds:" + milliseconds/count);
+	}
 }

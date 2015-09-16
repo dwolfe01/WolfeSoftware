@@ -19,7 +19,7 @@ public class UptimeHttpUserFactory{
 				CloseableHttpClient httpClient = 
 				  HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 		UptimeHttpUser uptimeHttpUser = new UptimeHttpUser(httpClient,uptimeHistory);
-		uptimeHttpUser.setWaitTimeInMilliseconds(200);
+		uptimeHttpUser.setWaitTimeInMilliseconds(1500);
 		return uptimeHttpUser;
 	}
 

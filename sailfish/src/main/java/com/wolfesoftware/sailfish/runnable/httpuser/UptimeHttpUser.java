@@ -20,6 +20,15 @@ public class UptimeHttpUser extends HttpUser{
 		this.uptimeHistory = uptimeHistory;
 	}
 	
+	public void run() {
+		for (Request request : requests) {
+			long startTime = System.currentTimeMillis();
+			makeRequest(request);
+			System.out.println(request.getUri() + " completed " + (System.currentTimeMillis() - startTime));
+			pause();
+		}
+	}
+	
 	protected void makeRequest(Request request) {
 		long startTime = System.currentTimeMillis();
 			try{

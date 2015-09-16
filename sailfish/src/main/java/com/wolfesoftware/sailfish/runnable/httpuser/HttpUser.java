@@ -23,7 +23,7 @@ public class HttpUser implements Runnable {
 
 	protected String clientIP = "";
 	protected HttpClient httpClient;
-	private List<Request> requests = new ArrayList<Request>();
+	protected List<Request> requests = new ArrayList<Request>();
 	private long waitTime = 0;
 
 	public HttpUser() {
@@ -95,7 +95,7 @@ public class HttpUser implements Runnable {
 		return requests.get(index);
 	}
 
-	private void pause() {
+	protected void pause() {
 		if (waitTime > 0) {
 			try {
 				Thread.sleep(waitTime);

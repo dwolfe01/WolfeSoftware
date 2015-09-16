@@ -9,5 +9,5 @@ import org.apache.http.client.HttpClient;
 public interface Request {
 
 	public StatusLine makeRequest(HttpClient httpClient) throws ClientProtocolException, IOException;
-
+	public String getUri();
 }
