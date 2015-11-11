@@ -21,7 +21,7 @@ import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
-@Ignore("there are no assertions here so these are just for sanity tests within IDE")
+//@Ignore("there are no assertions here so these are just for sanity tests within IDE")
 public class SailFishIntegrationTest {
 
 	@Test

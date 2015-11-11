@@ -10,7 +10,7 @@ import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.requests.GetRequest;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
-/*
+/* SINGLETON (not forced) and not threadsafe
  * This class creates a worker and also returns it. This will
  * potentially reads from an tomcat access log file to generate different
  * types of sessions on each call to getWorker
@@ -47,7 +47,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 		return user;
 	}
 
-	private synchronized String getNextRequest() {
+	private String getNextRequest() {
 		if (this.isThereAnyMoreWorkToDo()) {
 			if (positionInRequests + 1 >= getSizeOfRequests()) {
 				this.setIsThereAnyMoreWorkToDo(false);

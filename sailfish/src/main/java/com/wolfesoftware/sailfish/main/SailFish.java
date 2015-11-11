@@ -6,10 +6,12 @@ import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactoryFromLogFile;
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class SailFish {
 
-	public static void main(String[] args) throws BadLogFileException,
+	public static void main(String[] args) throws 
 			BadLogFileException {
 		String fileName = args[0];
 		int threadCount = Integer.parseInt(args[1]);
