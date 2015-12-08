@@ -56,6 +56,19 @@ public class PostRequestTest {
 		UrlEncodedFormEntity entity = (UrlEncodedFormEntity) httpPost.getEntity();
 		assertEquals("username=user&password=password", EntityUtils.toString(entity, "UTF-8"));
 	}
+	
+	@Test
+	public void deletemeshouldAddNameValuePairsToBeSubmitted() throws Exception {
+		ResponseHandlerFactory.setHandler(ResponseHandlers.SYSTEMOUT);
+		PostRequest postRequest = new PostRequest("http://10.6.2.197:9197/cache-purger");
+		postRequest.addNameValuePostPair("article", "Article");
+		postRequest.addNameValuePostPair("text", "test");
+		HttpPost httpPost = postRequest.build();
+		UrlEncodedFormEntity entity = (UrlEncodedFormEntity) httpPost.getEntity();
+		System.out.println(EntityUtils.toString(entity));
+	}
+	
+	
 
 	@Test(expected = MalformedURLException.class)
 	public void shouldThrowAnExceptionIfTheRequestIsNotAURL() throws Exception {
