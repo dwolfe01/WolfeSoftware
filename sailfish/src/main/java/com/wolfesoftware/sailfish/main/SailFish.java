@@ -6,8 +6,6 @@ import com.wolfesoftware.sailfish.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.concurrency.worker.factory.HttpUserWorkerFactoryFromLogFile;
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
-import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
-import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class SailFish {
 

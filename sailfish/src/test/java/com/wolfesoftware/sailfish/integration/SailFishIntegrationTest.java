@@ -55,6 +55,7 @@ public class SailFishIntegrationTest {
 	}
 
 	@Test
+	@Ignore
 	public void shouldCreateJSONFileOfRequestsFromAURLAndWriteToFile() throws Exception {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
 		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
