@@ -3,6 +3,6 @@
 	"requests": 
 	[
 		["http://199.171.202.249:9092/j_spring_security_check","POST", "j_username:dwolfe@wiley.com", "j_password:password"],
-		["http://h199.171.202.249:9092"]
+		["http://199.171.202.249:9092"]
 	]
 }]
