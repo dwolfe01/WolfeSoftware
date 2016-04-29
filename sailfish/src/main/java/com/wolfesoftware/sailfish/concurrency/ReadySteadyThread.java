@@ -39,13 +39,22 @@ public class ReadySteadyThread {
 			}
 		}
 		executor.shutdown();
+		while(executor.getActiveCount()!=0){
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		System.out.println("ReadySteadyThreadCompleted"
 				+ (System.currentTimeMillis() - startTime));
 	}
 
 	private void addJobToExecutor() {
 		try {
-			executor.execute(this.workerFactory.getWorker());
+			Runnable worker = this.workerFactory.getWorker();
+			executor.execute(worker);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
