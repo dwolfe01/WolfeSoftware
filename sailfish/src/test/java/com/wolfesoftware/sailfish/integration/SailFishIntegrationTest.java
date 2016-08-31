@@ -1,5 +1,7 @@
 package com.wolfesoftware.sailfish.integration;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -35,14 +37,15 @@ public class SailFishIntegrationTest {
 		new ReadySteadyThread(10, factory).go();
 	}
 
+	@Ignore
 	@Test
 	public void shouldNotLeaveFileHandlesOpen() throws Exception {
 		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
 		String jsonHttpUser = readFileToString("com/wolfesoftware/sailfish/json/httpuser/httpusers.json");
 		factory.setJSON(jsonHttpUser);
-		System.out.println("file descriptors: " + getNumberOfOpenFileDescriptors());
+		long numberOfOpenFileDescriptors = getNumberOfOpenFileDescriptors();
 		new ReadySteadyThread(10, factory).go();
-		System.out.println("file descriptors: " + getNumberOfOpenFileDescriptors());
+		assertEquals(numberOfOpenFileDescriptors,getNumberOfOpenFileDescriptors());
 	}
 
 	private long getNumberOfOpenFileDescriptors() {

@@ -20,7 +20,9 @@ public class GetRequest extends SimpleRequest implements Request {
 	@Override
 	public StatusLine makeRequest(HttpClient httpClient) throws ClientProtocolException, IOException {
 		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
-		return httpClient.execute(new HttpGet(this.getUri()), responseHandler);
+		HttpGet request = new HttpGet(this.getUri());
+		request.addHeader("X-Requested-With", "XMLHttpRequest");
+		return httpClient.execute(request, responseHandler);
 	}
 
 }
