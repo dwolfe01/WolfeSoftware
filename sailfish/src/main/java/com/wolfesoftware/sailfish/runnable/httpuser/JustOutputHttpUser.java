@@ -3,7 +3,7 @@ package com.wolfesoftware.sailfish.runnable.httpuser;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.wolfesoftware.sailfish.requests.Request;
+import com.wolfesoftware.sailfish.requests.AbstractRequest;
 
 public class JustOutputHttpUser extends HttpUser {
 
@@ -20,7 +20,7 @@ public class JustOutputHttpUser extends HttpUser {
 	}
 
 	@Override
-	protected void makeRequest(Request request) {
+	protected void makeRequest(AbstractRequest request) {
 		try {
 			out.write(request.toString().getBytes());
 		} catch (IOException e) {

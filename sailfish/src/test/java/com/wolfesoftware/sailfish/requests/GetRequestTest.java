@@ -42,9 +42,4 @@ public class GetRequestTest {
 		verify(httpClient, times(1)).execute(isA(HttpGet.class), isA(responseHandler));
 	}
 
-	@Test(expected = MalformedURLException.class)
-	public void shouldThrowAnExceptionIfTheRequestIsNotAURL() throws Exception {
-		new GetRequest("bad url");
-	}
-
 }

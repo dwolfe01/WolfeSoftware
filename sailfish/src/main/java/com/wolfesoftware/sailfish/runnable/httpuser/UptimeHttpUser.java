@@ -3,7 +3,7 @@ package com.wolfesoftware.sailfish.runnable.httpuser;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 
-import com.wolfesoftware.sailfish.requests.Request;
+import com.wolfesoftware.sailfish.requests.AbstractRequest;
 import com.wolfesoftware.sailfish.uptime.UptimeHistory;
 
 public class UptimeHttpUser extends HttpUser{
@@ -21,7 +21,7 @@ public class UptimeHttpUser extends HttpUser{
 	}
 	
 	public void run() {
-		for (Request request : requests) {
+		for (AbstractRequest request : requests) {
 			long startTime = System.currentTimeMillis();
 			makeRequest(request);
 			System.out.println(request.getUri() + " completed " + (System.currentTimeMillis() - startTime));
@@ -29,7 +29,7 @@ public class UptimeHttpUser extends HttpUser{
 		}
 	}
 	
-	protected void makeRequest(Request request) {
+	protected void makeRequest(AbstractRequest request) {
 		long startTime = System.currentTimeMillis();
 			try{
 			StatusLine statusLine = request.makeRequest(httpClient);

@@ -5,6 +5,7 @@ import static org.mockito.Mockito.verify;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URISyntaxException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.junit.Before;
@@ -28,7 +29,7 @@ public class JustOutputHttpUserTest {
 
 	@Test
 	// due to difficulties around matchers and generic classes
-	public void shouldMakeTwoRequestsAndOutputToStream() throws ClientProtocolException, IOException {
+	public void shouldMakeTwoRequestsAndOutputToStream() throws URISyntaxException, IOException {
 		httpUser = new JustOutputHttpUser(out);
 		String req = "http://www.myurl.com";
 		GetRequest request1 = new GetRequest(req);

@@ -3,6 +3,7 @@ package com.wolfesoftware.sailfish.requests;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,11 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
 
-public class PostRequest extends SimpleRequest implements Request {
+public class PostRequest extends AbstractRequest {
 
 	List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-	public PostRequest(String uri) throws MalformedURLException {
+	public PostRequest(String uri) throws URISyntaxException  {
 		super(uri);
 	}
 

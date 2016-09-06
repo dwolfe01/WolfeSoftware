@@ -1,7 +1,7 @@
 package com.wolfesoftware.sailfish.runnable.httpuser;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClients;
 
+import com.wolfesoftware.sailfish.requests.AbstractRequest;
 import com.wolfesoftware.sailfish.requests.GetRequest;
 import com.wolfesoftware.sailfish.requests.PostRequest;
-import com.wolfesoftware.sailfish.requests.Request;
 
 /*
  * A fluent API for creating a user http session, this creates a session and runs through a list of requests in order observing any wait times
@@ -23,7 +23,7 @@ public class HttpUser implements Runnable {
 
 	protected String clientIP = "";
 	protected HttpClient httpClient;
-	protected List<Request> requests = new ArrayList<Request>();
+	protected List<AbstractRequest> requests = new ArrayList<AbstractRequest>();
 	private long waitTime = 0;
 
 	public HttpUser() {
@@ -44,7 +44,7 @@ public class HttpUser implements Runnable {
 
 	public void run() {
 		long startTime = System.currentTimeMillis();
-		for (Request request : requests) {
+		for (AbstractRequest request : requests) {
 			makeRequest(request);
 			pause();
 		}
@@ -52,7 +52,7 @@ public class HttpUser implements Runnable {
 		System.out.println(this.id + " completed " + executionTime);
 	}
 
-	protected void makeRequest(Request request) {
+	protected void makeRequest(AbstractRequest request) {
 		long startTime = System.currentTimeMillis();
 		try {
 			StatusLine statusLine = request.makeRequest(httpClient);
@@ -62,7 +62,7 @@ public class HttpUser implements Runnable {
 		}
 	}
 
-	public HttpUser addGetRequest(GetRequest request) throws MalformedURLException {
+	public HttpUser addGetRequest(GetRequest request) {
 		requests.add(request);
 		return this;
 	}
@@ -72,11 +72,11 @@ public class HttpUser implements Runnable {
 		return this;
 	}
 
-	public List<Request> getRequests() {
+	public List<AbstractRequest> getRequests() {
 		return requests;
 	}
 
-	public void setRequests(List<String[]> uris) throws MalformedURLException {
+	public void setRequests(List<String[]> uris) throws URISyntaxException {
 		for (String[] uri : uris) {
 			if (uri.length == 1) {
 				this.addGetRequest(new GetRequest(uri[0]));
@@ -91,7 +91,7 @@ public class HttpUser implements Runnable {
 		}
 	}
 
-	public Request getRequest(int index) {
+	public AbstractRequest getRequest(int index) {
 		return requests.get(index);
 	}
 
@@ -105,7 +105,7 @@ public class HttpUser implements Runnable {
 		}
 	}
 
-	protected void doOutput(long startTime, Request request, StatusLine statusLine) {
+	protected void doOutput(long startTime, AbstractRequest request, StatusLine statusLine) {
 		System.out.println(statusLine + " " + request + " took " + getTimeTaken(startTime));
 	}
 
@@ -113,7 +113,7 @@ public class HttpUser implements Runnable {
 		return System.currentTimeMillis() - startTime;
 	}
 
-	public HttpUser addPostRequest(PostRequest request) throws MalformedURLException {
+	public HttpUser addPostRequest(PostRequest request) {
 		requests.add(request);
 		return this;
 	}

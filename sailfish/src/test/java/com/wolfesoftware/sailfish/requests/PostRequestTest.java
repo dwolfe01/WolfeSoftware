@@ -68,11 +68,4 @@ public class PostRequestTest {
 		System.out.println(EntityUtils.toString(entity));
 	}
 	
-	
-
-	@Test(expected = MalformedURLException.class)
-	public void shouldThrowAnExceptionIfTheRequestIsNotAURL() throws Exception {
-		new GetRequest("bad url");
-	}
-
 }

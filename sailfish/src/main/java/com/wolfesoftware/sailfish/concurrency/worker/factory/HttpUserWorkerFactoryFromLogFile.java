@@ -1,6 +1,7 @@
 package com.wolfesoftware.sailfish.concurrency.worker.factory;
 
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +41,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 				url = getNextRequest();
 				user.addGetRequest(new GetRequest(url));
 			}
-		} catch (MalformedURLException e) {
+		} catch (URISyntaxException e) {
 			System.out.println("Problem with: " + url);
 			e.printStackTrace();
 		}
