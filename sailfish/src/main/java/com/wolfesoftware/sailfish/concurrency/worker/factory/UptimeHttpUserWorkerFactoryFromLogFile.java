@@ -9,24 +9,15 @@ import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.requests.GetRequest;
 import com.wolfesoftware.sailfish.runnable.httpuser.UptimeHttpUser;
-import com.wolfesoftware.sailfish.runnable.httpuser.UptimeHttpUserFactory;
+import com.wolfesoftware.sailfish.uptime.UptimeHistory;
 
 
 public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
 	volatile int positionInRequests;
 	List<String> requests = new ArrayList<String>();
-	private UptimeHttpUserFactory httpUserFactory;
 	private int size;
-	
-	public UptimeHttpUserWorkerFactoryFromLogFile() {
-		this.httpUserFactory = new UptimeHttpUserFactory();
-	}
-	
-	public UptimeHttpUserWorkerFactoryFromLogFile(UptimeHttpUserFactory httpUserFactory) {
-		this.httpUserFactory = httpUserFactory;
-	}
-	
+	private UptimeHistory uptimeHistory = new UptimeHistory();
 
 	public void setUrls(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
@@ -35,7 +26,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
 	@Override
 	public UptimeHttpUser getWorker() {
-		final UptimeHttpUser user = httpUserFactory.getHttpUser();
+		final UptimeHttpUser user = new UptimeHttpUser(uptimeHistory);
 		String url = "";
 		try {
 			for (int x = 0; x < size; x++) {

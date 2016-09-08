@@ -30,6 +30,7 @@ public class HttpUser implements Runnable {
 		httpClient = HttpClients.createDefault();
 	}
 
+	//purely for test purposes
 	public HttpUser(HttpClient httpClient) {
 		this.httpClient = httpClient;
 	}
