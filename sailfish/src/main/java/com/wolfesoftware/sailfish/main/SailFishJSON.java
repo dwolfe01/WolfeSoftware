@@ -26,12 +26,10 @@ public class SailFishJSON {
 	}
 
 	private void go(File jsonFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException, NoSuchMethodException {
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
+		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(jsonFile));
 		//ResponseHandlers.PRINTHEADERS.setOutputStream(System.out);
 		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(new FileOutputStream(new File("/Users/dwolfe/development/WolfeSoftware/WolfeSoftware/sailfish/output.html")));
 		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		factory.setDryRun(false);
-		factory.setJSON(FileUtils.readFileToString(jsonFile));
 		new ReadySteadyThread(threadCount, factory).go();
 	}
 

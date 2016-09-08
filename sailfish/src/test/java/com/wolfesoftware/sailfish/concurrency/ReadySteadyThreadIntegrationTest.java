@@ -36,7 +36,6 @@ public class ReadySteadyThreadIntegrationTest {
 					
 				}
 				);
-		when(workerFactory.isThereAnyMoreWorkToDo()).thenReturn(false);
 	}
 
 	@Test

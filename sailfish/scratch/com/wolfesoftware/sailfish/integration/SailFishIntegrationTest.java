@@ -4,15 +4,18 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -28,21 +31,23 @@ import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
 //@Ignore("there are no assertions here so these are just for sanity tests within IDE")
 public class SailFishIntegrationTest {
+	
+	HttpUserWorkerFactoryFromJSONFile factory;
 
 	@Test
 	public void shouldMakeHttpRequests() throws Exception {
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		String jsonHttpUser = readFileToString("com/wolfesoftware/sailfish/json/httpuser/httpusers.json");
-		factory.setJSON(jsonHttpUser);
+		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/httpusers.json").toURI();
+		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
+		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
 		new ReadySteadyThread(10, factory).go();
 	}
 
 	@Ignore
 	@Test
 	public void shouldNotLeaveFileHandlesOpen() throws Exception {
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		String jsonHttpUser = readFileToString("com/wolfesoftware/sailfish/json/httpuser/httpusers.json");
-		factory.setJSON(jsonHttpUser);
+		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/httpusers.json").toURI();
+		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
+		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
 		long numberOfOpenFileDescriptors = getNumberOfOpenFileDescriptors();
 		new ReadySteadyThread(10, factory).go();
 		assertEquals(numberOfOpenFileDescriptors,getNumberOfOpenFileDescriptors());
@@ -59,52 +64,22 @@ public class SailFishIntegrationTest {
 		return openFileDescriptorCount;
 	}
 
-	private String readFileToString(String url) throws IOException {
-		String stringFromFile = "";
-		InputStream resourceAsStream = this.getClass().getClassLoader()
-				.getResourceAsStream(url);
-
-		InputStreamReader is = new InputStreamReader(resourceAsStream);
-		BufferedReader br = new BufferedReader(is);
-		String line;
-		while (null != (line = br.readLine())) {
-			stringFromFile += line;
-		}
-		return stringFromFile;
-	}
+	
 
 	@Test
 	public void shouldMakeHttpGetAndPostRequests() throws Exception {
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		String jsonHttpUser = readFileToString("com/wolfesoftware/sailfish/json/httpuser/post-httpuser.json");
+		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/httpusers.json").toURI();
+		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
+		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
 		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		factory.setJSON(jsonHttpUser);
 		new ReadySteadyThread(10, factory).go();
 	}
 
-	@Test
-	@Ignore
-	public void shouldCreateJSONFileOfRequestsFromAURLAndWriteToFile()
-			throws Exception {
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		String jsonHttpUser = readFileToString("com/wolfesoftware/sailfish/json/httpuser/scratch.json");
-		factory.setJSON(jsonHttpUser);
-		new ReadySteadyThread(10, factory).go();
-	}
 
 	@Test
 	@Ignore
 	public void createJSONFromListOfUrls() throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile();
-		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM
-				.setOutputStream(baos);
-		String jsonHttpUser = readFileToString("classpath:com/wolfesoftware/sailfish/json/httpuser/scratch.json");
-		factory.setJSON(jsonHttpUser);
-		new ReadySteadyThread(10, factory).go();
-		//
 		List<String> extractUrls = extractUrls(baos);
 		ObjectMapper mapper = new ObjectMapper();
 		for (String url : extractUrls) {

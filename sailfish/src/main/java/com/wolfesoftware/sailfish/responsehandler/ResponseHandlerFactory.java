@@ -64,7 +64,7 @@ public class ResponseHandlerFactory {
 			@Override
 			public ResponseHandler<StatusLine> getNewHandler() {
 				if (os == null) {// TODO:throw exception in this case
-					throw new RuntimeErrorException(null, "You must provide an ouput stream for this handler");
+					throw new RuntimeErrorException(null, "You must provide an output stream for this handler");
 				} else {
 					return new PrintHeadersResponseHandler(os);
 				}
