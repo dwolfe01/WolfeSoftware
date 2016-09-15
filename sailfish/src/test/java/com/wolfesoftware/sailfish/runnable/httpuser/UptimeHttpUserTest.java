@@ -17,7 +17,7 @@ import com.wolfesoftware.sailfish.uptime.UptimeHistory;
 
 public class UptimeHttpUserTest extends HttpUserTest{
 
-	UptimeHttpUser httpUser;
+	HttpUser httpUser;
 	@Mock
 	UptimeHistory uptimeHistory;
 	@Mock

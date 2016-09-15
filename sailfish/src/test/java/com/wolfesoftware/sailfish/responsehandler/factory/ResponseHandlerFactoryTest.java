@@ -14,9 +14,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.responsehandler.OutputStreamResponseHandler;
-import com.wolfesoftware.sailfish.responsehandler.PrintHeadersResponseHandler;
 import com.wolfesoftware.sailfish.responsehandler.QuickCloseResponseHandler;
 import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.responsehandler.SystemOutResponseHandler;
 
 public class ResponseHandlerFactoryTest {
@@ -31,55 +31,24 @@ public class ResponseHandlerFactoryTest {
 
 	@Test
 	public void shouldCreateResponseHandlersOfTypeQuickCloseResponseHandler() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.DEFAULT);
+		ResponseHandlerFactory.setHandler(ResponseHandlers.DEFAULT);
 		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof QuickCloseResponseHandler);
 	}
 
 	@Test
 	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandler() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.SYSTEMOUT);
+		ResponseHandlerFactory.setHandler(ResponseHandlers.SYSTEMOUT);
 		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof SystemOutResponseHandler);
 	}
 
 	@Test
-	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandlerIfOutputStreamNotSet() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(null);
-		// set output stream here
-		SystemOutResponseHandler responseHandler = (SystemOutResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
-		assertTrue(responseHandler instanceof SystemOutResponseHandler);
-	}
-
-	@Test
-	public void shouldCreateResponseHandlersOfTypeOutputStreamResponseHandlerIfOutputStreamISSet() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(os);
-		// set output stream here
-		OutputStreamResponseHandler responseHandler = (OutputStreamResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
-		assertEquals(responseHandler.getOs(), os);
-	}
-	
-	@Test
-	public void shouldCreateResponseHandlersOfTypePrintHeadersResponseHandlerIfOutputStreamISSet() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.PRINTHEADERS);
-		ResponseHandlerFactory.ResponseHandlers.PRINTHEADERS.setOutputStream(os);
-		// set output stream here
-		PrintHeadersResponseHandler responseHandler = (PrintHeadersResponseHandler) ResponseHandlerFactory.getInstanceOfResponseHandler();
-		assertEquals(responseHandler.getOs(), os);
-	}
-	
-	@Test(expected = RuntimeException.class)
-	public void shouldThrowExceptionIfNoOutputStreamSetonPrintHeadersResponseHandler() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.PRINTHEADERS);
-		ResponseHandlerFactory.getInstanceOfResponseHandler();
-	}
-
-	@Test(expected = NoSuchMethodException.class)
-	public void shouldThrowExceptionIfSetOutputStreamIsCalledOnQuickCloseResponseHandler() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlerFactory.ResponseHandlers.QUICKCLOSE);
-		ResponseHandlerFactory.ResponseHandlers.QUICKCLOSE.setOutputStream(os);
+	public void shouldCreateOutputStreamHandlerWithTheCorrectOutputSream() {
+		ResponseHandlerFactory.setOutputStream(os);
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler(ResponseHandlers.OUTPUTSTREAM);
+		assertTrue(responseHandler instanceof OutputStreamResponseHandler);
+		assertEquals(os, ((OutputStreamResponseHandler)responseHandler).getOs());
 	}
 
 }

@@ -16,21 +16,18 @@ import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.Respons
 
 public class SailFishJSON {
 
-	public static void main(String[] args) throws BadLogFileException, BadLogFileException, JsonParseException, JsonMappingException, IOException, NoSuchMethodException {
+	///example file name: Users/dwolfe/development/WolfeSoftware/WolfeSoftware/sailfish/src/test/resources/com/wolfesoftware/sailfish/json/httpuser/httpuser.json
+	
+	
+	public static void main(String[] args) throws BadLogFileException, BadLogFileException, JsonParseException,
+			JsonMappingException, IOException, NoSuchMethodException {
 		String fileName = args[0];
 		int threadCount = Integer.parseInt(args[1]);
-		System.out.println(("Running SailFish with file: " + fileName + " thread count: " + threadCount));
-		SailFishJSON sailfish = new SailFishJSON();
-		File jsonFile = new File(fileName);
-		sailfish.go(jsonFile, threadCount);
-	}
-
-	private void go(File jsonFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException, NoSuchMethodException {
-		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(jsonFile));
-		//ResponseHandlers.PRINTHEADERS.setOutputStream(System.out);
-		ResponseHandlerFactory.ResponseHandlers.OUTPUTSTREAM.setOutputStream(new FileOutputStream(new File("/Users/dwolfe/development/WolfeSoftware/WolfeSoftware/sailfish/output.html")));
-		ResponseHandlerFactory.setHandler(ResponseHandlers.OUTPUTSTREAM);
-		new ReadySteadyThread(threadCount, factory).go();
+		System.out.println(("Running SailFish with json file: " + fileName + " thread count: " + threadCount));
+		HttpUserWorkerFactoryFromJSONFile factory = new HttpUserWorkerFactoryFromJSONFile(
+				FileUtils.readFileToString(new File(fileName)));
+		ResponseHandlerFactory.setHandler(ResponseHandlers.SYSTEMOUT);
+		new ReadySteadyThread(1, factory).go();
 	}
 
 }

@@ -17,7 +17,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.requests.GetRequest;
-import com.wolfesoftware.sailfish.runnable.httpuser.UptimeHttpUser;
+import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
 /*
  * This class reads takes a list of URLS. Each URL is included for each session. The status codes are maintained and output after each request to give a sense of service availability AND uptime
@@ -28,7 +28,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 	@Mock
 	LogFileReader logFileReader;
 	@Mock
-	UptimeHttpUser uptimeHttpUser;
+	HttpUser uptimeHttpUser;
 
 	@Before
 	public void setup() throws IOException {
@@ -42,7 +42,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 		List<String> requests = createArrayListOfRequests(3);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
 		factory.setUrls(logFileReader);
-		UptimeHttpUser worker = factory.getWorker();
+		HttpUser worker = factory.getWorker();
 		assertEquals(3, worker.getRequests().size());
 	}
 

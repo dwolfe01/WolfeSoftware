@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import com.wolfesoftware.sailfish.requests.AbstractRequest;
@@ -22,7 +23,7 @@ public class HttpUser implements Runnable {
 	protected String id;
 
 	protected String clientIP = "";
-	protected HttpClient httpClient;
+	protected CloseableHttpClient httpClient;
 	protected List<AbstractRequest> requests = new ArrayList<AbstractRequest>();
 	private long waitTime = 0;
 
@@ -31,7 +32,7 @@ public class HttpUser implements Runnable {
 	}
 
 	//purely for test purposes
-	public HttpUser(HttpClient httpClient) {
+	public HttpUser(CloseableHttpClient httpClient) {
 		this.httpClient = httpClient;
 	}
 	
@@ -51,6 +52,7 @@ public class HttpUser implements Runnable {
 		}
 		long executionTime = System.currentTimeMillis() - startTime;
 		System.out.println(this.id + " completed " + executionTime);
+		close();
 	}
 
 	protected void makeRequest(AbstractRequest request) {
@@ -117,5 +119,13 @@ public class HttpUser implements Runnable {
 	public HttpUser addPostRequest(PostRequest request) {
 		requests.add(request);
 		return this;
+	}
+
+	protected void close() {
+		try {
+			this.httpClient.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

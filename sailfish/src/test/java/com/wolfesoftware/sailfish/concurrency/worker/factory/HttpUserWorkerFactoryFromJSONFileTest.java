@@ -12,6 +12,8 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.wolfesoftware.sailfish.requests.AbstractRequest;
+import com.wolfesoftware.sailfish.requests.PostRequest;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
 public class HttpUserWorkerFactoryFromJSONFileTest {
@@ -50,6 +52,25 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 		assertEquals("http://www.asparagus.com", httpUser.getRequest(1).toString());
 		assertEquals("http://www.vice.com", httpUser.getRequest(2).toString());
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+	
+	@Test
+	public void shouldCreateHttpUsersWithPostRequestFromJSONFile() throws FileNotFoundException, IOException, URISyntaxException {
+		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/post-httpuser.json").toURI();
+		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
+		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
+		HttpUser httpUser = (HttpUser) factory.getWorker();
+		PostRequest request1 = (PostRequest) httpUser.getRequest(0);
+		assertEquals("http://199.171.202.249:9092/j_spring_security_check", request1);
+		assertEquals("http://www.facebook.com", httpUser.getRequest(1).toString());
+	}
+	
+	@Test
+	public void shouldOutputUsers() throws FileNotFoundException, IOException, URISyntaxException {
+		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/post-httpuser.json").toURI();
+		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
+		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
+		System.out.println(factory.toString());
 	}
 
 

@@ -28,7 +28,7 @@ public class PrintHeadersResponseHandler implements ResponseHandler<StatusLine> 
 		return response.getStatusLine();
 	}
 
-	public Object getOs() {
+	public OutputStream getOs() {
 		return os;
 	}
 }

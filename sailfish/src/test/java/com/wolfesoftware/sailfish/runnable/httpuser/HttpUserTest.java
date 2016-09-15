@@ -13,6 +13,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -28,7 +29,7 @@ public class HttpUserTest {
 	Class<? extends ResponseHandler<StatusLine>> responseHandler = QuickCloseResponseHandler.class;
 
 	@Mock
-	HttpClient httpClient;
+	CloseableHttpClient httpClient;
 	@Mock
 	GetRequest getRequest;
 	@Mock

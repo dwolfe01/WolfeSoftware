@@ -20,10 +20,10 @@ public class UptimeHttpUser extends HttpUser{
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(10000).setConnectionRequestTimeout(10000)
 				.setSocketTimeout(10000).build();
 		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
-		setWaitTimeInMilliseconds(1500);
+		setWaitTimeInMilliseconds(1);
 	}
 
-	UptimeHttpUser(HttpClient httpClient, UptimeHistory uptimeHistory) {
+	UptimeHttpUser(CloseableHttpClient httpClient, UptimeHistory uptimeHistory) {
 		super(httpClient);
 		this.uptimeHistory = uptimeHistory;
 	}
@@ -35,15 +35,16 @@ public class UptimeHttpUser extends HttpUser{
 			System.out.println(request.getUri() + " completed " + (System.currentTimeMillis() - startTime));
 			pause();
 		}
+		close();
 	}
-	
+
 	protected void makeRequest(AbstractRequest request) {
 		long startTime = System.currentTimeMillis();
 			try{
-			StatusLine statusLine = request.makeRequest(httpClient);
-			uptimeHistory.update(statusLine.getStatusCode() + "", getTimeTaken(startTime));
+			request.makeRequest(httpClient);
+			uptimeHistory.update(request.getUri().toString() + "", getTimeTaken(startTime));
 			}catch(Exception e){
-				uptimeHistory.update(e.getClass().getSimpleName(), getTimeTaken(startTime));
+				uptimeHistory.update(request.getUri().toString() + " " + e.getClass().getSimpleName(), getTimeTaken(startTime));
 			}
 	}
 		
