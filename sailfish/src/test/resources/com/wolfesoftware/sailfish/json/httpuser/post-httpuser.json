@@ -2,7 +2,7 @@
 	"id": "Simple Post User",
 	"requests": 
 	[
-		["http://199.171.202.249:9092/j_spring_security_check","POST", "j_username:dwolfe@wiley.com", "j_password:password"],
-		["http://199.171.202.249:9092"]
+		["http://test.com/j_spring_security_check","POST", "j_username:dwolfe@wiley.com", "j_password:password"],
+		["http://test.com:9092"]
 	]
 }]
