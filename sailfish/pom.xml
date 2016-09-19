@@ -53,7 +53,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.wolfesoftware.sailfish.main.SailFish</mainClass>
+							<mainClass>com.wolfesoftware.sailfish.http.main.SailFish</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

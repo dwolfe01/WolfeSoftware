@@ -1,0 +1,7 @@
+[{
+	"id": "Simple Post User",
+	"requests": 
+	[
+		["http://localhost:8099/post","POST", "j_username:dwolfe@wiley.com", "j_password:password"]
+	]
+}]

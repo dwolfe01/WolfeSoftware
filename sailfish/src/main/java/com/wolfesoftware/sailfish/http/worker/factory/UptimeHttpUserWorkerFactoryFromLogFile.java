@@ -21,7 +21,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	private int size;
 	private UptimeHistory uptimeHistory = new UptimeHistory();
 
-	public void setUrls(LogFileReader logFileReader) throws BadLogFileException {
+	public UptimeHttpUserWorkerFactoryFromLogFile(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
 		size = requests.size();
 	}

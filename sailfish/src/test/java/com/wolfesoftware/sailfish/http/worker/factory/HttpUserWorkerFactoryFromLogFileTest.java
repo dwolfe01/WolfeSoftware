@@ -13,18 +13,18 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
+import com.wolfesoftware.sailfish.http.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromLogFile;
 
 public class HttpUserWorkerFactoryFromLogFileTest {
 
-	HttpUserWorkerFactoryFromLogFile factory = new HttpUserWorkerFactoryFromLogFile();
-
+	HttpUserWorkerFactoryFromLogFile factory;
+	
 	@Mock
 	LogFileReader logFileReader;
-	String logFileRequest = "http://localhost";
 
 	@Before
-	public void setup() throws IOException {
+	public void setup() throws IOException, BadLogFileException {
 		MockitoAnnotations.initMocks(this);
 	}
 
@@ -33,7 +33,7 @@ public class HttpUserWorkerFactoryFromLogFileTest {
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(4);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory.setUrls(logFileReader);
+		factory = new HttpUserWorkerFactoryFromLogFile(logFileReader);
 		factory.getWorker();
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
 	}
@@ -43,7 +43,7 @@ public class HttpUserWorkerFactoryFromLogFileTest {
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(5);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory.setUrls(logFileReader);
+		factory = new HttpUserWorkerFactoryFromLogFile(logFileReader);
 		factory.getWorker();
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
 	}
@@ -53,7 +53,7 @@ public class HttpUserWorkerFactoryFromLogFileTest {
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(7);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory.setUrls(logFileReader);
+		factory = new HttpUserWorkerFactoryFromLogFile(logFileReader);
 		factory.getWorker();
 		factory.getWorker();
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
@@ -64,7 +64,7 @@ public class HttpUserWorkerFactoryFromLogFileTest {
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(4);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory.setUrls(logFileReader);
+		factory = new HttpUserWorkerFactoryFromLogFile(logFileReader);
 		factory.getWorker();
 		factory.getWorker();
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());

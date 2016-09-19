@@ -1,6 +1,5 @@
 package com.wolfesoftware.sailfish.http.worker.factory;
 
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +22,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	List<String> requests = new ArrayList<String>();
 	private int size;
 
-	public void setUrls(LogFileReader logFileReader) throws BadLogFileException {
+	public HttpUserWorkerFactoryFromLogFile(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
 		size = requests.size();
 	}
@@ -34,7 +33,6 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
 	@Override
 	public HttpUser getWorker() {
-		System.out.println("Number of requests:" + positionInRequests);
 		final HttpUser user = new HttpUser();
 		String url = "";
 		try {

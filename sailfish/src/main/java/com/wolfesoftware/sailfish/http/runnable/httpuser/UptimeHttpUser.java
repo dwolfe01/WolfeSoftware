@@ -18,7 +18,7 @@ public class UptimeHttpUser extends HttpUser{
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(10000).setConnectionRequestTimeout(10000)
 				.setSocketTimeout(10000).build();
 		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
-		setWaitTimeInMilliseconds(1);
+		setWaitTimeInMilliseconds(30000);
 	}
 
 	UptimeHttpUser(CloseableHttpClient httpClient, UptimeHistory uptimeHistory) {
@@ -31,9 +31,9 @@ public class UptimeHttpUser extends HttpUser{
 			long startTime = System.currentTimeMillis();
 			makeRequest(request);
 			System.out.println(request.getUri() + " completed " + (System.currentTimeMillis() - startTime));
-			pause();
 		}
 		close();
+		pause();
 	}
 
 	protected void makeRequest(AbstractRequest request) {

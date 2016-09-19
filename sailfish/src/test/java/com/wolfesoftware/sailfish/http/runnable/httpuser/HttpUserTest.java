@@ -8,10 +8,7 @@ import static org.mockito.Mockito.verify;
 
 import java.io.IOException;
 
-import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.Before;
@@ -22,12 +19,10 @@ import org.mockito.MockitoAnnotations;
 import com.wolfesoftware.sailfish.http.requests.GetRequest;
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
 import com.wolfesoftware.sailfish.http.responsehandler.QuickCloseResponseHandler;
-import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 
 public class HttpUserTest {
 
 	HttpUser httpUser;
-	Class<? extends ResponseHandler<StatusLine>> responseHandler = QuickCloseResponseHandler.class;
 
 	@Mock
 	CloseableHttpClient httpClient;
@@ -92,7 +87,7 @@ public class HttpUserTest {
 		httpUser = new HttpUser(httpClient);
 		httpUser.run();
 		// then
-		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(responseHandler));
+		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(QuickCloseResponseHandler.class));
 	}
 
 }
