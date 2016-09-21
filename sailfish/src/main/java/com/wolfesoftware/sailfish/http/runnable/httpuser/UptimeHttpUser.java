@@ -15,8 +15,8 @@ public class UptimeHttpUser extends HttpUser{
 	public UptimeHttpUser(UptimeHistory uptimeHistory) {
 		super();
 		this.uptimeHistory = uptimeHistory;
-		RequestConfig config = RequestConfig.custom().setConnectTimeout(10000).setConnectionRequestTimeout(10000)
-				.setSocketTimeout(10000).build();
+		RequestConfig config = RequestConfig.custom().setConnectTimeout(100000).setConnectionRequestTimeout(100000)
+				.setSocketTimeout(100000).build();
 		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 		setWaitTimeInMilliseconds(30000);
 	}
