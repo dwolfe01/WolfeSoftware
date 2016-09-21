@@ -33,6 +33,7 @@ public class UptimeHttpUser extends HttpUser{
 			System.out.println(request.getUri() + " completed " + (System.currentTimeMillis() - startTime));
 		}
 		close();
+		System.out.println(uptimeHistory.prettyPrint());
 		pause();
 	}
 
