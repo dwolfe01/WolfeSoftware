@@ -55,6 +55,5 @@ public class UptimeHttpUserTest extends HttpUserTest{
 		// then
 		verify(uptimeHistory, times(1)).update(isA(String.class),isA(Long.class));
 	}
-
-
+	
 }

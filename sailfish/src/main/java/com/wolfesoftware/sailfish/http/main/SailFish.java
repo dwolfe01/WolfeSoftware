@@ -2,6 +2,7 @@ package com.wolfesoftware.sailfish.http.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import org.apache.commons.io.FileUtils;
 
@@ -35,8 +36,11 @@ public class SailFish {
 			factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile));
 		} 
 		if (logFile.getAbsolutePath().endsWith("uptime")){
+			System.out.println(FileUtils.readFileToString(logFile));
 			LogFileReader logFileReader = new LogFileReader(logFile);
+			PrintStream pos = new PrintStream(new File("uptime.log"));
 			factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader);
+			factory.setPrintStream(pos);
 		}
 		else { 
 			LogFileReader logFileReader = new LogFileReader(logFile);

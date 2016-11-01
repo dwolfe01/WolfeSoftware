@@ -1,5 +1,7 @@
 package com.wolfesoftware.sailfish.http.runnable.httpuser;
 
+import java.io.PrintStream;
+
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -10,7 +12,7 @@ import com.wolfesoftware.sailfish.http.uptime.UptimeHistory;
 public class UptimeHttpUser extends HttpUser{
 
 	private UptimeHistory uptimeHistory;
-	
+	PrintStream os = System.out;
 	
 	public UptimeHttpUser(UptimeHistory uptimeHistory) {
 		super();
@@ -20,7 +22,7 @@ public class UptimeHttpUser extends HttpUser{
 		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 		setWaitTimeInMilliseconds(30000);
 	}
-
+	
 	UptimeHttpUser(CloseableHttpClient httpClient, UptimeHistory uptimeHistory) {
 		super(httpClient);
 		this.uptimeHistory = uptimeHistory;
@@ -30,10 +32,9 @@ public class UptimeHttpUser extends HttpUser{
 		for (AbstractRequest request : requests) {
 			long startTime = System.currentTimeMillis();
 			makeRequest(request);
-			System.out.println(request.getUri() + " completed " + (System.currentTimeMillis() - startTime));
+			this.writeToPrintStream(request.getUri() + " " + (System.currentTimeMillis() - startTime));
 		}
 		close();
-		System.out.println(uptimeHistory.prettyPrint());
 		pause();
 	}
 
@@ -46,6 +47,17 @@ public class UptimeHttpUser extends HttpUser{
 				uptimeHistory.update(request.getUri().toString() + " " + e.getClass().getSimpleName(), getTimeTaken(startTime));
 			}
 	}
-		
+	
+	public void writeToPrintStream(String message){
+		this.getOs().println(message);
+		this.getOs().flush();
+	}
+	
+	public PrintStream getOs() {
+		return os;
+	}
 
+	public void setOs(PrintStream os) {
+		this.os = os;
+	}
 }

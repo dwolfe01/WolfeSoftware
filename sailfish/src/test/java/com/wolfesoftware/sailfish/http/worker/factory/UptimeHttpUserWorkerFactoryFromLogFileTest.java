@@ -1,11 +1,9 @@
 package com.wolfesoftware.sailfish.http.worker.factory;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +14,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
-import com.wolfesoftware.sailfish.http.requests.GetRequest;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
-import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactoryFromLogFile;
+import com.wolfesoftware.sailfish.http.runnable.httpuser.UptimeHttpUser;
 
 /*
  * This class reads takes a list of URLS. Each URL is included for each session. The status codes are maintained and output after each request to give a sense of service availability AND uptime
@@ -29,12 +26,11 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 	@Mock
 	LogFileReader logFileReader;
 	@Mock
-	HttpUser uptimeHttpUser;
+	PrintStream printStream;
 
 	@Before
 	public void setup() throws IOException {
 		MockitoAnnotations.initMocks(this);
-		
 	}
 
 	@Test
@@ -59,6 +55,17 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
 		factory.getWorker();
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
+	}
+	
+	@Test
+	public void shouldSetPrintStreamOnUptimeHttpUser()
+			throws Exception {
+		List<String> requests = createArrayListOfRequests(5);
+		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
+		factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader); 
+		factory.setPrintStream(printStream);
+		UptimeHttpUser worker = factory.getWorker();
+		assertEquals(printStream, worker.getOs());
 	}
 
 	private List<String> createArrayListOfRequests(int numberOfRequests)
