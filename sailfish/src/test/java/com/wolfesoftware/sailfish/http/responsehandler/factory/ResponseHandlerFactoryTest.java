@@ -16,7 +16,6 @@ import org.mockito.MockitoAnnotations;
 import com.wolfesoftware.sailfish.http.responsehandler.OutputStreamResponseHandler;
 import com.wolfesoftware.sailfish.http.responsehandler.QuickCloseResponseHandler;
 import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
-import com.wolfesoftware.sailfish.http.responsehandler.SystemOutResponseHandler;
 import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class ResponseHandlerFactoryTest {
@@ -34,13 +33,6 @@ public class ResponseHandlerFactoryTest {
 		ResponseHandlerFactory.setHandler(ResponseHandlers.DEFAULT);
 		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof QuickCloseResponseHandler);
-	}
-
-	@Test
-	public void shouldCreateResponseHandlersOfTypeSystemOutResponseHandler() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlers.SYSTEMOUT);
-		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
-		assertTrue(responseHandler instanceof SystemOutResponseHandler);
 	}
 
 	@Test

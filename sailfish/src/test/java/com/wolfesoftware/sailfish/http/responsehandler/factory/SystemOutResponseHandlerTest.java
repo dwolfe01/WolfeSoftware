@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.wolfesoftware.sailfish.http.responsehandler.SystemOutResponseHandler;
+import com.wolfesoftware.sailfish.http.responsehandler.OutputStreamResponseHandler;
 
 public class SystemOutResponseHandlerTest {
 
@@ -32,7 +32,7 @@ public class SystemOutResponseHandlerTest {
 	@Test
 	public void shouldWriteToOutputStream() throws Exception {
 		// given
-		SystemOutResponseHandler responseHandler = new SystemOutResponseHandler();
+		OutputStreamResponseHandler responseHandler = new OutputStreamResponseHandler();
 		Mockito.when(response.getEntity()).thenReturn(stringEntity);
 		// when
 		responseHandler.handleResponse(response);

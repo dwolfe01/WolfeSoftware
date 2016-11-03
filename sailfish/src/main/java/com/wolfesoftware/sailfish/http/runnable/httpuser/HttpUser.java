@@ -1,12 +1,12 @@
 package com.wolfesoftware.sailfish.http.runnable.httpuser;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
@@ -26,6 +26,7 @@ public class HttpUser implements Runnable {
 	protected CloseableHttpClient httpClient;
 	protected List<AbstractRequest> requests = new ArrayList<AbstractRequest>();
 	private long waitTime = 0;
+	PrintStream os = System.out;
 
 	public HttpUser() {
 		httpClient = HttpClients.createDefault();
@@ -51,7 +52,7 @@ public class HttpUser implements Runnable {
 			pause();
 		}
 		long executionTime = System.currentTimeMillis() - startTime;
-		System.out.println(this.id + " completed " + executionTime);
+		this.writeToPrintStream(this.id + " completed " + executionTime);
 		close();
 	}
 
@@ -109,7 +110,7 @@ public class HttpUser implements Runnable {
 	}
 
 	protected void doOutput(long startTime, AbstractRequest request, StatusLine statusLine) {
-		System.out.println(statusLine + " " + request + " took " + getTimeTaken(startTime));
+		this.writeToPrintStream(statusLine + " " + request + " took " + getTimeTaken(startTime));
 	}
 
 	protected long getTimeTaken(long startTime) {
@@ -127,5 +128,18 @@ public class HttpUser implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public PrintStream getOs() {
+		return os;
+	}
+
+	public void setOs(PrintStream os) {
+		this.os = os;
+	}
+
+	public void writeToPrintStream(String message) {
+		this.getOs().println(message);
+		this.getOs().flush();
 	}
 }

@@ -38,7 +38,7 @@ public class ResponseHandlerFactory {
 		 case DEFAULT:  
 			 return new QuickCloseResponseHandler();
 		 case SYSTEMOUT:
-			 return new SystemOutResponseHandler();
+			 return new OutputStreamResponseHandler();
 		 case QUICKCLOSE:
 			 return new QuickCloseResponseHandler();
 		 case OUTPUTSTREAM:
