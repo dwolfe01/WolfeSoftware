@@ -11,15 +11,17 @@ import java.net.URISyntaxException;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.wolfesoftware.sailfish.http.requests.AbstractRequest;
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
-import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromJSONFile;
+
 
 public class HttpUserWorkerFactoryFromJSONFileTest {
 
 	HttpUserWorkerFactoryFromJSONFile factory;
+	final Logger Logger = LoggerFactory.getLogger(HttpUserWorkerFactoryFromJSONFileTest.class);
 
 	@Before
 	public void setup() throws IOException {
@@ -71,7 +73,7 @@ public class HttpUserWorkerFactoryFromJSONFileTest {
 		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/post-httpuser.json").toURI();
 		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
 		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
-		System.out.println(factory.toString());
+		Logger.info(factory.toString());
 	}
 
 

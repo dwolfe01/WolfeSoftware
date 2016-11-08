@@ -13,6 +13,8 @@ import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.UptimeHttpUser;
 import com.wolfesoftware.sailfish.http.uptime.UptimeHistory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
@@ -20,6 +22,8 @@ public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	List<String> requests = new ArrayList<String>();
 	private int size;
 	private UptimeHistory uptimeHistory = new UptimeHistory();
+	final Logger Logger = LoggerFactory.getLogger(UptimeHttpUserWorkerFactoryFromLogFile.class);
+	
 	public UptimeHttpUserWorkerFactoryFromLogFile(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
 		size = requests.size();
@@ -28,14 +32,13 @@ public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	@Override
 	public HttpUser getWorker() {
 		final HttpUser user = new UptimeHttpUser(uptimeHistory);
-		user.setOs(this.getPrintStream());
 		String url = "";
 		try {
 			for (int x = 0; x < size; x++) {
 				user.addGetRequest(new GetRequest(requests.get(x)));
 			}
 		} catch (URISyntaxException e) {
-			System.out.println("Problem with: " + url);
+			Logger.info("Problem with: " + url);
 			e.printStackTrace();
 		}
 		return user;

@@ -4,11 +4,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 public class ReadySteadyThread {
 
 	private WorkerFactory workerFactory;
 	long startTime;
 	ThreadPoolExecutor executor;
+	static final Logger Logger = LoggerFactory.getLogger(ReadySteadyThread.class);
 
 	public ReadySteadyThread(int numberOfThreads, WorkerFactory threadFactory) {
 		this.workerFactory = threadFactory;
@@ -19,7 +24,7 @@ public class ReadySteadyThread {
 	public void go() {
 		startTime = System.currentTimeMillis();
 		this.execute();
-		System.out.println("ReadySteadyThreadCompleted"
+		Logger.info("ReadySteadyThreadCompleted"
 				+ (System.currentTimeMillis() - startTime));
 	}
 

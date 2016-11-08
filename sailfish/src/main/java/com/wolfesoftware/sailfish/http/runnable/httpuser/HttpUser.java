@@ -1,7 +1,6 @@
 package com.wolfesoftware.sailfish.http.runnable.httpuser;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +8,12 @@ import java.util.List;
 import org.apache.http.StatusLine;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.wolfesoftware.sailfish.http.requests.AbstractRequest;
 import com.wolfesoftware.sailfish.http.requests.GetRequest;
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
-
 /*
  * A fluent API for creating a user http session, this creates a session and runs through a list of requests in order observing any wait times
  */
@@ -26,7 +26,8 @@ public class HttpUser implements Runnable {
 	protected CloseableHttpClient httpClient;
 	protected List<AbstractRequest> requests = new ArrayList<AbstractRequest>();
 	private long waitTime = 0;
-	PrintStream os = System.out;
+	
+	static final Logger Logger = LoggerFactory.getLogger(HttpUser.class);
 
 	public HttpUser() {
 		httpClient = HttpClients.createDefault();
@@ -52,7 +53,6 @@ public class HttpUser implements Runnable {
 			pause();
 		}
 		long executionTime = System.currentTimeMillis() - startTime;
-		this.writeToPrintStream(this.id + " completed " + executionTime);
 		close();
 	}
 
@@ -110,7 +110,7 @@ public class HttpUser implements Runnable {
 	}
 
 	protected void doOutput(long startTime, AbstractRequest request, StatusLine statusLine) {
-		this.writeToPrintStream(statusLine + " " + request + " took " + getTimeTaken(startTime));
+		Logger.info(statusLine + " " + request + " took " + getTimeTaken(startTime));
 	}
 
 	protected long getTimeTaken(long startTime) {
@@ -130,16 +130,4 @@ public class HttpUser implements Runnable {
 		}
 	}
 
-	public PrintStream getOs() {
-		return os;
-	}
-
-	public void setOs(PrintStream os) {
-		this.os = os;
-	}
-
-	public void writeToPrintStream(String message) {
-		this.getOs().println(message);
-		this.getOs().flush();
-	}
 }

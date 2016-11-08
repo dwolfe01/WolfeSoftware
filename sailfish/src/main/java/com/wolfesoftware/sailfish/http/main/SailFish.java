@@ -2,9 +2,10 @@ package com.wolfesoftware.sailfish.http.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -17,16 +18,18 @@ import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromL
 import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactoryFromLogFile;
 
 public class SailFish {
+	
+	static final Logger Logger = LoggerFactory.getLogger(SailFish.class);
 
 	public static void main(String[] args) throws 
 			Exception {
 		String fileName = args[0];
 		int threadCount = Integer.parseInt(args[1]);
-		System.out.println(("Running SailFish with file: " + fileName
+		Logger.info(("Running SailFish with file: " + fileName
 				+ " thread count: " + threadCount));
 		SailFish sailfish = new SailFish();
 		File logFile = new File(fileName);
-		System.out.println(logFile.getAbsolutePath());
+		Logger.info(logFile.getAbsolutePath());
 		sailfish.go(logFile, threadCount);
 	}
 
@@ -36,11 +39,9 @@ public class SailFish {
 			factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile));
 		} 
 		if (logFile.getAbsolutePath().endsWith("uptime")){
-			System.out.println(FileUtils.readFileToString(logFile));
+			Logger.info(FileUtils.readFileToString(logFile));
 			LogFileReader logFileReader = new LogFileReader(logFile);
-			PrintStream pos = new PrintStream(new File("uptime.log"));
 			factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader);
-			factory.setPrintStream(pos);
 		}
 		else { 
 			LogFileReader logFileReader = new LogFileReader(logFile);

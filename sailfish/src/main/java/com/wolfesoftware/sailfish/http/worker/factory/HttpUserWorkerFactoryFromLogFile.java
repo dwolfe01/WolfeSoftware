@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.http.logfilereader.exceptions.BadLogFileException;
@@ -21,6 +24,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	volatile int positionInRequests;
 	List<String> requests = new ArrayList<String>();
 	private int size;
+	static final Logger Logger = LoggerFactory.getLogger(HttpUserWorkerFactoryFromLogFile.class);
 
 	public HttpUserWorkerFactoryFromLogFile(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
@@ -41,7 +45,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 				user.addGetRequest(new GetRequest(url));
 			}
 		} catch (URISyntaxException e) {
-			System.out.println("Problem with: " + url);
+			Logger.info("Problem with: " + url);
 			e.printStackTrace();
 		}
 		return user;

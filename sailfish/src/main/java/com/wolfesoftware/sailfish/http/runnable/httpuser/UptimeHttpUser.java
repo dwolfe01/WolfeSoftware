@@ -7,9 +7,13 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.wolfesoftware.sailfish.http.requests.AbstractRequest;
 import com.wolfesoftware.sailfish.http.uptime.UptimeHistory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class UptimeHttpUser extends HttpUser{
 
 	private UptimeHistory uptimeHistory;
+	static final Logger Logger = LoggerFactory.getLogger(UptimeHttpUser.class);
 	
 	public UptimeHttpUser(UptimeHistory uptimeHistory) {
 		super();
@@ -29,7 +33,7 @@ public class UptimeHttpUser extends HttpUser{
 		for (AbstractRequest request : requests) {
 			long startTime = System.currentTimeMillis();
 			makeRequest(request);
-			this.writeToPrintStream(request.getUri() + " " + (System.currentTimeMillis() - startTime));
+			Logger.info(request.getUri() + " " + (System.currentTimeMillis() - startTime));
 		}
 		close();
 		pause();

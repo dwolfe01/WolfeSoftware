@@ -56,17 +56,6 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
 	}
 	
-	@Test
-	public void shouldSetPrintStreamOnUptimeHttpUser()
-			throws Exception {
-		List<String> requests = createArrayListOfRequests(5);
-		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader); 
-		factory.setPrintStream(printStream);
-		HttpUser worker = factory.getWorker();
-		assertEquals(printStream, worker.getOs());
-	}
-
 	private List<String> createArrayListOfRequests(int numberOfRequests)
 			throws IOException {
 		List<String> requests = new ArrayList<String>();

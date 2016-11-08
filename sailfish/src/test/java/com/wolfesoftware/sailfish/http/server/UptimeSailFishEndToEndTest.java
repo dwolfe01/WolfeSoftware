@@ -7,7 +7,7 @@ import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactoryFromLogFile;
 
-public class UptimeSailFish {
+public class UptimeSailFishEndToEndTest {
 
 	public static void main(String[]args) throws Exception {
 		JettyServer js = new JettyServer();
