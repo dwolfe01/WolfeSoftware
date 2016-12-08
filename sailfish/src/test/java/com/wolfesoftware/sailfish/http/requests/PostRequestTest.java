@@ -69,4 +69,9 @@ public class PostRequestTest {
 		System.out.println(EntityUtils.toString(entity));
 	}
 	
+	@Test
+	public void shouldAddDummyRefererToRequest() throws Exception {
+		HttpPost postRequest = new PostRequest("http://10.6.2.197:9197/cache-purger").build();
+		assertEquals("http://sailfish.com", postRequest.getFirstHeader("REFERER").getValue());
+	}
 }

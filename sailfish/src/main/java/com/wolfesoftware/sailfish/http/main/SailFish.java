@@ -13,6 +13,8 @@ import com.wolfesoftware.sailfish.core.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.http.logfilereader.exceptions.BadLogFileException;
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromJSONFile;
 import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromLogFile;
 import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactoryFromLogFile;
@@ -36,6 +38,7 @@ public class SailFish {
 	private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
 		WorkerFactory factory = null;
 		if (logFile.getAbsolutePath().endsWith("json")){
+			ResponseHandlerFactory.setHandler(ResponseHandlers.SYSTEMOUT);
 			factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile));
 		} 
 		if (logFile.getAbsolutePath().endsWith("uptime")){
@@ -43,7 +46,7 @@ public class SailFish {
 			LogFileReader logFileReader = new LogFileReader(logFile);
 			factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader);
 		}
-		else { 
+		if (logFile.getAbsolutePath().endsWith("log")){
 			LogFileReader logFileReader = new LogFileReader(logFile);
 			factory = new HttpUserWorkerFactoryFromLogFile(logFileReader);
 		}

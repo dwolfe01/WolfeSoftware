@@ -32,6 +32,7 @@ public class PostRequest extends AbstractRequest {
 
 	public HttpPost build() throws UnsupportedEncodingException {
 		HttpPost httpPost = new HttpPost(this.getUri());
+		httpPost.setHeader("REFERER", "http://sailfish.com");
 		httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		return httpPost;
 	}

@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.StatusLine;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +32,10 @@ public class HttpUser implements Runnable {
 	static final Logger Logger = LoggerFactory.getLogger(HttpUser.class);
 
 	public HttpUser() {
-		httpClient = HttpClients.createDefault();
+		RequestConfig config = RequestConfig.custom().setConnectTimeout(100000).setConnectionRequestTimeout(100000)
+				.setSocketTimeout(100000).build();
+		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+		setWaitTimeInMilliseconds(30000);
 	}
 
 	//purely for test purposes
@@ -47,12 +52,10 @@ public class HttpUser implements Runnable {
 	}
 
 	public void run() {
-		long startTime = System.currentTimeMillis();
 		for (AbstractRequest request : requests) {
 			makeRequest(request);
 			pause();
 		}
-		long executionTime = System.currentTimeMillis() - startTime;
 		close();
 	}
 
