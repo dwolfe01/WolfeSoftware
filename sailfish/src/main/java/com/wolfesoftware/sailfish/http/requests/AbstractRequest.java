@@ -8,16 +8,12 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
-
 public abstract class AbstractRequest {
 
-	protected URI url;
-	protected ResponseHandlerFactory responseHandlerFactory;
+	private URI url;
 
-	public AbstractRequest(String uri, ResponseHandlerFactory responseHandlerFactory) throws URISyntaxException {
+	public AbstractRequest(String uri) throws URISyntaxException {
 			this.url = new URI(uri);
-			this.responseHandlerFactory = responseHandlerFactory;
 	}
 
 	public URI getUri() {

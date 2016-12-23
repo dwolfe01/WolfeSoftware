@@ -8,9 +8,14 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 
+/*
+ * This class creates a worker and also returns it. This will
+ * potentially reads from an tomcat access log file to generate different
+ * types of sessions on each call to getWorker
+ */
+//TODO this should use generics to achieve the dry run functionality 
 public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 
 	HttpUser[] users;

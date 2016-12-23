@@ -7,7 +7,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -20,7 +19,6 @@ import org.mockito.MockitoAnnotations;
 import com.wolfesoftware.sailfish.http.requests.GetRequest;
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
 import com.wolfesoftware.sailfish.http.responsehandler.QuickCloseResponseHandler;
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 
 public class HttpUserTest {
 
@@ -40,9 +38,9 @@ public class HttpUserTest {
 
 	@Test
 	// due to difficulties around matchers and generic classes
-	public void shouldMakeTwoRequests() throws ClientProtocolException, IOException, URISyntaxException {
+	public void shouldMakeTwoRequests() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		httpUser = new HttpUser(httpClient);
 		httpUser.addGetRequest(getRequest);
 		httpUser.addGetRequest(getRequest);
 		// when
@@ -54,7 +52,7 @@ public class HttpUserTest {
 	@Test
 	public void shouldMakePOSTRequest() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		httpUser = new HttpUser(httpClient);
 		httpUser.addPostRequest(postRequest);
 		// when
 		httpUser.run();
@@ -64,9 +62,9 @@ public class HttpUserTest {
 
 	@Test
 	// due to difficulties around matchers and generic classes
-	public void shouldObserveWaitTimeMakeTwoRequests() throws ClientProtocolException, IOException, URISyntaxException {
+	public void shouldObserveWaitTimeMakeTwoRequests() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		httpUser = new HttpUser(httpClient);
 		httpUser.addGetRequest(getRequest);
 		httpUser.addGetRequest(getRequest);
 		// when
@@ -86,7 +84,7 @@ public class HttpUserTest {
 	// due to difficulties around matchers and generic classes
 	public void shouldMakeNoRequestsIfURLsAreEmptyString() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		httpUser = new HttpUser(httpClient);
 		httpUser.run();
 		// then
 		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(QuickCloseResponseHandler.class));

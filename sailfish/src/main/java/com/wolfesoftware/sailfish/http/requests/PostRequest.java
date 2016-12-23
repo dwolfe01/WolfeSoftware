@@ -22,8 +22,8 @@ public class PostRequest extends AbstractRequest {
 
 	List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-	public PostRequest(String uri, ResponseHandlerFactory responseHandlerFactory) throws URISyntaxException  {
-		super(uri, responseHandlerFactory);
+	public PostRequest(String uri) throws URISyntaxException  {
+		super(uri);
 	}
 
 	public void addNameValuePostPair(String name, String value) {
@@ -39,8 +39,9 @@ public class PostRequest extends AbstractRequest {
 
 	@Override
 	public StatusLine makeRequest(HttpClient httpClient) throws ClientProtocolException, IOException {
+		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
 		HttpPost httpPost = this.build();
-		return httpClient.execute(httpPost, responseHandlerFactory.getInstanceOfResponseHandler());
+		return httpClient.execute(httpPost, responseHandler);
 	}
 
 }

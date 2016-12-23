@@ -27,6 +27,7 @@ public class GetRequestTest {
 	HttpClient httpClient;
 	@Mock
 	StatusLine statusLine;
+	Class<? extends ResponseHandler<StatusLine>> responseHandler = QuickCloseResponseHandler.class;
 
 	@Before
 	public void before() {
@@ -35,9 +36,11 @@ public class GetRequestTest {
 
 	@Test
 	public void shouldMakeAGetRequest() throws Exception {
-		when(httpClient.execute(isA(HttpGet.class), isA(QuickCloseResponseHandler.class))).thenReturn(statusLine);
-		new GetRequest("http://www.some-url.com", new ResponseHandlerFactory()).makeRequest(httpClient);
-		verify(httpClient, times(1)).execute(isA(HttpGet.class), isA(QuickCloseResponseHandler.class));
+		// given
+		ResponseHandlerFactory.setHandler(ResponseHandlers.QUICKCLOSE);
+		when(httpClient.execute(isA(HttpGet.class), isA(responseHandler))).thenReturn(statusLine);
+		new GetRequest("http://www.some-url.com").makeRequest(httpClient);
+		verify(httpClient, times(1)).execute(isA(HttpGet.class), isA(responseHandler));
 	}
 
 }

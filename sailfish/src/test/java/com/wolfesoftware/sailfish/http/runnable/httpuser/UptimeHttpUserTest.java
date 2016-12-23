@@ -14,7 +14,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.uptime.UptimeHistory;
 
 public class UptimeHttpUserTest extends HttpUserTest{
@@ -31,9 +30,9 @@ public class UptimeHttpUserTest extends HttpUserTest{
 	}
 
 	@Test
-	public void shouldUpdateCentralDocumentWithStatusCodeOfRequest() throws ClientProtocolException, IOException, URISyntaxException {
+	public void shouldUpdateCentralDocumentWithStatusCodeOfRequest() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, new ResponseHandlerFactory());
+		httpUser = new UptimeHttpUser(httpClient, uptimeHistory);
 		httpUser.addGetRequest(getRequest);
 		httpUser.addGetRequest(getRequest);
 		Mockito.when(getRequest.makeRequest(httpClient)).thenReturn(statusLine);
@@ -46,8 +45,8 @@ public class UptimeHttpUserTest extends HttpUserTest{
 	}
 
 	@Test
-	public void shouldUpdateHistoryDocumentInTheEventOfAnException() throws ClientProtocolException, IOException, URISyntaxException {
-		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, new ResponseHandlerFactory());
+	public void shouldUpdateHistoryDocumentInTheEventOfAnException() throws ClientProtocolException, IOException {
+		httpUser = new UptimeHttpUser(httpClient, uptimeHistory);
 		httpUser.addGetRequest(getRequest);
 		Mockito.when(getRequest.makeRequest(httpClient)).thenThrow(new RuntimeException());
 		Mockito.when(getRequest.getUri()).thenReturn(uri);

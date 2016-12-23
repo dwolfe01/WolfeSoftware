@@ -38,17 +38,17 @@ public class SailFish {
 	private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
 		WorkerFactory factory = null;
 		if (logFile.getAbsolutePath().endsWith("json")){
-			ResponseHandlerFactory.setDefaultHandlerTESTONLY(ResponseHandlers.SAVETOFILE);
+			ResponseHandlerFactory.setHandler(ResponseHandlers.SYSTEMOUT);
 			factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile));
 		} 
 		if (logFile.getAbsolutePath().endsWith("uptime")){
 			Logger.info(FileUtils.readFileToString(logFile));
 			LogFileReader logFileReader = new LogFileReader(logFile);
-			factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory());
+			factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader);
 		}
 		if (logFile.getAbsolutePath().endsWith("log")){
 			LogFileReader logFileReader = new LogFileReader(logFile);
-			factory = new HttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory());
+			factory = new HttpUserWorkerFactoryFromLogFile(logFileReader);
 		}
 		new ReadySteadyThread(threadCount, factory).go();
 	}

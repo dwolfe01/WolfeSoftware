@@ -1,28 +1,29 @@
 package com.wolfesoftware.sailfish.http.runnable.httpuser;
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.wolfesoftware.sailfish.http.requests.AbstractRequest;
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.uptime.UptimeHistory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UptimeHttpUser extends HttpUser{
 
 	private UptimeHistory uptimeHistory;
 	static final Logger Logger = LoggerFactory.getLogger(UptimeHttpUser.class);
 	
-	public UptimeHttpUser(UptimeHistory uptimeHistory, ResponseHandlerFactory responseHanderFactory) {
-		super(responseHanderFactory);
+	public UptimeHttpUser(UptimeHistory uptimeHistory) {
+		super();
 		this.uptimeHistory = uptimeHistory;
-		this.setWaitTimeInMilliseconds(30000);
+		
 	}
 	
-	UptimeHttpUser(CloseableHttpClient httpClient, UptimeHistory uptimeHistory,ResponseHandlerFactory responseHanderFactory) {
-		super(httpClient, responseHanderFactory);
+	UptimeHttpUser(CloseableHttpClient httpClient, UptimeHistory uptimeHistory) {
+		super(httpClient);
 		this.uptimeHistory = uptimeHistory;
-		this.setWaitTimeInMilliseconds(30000);
 	}
 	
 	public void run() {

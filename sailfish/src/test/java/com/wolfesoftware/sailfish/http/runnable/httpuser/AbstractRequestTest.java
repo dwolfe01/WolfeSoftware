@@ -9,14 +9,13 @@ import org.apache.http.client.HttpClient;
 import org.junit.Test;
 
 import com.wolfesoftware.sailfish.http.requests.AbstractRequest;
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 
 public class AbstractRequestTest {
 	
 	class TestAbstractSimpleRequestTest extends AbstractRequest{
 
 		public TestAbstractSimpleRequestTest(String uri) throws URISyntaxException  {
-			super(uri, new ResponseHandlerFactory());
+			super(uri);
 		}
 
 		@Override

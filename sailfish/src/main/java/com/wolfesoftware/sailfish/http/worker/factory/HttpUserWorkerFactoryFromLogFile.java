@@ -12,7 +12,6 @@ import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.http.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.http.requests.GetRequest;
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 
 /* SINGLETON (not forced) and not threadsafe
@@ -26,10 +25,8 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 	List<String> requests = new ArrayList<String>();
 	private int size;
 	static final Logger Logger = LoggerFactory.getLogger(HttpUserWorkerFactoryFromLogFile.class);
-	private ResponseHandlerFactory responseHandlerFactory;
 
-	public HttpUserWorkerFactoryFromLogFile(LogFileReader logFileReader, ResponseHandlerFactory responseHandlerFactory) throws BadLogFileException {
-		this.responseHandlerFactory = responseHandlerFactory;
+	public HttpUserWorkerFactoryFromLogFile(LogFileReader logFileReader) throws BadLogFileException {
 		requests = Collections.synchronizedList(logFileReader.getAsListOfUrls());
 		size = requests.size();
 	}
@@ -40,12 +37,12 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 
 	@Override
 	public HttpUser getWorker() {
-		final HttpUser user = new HttpUser(responseHandlerFactory);
+		final HttpUser user = new HttpUser();
 		String url = "";
 		try {
 			for (int x = 0; x < 4; x++) {
 				url = getNextRequest();
-				user.addGetRequest(url);
+				user.addGetRequest(new GetRequest(url));
 			}
 		} catch (URISyntaxException e) {
 			Logger.info("Problem with: " + url);
