@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
+import com.wolfesoftware.sailfish.http.responsehandler.QuickCloseResponseHandler;
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 
 

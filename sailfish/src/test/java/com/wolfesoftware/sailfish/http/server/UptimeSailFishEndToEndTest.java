@@ -5,6 +5,7 @@ import java.io.File;
 import com.wolfesoftware.sailfish.core.concurrency.ReadySteadyThread;
 import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactoryFromLogFile;
 
 public class UptimeSailFishEndToEndTest {
@@ -13,7 +14,7 @@ public class UptimeSailFishEndToEndTest {
 		JettyServer js = new JettyServer();
 		js.go();
 		LogFileReader logFileReader = new LogFileReader(new File("/Users/dwolfe/development/WolfeSoftware/WolfeSoftware/sailfish/src/test/resources/uptime.txt"));
-		WorkerFactory factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader);
+		WorkerFactory factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory());
 		new ReadySteadyThread(10, factory).go();
 	}
 	

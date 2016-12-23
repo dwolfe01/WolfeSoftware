@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 
 /*
@@ -37,7 +38,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(3);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader); 
+		factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory()); 
 		HttpUser worker = factory.getWorker();
 		assertEquals(3, worker.getRequests().size());
 	}
@@ -47,7 +48,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFileTest {
 			throws Exception {
 		List<String> requests = createArrayListOfRequests(5);
 		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
-		factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader); 
+		factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory()); 
 		factory.getWorker();
 		assertEquals(true, factory.isThereAnyMoreWorkToDo());
 		factory.getWorker();

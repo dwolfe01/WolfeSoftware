@@ -7,7 +7,6 @@ package com.wolfesoftware.sailfish.core.concurrency;
 public abstract class WorkerFactory {
 
 	private boolean isThereAnyMoreWorkToDo = true;
-
 	public abstract Runnable getWorker() throws Exception;
 
 	public boolean isThereAnyMoreWorkToDo() {
