@@ -11,11 +11,11 @@ import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.StringEntity;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.responsehandler.SaveToFileResponseHandler;
 
 public class SaveToFileResponseHandlerTest {
@@ -26,6 +26,8 @@ public class SaveToFileResponseHandlerTest {
 	StringEntity stringEntity;
 	@Mock
 	InputStream inputStream;
+	@Mock
+	ResponseHandlerFactory responseHandlerFactory;
 	
 	File directory = new File("/tmp/scratch/");
 
@@ -38,8 +40,6 @@ public class SaveToFileResponseHandlerTest {
 	}
 
 	@Test
-	@Ignore
-	//TODO: get this test working 
 	public void shouldSaveHTMLResultsToFile() throws Exception {
 		SaveToFileResponseHandler responseHandler = new SaveToFileResponseHandler(directory);
 		responseHandler.handleResponse(response);

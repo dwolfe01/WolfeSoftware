@@ -34,6 +34,7 @@ public class UptimeHttpUserTest extends HttpUserTest{
 	public void shouldUpdateCentralDocumentWithStatusCodeOfRequest() throws ClientProtocolException, IOException, URISyntaxException {
 		// given
 		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, new ResponseHandlerFactory());
+		httpUser.setWaitTimeInMilliseconds(1);
 		httpUser.addGetRequest(getRequest);
 		httpUser.addGetRequest(getRequest);
 		Mockito.when(getRequest.makeRequest(httpClient)).thenReturn(statusLine);
@@ -48,6 +49,7 @@ public class UptimeHttpUserTest extends HttpUserTest{
 	@Test
 	public void shouldUpdateHistoryDocumentInTheEventOfAnException() throws ClientProtocolException, IOException, URISyntaxException {
 		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, new ResponseHandlerFactory());
+		httpUser.setWaitTimeInMilliseconds(1);
 		httpUser.addGetRequest(getRequest);
 		Mockito.when(getRequest.makeRequest(httpClient)).thenThrow(new RuntimeException());
 		Mockito.when(getRequest.getUri()).thenReturn(uri);

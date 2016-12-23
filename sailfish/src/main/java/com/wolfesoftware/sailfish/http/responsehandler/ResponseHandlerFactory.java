@@ -1,6 +1,5 @@
 package com.wolfesoftware.sailfish.http.responsehandler;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
 

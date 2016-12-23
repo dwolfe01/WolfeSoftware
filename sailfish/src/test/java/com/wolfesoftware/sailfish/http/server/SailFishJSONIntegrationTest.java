@@ -7,6 +7,7 @@ import java.io.File;
 import java.net.URI;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.wolfesoftware.sailfish.core.concurrency.ReadySteadyThread;
@@ -17,6 +18,7 @@ import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromJ
 public class SailFishJSONIntegrationTest {
 
 	@Test
+	@Ignore
 	public void shouldRunRequestsFromJSONFileAgainstJettyServer() throws Exception {
 		JettyServer js = null;
 		try {
