@@ -1,39 +1,51 @@
 package com.wolfesoftware.sailfish.http.responsehandler;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.OutputStream;
 
 import org.apache.http.StatusLine;
 import org.apache.http.client.ResponseHandler;
 
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory.ResponseHandlers;
-
 public class ResponseHandlerFactory {
-
-	private static ResponseHandlers handler = ResponseHandlers.DEFAULT;
-
+	
 	public enum ResponseHandlers {
 		DEFAULT,
 		SYSTEMOUT,
 		QUICKCLOSE,
 		OUTPUTSTREAM,
-		PRINTHEADERS ;
+		PRINTHEADERS, SAVETOFILE ;
 	};
+
+	private static ResponseHandlers handler = ResponseHandlers.DEFAULT;
 	
+	
+	public ResponseHandlers getHandler() {
+		return handler;
+	}
+
+	public ResponseHandlerFactory() {
+	}
+
 	public static OutputStream outputStream = System.out;
 	
-	public static void setOutputStream(OutputStream os){
+	public ResponseHandlerFactory(ResponseHandlers responseHandler) {
+		handler = responseHandler;
+	}
+
+	public void setOutputStream(OutputStream os){
 		outputStream = os;
 	}
 	
-	public static OutputStream getOutputStream(){
+	public OutputStream getOutputStream(){
 		return outputStream;
 	}
 	
-	public static ResponseHandler<StatusLine> getInstanceOfResponseHandler() {
+	public ResponseHandler<StatusLine> getInstanceOfResponseHandler() {
 		return getInstanceOfResponseHandler(handler);
 	}
 	
-	public static ResponseHandler<StatusLine> getInstanceOfResponseHandler(ResponseHandlers handler) {
+	public ResponseHandler<StatusLine> getInstanceOfResponseHandler(ResponseHandlers handler) {
 		switch (handler){
 		 case DEFAULT:  
 			 return new QuickCloseResponseHandler();
@@ -45,12 +57,21 @@ public class ResponseHandlerFactory {
 			 return new OutputStreamResponseHandler(getOutputStream());
 		 case PRINTHEADERS:
 			 return new PrintHeadersResponseHandler(getOutputStream());
+		 case SAVETOFILE:
+			 return new SaveToFileResponseHandler(new File("/tmp/scratch"));
 		 default:  
 			 return new QuickCloseResponseHandler();
 		}
 	}
 
-	public static void setHandler(ResponseHandlers handler) {
-		ResponseHandlerFactory.handler = handler;
+
+	public static void setDefaultOutputStreamTESTONLY(OutputStream os) {
+		outputStream = os;
 	}
+	
+	public static void setDefaultHandlerTESTONLY(ResponseHandlers responseHandler) {
+		handler = responseHandler;
+	}
+	
+
 }

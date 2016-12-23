@@ -28,4 +28,5 @@ public class OutputStreamResponseHandler implements ResponseHandler<StatusLine> 
 	public OutputStream getOs() {
 		return os;
 	}
+	
 }

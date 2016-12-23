@@ -30,17 +30,25 @@ public class ResponseHandlerFactoryTest {
 
 	@Test
 	public void shouldCreateResponseHandlersOfTypeQuickCloseResponseHandler() throws Exception {
-		ResponseHandlerFactory.setHandler(ResponseHandlers.DEFAULT);
-		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler();
+		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory();
+		ResponseHandler<StatusLine> responseHandler = responseHandlerFactory.getInstanceOfResponseHandler();
 		assertTrue(responseHandler instanceof QuickCloseResponseHandler);
 	}
 
 	@Test
 	public void shouldCreateOutputStreamHandlerWithTheCorrectOutputSream() {
-		ResponseHandlerFactory.setOutputStream(os);
-		ResponseHandler<StatusLine> responseHandler = ResponseHandlerFactory.getInstanceOfResponseHandler(ResponseHandlers.OUTPUTSTREAM);
+		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory();
+		responseHandlerFactory.setOutputStream(os);
+		ResponseHandler<StatusLine> responseHandler = responseHandlerFactory.getInstanceOfResponseHandler(ResponseHandlers.OUTPUTSTREAM);
 		assertTrue(responseHandler instanceof OutputStreamResponseHandler);
 		assertEquals(os, ((OutputStreamResponseHandler)responseHandler).getOs());
+	}
+	
+	@Test
+	public void shouldSetHandlerAtConstructionTime() {
+		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.QUICKCLOSE);
+		ResponseHandler<StatusLine> instanceOfResponseHandler = responseHandlerFactory.getInstanceOfResponseHandler();
+		assertTrue(instanceOfResponseHandler instanceof QuickCloseResponseHandler);
 	}
 
 }
