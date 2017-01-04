@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.wolfesoftware.sailfish.core.concurrency.WorkerFactory;
 import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
@@ -17,9 +18,13 @@ public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 	int position;
 	ObjectMapper objectMapper;
 
-	public HttpUserWorkerFactoryFromJSONFile(String json) throws JsonParseException, JsonMappingException, IOException {
+	public HttpUserWorkerFactoryFromJSONFile(String json, ResponseHandlerFactory responseHandlerFactory) throws JsonParseException, JsonMappingException, IOException {
 		objectMapper = new ObjectMapper();
+		objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 		users = objectMapper.readValue(json, HttpUser[].class);
+		for (HttpUser user:users){
+			user.setResponseHandlerFactory(responseHandlerFactory);
+		}
 	}
 
 	@Override
@@ -36,16 +41,9 @@ public class HttpUserWorkerFactoryFromJSONFile extends WorkerFactory {
 		StringWriter usersString = new StringWriter();
 		try {
 			objectMapper.writeValue(usersString, users);
-		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		return usersString.toString();
 	}
 

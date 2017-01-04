@@ -29,7 +29,6 @@ import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory;
 import com.wolfesoftware.sailfish.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 import com.wolfesoftware.sailfish.runnable.httpuser.HttpUser;
 
-//@Ignore("there are no assertions here so these are just for sanity tests within IDE")
 public class SailFishIntegrationTest {
 	
 	HttpUserWorkerFactoryFromJSONFile factory;
@@ -38,7 +37,7 @@ public class SailFishIntegrationTest {
 	public void shouldMakeHttpRequests() throws Exception {
 		URI uri = this.getClass().getResource("/com/wolfesoftware/sailfish/json/httpuser/httpusers.json").toURI();
 		String jsonHttpUser = FileUtils.readFileToString(new File(uri));
-		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser);
+		factory = new HttpUserWorkerFactoryFromJSONFile(jsonHttpUser, new ResponseHandlerFactory());
 		new ReadySteadyThread(10, factory).go();
 	}
 

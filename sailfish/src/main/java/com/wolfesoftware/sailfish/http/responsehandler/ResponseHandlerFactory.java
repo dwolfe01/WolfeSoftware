@@ -16,7 +16,7 @@ public class ResponseHandlerFactory {
 		PRINTHEADERS, SAVETOFILE ;
 	};
 
-	private static ResponseHandlers handler = ResponseHandlers.DEFAULT;
+	private ResponseHandlers handler = ResponseHandlers.DEFAULT;
 	
 	
 	public ResponseHandlers getHandler() {
@@ -62,15 +62,5 @@ public class ResponseHandlerFactory {
 			 return new QuickCloseResponseHandler();
 		}
 	}
-
-
-	public static void setDefaultOutputStreamTESTONLY(OutputStream os) {
-		outputStream = os;
-	}
-	
-	public static void setDefaultHandlerTESTONLY(ResponseHandlers responseHandler) {
-		handler = responseHandler;
-	}
-	
 
 }
