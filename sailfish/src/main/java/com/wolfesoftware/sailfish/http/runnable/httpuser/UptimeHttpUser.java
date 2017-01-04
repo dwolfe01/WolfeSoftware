@@ -39,7 +39,7 @@ public class UptimeHttpUser extends HttpUser{
 	protected void makeRequest(AbstractRequest request) {
 		long startTime = System.currentTimeMillis();
 			try{
-			request.makeRequest(httpClient);
+			request.makeRequest(httpClient, responseHandlerFactory);
 			uptimeHistory.update(request.getUri().toString() + "", getTimeTaken(startTime));
 			}catch(Exception e){
 				uptimeHistory.update(request.getUri().toString() + " " + e.getClass().getSimpleName(), getTimeTaken(startTime));

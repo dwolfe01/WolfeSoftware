@@ -33,11 +33,12 @@ public class UptimeHttpUserTest extends HttpUserTest{
 	@Test
 	public void shouldUpdateCentralDocumentWithStatusCodeOfRequest() throws ClientProtocolException, IOException, URISyntaxException {
 		// given
-		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, new ResponseHandlerFactory());
+		ResponseHandlerFactory responseHanderFactory = new ResponseHandlerFactory();
+		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, responseHanderFactory);
 		httpUser.setWaitTimeInMilliseconds(1);
 		httpUser.addGetRequest(getRequest);
 		httpUser.addGetRequest(getRequest);
-		Mockito.when(getRequest.makeRequest(httpClient)).thenReturn(statusLine);
+		Mockito.when(getRequest.makeRequest(httpClient,responseHanderFactory)).thenReturn(statusLine);
 		Mockito.when(statusLine.getStatusCode()).thenReturn(200);
 		Mockito.when(getRequest.getUri()).thenReturn(uri);
 		// when
@@ -48,10 +49,11 @@ public class UptimeHttpUserTest extends HttpUserTest{
 
 	@Test
 	public void shouldUpdateHistoryDocumentInTheEventOfAnException() throws ClientProtocolException, IOException, URISyntaxException {
-		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, new ResponseHandlerFactory());
+		ResponseHandlerFactory responseHanderFactory = new ResponseHandlerFactory();
+		httpUser = new UptimeHttpUser(httpClient, uptimeHistory, responseHanderFactory);
 		httpUser.setWaitTimeInMilliseconds(1);
 		httpUser.addGetRequest(getRequest);
-		Mockito.when(getRequest.makeRequest(httpClient)).thenThrow(new RuntimeException());
+		Mockito.when(getRequest.makeRequest(httpClient,responseHanderFactory)).thenThrow(new RuntimeException());
 		Mockito.when(getRequest.getUri()).thenReturn(uri);
 		// when
 		httpUser.run();

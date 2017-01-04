@@ -9,7 +9,9 @@ import static org.mockito.Mockito.verify;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.Before;
@@ -21,6 +23,7 @@ import com.wolfesoftware.sailfish.http.requests.GetRequest;
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
 import com.wolfesoftware.sailfish.http.responsehandler.QuickCloseResponseHandler;
 import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class HttpUserTest {
 
@@ -42,24 +45,26 @@ public class HttpUserTest {
 	// due to difficulties around matchers and generic classes
 	public void shouldMakeTwoRequests() throws ClientProtocolException, IOException, URISyntaxException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory();
+		httpUser = new HttpUser(httpClient, responseHandlerFactory);
 		httpUser.addGetRequest(getRequest);
 		httpUser.addGetRequest(getRequest);
 		// when
 		httpUser.run();
 		// then
-		verify(getRequest, times(2)).makeRequest(httpClient);
+		verify(getRequest, times(2)).makeRequest(httpClient,responseHandlerFactory);
 	}
 
 	@Test
 	public void shouldMakePOSTRequest() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory();
+		httpUser = new HttpUser(httpClient, responseHandlerFactory);
 		httpUser.addPostRequest(postRequest);
 		// when
 		httpUser.run();
 		// then
-		verify(postRequest, times(1)).makeRequest(httpClient);
+		verify(postRequest, times(1)).makeRequest(httpClient, responseHandlerFactory);
 	}
 
 	@Test
@@ -86,10 +91,12 @@ public class HttpUserTest {
 	// due to difficulties around matchers and generic classes
 	public void shouldMakeNoRequestsIfURLsAreEmptyString() throws ClientProtocolException, IOException {
 		// given
-		httpUser = new HttpUser(httpClient, new ResponseHandlerFactory());
+		ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory();
+		httpUser = new HttpUser(httpClient, responseHandlerFactory);
 		httpUser.run();
 		// then
-		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(QuickCloseResponseHandler.class));
+		ResponseHandler<StatusLine> instanceOfResponseHandler = responseHandlerFactory.getInstanceOfResponseHandler();
+		verify(httpClient, never()).execute(isA(HttpUriRequest.class), isA(instanceOfResponseHandler.getClass()));
 	}
 
 }

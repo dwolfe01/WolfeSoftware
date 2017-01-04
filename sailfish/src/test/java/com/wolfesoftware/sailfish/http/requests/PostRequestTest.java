@@ -41,14 +41,14 @@ public class PostRequestTest {
 	public void shouldMakeAPostRequest() throws Exception {
 		// given
 		when(httpClient.execute(isA(HttpPost.class), isA(QuickCloseResponseHandler.class))).thenReturn(statusLine);
-		new PostRequest("http://www.some-url.com", new ResponseHandlerFactory()).makeRequest(httpClient);
+		new PostRequest("http://www.some-url.com").makeRequest(httpClient, new ResponseHandlerFactory());
 		verify(httpClient, times(1)).execute(isA(HttpPost.class), isA(QuickCloseResponseHandler.class));
 	}
 
 	@Test
 	public void shouldAddNameValuePairsToBeSubmitted() throws Exception {
 		when(httpClient.execute(isA(HttpPost.class), isA(QuickCloseResponseHandler.class))).thenReturn(statusLine);
-		PostRequest postRequest = new PostRequest("http://www.some-url.com", new ResponseHandlerFactory());
+		PostRequest postRequest = new PostRequest("http://www.some-url.com");
 		postRequest.addNameValuePostPair("username", "user");
 		postRequest.addNameValuePostPair("password", "password");
 		HttpPost httpPost = postRequest.build();
@@ -58,7 +58,7 @@ public class PostRequestTest {
 	
 	@Test
 	public void deletemeshouldAddNameValuePairsToBeSubmitted() throws Exception {
-		PostRequest postRequest = new PostRequest("http://10.6.2.197:9197/cache-purger", new ResponseHandlerFactory());
+		PostRequest postRequest = new PostRequest("http://10.6.2.197:9197/cache-purger");
 		postRequest.addNameValuePostPair("article", "Article");
 		postRequest.addNameValuePostPair("text", "test");
 		HttpPost httpPost = postRequest.build();
@@ -68,7 +68,7 @@ public class PostRequestTest {
 	
 	@Test
 	public void shouldAddDummyRefererToRequest() throws Exception {
-		HttpPost postRequest = new PostRequest("http://10.6.2.197:9197/cache-purger", new ResponseHandlerFactory()).build();
+		HttpPost postRequest = new PostRequest("http://10.6.2.197:9197/cache-purger").build();
 		assertEquals("http://sailfish.com", postRequest.getFirstHeader("REFERER").getValue());
 	}
 }

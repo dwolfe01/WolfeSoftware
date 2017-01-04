@@ -42,7 +42,7 @@ public class HttpUser implements Runnable {
 	protected List<AbstractRequest> requests = new ArrayList<AbstractRequest>();
 	private long waitTime = 0;
 	static final Logger Logger = LoggerFactory.getLogger(HttpUser.class);
-	private ResponseHandlerFactory responseHandlerFactory;
+	protected ResponseHandlerFactory responseHandlerFactory;
 
 	private static final TrustManager[] TRUST_ALL_CERTS = new TrustManager[] { new X509TrustManager() {
 		public X509Certificate[] getAcceptedIssuers() {
@@ -111,7 +111,7 @@ public class HttpUser implements Runnable {
 	protected void makeRequest(AbstractRequest request) {
 		long startTime = System.currentTimeMillis();
 		try {
-			StatusLine statusLine = request.makeRequest(httpClient);
+			StatusLine statusLine = request.makeRequest(httpClient, responseHandlerFactory);
 			doOutput(startTime, request, statusLine);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -124,7 +124,7 @@ public class HttpUser implements Runnable {
 	}
 	
 	public HttpUser addGetRequest(String uri) throws URISyntaxException {
-		requests.add(new GetRequest(uri, responseHandlerFactory));
+		requests.add(new GetRequest(uri));
 		return this;
 	}
 
@@ -140,9 +140,9 @@ public class HttpUser implements Runnable {
 	public void setRequests(List<String[]> uris) throws URISyntaxException {
 		for (String[] uri : uris) {
 			if (uri.length == 1) {
-				this.addGetRequest(new GetRequest(uri[0], responseHandlerFactory));
+				this.addGetRequest(new GetRequest(uri[0]));
 			} else {
-				PostRequest pr = new PostRequest(uri[0], responseHandlerFactory);
+				PostRequest pr = new PostRequest(uri[0]);
 				for (int x = 2; x < uri.length; x++) {
 					String[] nameValue = uri[x].split(":");
 					pr.addNameValuePostPair(nameValue[0], nameValue[1]);

@@ -16,11 +16,11 @@ public class AbstractRequestTest {
 	class TestAbstractSimpleRequestTest extends AbstractRequest{
 
 		public TestAbstractSimpleRequestTest(String uri) throws URISyntaxException  {
-			super(uri, new ResponseHandlerFactory());
+			super(uri);
 		}
 
 		@Override
-		public StatusLine makeRequest(HttpClient httpClient) throws ClientProtocolException, IOException {
+		public StatusLine makeRequest(HttpClient httpClient, ResponseHandlerFactory responseHandlerFactory) throws ClientProtocolException, IOException {
 			// TODO Auto-generated method stub
 			return null;
 		}};

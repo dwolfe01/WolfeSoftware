@@ -13,11 +13,9 @@ import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 public abstract class AbstractRequest {
 
 	protected URI url;
-	protected ResponseHandlerFactory responseHandlerFactory;
 
-	public AbstractRequest(String uri, ResponseHandlerFactory responseHandlerFactory) throws URISyntaxException {
+	public AbstractRequest(String uri) throws URISyntaxException {
 			this.url = new URI(uri);
-			this.responseHandlerFactory = responseHandlerFactory;
 	}
 
 	public URI getUri() {
@@ -33,5 +31,5 @@ public abstract class AbstractRequest {
 		return this.getUri().toString();
 	}
 	
-	public abstract StatusLine makeRequest(HttpClient httpClient) throws ClientProtocolException, IOException;
+	public abstract StatusLine makeRequest(HttpClient httpClient, ResponseHandlerFactory responseHandlerFactory) throws ClientProtocolException, IOException;
 }

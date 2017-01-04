@@ -14,12 +14,12 @@ import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 public class GetRequest extends AbstractRequest {
 
 
-	public GetRequest(String uri, ResponseHandlerFactory responseHandlerFactory) throws URISyntaxException {
-		super(uri, responseHandlerFactory);
+	public GetRequest(String uri) throws URISyntaxException {
+		super(uri);
 	}
 
 	@Override
-	public StatusLine makeRequest(HttpClient httpClient) throws ClientProtocolException, IOException {
+	public StatusLine makeRequest(HttpClient httpClient, ResponseHandlerFactory responseHandlerFactory) throws ClientProtocolException, IOException {
 		ResponseHandler<StatusLine> responseHandler = responseHandlerFactory.getInstanceOfResponseHandler();
 		HttpGet request = new HttpGet(this.getUri());
 		return httpClient.execute(request, responseHandler);

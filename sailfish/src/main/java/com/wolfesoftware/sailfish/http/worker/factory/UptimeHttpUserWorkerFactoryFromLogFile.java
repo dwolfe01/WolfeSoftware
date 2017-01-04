@@ -38,7 +38,7 @@ public class UptimeHttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 		String url = "";
 		try {
 			for (int x = 0; x < size; x++) {
-				user.addGetRequest(new GetRequest(requests.get(x),responseHandlerFactory));
+				user.addGetRequest(new GetRequest(requests.get(x)));
 			}
 		} catch (URISyntaxException e) {
 			Logger.info("Problem with: " + url);

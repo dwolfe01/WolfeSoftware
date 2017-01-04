@@ -36,7 +36,7 @@ public class GetRequestTest {
 	@Test
 	public void shouldMakeAGetRequest() throws Exception {
 		when(httpClient.execute(isA(HttpGet.class), isA(QuickCloseResponseHandler.class))).thenReturn(statusLine);
-		new GetRequest("http://www.some-url.com", new ResponseHandlerFactory()).makeRequest(httpClient);
+		new GetRequest("http://www.some-url.com").makeRequest(httpClient, new ResponseHandlerFactory(ResponseHandlers.QUICKCLOSE));
 		verify(httpClient, times(1)).execute(isA(HttpGet.class), isA(QuickCloseResponseHandler.class));
 	}
 
