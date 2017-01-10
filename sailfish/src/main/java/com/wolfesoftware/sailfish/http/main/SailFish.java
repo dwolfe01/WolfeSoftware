@@ -21,7 +21,7 @@ import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactor
 
 public class SailFish {
 	
-	static final Logger Logger = LoggerFactory.getLogger(SailFish.class);
+	private static final Logger Logger = LoggerFactory.getLogger(SailFish.class);
 	WorkerFactory factory = null;
 	
 	public static void main(String[] args) throws 
@@ -38,7 +38,7 @@ public class SailFish {
 
 	private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
 		if (logFile.getAbsolutePath().endsWith("json")){
-			ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.SYSTEMOUT);
+			ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.SAVETOFILE);
 			factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile), responseHandlerFactory);
 		} 
 		if (logFile.getAbsolutePath().endsWith("uptime")){

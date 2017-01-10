@@ -3,7 +3,6 @@ package com.wolfesoftware.sailfish.http.worker.factory;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

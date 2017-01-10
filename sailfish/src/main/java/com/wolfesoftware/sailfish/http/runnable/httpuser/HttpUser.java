@@ -17,6 +17,7 @@ import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -43,6 +44,7 @@ public class HttpUser implements Runnable {
 	private long waitTime = 0;
 	static final Logger Logger = LoggerFactory.getLogger(HttpUser.class);
 	protected ResponseHandlerFactory responseHandlerFactory;
+	BasicCookieStore cookieStore = new BasicCookieStore();
 
 	private static final TrustManager[] TRUST_ALL_CERTS = new TrustManager[] { new X509TrustManager() {
 		public X509Certificate[] getAcceptedIssuers() {
@@ -81,7 +83,7 @@ public class HttpUser implements Runnable {
 		}
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(100000).setConnectionRequestTimeout(100000)
 				.setSocketTimeout(100000).setRedirectsEnabled(true).setCookieSpec(CookieSpecs.DEFAULT).build();
-		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCookieStore(new BasicCookieStore())
+		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCookieStore(cookieStore)
 				.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE).setSSLContext(sslContext)
 				.setSSLSocketFactory(sslConnectionSocketFactory).build();
 	}
@@ -111,6 +113,7 @@ public class HttpUser implements Runnable {
 	protected void makeRequest(AbstractRequest request) {
 		long startTime = System.currentTimeMillis();
 		try {
+			outputCookieLogging();
 			StatusLine statusLine = request.makeRequest(httpClient, responseHandlerFactory);
 			doOutput(startTime, request, statusLine);
 		} catch (IOException e) {
@@ -194,5 +197,13 @@ public class HttpUser implements Runnable {
 	public void setResponseHandlerFactory(ResponseHandlerFactory responseHandlerFactory) {
 		this.responseHandlerFactory = responseHandlerFactory;
 	}
+	
+	private void outputCookieLogging() {
+		Logger.info("Cookies...");
+		for (Cookie cookie:this.cookieStore.getCookies()){
+			Logger.info("Cookie name:" + cookie.getName() + " Cookie domain:" + cookie.getDomain() + " Cookie value:" + cookie.getValue());
+		}
+	}
+
 
 }

@@ -63,7 +63,6 @@ public class PostRequestTest {
 		postRequest.addNameValuePostPair("text", "test");
 		HttpPost httpPost = postRequest.build();
 		UrlEncodedFormEntity entity = (UrlEncodedFormEntity) httpPost.getEntity();
-		System.out.println(EntityUtils.toString(entity));
 	}
 	
 	@Test

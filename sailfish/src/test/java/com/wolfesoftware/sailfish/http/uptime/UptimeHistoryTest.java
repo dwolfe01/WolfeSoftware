@@ -31,7 +31,6 @@ public class UptimeHistoryTest {
 		uptimeHistory.update("test1",300L);
 		uptimeHistory.update("test1",300L);
 		uptimeHistory.update("test2",300L);
-		System.out.println(uptimeHistory.prettyPrint());
 		assertEquals(true, uptimeHistory.prettyPrint().contains("url:test1 count:2 average:300.0 milliseconds"));
 		assertEquals(true, uptimeHistory.prettyPrint().contains("url:test2 count:1 average:300.0 milliseconds"));
 	}

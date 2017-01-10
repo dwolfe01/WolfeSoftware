@@ -21,6 +21,7 @@ public class PrintHeadersResponseHandler implements ResponseHandler<StatusLine> 
 	public StatusLine handleResponse(HttpResponse response)
 			throws ClientProtocolException, IOException {
 		Header[] allHeaders = response.getAllHeaders();
+		os.write("Response Headers:".getBytes());
 		for (Header header : allHeaders){
 			os.write((header.getName() + ":" + header.getValue()).getBytes());
 		}
