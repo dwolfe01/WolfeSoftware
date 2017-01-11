@@ -2,27 +2,12 @@ package com.wolfesoftware.sailfish.http.runnable.httpuser;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
 import org.apache.http.StatusLine;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.ssl.SSLContextBuilder;
-import org.apache.http.ssl.TrustStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,61 +22,28 @@ import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
 public class HttpUser implements Runnable {
 
 	protected String id;
-
-	protected String clientIP = "";
 	protected CloseableHttpClient httpClient;
 	protected List<AbstractRequest> requests = new ArrayList<AbstractRequest>();
 	private long waitTime = 0;
-	static final Logger Logger = LoggerFactory.getLogger(HttpUser.class);
 	protected ResponseHandlerFactory responseHandlerFactory;
-	BasicCookieStore cookieStore = new BasicCookieStore();
-
-	private static final TrustManager[] TRUST_ALL_CERTS = new TrustManager[] { new X509TrustManager() {
-		public X509Certificate[] getAcceptedIssuers() {
-			return null;
-		}
-
-		public void checkClientTrusted(X509Certificate[] certs, String authType) {
-		}
-
-		public void checkServerTrusted(X509Certificate[] certs, String authType) {
-		}
-	} };
-
+	private HttpClientFactory httpClientFactory;
 	
+	static final Logger Logger = LoggerFactory.getLogger(HttpUser.class);
+
 	public HttpUser() {
 		this(new ResponseHandlerFactory());
 	}
 
 	public HttpUser(ResponseHandlerFactory responseHandlerFactory) {
+		httpClientFactory = new HttpClientFactory();
 		this.responseHandlerFactory = responseHandlerFactory;
-		SSLContextBuilder sslContextBuilder = new SSLContextBuilder();
-		SSLConnectionSocketFactory sslConnectionSocketFactory;
-		SSLContext sslContext;
-
-		try {
-			sslContextBuilder.loadTrustMaterial(null, new TrustStrategy() {
-				public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-					return true;
-				}
-			});
-			sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContextBuilder.build());
-			sslContext = SSLContext.getInstance("SSL");
-			sslContext.init(null, TRUST_ALL_CERTS, new SecureRandom());
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-		RequestConfig config = RequestConfig.custom().setConnectTimeout(100000).setConnectionRequestTimeout(100000)
-				.setSocketTimeout(100000).setRedirectsEnabled(true).setCookieSpec(CookieSpecs.DEFAULT).build();
-		httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCookieStore(cookieStore)
-				.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE).setSSLContext(sslContext)
-				.setSSLSocketFactory(sslConnectionSocketFactory).build();
+		httpClient = httpClientFactory.getHttpClient();
 	}
 
 	// purely for test purposes
 	public HttpUser(CloseableHttpClient httpClient, ResponseHandlerFactory responseHandlerFactory) {
+		this(responseHandlerFactory);
 		this.httpClient = httpClient;
-		this.responseHandlerFactory = responseHandlerFactory;
 	}
 
 	public String getId() {
@@ -102,6 +54,14 @@ public class HttpUser implements Runnable {
 		this.id = id;
 	}
 
+	public ResponseHandlerFactory getResponseHandlerFactory() {
+		return responseHandlerFactory;
+	}
+	
+	public void setResponseHandlerFactory(ResponseHandlerFactory responseHandlerFactory) {
+		this.responseHandlerFactory = responseHandlerFactory;
+	}
+	
 	public void run() {
 		for (AbstractRequest request : requests) {
 			makeRequest(request);
@@ -130,6 +90,11 @@ public class HttpUser implements Runnable {
 		requests.add(new GetRequest(uri));
 		return this;
 	}
+	
+	public HttpUser addPostRequest(PostRequest request) {
+		requests.add(request);
+		return this;
+	}
 
 	public HttpUser setWaitTimeInMilliseconds(long sleepTime) {
 		this.waitTime = sleepTime;
@@ -138,6 +103,10 @@ public class HttpUser implements Runnable {
 
 	public List<AbstractRequest> getRequests() {
 		return requests;
+	}
+	
+	public AbstractRequest getRequest(int index) {
+		return requests.get(index);
 	}
 
 	public void setRequests(List<String[]> uris) throws URISyntaxException {
@@ -154,11 +123,7 @@ public class HttpUser implements Runnable {
 			}
 		}
 	}
-
-	public AbstractRequest getRequest(int index) {
-		return requests.get(index);
-	}
-
+	
 	protected void pause() {
 		if (waitTime > 0) {
 			try {
@@ -177,11 +142,6 @@ public class HttpUser implements Runnable {
 		return System.currentTimeMillis() - startTime;
 	}
 
-	public HttpUser addPostRequest(PostRequest request) {
-		requests.add(request);
-		return this;
-	}
-
 	protected void close() {
 		try {
 			this.httpClient.close();
@@ -190,17 +150,9 @@ public class HttpUser implements Runnable {
 		}
 	}
 	
-	public ResponseHandlerFactory getResponseHandlerFactory() {
-		return responseHandlerFactory;
-	}
-	
-	public void setResponseHandlerFactory(ResponseHandlerFactory responseHandlerFactory) {
-		this.responseHandlerFactory = responseHandlerFactory;
-	}
-	
 	private void outputCookieLogging() {
 		Logger.info("Cookies...");
-		for (Cookie cookie:this.cookieStore.getCookies()){
+		for (Cookie cookie:this.httpClientFactory.getCookieStore().getCookies()){
 			Logger.info("Cookie name:" + cookie.getName() + " Cookie domain:" + cookie.getDomain() + " Cookie value:" + cookie.getValue());
 		}
 	}

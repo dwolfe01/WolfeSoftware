@@ -21,9 +21,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.wolfesoftware.sailfish.http.requests.GetRequest;
 import com.wolfesoftware.sailfish.http.requests.PostRequest;
-import com.wolfesoftware.sailfish.http.responsehandler.QuickCloseResponseHandler;
 import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
-import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory.ResponseHandlers;
 
 public class HttpUserTest {
 
