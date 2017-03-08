@@ -15,10 +15,6 @@ public class PersonHandler {
 		}
 	}
 
-	public static void printPerson(Person person, PrintPerson p) {
-		System.out.println(p.printPerson(person));
-	}
-
 	public static <T> void outputMatchingWithGenerics(List<T> list,
 			Predicate<T> predicate, Consumer<T> consumer) {
 		for (T t : list) {
@@ -27,13 +23,15 @@ public class PersonHandler {
 			}
 		}
 	}
+	
+	public static void printPerson(Person person, PrintPerson p) {
+		System.out.println(p.printPerson(person));
+	}
 
 	public static void main(String[] args) {
-		List<Person> listOfPerson = new ArrayList<Person>();
-		listOfPerson.add(new Person("Jon"));
-		listOfPerson.add(new Person("Anna"));
-		listOfPerson.add(new Person("Pete"));
+		List<Person> listOfPerson = createListOfPersons();
 
+		System.out.println("//anonymous class");
 		outputMatchingPersons(listOfPerson, new CheckPerson() {
 
 			@Override
@@ -43,62 +41,30 @@ public class PersonHandler {
 
 		});
 
+		System.out.println("//predicate passed as argument");
 		outputMatchingPersons(listOfPerson,
 				person -> person.getEmailAddress() == null);
 
-		// assign lambda to variable
+		System.out.println("// assign lambda to variable");
 		Consumer<Person> consumer = person -> System.out.println(person
 				.getName());
 		outputMatchingWithGenerics(listOfPerson, person -> person.getName()
 				.equals("Anna"), consumer);
-	}
-}
-
-public class Person {
-
-	public enum Sex {
-		MALE, FEMALE
-	}
-
-	private String name;
-	private LocalDate birthday;
-	private Sex gender;
-	private String emailAddress;
-
-	public Person(String string) {
-		this.name = string;
+		
+		System.out.println("//now using streams rather than loops");
+		listOfPerson.stream().forEach(person -> System.out.println(person.getName()));
+		
+		System.out.println("//now using streams with predicate");
+		listOfPerson.stream().filter(person -> person.getName().equals("Anna")).forEach(person -> System.out.println(person.getName()));
+		
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public LocalDate getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(LocalDate birthday) {
-		this.birthday = birthday;
-	}
-
-	public Sex getGender() {
-		return gender;
-	}
-
-	public void setGender(Sex gender) {
-		this.gender = gender;
-	}
-
-	public String getEmailAddress() {
-		return emailAddress;
-	}
-
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	private static List<Person> createListOfPersons() {
+		List<Person> listOfPerson = new ArrayList<Person>();
+		listOfPerson.add(new Person("Jon"));
+		listOfPerson.add(new Person("Anna"));
+		listOfPerson.add(new Person("Pete"));
+		return listOfPerson;
 	}
 }
 
