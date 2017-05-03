@@ -31,5 +31,12 @@ public class InnersAndOuters {
 		System.out.println("*****");
 		Inner inner = innersAndOuters.new Inner();
 		inner.seeOuter();
+		inner = innersAndOuters.new Inner(){
+			@Override
+			public void seeOuter() {
+				System.out.println("do nothing");
+			}
+		};
+		inner.seeOuter();
 	}
 }
