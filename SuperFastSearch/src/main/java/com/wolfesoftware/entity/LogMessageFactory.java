@@ -45,19 +45,4 @@ public class LogMessageFactory {
 		return logs;
 	}
 
-	public LogFileStats getLogFileStats(InputStream logFileInputStream) throws ParseException, IOException {
-		LogFileStats lfs = new LogFileStats();
-		InputStreamReader isr = new InputStreamReader(logFileInputStream);
-		String logFileMessage;
-		try (BufferedReader br = new BufferedReader(isr)) {
-			while ((logFileMessage = br.readLine()) != null) {
-				LogMessage logMessage = this.getLogMessage(logFileMessage);
-				int numberOfLogMessages = lfs.getNumberOfLogMessages();
-				lfs.setNumberOfLogMessages(++numberOfLogMessages);
-				lfs.addCountToIP(logMessage.getIP());
-			}
-		}
-		return lfs;
-	}
-	
 }
