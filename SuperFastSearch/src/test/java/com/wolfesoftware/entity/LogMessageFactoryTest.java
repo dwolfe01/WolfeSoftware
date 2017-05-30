@@ -16,7 +16,6 @@ public class LogMessageFactoryTest {
 	@Test
 	public void shouldGetLogFileEntityFromString() throws ParseException, IOException {
 		LogMessage logMessage = logMessageFactory.getLogMessage("194.247.11.63 [20/03/2019:16:03:00 +0000] /testURL31/4444xyz/extend6");
-		System.out.println(logMessage);
 		assertEquals("194.247.11.63",logMessage.getIP());
 		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
 		assertEquals("Wed Mar 20 16:03:00 GMT 2019",logMessage.getDate().toString());
@@ -35,6 +34,14 @@ public class LogMessageFactoryTest {
 		assertEquals("194.182.31.54",logMessage.getIP());
 		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
 		assertEquals("Mon Mar 20 16:03:00 GMT 2017",logMessage.getDate().toString());
+	}
+	
+	@Test
+	public void shouldGetLogFileEntityFromLogFileForGivenIP() throws ParseException, IOException {
+		InputStream logFile = this.getClass().getClassLoader().getResourceAsStream("apache_medium.log");
+		List<LogMessage> logMessagesFromLogFile = logMessageFactory.getLogMessagesFromLogFileForIP(logFile,"193.30.27.36");
+		assertEquals(17, logMessagesFromLogFile.size());
+		logMessageFactory.prettyPrint(logMessagesFromLogFile);
 	}
 	
 }
