@@ -41,6 +41,7 @@ public class LogFileStats {
 				addCountToRequests(logMessage.getRequest());
 			}
 		}
+		isr.close();
 		ipCountDescendingOrder = this.sortByValue(ipCount);
 		popularRequestsDescendingOrder = this.sortByValue(popularRequests);
 	}

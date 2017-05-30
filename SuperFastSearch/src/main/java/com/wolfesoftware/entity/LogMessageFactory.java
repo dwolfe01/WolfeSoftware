@@ -78,6 +78,7 @@ public class LogMessageFactory {
 				}
 			}
 		}
+		isr.close();
 		return logs;
 	}
 

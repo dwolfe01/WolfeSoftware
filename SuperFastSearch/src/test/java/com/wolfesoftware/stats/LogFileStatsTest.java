@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +23,7 @@ public class LogFileStatsTest {
 	public void before() throws ParseException, IOException{
 		InputStream logFile = this.getClass().getClassLoader().getResourceAsStream("apache_medium.log");
 		lfs = new LogFileStats(logFile);
+		logFile.close();
 	}
 	
 	@Test

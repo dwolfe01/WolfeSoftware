@@ -34,6 +34,7 @@ public class LogMessageFactoryTest {
 		assertEquals("194.182.31.54",logMessage.getIP());
 		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
 		assertEquals("Mon Mar 20 16:03:00 GMT 2017",logMessage.getDate().toString());
+		logFile.close();
 	}
 	
 	@Test
@@ -42,6 +43,7 @@ public class LogMessageFactoryTest {
 		List<LogMessage> logMessagesFromLogFile = logMessageFactory.getLogMessagesFromLogFileForIP(logFile,"193.30.27.36");
 		assertEquals(17, logMessagesFromLogFile.size());
 		logMessageFactory.prettyPrint(logMessagesFromLogFile);
+		logFile.close();
 	}
 	
 }
