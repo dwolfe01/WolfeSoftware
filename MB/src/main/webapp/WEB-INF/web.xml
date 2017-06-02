@@ -9,7 +9,7 @@
 		<!-- FreemarkerServlet settings: -->
 		<init-param>
 			<param-name>TemplatePath</param-name>
-			<param-value>/</param-value>
+			<param-value>/freemarker</param-value>
 		</init-param>
 		<init-param>
 			<param-name>NoCache</param-name>
@@ -61,11 +61,11 @@
 
 	<servlet-mapping>
 		<servlet-name>freemarker</servlet-name>
-		<url-pattern>*.ftl</url-pattern>
+		<url-pattern>/index.ftl</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>stats</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/stats</url-pattern>
 	</servlet-mapping>
 </web-app>
