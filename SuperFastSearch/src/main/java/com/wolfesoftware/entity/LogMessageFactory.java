@@ -12,8 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.function.Predicate;
 
-/* This produces a whole list of log messages */
 public class LogMessageFactory {
 	
 	String pattern = "(\\S+)\\s\\[(.*)\\]\\s(.*)";
@@ -46,22 +46,12 @@ public class LogMessageFactory {
 
 	public List<LogMessage> getLogMessagesFromLogFile(InputStream logFileInputStream)
 			throws ParseException, IOException {
-		return loopAndFilter(logFileInputStream, new LogMessageMatcher() {
-			@Override
-			public boolean doesLogMessageMatchCriteria(LogMessage logMessage) {
-				return true;
-			}
-		});
+		return loopAndFilter(logFileInputStream, logMessage -> true);
 	}
 
 	public List<LogMessage> getLogMessagesFromLogFileForIP(InputStream logFileInputStream, final String IP)
 			throws ParseException, IOException {
-		return loopAndFilter(logFileInputStream, new LogMessageMatcher() {
-			@Override
-			public boolean doesLogMessageMatchCriteria(LogMessage logMessage) {
-				return logMessage.getIP().equals(IP);
-			}
-		});
+		return loopAndFilter(logFileInputStream, logMessage -> logMessage.getIP().equals(IP));
 	}
 	
 	public void prettyPrint(List<LogMessage> logMessages){
@@ -71,8 +61,7 @@ public class LogMessageFactory {
 		}
 	}
 
-	// prob be better in JAVA 8
-	private List<LogMessage> loopAndFilter(InputStream logFileInputStream, LogMessageMatcher logMessageMatcher)
+	private List<LogMessage> loopAndFilter(InputStream logFileInputStream, Predicate<LogMessage> predicate)
 			throws IOException, ParseException {
 		ArrayList<LogMessage> logs = new ArrayList<LogMessage>();
 		InputStreamReader isr = new InputStreamReader(logFileInputStream);
@@ -80,7 +69,7 @@ public class LogMessageFactory {
 		try (BufferedReader br = new BufferedReader(isr)) {
 			while ((logFileMessage = br.readLine()) != null) {
 				LogMessage logMessage = this.getLogMessage(logFileMessage);
-				if (logMessageMatcher.doesLogMessageMatchCriteria(logMessage)) {
+				if (predicate.test(logMessage)) {
 					logs.add(logMessage);
 				}
 			}
