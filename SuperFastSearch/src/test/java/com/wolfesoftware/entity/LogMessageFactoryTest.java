@@ -55,4 +55,13 @@ public class LogMessageFactoryTest {
 		logFile.close();
 	}
 	
+	@Test
+	public void shouldGetLogFileEntityFromLogFileForAnyGivenLambda() throws ParseException, IOException {
+		InputStream logFile = this.getClass().getClassLoader().getResourceAsStream("apache_medium.log");
+		List<LogMessage> logMessagesFromLogFile = logMessageFactory.getLogMessagesFromLogFileForAnyGivenLambda(logFile,logMessage -> logMessage.getIP().equals("193.30.27.36"));
+		assertEquals(17, logMessagesFromLogFile.size());
+		logMessageFactory.prettyPrint(logMessagesFromLogFile);
+		logFile.close();
+	}
+	
 }

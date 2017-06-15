@@ -53,6 +53,11 @@ public class LogMessageFactory {
 			throws ParseException, IOException {
 		return loopAndFilter(logFileInputStream, logMessage -> logMessage.getIP().equals(IP));
 	}
+
+	public List<LogMessage> getLogMessagesFromLogFileForAnyGivenLambda(InputStream logFileInputStream, Predicate<LogMessage> predicate)
+			throws ParseException, IOException {
+		return loopAndFilter(logFileInputStream, predicate);
+	}
 	
 	public void prettyPrint(List<LogMessage> logMessages){
 		Iterator<LogMessage> iterator = logMessages.iterator();
