@@ -9,9 +9,6 @@ public class QuickSort {
 	private static final int howManyNumbers = 2000000;
 
 	public static void main(String[] args) {
-		// if (args.length != 1) {
-		// System.out.println("Please enter exactly one argument");
-		// }
 		long startTime = System.currentTimeMillis();
 		List<Integer> numbers = generateListOfRandomNumbers(howManyNumbers);
 		System.out.println("Created " + howManyNumbers + " Random Numbers: "
