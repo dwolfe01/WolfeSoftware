@@ -22,7 +22,7 @@ public class Stats {
 	public List<LogMessage> getLogs(InputStream is, String ip) throws IOException {
 		List<LogMessage> logMessagesFromLogFile = null;
 			try {
-				logMessagesFromLogFile = logMessageFactory.getLogMessagesFromLogFileForIP(is, ip);
+				logMessagesFromLogFile = logMessageFactory.getLogMessagesFromLogFileForAnyGivenLambda(is, logMessage -> true);
 			} catch (Exception e) {
 				LOGGER.error(e.toString());
 			}

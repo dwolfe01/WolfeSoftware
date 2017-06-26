@@ -35,6 +35,9 @@
       <div class="one-half column" style="margin-top: 5%">
        	<#include "index_sections/welcome.ftl">
       </div>
+      <div class="one-half column" style="margin-top: 5%">
+       	<#include "index_sections/aboutyou.ftl">
+      </div>
     </div>
   </div>
 

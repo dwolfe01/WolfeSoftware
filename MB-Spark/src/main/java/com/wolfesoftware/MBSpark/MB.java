@@ -23,7 +23,7 @@ public class MB {
 	}
 
 	private void createEndpoints() {
-		get("/index", (request, response) -> {
+		get("/", (request, response) -> {
 			return mbFreeMarkerEndpoints.getIndexPage(request, response);
 		});
 	}
