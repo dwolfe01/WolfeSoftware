@@ -5,9 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+
+import com.wolfesoftware.entity.LogMessageFactory.FIELD;
 
 public class LogMessageFactoryTest {
 	
@@ -18,16 +21,17 @@ public class LogMessageFactoryTest {
 		LogMessage logMessage = logMessageFactory.getLogMessage("194.247.11.63 [20/03/2019:16:03:00 +0000] /testURL31/4444xyz/extend6");
 		assertEquals("194.247.11.63",logMessage.getIP());
 		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
-		assertEquals("Wed Mar 20 16:03:00 GMT 2019",logMessage.getDate().toString());
+		assertEquals("2019-03-20T16:03",logMessage.getDate().toString());
 	}
 
 	@Test
 	public void shouldGetLogFileEntityFromStringDifferentOrdering() throws ParseException, IOException {
-		logMessageFactory = new LogMessageFactory("\\[(.*)\\]\\s(\\S+)\\s(.*)", "dd/MM/yyyy:HH:mm:ss Z", new int[]{2,1,3});
+		List<FIELD> ordering = Arrays.asList(LogMessageFactory.FIELD.DATE, LogMessageFactory.FIELD.IP, LogMessageFactory.FIELD.REQUEST);
+		logMessageFactory = new LogMessageFactory("\\[(.*)\\]\\s(\\S+)\\s(.*)", "dd/MM/yyyy:HH:mm:ss Z", ordering);
 		LogMessage logMessage = logMessageFactory.getLogMessage("[20/03/2019:16:03:00 +0000] 194.247.11.63 /testURL31/4444xyz/extend6");
 		assertEquals("194.247.11.63",logMessage.getIP());
 		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
-		assertEquals("Wed Mar 20 16:03:00 GMT 2019",logMessage.getDate().toString());
+		assertEquals("2019-03-20T16:03",logMessage.getDate().toString());
 	}
 
 	@Test
@@ -38,11 +42,11 @@ public class LogMessageFactoryTest {
 		LogMessage logMessage = logMessagesFromLogFile.get(0);
 		assertEquals("125.8.33.37",logMessage.getIP());
 		assertEquals("/testURL11/4444xyz",logMessage.getRequest());
-		assertEquals("Mon Mar 20 16:03:00 GMT 2017",logMessage.getDate().toString());
+		assertEquals("2017-03-20T16:03",logMessage.getDate().toString());
 		logMessage = logMessagesFromLogFile.get(5);
 		assertEquals("194.182.31.54",logMessage.getIP());
 		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
-		assertEquals("Mon Mar 20 16:03:00 GMT 2017",logMessage.getDate().toString());
+		assertEquals("2017-03-20T16:03",logMessage.getDate().toString());
 		logFile.close();
 	}
 	

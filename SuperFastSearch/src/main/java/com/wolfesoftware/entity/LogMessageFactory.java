@@ -6,7 +6,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -15,31 +19,37 @@ import java.util.regex.Pattern;
 import java.util.function.Predicate;
 
 public class LogMessageFactory {
-	
+	public enum FIELD {
+		IP, DATE,REQUEST
+	};
 	String pattern = "(\\S+)\\s\\[(.*)\\]\\s(.*)";
 	String dateFormat = "dd/MM/yyyy:HH:mm:ss Z";
-	private int[] ordering = {1, 2, 3};
+	private int IP_index_in_logfile = 1;
+	private int DATE_index_in_logfile = 2;
+	private int REQUEST_index_in_logfile = 3;
 	
 	//ordering is IP / DATE / REQUEST
-	public LogMessageFactory(String pattern, String dateFormat, int[] ordering){
+	public LogMessageFactory(String pattern, String dateFormat, List<FIELD> ordering){
 		this.pattern = pattern;
 		this.dateFormat = dateFormat;
-		this.ordering  = ordering;
+		this.IP_index_in_logfile = ordering.indexOf(FIELD.IP) + 1;
+		this.DATE_index_in_logfile = ordering.indexOf(FIELD.DATE) + 1;
+		this.REQUEST_index_in_logfile = ordering.indexOf(FIELD.REQUEST) + 1;
 	}
 
 	public LogMessageFactory() {
 	}
 
 	public LogMessage getLogMessage(String log) throws ParseException {
-		SimpleDateFormat sdfInput = new SimpleDateFormat(dateFormat);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
 		LogMessage logFileEntity = null;
 		Pattern r = Pattern.compile(pattern);
 
 		Matcher m = r.matcher(log);
 		if (m.matches()) {
 			logFileEntity = new LogMessage();
-			Date timestamp = sdfInput.parse(m.group(ordering[1]));
-			logFileEntity.withIP(m.group(ordering[0])).withDate(timestamp).withRequest(m.group(ordering[2]));
+			LocalDateTime timestamp = LocalDateTime.parse(m.group(DATE_index_in_logfile), formatter);
+			logFileEntity.withIP(m.group(IP_index_in_logfile)).withDate(timestamp).withRequest(m.group(REQUEST_index_in_logfile));
 		}
 		return logFileEntity;
 	}

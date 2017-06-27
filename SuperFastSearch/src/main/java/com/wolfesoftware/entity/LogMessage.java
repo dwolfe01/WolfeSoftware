@@ -1,6 +1,6 @@
 package com.wolfesoftware.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LogMessage")
 public class LogMessage {
-	
+
 	@Id
 	@GeneratedValue
 	private long id;
@@ -23,15 +23,15 @@ public class LogMessage {
 		this.id = id;
 	}
 
-	private Date date;
+	private LocalDateTime date;
 	private String request;
 	private String IP;
 
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
@@ -51,7 +51,7 @@ public class LogMessage {
 		IP = iP;
 	}
 
-	public LogMessage withDate(Date date) {
+	public LogMessage withDate(LocalDateTime date) {
 		this.date = date;
 		return this;
 	}
@@ -69,7 +69,6 @@ public class LogMessage {
 		this.IP = IP;
 		return this;
 	}
-	
 
 	@Override
 	public String toString() {
@@ -80,5 +79,5 @@ public class LogMessage {
 		sb.append(" IP:" + IP);
 		return sb.toString();
 	}
-	
+
 }
