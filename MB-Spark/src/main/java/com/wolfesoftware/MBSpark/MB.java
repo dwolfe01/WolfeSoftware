@@ -26,6 +26,9 @@ public class MB {
 		get("/", (request, response) -> {
 			return mbFreeMarkerEndpoints.getIndexPage(request, response);
 		});
+		get("/robots.txt", (request, response) -> {
+			return mbFreeMarkerEndpoints.getRobots(request, response);
+		});
 	}
 
 	private void createFilters() {

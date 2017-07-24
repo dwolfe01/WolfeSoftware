@@ -29,6 +29,21 @@ public class MBFreeMarkerEndpoints {
 		configuration = new Configuration(new Version(2, 3, 0));
 		configuration.setClassForTemplateLoading(MBFreeMarkerEndpoints.class, "/");
 	}
+	
+	protected StringWriter getRobots(Request request, Response response) {
+		StringWriter writer = new StringWriter();
+		response.type("text/plain");
+		try {
+			Map<String, Object> model = new HashMap<String, Object>();
+			Template formTemplate = configuration.getTemplate("templates/robots.ftl");
+			formTemplate.process(model, writer);
+		} catch (Exception e) {
+			//replace with custom error page
+			LOGGER.debug(e.getMessage());
+			halt(500);
+		}
+		return writer;
+	}
 
 	protected StringWriter getIndexPage(Request request, Response response) {
 		StringWriter writer = new StringWriter();
