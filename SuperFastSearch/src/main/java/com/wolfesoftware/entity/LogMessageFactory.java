@@ -19,14 +19,16 @@ import java.util.regex.Pattern;
 import java.util.function.Predicate;
 
 public class LogMessageFactory {
+
 	public enum FIELD {
-		IP, DATE,REQUEST
+		IP, DATE,REQUEST;
 	};
-	String pattern = "(\\S+)\\s\\[(.*)\\]\\s(.*)";
-	String dateFormat = "dd/MM/yyyy:HH:mm:ss Z";
-	private int IP_index_in_logfile = 1;
-	private int DATE_index_in_logfile = 2;
-	private int REQUEST_index_in_logfile = 3;
+	
+	String pattern;
+	String dateFormat;
+	private int IP_index_in_logfile;
+	private int DATE_index_in_logfile;
+	private int REQUEST_index_in_logfile;
 	
 	//ordering is IP / DATE / REQUEST
 	public LogMessageFactory(String pattern, String dateFormat, List<FIELD> ordering){
@@ -37,7 +39,17 @@ public class LogMessageFactory {
 		this.REQUEST_index_in_logfile = ordering.indexOf(FIELD.REQUEST) + 1;
 	}
 
-	public LogMessageFactory() {
+	//ordering is IP / DATE / REQUEST
+	public LogMessageFactory(String pattern, String dateFormat, String ordering){
+			this.pattern = pattern;
+			this.dateFormat = dateFormat;
+			List<String> asList = Arrays.asList(ordering.split(","));
+			this.IP_index_in_logfile = asList.indexOf(FIELD.IP.toString()) + 1;
+			this.DATE_index_in_logfile = asList.indexOf(FIELD.DATE.toString()) + 1;
+			this.REQUEST_index_in_logfile = asList.indexOf(FIELD.REQUEST.toString()) + 1;
+			if (IP_index_in_logfile<1||DATE_index_in_logfile<1||REQUEST_index_in_logfile<1){
+				throw new RuntimeException("Ordering is not understandable try something like IP,DATE,REQUEST");
+			}
 	}
 
 	public LogMessage getLogMessage(String log) throws ParseException {

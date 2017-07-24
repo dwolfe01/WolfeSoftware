@@ -29,8 +29,8 @@ public class LogFileStats {
 	private Map<String, Integer> popularRequests = new HashMap<>();
 	private LogMessageFactory logMessageFactory;
 	
-	public LogFileStats(InputStream logFileInputStream) throws ParseException, IOException {
-		logMessageFactory = new LogMessageFactory();
+	public LogFileStats(InputStream logFileInputStream, String logFilePattern, String dateFormat,String logFileOrdering) throws ParseException, IOException {
+		logMessageFactory = new LogMessageFactory(logFilePattern, dateFormat, logFileOrdering);
 		InputStreamReader isr = new InputStreamReader(logFileInputStream);
 		String logFileMessage;
 		try (BufferedReader br = new BufferedReader(isr)) {
