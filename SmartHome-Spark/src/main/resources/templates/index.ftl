@@ -34,7 +34,6 @@
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
        	Lights ON!
-       	${json}
       </div>
       <div class="one-half column" style="margin-top: 5%">
        	Lights OFF!

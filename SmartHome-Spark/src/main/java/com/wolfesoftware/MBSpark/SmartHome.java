@@ -26,6 +26,9 @@ public class SmartHome {
 		get("/", (request, response) -> {
 			return mbFreeMarkerEndpoints.getIndexPage(request, response);
 		});
+		get("/on", (request, response) -> {
+			return mbFreeMarkerEndpoints.on(request, response);
+		});
 	}
 
 	private void createFilters() {
