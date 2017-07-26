@@ -33,11 +33,14 @@
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
-       	Lights ON!
+       	<a href="/on?groupId=0">Lights ON!</a>
       </div>
       <div class="one-half column" style="margin-top: 5%">
-       	Lights OFF!
+       	<a href="/off?groupId=0">Lights OFF!</a>
       </div>
+    </div>
+    <div class="row">
+      ${json}
     </div>
   </div>
 

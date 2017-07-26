@@ -24,10 +24,13 @@ public class SmartHome {
 
 	private void createEndpoints() {
 		get("/", (request, response) -> {
-			return mbFreeMarkerEndpoints.getIndexPage(request, response);
+			return mbFreeMarkerEndpoints.homepage(request, response);
 		});
 		get("/on", (request, response) -> {
 			return mbFreeMarkerEndpoints.on(request, response);
+		});
+		get("/off", (request, response) -> {
+			return mbFreeMarkerEndpoints.off(request, response);
 		});
 	}
 
