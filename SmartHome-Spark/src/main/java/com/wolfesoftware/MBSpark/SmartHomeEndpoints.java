@@ -18,7 +18,7 @@ import spark.Response;
 public class SmartHomeEndpoints {
 
 	private Configuration configuration;
-	private final Logger LOGGER = LoggerFactory.getLogger(SmartHomeEndpoints.class);
+//	private final Logger LOGGER = LoggerFactory.getLogger(SmartHomeEndpoints.class);
 	private SmartHomeActions smartHomeActions = new SmartHomeActions();
 
 	public SmartHomeEndpoints() {
@@ -29,7 +29,7 @@ public class SmartHomeEndpoints {
 	protected StringWriter homepage(Request request, Response response) throws TemplateException, IOException {
 		StringWriter writer = new StringWriter();
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("json", smartHomeActions.getLights());
+		model.put("listOfLights", smartHomeActions.getLights());
 		Template formTemplate = configuration.getTemplate("templates/index.ftl");
 		formTemplate.process(model, writer);
 		return writer;

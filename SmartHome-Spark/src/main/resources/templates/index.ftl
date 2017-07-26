@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="row">
-      ${json}
+    <#list listOfLights as item><p>${item}</p></#list>
     </div>
   </div>
 

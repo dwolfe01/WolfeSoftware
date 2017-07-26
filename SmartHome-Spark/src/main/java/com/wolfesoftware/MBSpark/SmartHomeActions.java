@@ -3,6 +3,8 @@ package com.wolfesoftware.MBSpark;
 import static spark.Spark.halt;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -15,21 +17,31 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 public class SmartHomeActions {
-	
+
 	private final String hueHome = "http://192.168.1.81/api/4nHIqq4Th90cUZpf66Lr-2nxtLoLSJ6UnT5lFJBA";
 	private final Logger LOGGER = LoggerFactory.getLogger(SmartHomeActions.class);
-	
-	protected String getLights() {
-		String jsonObjectFromEndpoint = "";
+
+	protected List<String> getLights() {
+		List<String> descriptionOfLights = new ArrayList<String>();
 		try {
-			jsonObjectFromEndpoint = this.getJSONObjectFromEndpoint(hueHome + "/lights");
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(this.getJSONObjectFromEndpoint(hueHome + "/lights"));
+			JsonObject lights = element.getAsJsonObject();
+			for (String key:lights.keySet()){
+				JsonObject individualLight = lights.getAsJsonObject(key);
+				descriptionOfLights.add(key + ":" + individualLight.get("name") + " " + individualLight.get("state"));
+			}
 		} catch (Exception e) {
 			// replace with custom error page
 			LOGGER.debug(e.getMessage());
 			halt(500);
 		}
-		return jsonObjectFromEndpoint;
+		return descriptionOfLights;
 	}
 
 	protected void sendMessageToGroup(String groupId, String message) {
@@ -65,6 +77,5 @@ public class SmartHomeActions {
 		String responseBody = EntityUtils.toString(response.getEntity());
 		return responseBody;
 	}
-
 
 }
