@@ -31,7 +31,7 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
-    <h4>Dolly Smart Home Commander</h4>
+    <img src="/dolly_logo.png"/>
     <div class="row">
     <#list listOfLights as item><p><h5>${item}</h5></p></#list>
     </div>
