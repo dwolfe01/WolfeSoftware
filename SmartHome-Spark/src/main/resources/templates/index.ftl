@@ -31,16 +31,17 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
+    <h4>Dolly Smart Home Commander</h4>
     <div class="row">
-      <div class="one-half column" style="margin-top: 5%">
-       	<a href="/on?groupId=0">Lights ON!</a>
-      </div>
-      <div class="one-half column" style="margin-top: 5%">
-       	<a href="/off?groupId=0">Lights OFF!</a>
-      </div>
+    <#list listOfLights as item><p><h5>${item}</h5></p></#list>
     </div>
     <div class="row">
-    <#list listOfLights as item><p><h3>${item}</h3></p></#list>
+      <div class="one-half column" style="margin-top: 5%">
+       	<a href="/on?groupId=0">ALL Lights ON!</a>
+      </div>
+      <div class="one-half column" style="margin-top: 5%">
+       	<a href="/off?groupId=0">ALL Lights OFF!</a>
+      </div>
     </div>
   </div>
 

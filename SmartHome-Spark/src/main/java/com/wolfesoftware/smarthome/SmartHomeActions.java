@@ -52,7 +52,8 @@ public class SmartHomeActions {
 			JsonObject lights = element.getAsJsonObject();
 			for (String key:lights.keySet()){
 				JsonObject individualLight = lights.getAsJsonObject(key);
-				descriptionOfLights.add(key + ":" + individualLight.get("name") + " " + this.getOnCommand(key)+ " " + this.getOffCommand(key));
+				String name = individualLight.get("name").getAsString().replaceAll("\"", "");
+				descriptionOfLights.add(name + " " + this.getOnCommand(key)+ " " + this.getOffCommand(key));
 			}
 		} catch (Exception e) {
 			// replace with custom error page
