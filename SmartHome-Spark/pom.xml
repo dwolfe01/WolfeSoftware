@@ -32,7 +32,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.wolfesoftware.MBSpark.MB</mainClass>
+							<mainClass>com.wolfesoftware.smarthome.SmartHome</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

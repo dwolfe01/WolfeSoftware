@@ -1,4 +1,4 @@
-package com.wolfesoftware.MBSpark;
+package com.wolfesoftware.smarthome;
 
 import static spark.Spark.before;
 import static spark.Spark.get;

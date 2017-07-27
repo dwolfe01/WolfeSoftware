@@ -1,4 +1,4 @@
-package com.wolfesoftware.MBSpark;
+package com.wolfesoftware.smarthome;
 
 import java.io.IOException;
 import java.io.StringWriter;

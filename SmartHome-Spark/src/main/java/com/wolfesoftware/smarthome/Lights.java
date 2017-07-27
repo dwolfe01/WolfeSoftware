@@ -1,4 +1,4 @@
-package com.wolfesoftware.MBSpark;
+package com.wolfesoftware.smarthome;
 
 public class Lights {
 	
