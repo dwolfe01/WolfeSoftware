@@ -29,7 +29,7 @@ public class SmartHomeEndpoints {
 	protected StringWriter homepage(Request request, Response response) throws TemplateException, IOException {
 		StringWriter writer = new StringWriter();
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("listOfLights", smartHomeActions.getLights());
+		model.put("listOfLights", smartHomeActions.getGroups());
 		Template formTemplate = configuration.getTemplate("templates/index.ftl");
 		formTemplate.process(model, writer);
 		return writer;
@@ -37,13 +37,31 @@ public class SmartHomeEndpoints {
 
 	protected StringWriter on(Request request, Response response) throws TemplateException, IOException {
 		String groupId = request.queryParams("groupId");
-		smartHomeActions.sendMessageToGroup(groupId, "{\"on\":true}");
+		smartHomeActions.sendMessageToGroup(groupId, "{\"on\":true,\"bri\":100,\"sat\":100,\"hue\":0}");
+		sleepy();
 		return this.homepage(request, response);
+	}
+
+	private void sleepy() {
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected StringWriter off(Request request, Response response) throws TemplateException, IOException {
 		String groupId = request.queryParams("groupId");
 		smartHomeActions.sendMessageToGroup(groupId, "{\"on\":false}");
+		sleepy();
+		return this.homepage(request, response);
+	}
+	
+	protected StringWriter lightOn(Request request, Response response) throws TemplateException, IOException {
+		String id = request.queryParams("id");
+		smartHomeActions.sendMessageToLight(id, "{\"on\":true}");
+		sleepy();
 		return this.homepage(request, response);
 	}
 

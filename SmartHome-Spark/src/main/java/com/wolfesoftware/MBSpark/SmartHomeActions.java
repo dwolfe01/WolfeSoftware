@@ -43,7 +43,49 @@ public class SmartHomeActions {
 		}
 		return descriptionOfLights;
 	}
+	
+	protected List<String> getGroups() {
+		List<String> descriptionOfLights = new ArrayList<String>();
+		try {
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(this.getJSONObjectFromEndpoint(hueHome + "/groups"));
+			JsonObject lights = element.getAsJsonObject();
+			for (String key:lights.keySet()){
+				JsonObject individualLight = lights.getAsJsonObject(key);
+				descriptionOfLights.add(key + ":" + individualLight.get("name") + " " + this.getOnCommand(key)+ " " + this.getOffCommand(key));
+			}
+		} catch (Exception e) {
+			// replace with custom error page
+			LOGGER.debug(e.getMessage());
+			halt(500);
+		}
+		return descriptionOfLights;
+	}
+	
+	
+	private String getOnCommand(String key) {
+		String onImage="<img src=\"http://localhost:4567/lightbulb_on.png\" style=\"width:50px;height:50px;\">";
+		return "<a href=\"/on?groupId=" + key + "\">" + onImage + "</a>";
+	}
+	
+	private String getOffCommand(String key) {
+		String offImage="<img src=\"http://localhost:4567/lightbulb_off.jpg\" style=\"width:50px;height:50px;\">";
+		return "<a href=\"/off?groupId=" + key + "\">" + offImage + "</a>";
+	}
 
+	public void sendMessageToLight(String groupId, String message) {
+		String jsonObjectFromEndpoint = null;
+		try {
+			jsonObjectFromEndpoint = this.putJSONObjectFromEndpoint(hueHome + "/groups/" + groupId + "/action",
+					message);
+		} catch (Exception e) {
+			// replace with custom error page
+			LOGGER.debug(e.getMessage());
+			halt(500);
+		}
+		LOGGER.info(jsonObjectFromEndpoint);
+	}
+	
 	protected void sendMessageToGroup(String groupId, String message) {
 		String jsonObjectFromEndpoint = null;
 		try {

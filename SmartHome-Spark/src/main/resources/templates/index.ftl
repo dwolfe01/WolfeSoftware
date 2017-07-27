@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="row">
-    <#list listOfLights as item><p>${item}</p></#list>
+    <#list listOfLights as item><p><h3>${item}</h3></p></#list>
     </div>
   </div>
 
