@@ -33,7 +33,7 @@
   <div class="container">
   	<div class="row">
       <div class="one-half column" style="margin-top: 5%">
-       	<img src="/dolly_logo.png"/>
+       	<img src="/ito_dolly.png"/>
       </div>
     </div>
     <div class="row">
