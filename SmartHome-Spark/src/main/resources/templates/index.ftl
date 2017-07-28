@@ -31,7 +31,11 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
-    <img src="/dolly_logo.png"/>
+  	<div class="row">
+      <div class="one-half column" style="margin-top: 5%">
+       	<img src="/dolly_logo.png"/>
+      </div>
+    </div>
     <div class="row">
     <#list listOfLights as item><p><h5>${item}</h5></p></#list>
     </div>

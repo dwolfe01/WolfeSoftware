@@ -65,12 +65,12 @@ public class SmartHomeActions {
 	
 	
 	private String getOnCommand(String key) {
-		String onImage="<img src=\"/lightbulb_on.png\" style=\"width:50px;height:50px;\">";
+		String onImage="<img src=\"/on.png\" style=\"width:50px;height:50px;\">";
 		return "<a href=\"/on?groupId=" + key + "\">" + onImage + "</a>";
 	}
 	
 	private String getOffCommand(String key) {
-		String offImage="<img src=\"/lightbulb_off.jpg\" style=\"width:50px;height:50px;\">";
+		String offImage="<img src=\"/off.png\" style=\"width:50px;height:50px;\">";
 		return "<a href=\"/off?groupId=" + key + "\">" + offImage + "</a>";
 	}
 
