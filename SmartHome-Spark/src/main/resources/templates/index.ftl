@@ -36,9 +36,7 @@
        	<img src="/ito_dolly.png"/>
       </div>
     </div>
-    <div class="row">
-    <#list listOfLights as item><p><h5>${item}</h5></p></#list>
-    </div>
+    <#list listOfLights as item><div class="row">${item}</div></#list>
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
        	<a href="/on?groupId=0">ALL Lights ON!</a>
