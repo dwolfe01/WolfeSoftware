@@ -15,7 +15,7 @@ html {
     margin: auto;
     font-family: Courier;
 	color: white;
-	font-size:40px;
+	font-size:48px;
 }
 
 .header {
@@ -43,6 +43,11 @@ html {
 }
 
 .off {
-    background: white;
+    background: #d3d3d3;
 }
+
+a {
+   text-decoration: none;
+   color: black;
+} 
 
