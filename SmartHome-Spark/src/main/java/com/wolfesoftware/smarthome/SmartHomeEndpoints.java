@@ -5,9 +5,6 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -26,20 +23,20 @@ public class SmartHomeEndpoints {
 		configuration.setClassForTemplateLoading(SmartHomeEndpoints.class, "/");
 	}
 
-	protected StringWriter dolly(Request request, Response response) throws TemplateException, IOException {
-		StringWriter writer = new StringWriter();
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("listOfLights", smartHomeActions.getGroups());
-		Template formTemplate = configuration.getTemplate("templates/index.ftl");
-		formTemplate.process(model, writer);
-		return writer;
-	}
-	
 	protected StringWriter homepage(Request request, Response response) throws TemplateException, IOException {
 		StringWriter writer = new StringWriter();
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("listOfLights", smartHomeActions.getGroups());
 		Template formTemplate = configuration.getTemplate("templates/dolly.ftl");
+		formTemplate.process(model, writer);
+		return writer;
+	}
+	
+	protected StringWriter dolly(Request request, Response response) throws TemplateException, IOException {
+		StringWriter writer = new StringWriter();
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("listOfLights", smartHomeActions.getGroups());
+		Template formTemplate = configuration.getTemplate("templates/index.ftl");
 		formTemplate.process(model, writer);
 		return writer;
 	}
