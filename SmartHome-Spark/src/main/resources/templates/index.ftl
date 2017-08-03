@@ -32,9 +32,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
   	<div class="row">
-      <div class="one-half column" style="margin-top: 5%">
        	<img src="/ito_dolly.png"/>
-      </div>
     </div>
     <#list listOfLights as item><div class="row">${item}</div></#list>
     <div class="row">

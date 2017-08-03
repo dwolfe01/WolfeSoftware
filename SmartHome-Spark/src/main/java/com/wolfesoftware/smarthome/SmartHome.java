@@ -24,6 +24,9 @@ public class SmartHome {
 
 	private void createEndpoints() {
 		get("/", (request, response) -> {
+			return mbFreeMarkerEndpoints.dolly(request, response);
+		});
+		get("/dolly", (request, response) -> {
 			return mbFreeMarkerEndpoints.homepage(request, response);
 		});
 		get("/on", (request, response) -> {

@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+    background: orange;
+   
+}
+/*raspberry pi: 800 * 480*/
+.container {
+    width: 800px;
+    overflow: hidden;
+    padding: 0em;
+    margin: auto;
+    font-family: Courier;
+	color: white;
+	font-size:40px;
+}
+
+.header {
+    float: left;
+    background: grey;
+    text-align: center;
+    line-height: 80px;
+    width: 800px; height: 80px;
+    font-size:60px;
+}
+
+.button {
+    float: left;
+    text-align: center;
+    line-height: 80px;
+    width: 200px; height: 80px;
+}
+
+.label {
+    background: teal;
+}
+
+.on {
+    background: white;
+}
+
+.off {
+    background: white;
+}
+

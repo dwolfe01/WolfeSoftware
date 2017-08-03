@@ -26,11 +26,20 @@ public class SmartHomeEndpoints {
 		configuration.setClassForTemplateLoading(SmartHomeEndpoints.class, "/");
 	}
 
-	protected StringWriter homepage(Request request, Response response) throws TemplateException, IOException {
+	protected StringWriter dolly(Request request, Response response) throws TemplateException, IOException {
 		StringWriter writer = new StringWriter();
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("listOfLights", smartHomeActions.getGroups());
 		Template formTemplate = configuration.getTemplate("templates/index.ftl");
+		formTemplate.process(model, writer);
+		return writer;
+	}
+	
+	protected StringWriter homepage(Request request, Response response) throws TemplateException, IOException {
+		StringWriter writer = new StringWriter();
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("listOfLights", smartHomeActions.getGroups());
+		Template formTemplate = configuration.getTemplate("templates/dolly.ftl");
 		formTemplate.process(model, writer);
 		return writer;
 	}

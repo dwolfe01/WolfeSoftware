@@ -53,7 +53,12 @@ public class SmartHomeActions {
 			for (String key:lights.keySet()){
 				JsonObject individualLight = lights.getAsJsonObject(key);
 				String name = individualLight.get("name").getAsString().replaceAll("\"", "");
-				descriptionOfLights.add(name + " " + this.getOnCommand(key)+ " " + this.getOffCommand(key));
+				String string = name + " " + this.getOnCommand(key)+ " " + this.getOffCommand(key);
+				descriptionOfLights.add(string);
+				System.out.println("<div class=\"button\">"+name+"</div>");
+				System.out.println("<div class=\"button\">"+this.getOnCommand(key)+"</div>");
+				System.out.println("<div class=\"button\">"+this.getOffCommand(key)+"</div>");
+				System.out.println("<div class=\"button\"></div>");
 			}
 		} catch (Exception e) {
 			// replace with custom error page
