@@ -32,7 +32,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.wolfesoftware.smarthome.SmartHome</mainClass>
+							<mainClass>com.wolfesoftware.smarthome.web.SmartHome</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
