@@ -10,7 +10,7 @@
 
 <div class="container">
 
-<div class="header">DOLLY Smart Homes</div>
+<div class="header"></div>
   
 <div class="button label">Living</div>
 <div class="button on"><a href="/on?groupId=1">ON</a></div>

@@ -21,6 +21,7 @@ html {
 .header {
     float: left;
     background: grey;
+    background-image: url("/ito_dolly.png");
     text-align: center;
     line-height: 80px;
     width: 800px; height: 80px;
