@@ -1,4 +1,4 @@
-package com.wolfesoftware.smarthome;
+package com.wolfesoftware.smarthome.web;
 
 import static spark.Spark.before;
 import static spark.Spark.get;
@@ -25,9 +25,6 @@ public class SmartHome {
 	private void createEndpoints() {
 		get("/", (request, response) -> {
 			return mbFreeMarkerEndpoints.homepage(request, response);
-		});
-		get("/dolly", (request, response) -> {
-			return mbFreeMarkerEndpoints.dolly(request, response);
 		});
 		get("/on", (request, response) -> {
 			return mbFreeMarkerEndpoints.on(request, response);

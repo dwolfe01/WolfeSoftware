@@ -1,8 +1,9 @@
-package com.wolfesoftware.smarthome;
+package com.wolfesoftware.smarthome.action;
 
 import static spark.Spark.halt;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,10 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import freemarker.template.TemplateException;
+import spark.Request;
+import spark.Response;
 
 public class SmartHomeActions {
 
@@ -44,7 +49,7 @@ public class SmartHomeActions {
 		return descriptionOfLights;
 	}
 	
-	protected List<String> getGroups() {
+	public List<String> getGroups() {
 		List<String> descriptionOfLights = new ArrayList<String>();
 		try {
 			JsonParser parser = new JsonParser();
@@ -55,10 +60,6 @@ public class SmartHomeActions {
 				String name = individualLight.get("name").getAsString().replaceAll("\"", "");
 				String string = name + " " + this.getOnCommand(key)+ " " + this.getOffCommand(key);
 				descriptionOfLights.add(string);
-				System.out.println("<div class=\"button\">"+name+"</div>");
-				System.out.println("<div class=\"button\">"+this.getOnCommand(key)+"</div>");
-				System.out.println("<div class=\"button\">"+this.getOffCommand(key)+"</div>");
-				System.out.println("<div class=\"button\"></div>");
 			}
 		} catch (Exception e) {
 			// replace with custom error page
@@ -67,7 +68,6 @@ public class SmartHomeActions {
 		}
 		return descriptionOfLights;
 	}
-	
 	
 	private String getOnCommand(String key) {
 		String onImage="<img src=\"/lightbulbOn.png\" style=\"width:75px;height:40px;\">";
@@ -92,7 +92,7 @@ public class SmartHomeActions {
 		LOGGER.info(jsonObjectFromEndpoint);
 	}
 	
-	protected void sendMessageToGroup(String groupId, String message) {
+	public void sendMessageToGroup(String groupId, String message) {
 		String jsonObjectFromEndpoint = null;
 		try {
 			jsonObjectFromEndpoint = this.putJSONObjectFromEndpoint(hueHome + "/groups/" + groupId + "/action",
