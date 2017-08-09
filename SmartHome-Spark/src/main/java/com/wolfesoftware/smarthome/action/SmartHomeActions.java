@@ -30,6 +30,10 @@ public class SmartHomeActions {
 
 	private final String hueHome = "http://192.168.1.81/api/4nHIqq4Th90cUZpf66Lr-2nxtLoLSJ6UnT5lFJBA";
 	private final Logger LOGGER = LoggerFactory.getLogger(SmartHomeActions.class);
+	
+	public String getWeather() throws ClientProtocolException, IOException {
+		return this.getWeatherFromBBC();
+	}
 
 	protected List<String> getLights() {
 		List<String> descriptionOfLights = new ArrayList<String>();
@@ -104,15 +108,25 @@ public class SmartHomeActions {
 		}
 		LOGGER.info(jsonObjectFromEndpoint);
 	}
+	
+	private String getWeatherFromBBC() throws ClientProtocolException, IOException{
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpGet request = new HttpGet("http://open.live.bbc.co.uk/weather/feeds/en/2643027/3dayforecast.rss");
+		HttpResponse response = client.execute(request);
+		LOGGER.info("Response Code : " + response.getStatusLine().getStatusCode());
+		String responseBody = EntityUtils.toString(response.getEntity());
+		LOGGER.info(responseBody);
+		return responseBody;
+	}
 
 	private String putJSONObjectFromEndpoint(String url, String body) throws ClientProtocolException, IOException {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPut request = new HttpPut(url);
 		request.setEntity(new StringEntity(body));
 		HttpResponse response = client.execute(request);
-		System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
+		LOGGER.info("Response Code : " + response.getStatusLine().getStatusCode());
 		String responseBody = EntityUtils.toString(response.getEntity());
-		System.out.println(responseBody);
+		LOGGER.info(responseBody);
 		return responseBody;
 	}
 
@@ -120,7 +134,7 @@ public class SmartHomeActions {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(url);
 		HttpResponse response = client.execute(request);
-		System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
+		LOGGER.info("Response Code : " + response.getStatusLine().getStatusCode());
 
 		String responseBody = EntityUtils.toString(response.getEntity());
 		return responseBody;

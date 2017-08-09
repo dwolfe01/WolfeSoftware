@@ -30,7 +30,21 @@ public class SmartHomeTemplates {
 
 	public String getTemplate1CSS(Map<String, Object> model) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException  {
 		StringWriter writer = new StringWriter();
-		Template formTemplate = configuration.getTemplate("css/template1.ftl");
+		Template formTemplate = configuration.getTemplate("css/template1css1.ftl");
+		formTemplate.process(model, writer);
+		return writer.toString();
+	}
+
+	public String getTemplate2(Map<String, Object> model) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		StringWriter writer = new StringWriter();
+		Template formTemplate = configuration.getTemplate("templates/template2.ftl");
+		formTemplate.process(model, writer);
+		return writer.toString();
+	}
+	
+	public String getTemplate2CSS(Map<String, Object> model) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException  {
+		StringWriter writer = new StringWriter();
+		Template formTemplate = configuration.getTemplate("css/template2css1.ftl");
 		formTemplate.process(model, writer);
 		return writer.toString();
 	}

@@ -33,9 +33,33 @@ public class SmartHomeEndpoints {
 	protected StringWriter homepage(Request request, Response response) throws TemplateException, IOException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		// populate model here to match tags in the freemarker
-		model.put("Label1", "Living");
+		model.putAll(this.getRightHandNav());
 		StringWriter writer = processPage(smartHomeTemplates.getTemplate1(model), smartHomeTemplates.getTemplate1CSS(null));
 		return writer;
+	}
+	
+	public StringWriter weather(Request request, Response response) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		// populate model here to match tags in the freemarker
+		model.putAll(this.getRightHandNav());
+		model.put("body", smartHomeActions.getWeather());
+		StringWriter writer = processPage(smartHomeTemplates.getTemplate2(model), smartHomeTemplates.getTemplate2CSS(null));
+		return writer;
+	}
+	
+	private Map<String, Object> getRightHandNav() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("nav1", createLink("Lights"));
+		map.put("nav2", createLink("Music"));
+		map.put("nav3", createLink("Twitter"));
+		map.put("nav4", createLink("News"));
+		map.put("nav5", createLink("Weather"));
+		return map;
+	}
+
+	private String createLink(String navLink) {
+		// TODO Auto-generated method stub
+		return "<a href=\"" + navLink.toLowerCase() + "\">" + navLink + "</a>";
 	}
 
 	protected StringWriter on(Request request, Response response) throws TemplateException, IOException {

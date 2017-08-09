@@ -26,6 +26,12 @@ public class SmartHome {
 		get("/", (request, response) -> {
 			return mbFreeMarkerEndpoints.homepage(request, response);
 		});
+		get("/lights", (request, response) -> {
+			return mbFreeMarkerEndpoints.homepage(request, response);
+		});
+		get("/weather", (request, response) -> {
+			return mbFreeMarkerEndpoints.weather(request, response);
+		});
 		get("/on", (request, response) -> {
 			return mbFreeMarkerEndpoints.on(request, response);
 		});
