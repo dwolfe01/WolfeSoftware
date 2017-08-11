@@ -7,9 +7,9 @@
 	</xsl:template>
 
 	<xsl:template match="item">
-		<div class="text">
+		<div class="weather">
 			<xsl:value-of select="title" />
-			<xsl:value-of select="description" />
+			<span class="description"><xsl:value-of select="description" /></span>
 		</div>
 	</xsl:template>
 
