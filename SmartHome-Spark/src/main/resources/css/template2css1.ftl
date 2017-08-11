@@ -30,10 +30,19 @@ html {
 
 .left {
     float: left;
-    text-align: center;
     background: grey;
     line-height: 400px;
     width: 600px; height: 400px;
+    font-size:10px;
+}
+
+.text {
+    float: left;
+    background: grey;
+    line-height: 400px;
+    width: 600px; height: 400px;
+    font-size:10px;
+    white-space: normal;
 }
 
 .right {

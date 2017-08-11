@@ -7,12 +7,15 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.transform.TransformerException;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
@@ -21,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.wolfesoftware.smarthome.web.XMLBoss;
 
 import freemarker.template.TemplateException;
 import spark.Request;
@@ -30,11 +34,21 @@ public class SmartHomeActions {
 
 	private final String hueHome = "http://192.168.1.81/api/4nHIqq4Th90cUZpf66Lr-2nxtLoLSJ6UnT5lFJBA";
 	private final Logger LOGGER = LoggerFactory.getLogger(SmartHomeActions.class);
+	private HttpClient client;
 	
-	public String getWeather() throws ClientProtocolException, IOException {
-		return this.getWeatherFromBBC();
+	public SmartHomeActions(){
+		this(HttpClientBuilder.create().build());
 	}
-
+	
+	public SmartHomeActions(HttpClient client){
+		this.client = client;
+	}
+	
+	public String getWeather() throws ClientProtocolException, IOException, TransformerException {
+		String weatherResult = XMLBoss.xsl("xsl/weather.xsl", this.getWeatherFromBBC());
+		return weatherResult;
+	}
+	
 	protected List<String> getLights() {
 		List<String> descriptionOfLights = new ArrayList<String>();
 		try {
@@ -71,6 +85,14 @@ public class SmartHomeActions {
 			halt(500);
 		}
 		return descriptionOfLights;
+	}
+	
+	public void turnHueGroupOn(String groupId) {
+		sendMessageToGroup(groupId, "{\"on\":true,\"bri\":100,\"sat\":100,\"hue\":0}");
+	}
+	
+	public void turnHueGroupOff(String groupId) {
+		sendMessageToGroup(groupId, "{\"on\":false}");
 	}
 	
 	private String getOnCommand(String key) {
@@ -110,33 +132,27 @@ public class SmartHomeActions {
 	}
 	
 	private String getWeatherFromBBC() throws ClientProtocolException, IOException{
-		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet("http://open.live.bbc.co.uk/weather/feeds/en/2643027/3dayforecast.rss");
 		HttpResponse response = client.execute(request);
-		LOGGER.info("Response Code : " + response.getStatusLine().getStatusCode());
 		String responseBody = EntityUtils.toString(response.getEntity());
 		LOGGER.info(responseBody);
 		return responseBody;
 	}
 
 	private String putJSONObjectFromEndpoint(String url, String body) throws ClientProtocolException, IOException {
-		HttpClient client = HttpClientBuilder.create().build();
 		HttpPut request = new HttpPut(url);
 		request.setEntity(new StringEntity(body));
 		HttpResponse response = client.execute(request);
-		LOGGER.info("Response Code : " + response.getStatusLine().getStatusCode());
 		String responseBody = EntityUtils.toString(response.getEntity());
 		LOGGER.info(responseBody);
 		return responseBody;
 	}
 
 	private String getJSONObjectFromEndpoint(String url) throws ClientProtocolException, IOException {
-		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(url);
 		HttpResponse response = client.execute(request);
-		LOGGER.info("Response Code : " + response.getStatusLine().getStatusCode());
-
 		String responseBody = EntityUtils.toString(response.getEntity());
+		LOGGER.info(responseBody);
 		return responseBody;
 	}
 

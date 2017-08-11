@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" version="2.0">
+  <channel>
+    <atom:link href="http://open.live.bbc.co.uk/weather/feeds/en/2643027/3dayforecast.rss" rel="self" type="application/rss+xml" />
+    <title>BBC Weather - Forecast for  Market Harborough, United Kingdom</title>
+    <link>http://www.bbc.co.uk/weather/2643027</link>
+    <description>3-day forecast for Market Harborough from BBC Weather, including weather, temperature and wind information</description>
+    <language>en</language>
+    <copyright>Copyright: (C) British Broadcasting Corporation, see http://www.bbc.co.uk/terms/additional_rss.shtml for more details</copyright>
+    <pubDate>Thu, 10 Aug 2017 16:06:14 +0100</pubDate>
+    <image>
+      <title>BBC Weather - Forecast for  Market Harborough, United Kingdom</title>
+      <url>http://static.bbci.co.uk/weather/0.3.203/images/icons/individual_57_icons/en_on_light_bg/0.gif</url>
+      <link>http://www.bbc.co.uk/weather/2643027</link>
+      <width>-1</width>
+      <height>-1</height>
+    </image>
+    <item>
+      <title>Thursday: Clear Sky, Minimum Temperature: 11°C (52°F)</title>
+      <link>http://www.bbc.co.uk/weather/2643027?day=0</link>
+      <description>Minimum Temperature: 11°C (52°F), Wind Direction: South Westerly, Wind Speed: 4mph, Visibility: Very Good, Pressure: 1025mb, Humidity: 60%, UV Risk: 6, Pollution: Low, Sunset: 20:40 BST</description>
+      <pubDate>Thu, 10 Aug 2017 16:06:14 +0100</pubDate>
+      <guid isPermaLink="false">http://www.bbc.co.uk/weather/2643027-0-2017-08-10T16:00:43.274+01:00</guid>
+      <georss:point>52.4776 -0.92053</georss:point>
+    </item>
+    <item>
+      <title>Friday: Light Cloud, Maximum Temperature: 18°C (64°F) Minimum Temperature: 15°C (59°F)</title>
+      <link>http://www.bbc.co.uk/weather/2643027?day=1</link>
+      <description>Maximum Temperature: 18°C (64°F), Minimum Temperature: 15°C (59°F), Wind Direction: West South Westerly, Wind Speed: 12mph, Visibility: Very Good, Pressure: 1018mb, Humidity: 60%, UV Risk: 4, Pollution: Low, Sunrise: 05:39 BST, Sunset: 20:38 BST</description>
+      <pubDate>Thu, 10 Aug 2017 16:06:14 +0100</pubDate>
+      <guid isPermaLink="false">http://www.bbc.co.uk/weather/2643027-1-2017-08-10T16:06:14.000+01:00</guid>
+      <georss:point>52.4776 -0.92053</georss:point>
+    </item>
+    <item>
+      <title>Saturday: Light Cloud, Maximum Temperature: 19°C (66°F) Minimum Temperature: 10°C (50°F)</title>
+      <link>http://www.bbc.co.uk/weather/2643027?day=2</link>
+      <description>Maximum Temperature: 19°C (66°F), Minimum Temperature: 10°C (50°F), Wind Direction: West North Westerly, Wind Speed: 13mph, Visibility: Very Good, Pressure: 1015mb, Humidity: 60%, UV Risk: 5, Pollution: Low, Sunrise: 05:41 BST, Sunset: 20:36 BST</description>
+      <pubDate>Thu, 10 Aug 2017 16:06:14 +0100</pubDate>
+      <guid isPermaLink="false">http://www.bbc.co.uk/weather/2643027-2-2017-08-10T16:06:14.000+01:00</guid>
+      <georss:point>52.4776 -0.92053</georss:point>
+    </item>
+  </channel>
+</rss>
