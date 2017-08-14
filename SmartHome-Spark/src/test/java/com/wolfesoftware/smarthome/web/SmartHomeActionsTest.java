@@ -1,6 +1,7 @@
 package com.wolfesoftware.smarthome.web;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -47,9 +48,9 @@ public class SmartHomeActionsTest {
 		when(httpResponse.getEntity()).thenReturn(httpEntity);
 		ByteArrayInputStream byteArray = getXMLFileAsByteArray();
 		when(httpEntity.getContent()).thenReturn(byteArray);
-		String result = new SmartHomeActions(httpClient).getWeather();
-		System.out.println("result: " + result);
-		assertEquals("XMLBoss",result);
+		SmartHomeActions smartHomeActions = new SmartHomeActions(httpClient);
+		String result = smartHomeActions.getWeather();
+		assertTrue(result.contains("<div class=\"weather\">"));
 	}
 
 	private ByteArrayInputStream getXMLFileAsByteArray() throws IOException {

@@ -3,7 +3,6 @@ package com.wolfesoftware.smarthome.action;
 import static spark.Spark.halt;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
@@ -24,15 +22,12 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.wolfesoftware.smarthome.SmartProperties;
 import com.wolfesoftware.smarthome.web.XMLBoss;
-
-import freemarker.template.TemplateException;
-import spark.Request;
-import spark.Response;
 
 public class SmartHomeActions {
 
-	private final String hueHome = "http://192.168.1.81/api/4nHIqq4Th90cUZpf66Lr-2nxtLoLSJ6UnT5lFJBA";
+	private final String hueHome = SmartProperties.get("hueHome");
 	private final Logger LOGGER = LoggerFactory.getLogger(SmartHomeActions.class);
 	private HttpClient client;
 	

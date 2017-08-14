@@ -1,4 +1,4 @@
-<div class="header"></div>
+<div class="header">DOLLY SMART HOMES</div>
   
 <div class="left">${body}</div>
 <div class="right">
