@@ -54,6 +54,21 @@ public class SmartHomeHTML {
 		return writer.toString();
 	}
 
+	public String getTemplate3(Map<String, Object> model) throws TemplateException, IOException {
+		StringWriter writer = new StringWriter();
+		Template formTemplate = configuration.getTemplate("templates/template3.ftl");
+		formTemplate.process(model, writer);
+		return writer.toString();
+	}
+
+	public String getTemplate3CSS(Map<String, Object> model) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		StringWriter writer = new StringWriter();
+		Template formTemplate = configuration.getTemplate("css/template3css1.ftl");
+		formTemplate.process(model, writer);
+		return writer.toString();
+	}
+
 	public Map<String, Object> getRightHandNav() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("nav1", createLink("Lights"));

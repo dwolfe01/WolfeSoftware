@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.xml.transform.TransformerException;
 
+import com.wolfesoftware.smarthome.SmartProperties;
 import com.wolfesoftware.smarthome.action.SmartHomeActions;
 
 import freemarker.core.ParseException;
@@ -59,6 +60,15 @@ public class SmartHomeEndpoints {
 		String groupId = request.queryParams("groupId");
 		smartHomeActions.turnHueGroupOff(groupId);
 		return this.homepage(request, response);
+	}
+
+	public StringWriter twitter(Request request, Response response) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		// populate model here to match tags in the freemarker
+		model.putAll(smartHomeHTML.getRightHandNav());
+		model.put("body", SmartProperties.get("twitter.bbc.url"));
+		StringWriter writer = smartHomeHTML.createHTMLPage(smartHomeHTML.getTemplate3(model), smartHomeHTML.getTemplate3CSS(null));
+		return writer;
 	}
 
 }

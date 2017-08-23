@@ -32,6 +32,9 @@ public class SmartHome {
 		get("/weather", (request, response) -> {
 			return mbFreeMarkerEndpoints.weather(request, response);
 		});
+		get("/twitter", (request, response) -> {
+			return mbFreeMarkerEndpoints.twitter(request, response);
+		});
 		get("/on", (request, response) -> {
 			return mbFreeMarkerEndpoints.on(request, response);
 		});
