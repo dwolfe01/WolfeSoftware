@@ -15,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import com.wolfesoftware.sailfish.http.logfilereader.LogFileReader;
 import com.wolfesoftware.sailfish.http.logfilereader.exceptions.BadLogFileException;
 import com.wolfesoftware.sailfish.http.responsehandler.ResponseHandlerFactory;
+import com.wolfesoftware.sailfish.http.runnable.httpuser.HttpUser;
 import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromLogFile;
 
 public class HttpUserWorkerFactoryFromLogFileTest {
@@ -58,6 +59,17 @@ public class HttpUserWorkerFactoryFromLogFileTest {
 		factory.getWorker();
 		factory.getWorker();
 		assertEquals(false, factory.isThereAnyMoreWorkToDo());
+	}
+	
+	@Test
+	public void shouldReturnTwoWorkersSecondOneWithOnlyTwoRequests()
+			throws Exception {
+		List<String> requests = createArrayListOfRequests(7);
+		Mockito.when(logFileReader.getAsListOfUrls()).thenReturn(requests);
+		factory = new HttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory());
+		factory.getWorker();
+		HttpUser worker = factory.getWorker();
+		assertEquals(3, worker.getRequests().size());
 	}
 
 	@Test

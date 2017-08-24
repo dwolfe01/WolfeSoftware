@@ -45,6 +45,7 @@ public class HttpUserWorkerFactoryFromLogFile extends WorkerFactory {
 		try {
 			for (int x = 0; x < 4; x++) {
 				url = getNextRequest();
+				if (!url.equals(""))
 				user.addGetRequest(url);
 			}
 		} catch (URISyntaxException e) {
