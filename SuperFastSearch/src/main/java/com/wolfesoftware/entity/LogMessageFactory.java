@@ -97,9 +97,8 @@ public class LogMessageFactory {
 	private List<LogMessage> loopAndFilter(InputStream logFileInputStream, Predicate<LogMessage> predicate)
 			throws IOException, ParseException {
 		ArrayList<LogMessage> logs = new ArrayList<LogMessage>();
-		InputStreamReader isr = new InputStreamReader(logFileInputStream);
 		String logFileMessage;
-		try (BufferedReader br = new BufferedReader(isr)) {
+		try (InputStreamReader isr = new InputStreamReader(logFileInputStream);BufferedReader br = new BufferedReader(isr)) {
 			while ((logFileMessage = br.readLine()) != null) {
 				LogMessage logMessage;
 				try {
@@ -107,12 +106,11 @@ public class LogMessageFactory {
 					if (predicate.test(logMessage)) {
 						logs.add(logMessage);
 					}
-				} catch (LogMessageFactoryException e) {
+				} catch (Exception e) {
 					LOGGER.info(e.getMessage());
 				}
 			}
 		}
-		isr.close();
 		return logs;
 	}
 
