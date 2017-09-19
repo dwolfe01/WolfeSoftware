@@ -46,18 +46,22 @@ public class MBFreeMarkerEndpoints {
 	}
 
 	protected StringWriter getIndexPage(Request request, Response response) {
+		return this.getIndexPage(request, response, "");
+	}
+
+	public StringWriter getIndexPage(Request request, Response response, String message) {
 		StringWriter writer = new StringWriter();
 		try {
 			Map<String, Object> model = new HashMap<String, Object>();
 			FileInputStream is = new FileInputStream(new File("requests.log"));
 			List<LogMessage> logs = new Stats().getLogs(is,request.ip());
 			model.put("logfile", logs);
+			model.put("message", message);
 			model.put("blocked", logs.size()>10);
 			is.close();
 			Template formTemplate = configuration.getTemplate("templates/index.ftl");
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
-			//replace with custom error page
 			LOGGER.debug(e.getMessage());
 			halt(500);
 		}

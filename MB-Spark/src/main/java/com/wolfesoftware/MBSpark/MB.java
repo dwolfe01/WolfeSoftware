@@ -2,6 +2,7 @@ package com.wolfesoftware.MBSpark;
 
 import static spark.Spark.before;
 import static spark.Spark.get;
+import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
 import org.slf4j.Logger;
@@ -28,6 +29,10 @@ public class MB {
 		});
 		get("/robots.txt", (request, response) -> {
 			return mbFreeMarkerEndpoints.getRobots(request, response);
+		});
+		post("/questions", (request, response) -> {
+			LOGGER.info(request.body());
+			return mbFreeMarkerEndpoints.getIndexPage(request, response, "THANKS FOR YOUR MESSAGE");
 		});
 	}
 

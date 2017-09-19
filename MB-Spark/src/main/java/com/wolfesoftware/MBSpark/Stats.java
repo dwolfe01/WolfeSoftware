@@ -37,7 +37,6 @@ public class Stats {
 	private boolean shouldShowTheseRequests(String ip, LogMessage logMessage) {
 		LocalDateTime now = LocalDateTime.now();
 		long minutes = Duration.between(logMessage.getDate(), now).toMinutes();
-		System.out.println("Number of minutes: " + minutes);
 		return logMessage.getIP().equals(ip) && minutes < 5;
 	}
 	

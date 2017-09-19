@@ -1,4 +1,5 @@
  <h2>MotherBlocker</h2>
+ <h3>${message}</h3>
         <h4>Block Unwanted Internet Traffic</h4>
         <p>Up to 50% of all internet traffic is fake!
         Why spend time, money and effort on these bots when you should just block them?
@@ -14,7 +15,7 @@
 		You can also have a human unblock themselves via a captcha if the system get's it wrong.
 		If you are running your front end web servers as part of a cluster you may need the pro version.</p>
 		<h4>Please contact us here</h4>
-      	<form>
+      	<form action="/questions" method="POST">
 			  <div class="row">
 			    <div class="six columns">
 			      <label for="exampleEmailInput">Your email</label>
@@ -24,18 +25,12 @@
 			      <label for="exampleRecipientInput">Reason for contacting</label>
 			      <select class="u-full-width" id="exampleRecipientInput">
 			        <option value="Option 1">Questions</option>
-			        <option value="Option 2">Admiration</option>
-			        <option value="Option 3">Can I get your number?</option>
-			        <option value="Option 4">Who is Ito?</option>
+			        <option value="Option 2">May I get your number?</option>
 			      </select>
 			    </div>
 			  </div>
 			  <label for="exampleMessage">Message</label>
 			  <textarea class="u-full-width" placeholder="Hi Belvedere …" id="exampleMessage"></textarea>
-			  <label class="example-send-yourself-copy">
-			    <input type="checkbox">
-			    <span class="label-body">Send a copy to yourself</span>
-			  </label>
 			  <input class="button-primary" type="submit" value="This button does nothing">
 		</form>
 		<h4>Will you set it up for me?</h4>
