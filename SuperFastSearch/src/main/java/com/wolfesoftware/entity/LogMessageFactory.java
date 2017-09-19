@@ -5,18 +5,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.function.Predicate;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.wolfesoftware.exception.LogMessageFactoryException;
 
 public class LogMessageFactory {
 
@@ -24,6 +26,7 @@ public class LogMessageFactory {
 		IP, DATE,REQUEST;
 	};
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogMessageFactory.class);
 	String pattern;
 	String dateFormat;
 	private int IP_index_in_logfile;
@@ -52,7 +55,7 @@ public class LogMessageFactory {
 			}
 	}
 
-	public LogMessage getLogMessage(String log) throws ParseException {
+	public LogMessage getLogMessage(String log) throws ParseException, LogMessageFactoryException {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
 		LogMessage logFileEntity = null;
 		Pattern r = Pattern.compile(pattern);
@@ -62,6 +65,9 @@ public class LogMessageFactory {
 			logFileEntity = new LogMessage();
 			LocalDateTime timestamp = LocalDateTime.parse(m.group(DATE_index_in_logfile), formatter);
 			logFileEntity.withIP(m.group(IP_index_in_logfile)).withDate(timestamp).withRequest(m.group(REQUEST_index_in_logfile));
+		}
+		if (null==logFileEntity){
+			throw new LogMessageFactoryException("Could not parse this message:" + log);
 		}
 		return logFileEntity;
 	}
@@ -95,9 +101,14 @@ public class LogMessageFactory {
 		String logFileMessage;
 		try (BufferedReader br = new BufferedReader(isr)) {
 			while ((logFileMessage = br.readLine()) != null) {
-				LogMessage logMessage = this.getLogMessage(logFileMessage);
-				if (predicate.test(logMessage)) {
-					logs.add(logMessage);
+				LogMessage logMessage;
+				try {
+					logMessage = this.getLogMessage(logFileMessage);
+					if (predicate.test(logMessage)) {
+						logs.add(logMessage);
+					}
+				} catch (LogMessageFactoryException e) {
+					LOGGER.info(e.getMessage());
 				}
 			}
 		}

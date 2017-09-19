@@ -5,21 +5,26 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.wolfesoftware.entity.LogMessage;
-import com.wolfesoftware.entity.LogMessageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.wolfesoftware.entity.LogMessage;
+import com.wolfesoftware.entity.LogMessageFactory;
+import com.wolfesoftware.exception.LogMessageFactoryException;
+
 public class LogFileStats {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogFileStats.class);
+	
 	/* these indices are the main output of this class */
 	private SortedSet<Entry<String, Integer>> ipCountDescendingOrder;//index
 	private SortedSet<Entry<String, Integer>> popularRequestsDescendingOrder;//index
@@ -29,19 +34,26 @@ public class LogFileStats {
 	private Map<String, Integer> popularRequests = new HashMap<>();
 	private LogMessageFactory logMessageFactory;
 	
-	public LogFileStats(InputStream logFileInputStream, String logFilePattern, String dateFormat,String logFileOrdering) throws ParseException, IOException {
+	public LogFileStats(InputStream logFileInputStream, String logFilePattern, String dateFormat,String logFileOrdering) throws IOException, ParseException {
 		logMessageFactory = new LogMessageFactory(logFilePattern, dateFormat, logFileOrdering);
-		InputStreamReader isr = new InputStreamReader(logFileInputStream);
 		String logFileMessage;
-		try (BufferedReader br = new BufferedReader(isr)) {
+		try (InputStreamReader isr = new InputStreamReader(logFileInputStream);BufferedReader br = new BufferedReader(isr)) {
 			while ((logFileMessage = br.readLine()) != null) {
-				LogMessage logMessage = logMessageFactory.getLogMessage(logFileMessage);
-				numberOfLogMessages++;
-				addCountToIP(logMessage.getIP());
-				addCountToRequests(logMessage.getRequest());
+				LogMessage logMessage;
+				try {
+					logMessage = logMessageFactory.getLogMessage(logFileMessage);
+					numberOfLogMessages++;
+					addCountToIP(logMessage.getIP());
+					addCountToRequests(logMessage.getRequest());
+				} catch (LogMessageFactoryException e) {
+					LOGGER.info(e.getMessage());
+				}
 			}
 		}
-		isr.close();
+		//because I have used try with resources block with two resources then they both will be closed at this point i.e. after the try block
+		// if either of those objects throw an exception, e.g. the IOException then they will be closed here before that Exception is passed on to the calling method
+		//if the close method itself throws an exception as well as the resource itself then the system will only throw the exception as thrown by the resource
+		// it would be possible to retrieve that suppressed exception.
 		ipCountDescendingOrder = this.sortByValue(ipCount);
 		popularRequestsDescendingOrder = this.sortByValue(popularRequests);
 	}
