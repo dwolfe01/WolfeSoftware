@@ -5,6 +5,9 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
+import java.util.Map;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +34,7 @@ public class MB {
 			return mbFreeMarkerEndpoints.getRobots(request, response);
 		});
 		post("/questions", (request, response) -> {
-			LOGGER.info(request.body());
-			return mbFreeMarkerEndpoints.getIndexPage(request, response, "THANKS FOR YOUR MESSAGE");
+			return mbFreeMarkerEndpoints.processQuestions(request, response);
 		});
 	}
 

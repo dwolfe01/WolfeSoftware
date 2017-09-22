@@ -1,5 +1,4 @@
  <h2>MotherBlocker</h2>
- <h3>${message}</h3>
         <h4>Block Unwanted Internet Traffic</h4>
         <p>Up to 50% of all internet traffic is fake!
         Why spend time, money and effort on these bots when you should just block them?
@@ -19,19 +18,19 @@
 			  <div class="row">
 			    <div class="six columns">
 			      <label for="exampleEmailInput">Your email</label>
-			      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+			      <input class="u-full-width" type="email" name="email" placeholder="test@mailbox.com" id="exampleEmailInput">
 			    </div>
 			    <div class="six columns">
 			      <label for="exampleRecipientInput">Reason for contacting</label>
-			      <select class="u-full-width" id="exampleRecipientInput">
+			      <select class="u-full-width" name="reason" id="exampleRecipientInput">
 			        <option value="Option 1">Questions</option>
 			        <option value="Option 2">May I get your number?</option>
 			      </select>
 			    </div>
 			  </div>
 			  <label for="exampleMessage">Message</label>
-			  <textarea class="u-full-width" placeholder="Hi Belvedere …" id="exampleMessage"></textarea>
-			  <input class="button-primary" type="submit" value="This button does nothing">
+			  <textarea class="u-full-width" name="message" placeholder="Hi MotherBlocker …" id="exampleMessage"></textarea>
+			  <input class="button-primary" type="submit" value="Submit">
 		</form>
 		<h4>Will you set it up for me?</h4>
 		<p>Yes. We will provide a no obligation quote to wire it all up for you and offer support (if you want it). 

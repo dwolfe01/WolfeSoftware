@@ -17,7 +17,7 @@
 	</appender>
 	
 	<logger name="com"
-		level="info" additivity="true">
+		level="warn" additivity="true">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
