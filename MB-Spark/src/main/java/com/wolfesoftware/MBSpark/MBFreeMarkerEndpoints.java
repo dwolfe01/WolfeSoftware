@@ -81,9 +81,10 @@ public class MBFreeMarkerEndpoints {
 	}
 
 	public StringWriter processQuestions(Request request, Response response) {
-		request.raw();
 		Set<String> params = request.queryParams();
+		LOGGER.info("******BEGIN MESSAGE******");
 		params.stream().forEach(param -> LOGGER.info(param + " " + request.queryParams(param)));
+		LOGGER.info("******END MESSAGE******");
 		return this.getMessagePage(request, response, "Thanks for your message.");
 	}
 

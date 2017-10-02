@@ -15,6 +15,14 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
 		</encoder>
 	</appender>
+
+	<appender name="FILE_MESSAGES" class="ch.qos.logback.core.FileAppender">
+		<file>messages.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
+		</encoder>
+	</appender>
 	
 	<logger name="com"
 		level="warn" additivity="true">
@@ -24,6 +32,11 @@
 	<logger name="com.wolfesoftware.MBSpark.MB"
 		level="info" additivity="true">
 		<appender-ref ref="FILE" />
+	</logger>
+
+	<logger name="com.wolfesoftware.MBSpark.MBFreeMarkerEndpoints"
+		level="info" additivity="true">
+		<appender-ref ref="FILE_MESSAGES" />
 	</logger>
 
 </configuration>
