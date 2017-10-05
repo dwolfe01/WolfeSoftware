@@ -115,21 +115,25 @@ public class LogFileStats {
 		
 	}
 
-	public void prettyPrint() {
-		System.out.println("*****Number of unique IP addresses: " + this.getNumberOfUniqueIPAddresses());
-		System.out.println("*****Number of requests processed:" + this.getNumberOfLogMessages());
-		System.out.println("*****IP Counts");
-		prettyPrintSortedSet(ipCountDescendingOrder);
-		System.out.println("*****Popular Requests");
-		prettyPrintSortedSet(popularRequestsDescendingOrder);
+	public String prettyPrint() {
+		String prettyString = "";
+		prettyString += "*****Number of unique IP addresses: " + this.getNumberOfUniqueIPAddresses() + "\n";
+		prettyString += "*****Number of requests processed:" + this.getNumberOfLogMessages() + "\n";
+		prettyString += "*****IP Counts" + "\n";
+		prettyString += prettyPrintSortedSet(ipCountDescendingOrder) + "\n";
+		prettyString += ("*****Popular Requests") + "\n";
+		prettyString += prettyPrintSortedSet(popularRequestsDescendingOrder) + "\n";
+		return prettyString;
 	}
 	
-	private <K,V> void prettyPrintSortedSet(SortedSet<Entry<K, V>> sortedSet) {
+	private <K,V> String prettyPrintSortedSet(SortedSet<Entry<K, V>> sortedSet) {
+		String prettyString = null;
 		Iterator<Entry<K, V>> iterator = sortedSet.iterator();
 		while (iterator.hasNext()){
 			Entry<K, V> next = iterator.next();
-			System.out.println(next.getKey() + " " + next.getValue());
+			prettyString += next.getKey() + " " + next.getValue() + "\n";
 		}
+		return prettyString;
 	}
 	
 	protected <K,V extends Comparable<? super V>>

@@ -27,6 +27,14 @@ public class LogMessageFactoryTest {
 	}
 
 	@Test
+	public void shouldGetLogFileEntityFromSpecificFormat() throws ParseException, IOException, LogMessageFactoryException {
+		LogMessage logMessage = logMessageFactory.getLogMessage("194.247.11.63 [20/03/2019:16:03:00 +0000] /testURL31/4444xyz/extend6");
+		assertEquals("194.247.11.63",logMessage.getIP());
+		assertEquals("/testURL31/4444xyz/extend6",logMessage.getRequest());
+		assertEquals("2019-03-20T16:03",logMessage.getDate().toString());
+	}
+
+	@Test
 	public void shouldGetLogFileEntityFromStringDifferentOrdering() throws ParseException, IOException, LogMessageFactoryException {
 		List<FIELD> ordering = Arrays.asList(LogMessageFactory.FIELD.DATE, LogMessageFactory.FIELD.IP, LogMessageFactory.FIELD.REQUEST);
 		logMessageFactory = new LogMessageFactory("\\[(.*)\\]\\s(\\S+)\\s(.*)", "dd/MM/yyyy:HH:mm:ss Z", ordering);
