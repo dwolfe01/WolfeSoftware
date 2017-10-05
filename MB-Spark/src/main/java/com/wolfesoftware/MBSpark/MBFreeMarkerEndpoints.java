@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +88,13 @@ public class MBFreeMarkerEndpoints {
 		params.stream().forEach(param -> LOGGER.info(param + " " + request.queryParams(param)));
 		LOGGER.info("******END MESSAGE******");
 		return this.getMessagePage(request, response, "Thanks for your message.");
+	}
+
+	public StringWriter getStats(Request request, Response response) throws IOException {
+		StringWriter writer = new StringWriter();
+		String content = new String(Files.readAllBytes(Paths.get("/tmp/stats.txt")));
+		writer.write(content);
+		return writer;
 	}
 
 }

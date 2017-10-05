@@ -36,6 +36,9 @@ public class MB {
 		get("/message.txt", (request, response) -> {
 			return mbFreeMarkerEndpoints.getRobots(request, response);
 		});
+		get("/stats.txt", (request, response) -> {
+			return mbFreeMarkerEndpoints.getStats(request, response);
+		});
 		post("/questions", (request, response) -> {
 			return mbFreeMarkerEndpoints.processQuestions(request, response);
 		});

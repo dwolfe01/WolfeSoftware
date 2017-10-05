@@ -26,7 +26,7 @@
         <h4>How does it work?</h4>
 		<p>MotherBlocker constantly analyses the internet traffic using the web log and makes decisions based on your rules. We of course give you a very sensible set of rules to start and in most cases this will be just fine.</p>
 		<h4>What features do I get for free?</h4>
-		<p>It will detect how often a single IP address is accessing your website and only allow a certain number of "hits" in a given amount of time. Depending on your website it may be that it's completely usual for a single user to access your site 100 times in every 10 minutes. More often than not that is not the case and so we put in a temporary block that lasts 10 minutes to disrupt this misuse.</p>
+		<p>It will detect how often a single IP address is accessing your website and only allow a certain number of "hits" in a given amount of time. Depending on your website it may be that it's completely usual for a single user to access your site 100 times in every 10 minutes. Usually, that is not the case and so we put in a temporary block that lasts 10 minutes to disrupt this misuse.</p>
 		<h4>What don't I get for free?</h4>
 		<p>Whitelisting of known IP addresses, you can whitelist IPs that should NEVER be blocked. Maybe this is someone you know like your mother.
 		Fully configurable blocking algorithms or block based on USER-AGENT or blocking a specific country. </p>
