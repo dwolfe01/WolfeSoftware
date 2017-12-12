@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class QuickSortREVAMP {
 
@@ -14,9 +16,10 @@ public class QuickSortREVAMP {
 		System.out.println("Created " + howManyNumbers + " Random Numbers: "
 				+ (System.currentTimeMillis() - startTime) + " milliseconds");
 		startTime = System.currentTimeMillis();
-		QuickSortREVAMP.quickSort(numbers);
+		List<Integer> quickSortShort = QuickSortREVAMP.quickSort(numbers);
 		System.out.println("Completed: "
 				+ (System.currentTimeMillis() - startTime) + " milliseconds");
+		quickSortShort.stream().forEach(System.out::println);
 	}
 
 	public static List<Integer> quickSort(List<Integer> numbers) {
@@ -33,6 +36,14 @@ public class QuickSortREVAMP {
 		sortedList.addAll(quickSort(moreThanPivot));
 		return sortedList;
 	}
+	
+	public static List<Integer> quickSortShort(List<Integer> numbers) {
+		if (numbers.size() <= 1)return numbers;// exit if the size is 1 or empty because a list
+		List<Integer> myPivot = Arrays.asList(numbers.remove(0));
+		Map<Boolean, List<Integer>> pivottedLists = numbers.stream().collect(Collectors.partitioningBy(i -> i <= myPivot.get(0)));
+		return Stream.of(pivottedLists.get(true),myPivot,pivottedLists.get(false)).parallel().flatMap(i -> QuickSortREVAMP.quickSortShort(i).stream()).collect(Collectors.toList());
+	}
+	
 	
 	private static List<Integer> generateListOfRandomNumbers(int howManyRandoms) {
 		List<Integer> numbers = new ArrayList<Integer>();
