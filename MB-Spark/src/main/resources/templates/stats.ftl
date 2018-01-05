@@ -33,11 +33,21 @@
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
-       	<#include "index_sections/welcome.ftl">
-      </div>
-      <div class="one-half column" style="margin-top: 5%">
-       	<#include "index_sections/aboutyou.ftl">
-       	<#include "index_sections/aboutThisSite.ftl">
+      	<p><#include "index_sections/backlink.ftl"></p>
+      	<table class="u-full-width">
+  		<thead>
+    		<tr>
+      		<th>Statistics</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      	<#list stats as stat> 
+    		<tr>
+		    <td>${stat}</td>
+    		</tr>
+		</#list>
+  		</tbody>
+		</table>
       </div>
     </div>
   </div>

@@ -92,8 +92,16 @@ public class MBFreeMarkerEndpoints {
 
 	public StringWriter getStats(Request request, Response response) throws IOException {
 		StringWriter writer = new StringWriter();
-		String content = new String(Files.readAllBytes(Paths.get("/tmp/stats.txt")));
-		writer.write(content);
+		List<String> content = Files.readAllLines(Paths.get("/tmp/stats.txt"));
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("stats", content);
+		Template formTemplate = configuration.getTemplate("templates/stats.ftl");
+		try {
+			formTemplate.process(model, writer);
+		} catch (TemplateException e) {
+			LOGGER.debug(e.getMessage());
+			halt(500);
+		}
 		return writer;
 	}
 

@@ -4,7 +4,7 @@
 		<h4>About you</h4>
       	<p>This site is running MotherBlocker and we only allow 10 hits every 5 minutes. Try getting yourself blocked by refreshing your browser a number of times.
       	Note we are observing all your requests.
-      	For convenience we list your latest hits here:
+      	For convenience we list your latest hits here:</p>
       	<table class="u-full-width">
   		<thead>
     		<tr>

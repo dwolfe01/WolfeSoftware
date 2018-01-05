@@ -117,17 +117,17 @@ public class LogFileStats {
 
 	public String prettyPrint() {
 		String prettyString = "";
-		prettyString += "*****Number of unique IP addresses: " + this.getNumberOfUniqueIPAddresses() + "\n";
-		prettyString += "*****Number of requests processed:" + this.getNumberOfLogMessages() + "\n";
-		prettyString += "*****IP Counts" + "\n";
-		prettyString += prettyPrintSortedSet(ipCountDescendingOrder) + "\n";
-		prettyString += ("*****Popular Requests") + "\n";
+		prettyString += "Number of unique IP addresses: " + this.getNumberOfUniqueIPAddresses() + "\n";
+		prettyString += "Number of requests processed:" + this.getNumberOfLogMessages() + "\n";
+		prettyString += "Popular Requests \n";
 		prettyString += prettyPrintSortedSet(popularRequestsDescendingOrder) + "\n";
+		prettyString += "IP Counts + \n";
+		prettyString += prettyPrintSortedSet(ipCountDescendingOrder) + "\n";
 		return prettyString;
 	}
 	
 	private <K,V> String prettyPrintSortedSet(SortedSet<Entry<K, V>> sortedSet) {
-		String prettyString = null;
+		String prettyString = "";
 		Iterator<Entry<K, V>> iterator = sortedSet.iterator();
 		while (iterator.hasNext()){
 			Entry<K, V> next = iterator.next();

@@ -51,6 +51,7 @@ public class MotherBlockerWorker implements Runnable {
 	public void createStatsPage() throws IOException, ParseException {
 		FileInputStream fileInputStream = new FileInputStream(new File(locationOfWebServerLogFiles));
 		LogFileStats logFileStats = new LogFileStats(fileInputStream, logFilePattern, dateFormat, logFileOrdering);
+		fileInputStream.close();
 		String stats = logFileStats.prettyPrint();
 		Files.write(Paths.get(locationToPutStats + "/stats.txt" ), stats.getBytes());
 	}

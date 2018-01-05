@@ -35,7 +35,7 @@ public class LogFileStatsTest {
 		lfs = new LogFileStats(logFile,"(\\S+)\\s\\[(.*)\\]\\s(.*)", "dd/MM/yyyy:HH:mm:ss Z", "IP,DATE,REQUEST");
 		logFile.close();
 		Map<String, Integer> ipCounts = lfs.getIPsWithXNumberOfHits(16);
-		lfs.prettyPrint();
+		System.out.println(lfs.prettyPrint());
 		assertEquals(13, ipCounts.size());
 		assertEquals(true, ipCounts.containsKey("117.184.3.34"));
 		assertEquals(true, ipCounts.containsKey("135.94.0.73"));

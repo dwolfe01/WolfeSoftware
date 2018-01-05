@@ -1,6 +1,5 @@
 package com.wolfesoftware.smarthome.web;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -50,6 +48,13 @@ public class SmartHomeActionsTest {
 		when(httpEntity.getContent()).thenReturn(byteArray);
 		SmartHomeActions smartHomeActions = new SmartHomeActions(httpClient);
 		String result = smartHomeActions.getWeather();
+		assertTrue(result.contains("<div class=\"weather\">"));
+	}
+	
+	@Test
+	public void shouldPlayBBCRadio1() throws Exception {
+		SmartHomeActions smartHomeActions = new SmartHomeActions(httpClient);
+		String result = smartHomeActions.startRadio("bbc_radio_1");
 		assertTrue(result.contains("<div class=\"weather\">"));
 	}
 

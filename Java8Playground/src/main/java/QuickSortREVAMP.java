@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class QuickSortREVAMP {
@@ -46,12 +47,8 @@ public class QuickSortREVAMP {
 	
 	
 	private static List<Integer> generateListOfRandomNumbers(int howManyRandoms) {
-		List<Integer> numbers = new ArrayList<Integer>();
 		Random random = new Random();
-		for (int x = 0; x < howManyRandoms; x++) {
-			numbers.add(random.nextInt(howManyRandoms));
-		}
-		return numbers;
+		return IntStream.range(1, howManyRandoms).boxed().map(i -> random.nextInt(howManyRandoms)).collect(Collectors.toList());
 	}
 	
 }

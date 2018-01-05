@@ -151,4 +151,9 @@ public class SmartHomeActions {
 		return responseBody;
 	}
 
+	public String startRadio(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

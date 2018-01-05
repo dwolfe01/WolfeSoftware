@@ -48,7 +48,7 @@ public class SailFish {
 		}
 		if (logFile.getAbsolutePath().endsWith("log")){
 			LogFileReader logFileReader = new LogFileReader(logFile);
-			factory = new HttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory());
+			factory = new HttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory(ResponseHandlers.SAVETOFILE));
 		}
 		new ReadySteadyThread(threadCount, factory).go();
 	}
