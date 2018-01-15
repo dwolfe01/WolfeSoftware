@@ -22,22 +22,6 @@ public class PECS {
     		return "C";
     	}
     }
-
-    public void testCoVariance(List<? extends B> myBlist) {
-        B b = new B();
-        C c = new C();
-        //myBlist.add(b); // does not compile
-        //myBlist.add(c); // does not compile
-        B a = myBlist.get(0); 
-    }
-
-    public void testContraVariance(List<? super B> myBlist) {
-        B b = new B();
-        C c = new C();
-        myBlist.add(b);
-        myBlist.add(c);
-        //A a = myBlist.get(0); // does not compile
-    }
     
     public static void main(String[] args){
     	PECS pecs = new PECS();
@@ -52,11 +36,13 @@ public class PECS {
     	myListCOVARIANT.add(pecs.new B());
     	myListCOVARIANT.add(pecs.new C());
     	pecs.simplePrint2(myListCOVARIANT);
+    	pecs.simplePrint2(myListCOVARIANT);
     	pecs.simplePrint2(myList);
     	//contravariance / Consumer super
     	List<A> myListContravariant = new ArrayList<A>();
     	pecs.addStuff(myListContravariant);
     	pecs.simplePrint2(myListContravariant);
+    	
     }
     
     private void addStuff(List<? super B> myListContravariant) {
