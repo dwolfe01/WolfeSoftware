@@ -1,16 +1,23 @@
 package gang.of.four.creational.design.patterns;
 
-import java.util.concurrent.ExecutionException;
+import java.io.Serializable;
+import java.lang.reflect.Constructor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import javax.management.RuntimeErrorException;
 
-public class SingletonPattern {
+public class SingletonPattern implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private static SingletonPattern singleton = new SingletonPattern();
 	private static SingletonPattern singleton2;
+	
+	public enum TrueSingleton{
+		INSTANCE;
+		public void method1() {}
+	}
 
 	// can be called many times by the main method in this class, and therefore is
 	// not truly singleton
@@ -44,12 +51,17 @@ public class SingletonPattern {
 		}
 		return singleton2;
 	}
+	
+	//because this implements serializable then many instances can be created if they are read from disk. (Each read creates a new object)
+	protected Object readResolve() {
+        return singleton;
+    }
 
-	public static void main(String... args) throws InterruptedException, ExecutionException {
+	public static void main(String... args) throws Exception {
 		//test 1
-		SingletonPattern singleton1 = SingletonPattern.getInstance();
-		SingletonPattern singleton2 = SingletonPattern.getInstance();
-		if (!(singleton1 == singleton2)) {
+		SingletonPattern testSingleton1 = SingletonPattern.getInstance();
+		SingletonPattern testSingleton2 = SingletonPattern.getInstance();
+		if (!(testSingleton1 == testSingleton2)) {
 			throw new RuntimeErrorException(null, "1. These are NOT the same instance, singleton pattern has failed");
 		}
 		//test 2
@@ -62,6 +74,15 @@ public class SingletonPattern {
 			throw new RuntimeErrorException(null, "2. These are NOT the same instance, singleton pattern has failed");
 		}
 		executor.shutdown();
+		//break singleton using reflection
+		Constructor<? extends SingletonPattern> constructor = testSingleton1.getClass().getDeclaredConstructor(new Class[0]);
+		constructor.setAccessible(true);
+		SingletonPattern singletonHACKofSingleton1 = (SingletonPattern) constructor.newInstance();
+		if (singletonHACKofSingleton1!=testSingleton1) {
+			throw new RuntimeErrorException(null, "3. We broke singleton pattern using reflection");
+		}
 	}
 
 }
+
+
