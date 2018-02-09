@@ -84,5 +84,3 @@ public class SingletonPattern implements Serializable {
 	}
 
 }
-
-
