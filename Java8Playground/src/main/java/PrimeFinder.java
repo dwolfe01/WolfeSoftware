@@ -83,8 +83,7 @@ public class PrimeFinder {
 
 	private boolean doesDivide(BigInteger divisor, BigInteger dividend){
 		divisorConsumer.accept(divisor);
-		BigInteger[] divideAndRemainder = dividend.divideAndRemainder(divisor);
-		if (divideAndRemainder[1]==BigInteger.ZERO){
+		if (dividend.mod(divisor)==BigInteger.ZERO){
 			return true;
 		} else {
 			return false;
