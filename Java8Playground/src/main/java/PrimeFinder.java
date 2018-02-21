@@ -1,48 +1,72 @@
-
-
 import java.math.BigInteger;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.function.Consumer;
 
 public class PrimeFinder {
 	
 	private BigInteger TWO = BigInteger.ONE.add(BigInteger.ONE);
-	private BigInteger myBigPrime = new BigInteger("982451653");
-	//private BigInteger myBigPrime = new BigInteger("15485864");//NOT A PRIME
-	//private BigInteger myBigPrime = new BigInteger("15485");//NOT A PRIME
-//	private BigInteger myBigPrime = new BigInteger("67280421310721");
-
-	public static void main(String[] args) {
-		new PrimeFinder().go();
-
-	}
-
-	private void go() {
-		long startTime =  System.currentTimeMillis();
-		//IntStream.rangeClosed(0, 100).filter(i -> isPrimeNumber(new BigInteger(i+""))).forEach(i -> System.out.println(i));
-//		System.out.println("SEQUENTIAL Is Prime: " + myBigPrime + " " + isPrimeNumber(myBigPrime));
-//		System.out.println(System.currentTimeMillis() - startTime + " millseconds");
-		startTime =  System.currentTimeMillis();
-		System.out.println("SEQUENTIAL Is Prime: " + myBigPrime + " " + isPrimeNumber(myBigPrime));
-		System.out.println(System.currentTimeMillis() - startTime + " millseconds");
-		startTime =  System.currentTimeMillis();
-		System.out.println("PARALLEL Is Prime: " + myBigPrime + " " + isPrimeNumberParallel(myBigPrime));
-		System.out.println(System.currentTimeMillis() - startTime + " millseconds");
+	Consumer<BigInteger> divisorConsumer = l -> {};//do not consume the divisors by default
+	
+	public PrimeFinder() {}
+	
+	/* this will allow you to consume all the divisors that have been checked in the process of evaluating your prime candidate*/
+	public PrimeFinder(Consumer<BigInteger> divisorConsumer) {
+		this.divisorConsumer = divisorConsumer;
+	};
+	
+	public boolean isPrimeNumberParallel(BigInteger primeCandidate) {
+		if (checkKnownPrimes(primeCandidate)){
+			return false;
+		}
+		int takeWhile = primeCandidate.divide(TWO).intValue();
+		ExecutorService executor = Executors.newFixedThreadPool(2);
+		Future<Boolean> doesDivide1 = executor.submit(() -> doAnyOfTheseDivisorsDivideThePrimeCandididate(2,takeWhile/2, primeCandidate));
+		Future<Boolean> doesDivide2 = executor.submit(() -> doAnyOfTheseDivisorsDivideThePrimeCandididate(takeWhile/2, takeWhile, primeCandidate));
+		try {
+			return !doesDivide1.get() && !doesDivide2.get();
+		} catch (InterruptedException|ExecutionException e) {
+			e.printStackTrace();
+		} 
+		return false;
 	}
 	
-	private boolean isPrimeNumberParallel(BigInteger primeCandidate) {
-		//get a stream of potential divisors
-		int takeWhile = primeCandidate.divide(TWO).intValue();
-		Stream<BigInteger> divisors = Stream.iterate(bi("2"), i -> i.add(BigInteger.ONE)).limit(takeWhile);
-		boolean isPrime = divisors.noneMatch(i -> doesDivide(i, primeCandidate));
-		return isPrime;
+	public boolean isPrimeNumber(BigInteger primeCandidate) {
+		if (checkKnownPrimes(primeCandidate)){
+			return false;
+		}
+		BigInteger divider = TWO;
+		BigInteger lastPossibleDivisor = primeCandidate.divide(divider);
+		while (divider.compareTo(lastPossibleDivisor)<=0){
+			if (doesDivide(divider,primeCandidate)){
+				return false;
+			}
+			divider = divider.add(BigInteger.ONE);
+		}
+		return true;
+	}
+
+	private boolean checkKnownPrimes(BigInteger primeCandidate) {
+		return List.of(0,1).contains(primeCandidate.intValue());
+	}
+	
+	private boolean doAnyOfTheseDivisorsDivideThePrimeCandididate(int i, int j, BigInteger primeCandidate) {
+		if (i<2) {
+			i = 2;
+		}
+		for (int x=i; x<=j;x++) {
+			if (doesDivide(new BigInteger(x+""), primeCandidate)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private boolean doesDivide(BigInteger divisor, BigInteger dividend){
+		divisorConsumer.accept(divisor);
 		BigInteger[] divideAndRemainder = dividend.divideAndRemainder(divisor);
 		if (divideAndRemainder[1]==BigInteger.ZERO){
 			return true;
@@ -51,21 +75,4 @@ public class PrimeFinder {
 		}
 	}
 
-	private boolean isPrimeNumber(BigInteger primeCandidate) {
-		BigInteger divider = TWO;
-		BigInteger startPoint = primeCandidate.divide(divider);
-		while (divider.compareTo(startPoint)<=0){
-			BigInteger[] divideAndRemainder = primeCandidate.divideAndRemainder(divider);
-			if (divideAndRemainder[1]==BigInteger.ZERO){
-				return false;
-			}
-			divider = divider.add(BigInteger.ONE);
-		}
-		return true;
-	}
-	
-	private BigInteger bi(String number){
-		return new BigInteger(number);
-	}
-	
 }
