@@ -8,7 +8,6 @@ import java.util.function.Consumer;
 
 public class PrimeFinder {
 	
-	private BigInteger TWO = BigInteger.ONE.add(BigInteger.ONE);
 	Consumer<BigInteger> divisorConsumer = l -> {};//do not consume the divisors by default
 	
 	public PrimeFinder() {}
@@ -19,13 +18,20 @@ public class PrimeFinder {
 	};
 	
 	public boolean isPrimeNumberParallel(BigInteger primeCandidate) {
-		if (checkKnownPrimes(primeCandidate)){
+		if (checkKnownNonPrimes(primeCandidate)){
 			return false;
 		}
-		int takeWhile = primeCandidate.divide(TWO).intValue();
+		if (primeCandidate.equals(BigInteger.TWO)) {
+			return true;
+		}
+		if (primeCandidate.mod(BigInteger.TWO).equals(BigInteger.ZERO)) {
+			return false;
+		}
+		BigInteger takeWhile = primeCandidate.divide(BigInteger.TWO);
+		BigInteger halfOfTakeWhile = takeWhile.divide(BigInteger.TWO);
 		ExecutorService executor = Executors.newFixedThreadPool(2);
-		Future<Boolean> doesDivide1 = executor.submit(() -> doAnyOfTheseDivisorsDivideThePrimeCandididate(2,takeWhile/2, primeCandidate));
-		Future<Boolean> doesDivide2 = executor.submit(() -> doAnyOfTheseDivisorsDivideThePrimeCandididate(takeWhile/2, takeWhile, primeCandidate));
+		Future<Boolean> doesDivide1 = executor.submit(() -> doAnyOfTheseDivisorsDivideThePrimeCandididate(new BigInteger("3"),halfOfTakeWhile, primeCandidate));
+		Future<Boolean> doesDivide2 = executor.submit(() -> doAnyOfTheseDivisorsDivideThePrimeCandididate(halfOfTakeWhile, takeWhile, primeCandidate));
 		try {
 			return !doesDivide1.get() && !doesDivide2.get();
 		} catch (InterruptedException|ExecutionException e) {
@@ -35,32 +41,42 @@ public class PrimeFinder {
 	}
 	
 	public boolean isPrimeNumber(BigInteger primeCandidate) {
-		if (checkKnownPrimes(primeCandidate)){
+		if (checkKnownNonPrimes(primeCandidate)){
 			return false;
 		}
-		BigInteger divider = TWO;
-		BigInteger lastPossibleDivisor = primeCandidate.divide(divider);
+		if (primeCandidate.equals(BigInteger.TWO)) {
+			return true;
+		}
+		if (primeCandidate.mod(BigInteger.TWO).equals(BigInteger.ZERO)) {
+			return false;
+		}
+		BigInteger lastPossibleDivisor = primeCandidate.divide(BigInteger.TWO);
+		BigInteger divider = new BigInteger("3");
 		while (divider.compareTo(lastPossibleDivisor)<=0){
 			if (doesDivide(divider,primeCandidate)){
 				return false;
 			}
-			divider = divider.add(BigInteger.ONE);
+			divider = divider.add(BigInteger.TWO);
 		}
 		return true;
 	}
 
-	private boolean checkKnownPrimes(BigInteger primeCandidate) {
+	private boolean checkKnownNonPrimes(BigInteger primeCandidate) {
 		return List.of(0,1).contains(primeCandidate.intValue());
 	}
 	
-	private boolean doAnyOfTheseDivisorsDivideThePrimeCandididate(int i, int j, BigInteger primeCandidate) {
-		if (i<2) {
-			i = 2;
+	private boolean doAnyOfTheseDivisorsDivideThePrimeCandididate(BigInteger start, BigInteger end, BigInteger primeCandidate) {
+		if (start.compareTo(BigInteger.TWO)==-1) {
+			start = new BigInteger("3");
 		}
-		for (int x=i; x<=j;x++) {
-			if (doesDivide(new BigInteger(x+""), primeCandidate)) {
+		if (start.mod(BigInteger.TWO).equals(BigInteger.ZERO)) {
+			start = start.add(BigInteger.ONE);
+		}
+		while (start.compareTo(end)==-1) {
+			if (doesDivide(start, primeCandidate)) {
 				return true;
 			}
+			start = start.add(BigInteger.TWO);
 		}
 		return false;
 	}
