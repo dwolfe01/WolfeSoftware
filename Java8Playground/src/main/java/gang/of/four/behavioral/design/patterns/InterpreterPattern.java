@@ -20,7 +20,7 @@ public class InterpreterPattern {
 			try {
 				return Files.lines(path);
 			} catch (IOException e) {
-				throw new RuntimeException("Not able to read lines form the file");
+				throw new RuntimeException("Not able to read lines from the file");
 			}
 		}
 	}

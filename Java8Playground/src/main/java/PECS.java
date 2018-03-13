@@ -36,7 +36,6 @@ public class PECS {
     	myListCOVARIANT.add(pecs.new B());
     	myListCOVARIANT.add(pecs.new C());
     	pecs.simplePrint2(myListCOVARIANT);
-    	pecs.simplePrint2(myListCOVARIANT);
     	pecs.simplePrint2(myList);
     	//contravariance / Consumer super
     	List<A> myListContravariant = new ArrayList<A>();
