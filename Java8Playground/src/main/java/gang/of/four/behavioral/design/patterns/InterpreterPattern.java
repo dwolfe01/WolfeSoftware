@@ -22,33 +22,33 @@ public class InterpreterPattern {
 	}
 
 	abstract class Expression {
-		protected Predicate<String> myFunction;
+		protected Predicate<String> predicate;
 		boolean interpret(String string) {
-			return myFunction.test(string);
+			return predicate.test(string);
 		}
 	}
 	
 	class NotExpression extends Expression {
 		public NotExpression(Expression expression) {
-			this.myFunction = s -> !expression.interpret(s);
+			this.predicate = s -> !expression.interpret(s);
 		}
 	}
 
 	class WordExpression extends Expression {
 		public WordExpression(String word) {
-			this.myFunction = s -> s.contains(word);
+			this.predicate = s -> s.contains(word);
 		}
 	}
 
 	class OrExpression extends Expression {
 		public OrExpression(Expression expression1, Expression expression2) {
-			this.myFunction = s ->expression1.interpret(s) || expression2.interpret(s);
+			this.predicate = s ->expression1.interpret(s) || expression2.interpret(s);
 		}
 	}
 
 	class AndExpression extends Expression {
 		public AndExpression(Expression expression1, Expression expression2) {
-			this.myFunction = s ->expression1.interpret(s) && expression2.interpret(s);
+			this.predicate = s ->expression1.interpret(s) && expression2.interpret(s);
 		}
 	}
 
