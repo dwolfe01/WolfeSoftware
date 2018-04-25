@@ -48,20 +48,22 @@ public class AbstractFactoryPattern {
 		AbstractFactoryPattern afp = new AbstractFactoryPattern();
 		String testInput = "Miranda Kerr=20th April;Jason Momoa=1st August;Vera Farmiga=6th August";
 		DocumentQuerierAbstractFactory dqaf = afp.new DocumentQuerierXMLFactory();
-		queryDocument(testInput, dqaf);
+		afp.queryDocument(testInput, dqaf);
 		dqaf = afp.new DocumentQuerierMapFactory();
-		queryDocument(testInput, dqaf);
+		afp.queryDocument(testInput, dqaf);
+	}
+	
+	private void queryDocument(String testInput, DocumentQuerierAbstractFactory dqaf) {
+		Document document = dqaf.getDocument(testInput);
+		System.out.println(document.toString());
+		System.out.println(document.getValueFromKey("Jason Momoa"));
 	}
 	
 	interface Document {
 		public String getValueFromKey(String key);
 	}
 
-	private static void queryDocument(String testInput, DocumentQuerierAbstractFactory dqaf) {
-		Document document = dqaf.getDocument(testInput);
-		System.out.println(document.toString());
-		System.out.println(document.getValueFromKey("Jason Momoa"));
-	}
+	
 	
 	class MapDocument implements Document {
 		
