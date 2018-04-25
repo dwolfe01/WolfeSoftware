@@ -1,4 +1,4 @@
-package gang.of.four.creational.design.patterns;
+package gang.of.four.structural.design.patterns;
 
 public class ProxyPattern {
 
