@@ -32,6 +32,9 @@ public class GoogleDriveSharer {
 		get("/login", (request, response) -> {
 			return endpoints.getLoginPage(request, response);
 		});
+		get("/robots.txt", (request, response) -> {
+			return endpoints.getRobots(request, response);
+		});
 		post("/login", (request, response) -> {
 			String username = request.queryParams("uname");
 			String password = request.queryParams("psw");
