@@ -1,10 +1,14 @@
-package com.wolfesoftware.main;
+package com.wolfesoftware.gds;
 
 import static spark.Spark.before;
 import static spark.Spark.port;
 import static spark.Spark.post;
 import static spark.Spark.get;
 import static spark.Spark.staticFileLocation;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +17,11 @@ public class GoogleDriveSharer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(GoogleDriveSharer.class);
 	Endpoints endpoints = new Endpoints();
+	static Map<String,String> users = new HashMap<>();
+	
 
 	public static void main(String[] args) {
+		users.put(args[0], args[1]);
 		new GoogleDriveSharer();
 	}
 
@@ -39,14 +46,24 @@ public class GoogleDriveSharer {
 			String username = request.queryParams("uname");
 			String password = request.queryParams("psw");
 			LOGGER.info("Username attempting login:" + username);
-			if (null!=username && null!=password && username.equals("tamsyn") && password.equals("xoxoxo9021")) {
-					request.session(true).attribute("user", "tamsyn");
+			if (isValidUser(username, password)) {
+					request.session(true).attribute("user", "true");
 					response.redirect("/", 302);
 					return null;
 			} else {
 				return endpoints.getLoginPage(request, response);
 			}
 		});
+	}
+
+	private boolean isValidUser(String username, String password) {
+		if (null!=username && null!=password) {
+			String pass = users.get(username);
+			if (null !=pass && pass.equals(password)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private void createFilters() {

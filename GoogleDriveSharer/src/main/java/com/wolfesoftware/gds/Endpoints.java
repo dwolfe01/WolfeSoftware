@@ -1,4 +1,4 @@
-package com.wolfesoftware.main;
+package com.wolfesoftware.gds;
 
 import static spark.Spark.halt;
 
