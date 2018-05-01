@@ -1,14 +1,14 @@
 package com.wolfesoftware.gds;
 
 import static spark.Spark.before;
+import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
-import static spark.Spark.get;
 import static spark.Spark.staticFileLocation;
+import static spark.Spark.stop;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,19 +17,25 @@ public class GoogleDriveSharer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(GoogleDriveSharer.class);
 	Endpoints endpoints = new Endpoints();
-	static Map<String,String> users = new HashMap<>();
+	Map<String,String> users = new HashMap<>();
 	
 
 	public static void main(String[] args) {
+		HashMap<String, String> users = new HashMap<String,String>();
 		users.put(args[0], args[1]);
-		new GoogleDriveSharer();
+		new GoogleDriveSharer(users);
 	}
 
-	public GoogleDriveSharer() {
+	public GoogleDriveSharer(Map<String,String> users) {
+		this.users = users;
 		port(4568);
 		staticFileLocation("/public");
 		createFilters();
 		createEndpoints();
+	}
+	
+	public void exit() {
+		stop();
 	}
 
 	private void createEndpoints() {

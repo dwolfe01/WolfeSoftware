@@ -1,0 +1,8 @@
+introduce end to end testing
+introduce unit testing
+add SSL
+add config/properties file
+more JVM options on startup
+use google drive API
+allow multiple folders
+commenting

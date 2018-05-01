@@ -6,7 +6,7 @@ Then I should be on URL: /login
 
 Scenario: Incorrect Login
 When I navigate to /login
-When I enter credentials username password
+When I enter credentials unknown unknown
 Then I should be on URL: /login
 
 Scenario: Login
