@@ -6,6 +6,8 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.wolfesoftware.gds.configuration.Configuration;
+
 public class WebFactory {
 	
 	protected static WebDriver driver;
@@ -26,7 +28,7 @@ public class WebFactory {
 	}
 
 	public static String getHost() {
-		return "http://localhost:4568";
+		return Configuration.get("host");
 	}
 
 }

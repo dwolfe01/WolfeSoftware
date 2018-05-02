@@ -34,11 +34,11 @@
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
        	<div class="container">
-       	<form action="login" method="POST">
+       	<form action="login" method="POST" id="login">
     		<label for="uname"><b>Username</b></label>
-    		<input type="text" placeholder="Enter Username" name="uname" required>
+    		<input type="text" placeholder="Enter Username" name="uname" id="uname" required>
 		<label for="psw"><b>Password</b></label>
-    		<input type="password" placeholder="Enter Password" name="psw" required>
+    		<input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 		<button type="submit">Login</button>
 		</form>
   		</div>

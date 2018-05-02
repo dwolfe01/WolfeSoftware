@@ -33,12 +33,16 @@
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
-       	Jago William Wolfe
+       	<h2>Jago William Wolfe</h2>
       </div>
     </div>
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
-       	<iframe src="https://drive.google.com/embeddedfolderview?id=1WLfMWK99EYA0kPhGkW94X2H3d2T9op5i#grid" width="700" height="500" frameborder="0"></iframe>
+       	<#list files as file>
+       	<a href='https://drive.google.com/open?id=${file.id}'>
+       	<img src='https://drive.google.com/thumbnail?id=${file.id}' />
+       	</a>
+       	</#list>
       </div>
     </div>
   </div>

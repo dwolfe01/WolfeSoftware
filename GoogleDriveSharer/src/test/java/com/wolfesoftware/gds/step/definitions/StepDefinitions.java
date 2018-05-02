@@ -2,6 +2,7 @@ package com.wolfesoftware.gds.step.definitions;
 
 import static org.junit.Assert.assertEquals;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.wolfesoftware.gds.endtoend.WebFactory;
@@ -27,7 +28,9 @@ public class StepDefinitions {
 	
 	@When("I enter credentials (.*) (.*)")
 	public void enterCredentials(String username, String password) {
-		driver.get(WebFactory.getHost());
+		driver.findElement(By.id("uname")).sendKeys(username);
+		driver.findElement(By.id("psw")).sendKeys(password);
+		driver.findElement(By.id("login")).submit();
 	}
 	
 	@Then ("I should be on URL: (.*)")

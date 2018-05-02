@@ -4,10 +4,15 @@ import static spark.Spark.halt;
 
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.api.services.drive.model.File;
+import com.wolfesoftware.gds.drive.DriveFactory;
+import com.wolfesoftware.gds.drive.api.DriveAPI;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -19,6 +24,7 @@ public class Endpoints {
 
 	private Configuration configuration;
 	private final Logger LOGGER = LoggerFactory.getLogger(Endpoints.class);
+	DriveAPI driveAPI = new DriveAPI();
 
 	public Endpoints() {
 		configuration = new Configuration(new Version(2, 3, 0));
@@ -44,7 +50,10 @@ public class Endpoints {
 		StringWriter writer = new StringWriter();
 		try {
 			Template formTemplate = configuration.getTemplate("templates/index.ftl");
-			formTemplate.process(null, writer);
+			List<File> files = driveAPI.listFiles(50);
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("files", files);
+			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
 			halt(500);
