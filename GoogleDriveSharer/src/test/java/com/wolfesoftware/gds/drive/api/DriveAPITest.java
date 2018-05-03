@@ -21,4 +21,11 @@ public class DriveAPITest {
 		assertEquals(listFiles.size(), 10);
 	}
 
+	@Test
+	public void shouldUploadFile() throws IOException {
+		DriveAPI driveAPI = new DriveAPI();
+		java.io.File file = new java.io.File(this.getClass().getClassLoader().getResource("images/download.jpeg").getFile());
+		driveAPI.upload(file);
+	}
+
 }

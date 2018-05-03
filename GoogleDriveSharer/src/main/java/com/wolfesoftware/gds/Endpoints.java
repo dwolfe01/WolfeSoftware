@@ -73,5 +73,17 @@ public class Endpoints {
 		return writer;
 	}
 
+	public Object upload(Request request, Response response) {
+		StringWriter writer = new StringWriter();
+		try {
+			Template formTemplate = configuration.getTemplate("templates/upload.ftl");
+			formTemplate.process(null, writer);
+		} catch (Exception e) {
+			LOGGER.debug(e.getMessage());
+			halt(500);
+		}
+		return writer;
+	}
+
 
 }

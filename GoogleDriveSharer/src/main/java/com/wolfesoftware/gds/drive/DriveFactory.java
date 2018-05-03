@@ -7,8 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
-import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -35,7 +34,7 @@ public class DriveFactory {
 	 * Global instance of the scopes required by this quickstart. If modifying these
 	 * scopes, delete your previously saved credentials/ folder.
 	 */
-	private final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_METADATA_READONLY);
+	private final Set<String> SCOPES = DriveScopes.all();
 	private final String CLIENT_SECRET_DIR = Configuration.get("location.of.secret.google.api");
 	private Drive drive;
 	
