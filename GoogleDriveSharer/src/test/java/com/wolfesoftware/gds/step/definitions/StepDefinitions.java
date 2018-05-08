@@ -39,7 +39,7 @@ public class StepDefinitions {
 	}
 
 	@Then ("I see an age")
-	public void checkAge(String url) {
+	public void checkAge() {
 		WebElement findElement = driver.findElement(By.id("age"));
 		assertNotNull(findElement);
 	}
