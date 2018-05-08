@@ -33,7 +33,7 @@
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
-       	<h2>Jago William Wolfe</h2>
+       	${header}
       </div>
     </div>
     <div class="row">

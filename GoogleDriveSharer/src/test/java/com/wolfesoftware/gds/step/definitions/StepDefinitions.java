@@ -1,9 +1,11 @@
 package com.wolfesoftware.gds.step.definitions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.wolfesoftware.gds.endtoend.WebFactory;
 
@@ -17,8 +19,6 @@ public class StepDefinitions {
 	@When("I navigate to (.*)")
 	public void navigateToGDS(String url) {
 		driver.get(WebFactory.getHost());
-		System.out.println(driver.getPageSource());
-		System.err.println("hello world");
 	}
 	
 	@Then("I should get status code (.*)")
@@ -36,6 +36,12 @@ public class StepDefinitions {
 	@Then ("I should be on URL: (.*)")
 	public void checkURL(String url) {
 		assertEquals(WebFactory.getHost() + url, driver.getCurrentUrl());
+	}
+
+	@Then ("I see an age")
+	public void checkAge(String url) {
+		WebElement findElement = driver.findElement(By.id("age"));
+		assertNotNull(findElement);
 	}
 
 }

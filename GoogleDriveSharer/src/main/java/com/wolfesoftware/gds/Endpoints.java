@@ -3,6 +3,7 @@ package com.wolfesoftware.gds;
 import static spark.Spark.halt;
 
 import java.io.StringWriter;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.api.services.drive.model.File;
+import com.wolfesoftware.gds.dayselapsed.TimeElapsedSince;
 import com.wolfesoftware.gds.drive.DriveFactory;
 import com.wolfesoftware.gds.drive.api.DriveAPI;
 
@@ -53,6 +55,7 @@ public class Endpoints {
 			List<File> files = driveAPI.listFiles(50);
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("files", files);
+			model.put("header", this.getHeader());
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
@@ -71,6 +74,20 @@ public class Endpoints {
 			halt(500);
 		}
 		return writer;
+	}
+
+	public String getHeader() {
+		StringWriter writer = new StringWriter();
+		try {
+			Template formTemplate = configuration.getTemplate("templates/header.ftl");
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("age", TimeElapsedSince.timeSinceJagosBirth(LocalDateTime.now()));
+			formTemplate.process(model, writer);
+		} catch (Exception e) {
+			LOGGER.debug(e.getMessage());
+			halt(500);
+		}
+		return writer.toString();
 	}
 
 	public Object upload(Request request, Response response) {

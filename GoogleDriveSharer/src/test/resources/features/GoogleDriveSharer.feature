@@ -14,3 +14,9 @@ When I navigate to /login
 When I enter credentials username password
 Then I should be on URL: /
 
+Scenario: showDateOfBirth
+When I navigate to /login
+When I enter credentials username password
+Then I should be on URL: /
+Then I see an age
+
