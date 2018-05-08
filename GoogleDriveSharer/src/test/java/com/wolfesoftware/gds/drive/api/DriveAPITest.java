@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.api.services.drive.model.File;
@@ -22,6 +23,7 @@ public class DriveAPITest {
 	}
 
 	@Test
+	@Ignore
 	public void shouldUploadFile() throws IOException {
 		DriveAPI driveAPI = new DriveAPI();
 		java.io.File file = new java.io.File(this.getClass().getClassLoader().getResource("images/download.jpeg").getFile());

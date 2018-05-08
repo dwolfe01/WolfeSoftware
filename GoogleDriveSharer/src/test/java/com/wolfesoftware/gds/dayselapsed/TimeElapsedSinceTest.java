@@ -18,14 +18,14 @@ public class TimeElapsedSinceTest {
 	public void testYears() throws Exception {
 		LocalDateTime begin = LocalDateTime.parse("2015-02-20T06:30:00");
 		LocalDateTime end = LocalDateTime.parse("2016-02-20T06:30:00");
-		assertEquals("1 year(s)", new TimeElapsedSince().timeBetween(begin, end));
+		assertEquals("1 year(s) ", new TimeElapsedSince().timeBetween(begin, end));
 	}
 
 	@Test
 	public void testMonths() throws Exception {
 		LocalDateTime begin = LocalDateTime.parse("2015-02-20T06:30:00");
 		LocalDateTime end = LocalDateTime.parse("2015-03-20T06:30:00");
-		assertEquals("1 month(s)", new TimeElapsedSince().timeBetween(begin, end));
+		assertEquals("1 month(s) ", new TimeElapsedSince().timeBetween(begin, end));
 	}
 
 	@Test
