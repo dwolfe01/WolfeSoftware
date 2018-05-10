@@ -7,13 +7,8 @@ import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 import static spark.Spark.stop;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.MultipartConfigElement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,17 +52,7 @@ public class GoogleDriveSharer {
 			return endpoints.upload(request, response);
 		});
 		post("/uploadPicture", (request, response) -> {
-		    request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
-		    try (InputStream is = request.raw().getPart("uploaded_file").getInputStream()) {
-		    		byte[] buffer = new byte[is.available()];
-		    		is.read(buffer);
-		    		is.close();
-		    		File targetFile = new File("/tmp/targetFile.tmp");
-		    	    FileOutputStream outStream = new FileOutputStream(targetFile);
-		    	    outStream.write(buffer);
-		    	    outStream.close();
-		    }
-		    return "File uploaded";
+		    return endpoints.saveFile(request, response);
 		});
 		post("/login", (request, response) -> {
 			String username = request.queryParams("uname");
@@ -94,9 +79,9 @@ public class GoogleDriveSharer {
 	}
 
 	private void createFilters() {
-		before("/",(request, response) -> {
+		before((request, response) -> {
 			LOGGER.info(request.ip() + " " + request.uri());
-			if (request.session(true).attribute("user") == null) {
+			if (request.session(true).attribute("user") == null && !request.uri().equals("/login")) {
 				response.redirect("/login", 302);
 			}
 		});

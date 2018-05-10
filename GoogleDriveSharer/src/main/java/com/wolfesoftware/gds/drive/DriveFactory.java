@@ -83,7 +83,7 @@ public class DriveFactory {
 
 	//use this main method to generate new credentials
 	public static void main(String... args) throws IOException, GeneralSecurityException {
-		new DriveAPI().listFiles(10);
+		new DriveAPI().listFiles(10, Configuration.get("folder.in.google.drive"));
 	}
 	
 	

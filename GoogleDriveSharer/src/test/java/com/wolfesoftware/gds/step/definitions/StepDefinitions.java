@@ -18,7 +18,7 @@ public class StepDefinitions {
 	
 	@When("I navigate to (.*)")
 	public void navigateToGDS(String url) {
-		driver.get(WebFactory.getHost());
+		driver.get(WebFactory.getHost() + url);
 	}
 	
 	@Then("I should get status code (.*)")

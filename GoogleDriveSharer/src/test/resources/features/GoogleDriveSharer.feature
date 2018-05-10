@@ -4,6 +4,10 @@ Scenario: Access Denied
 When I navigate to /
 Then I should be on URL: /login
 
+Scenario: Access Denied 2
+When I navigate to /upload
+Then I should be on URL: /login
+
 Scenario: Incorrect Login
 When I navigate to /login
 When I enter credentials unknown unknown
@@ -13,5 +17,15 @@ Scenario: Login
 When I navigate to /login
 When I enter credentials username password
 Then I should be on URL: /
+
+Scenario: Show age
+When I navigate to /
 Then I see an age
+
+Scenario: Should Upload File
+When I navigate to /test_folder
+Then I see no images
+Then I upload an image test_image.jpeg
+When I navigate to /test_folder
+Then I see an image test_image.jpeg
 

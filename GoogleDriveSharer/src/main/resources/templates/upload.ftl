@@ -31,12 +31,24 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
+   <div class="row">
+      <div class="one-half column" style="margin-top: 5%">
+       	${header}
+      </div>
+    </div>
+   <div class="row">
+      <div class="one-half column" style="margin-top: 5%">
+       	<div class="container">
+       		<b>${message!"Go ahead and upload"}</b>
+  		</div>
+      </div>
+    </div>
     <div class="row">
       <div class="one-half column" style="margin-top: 5%">
        	<div class="container">
        		<form method='post' enctype='multipart/form-data' action="uploadPicture">
     				<input type='file' name='uploaded_file'>
-    				<button>Upload picture</button>"
+    				<button>Upload picture</button>
 			</form>
   		</div>
       </div>
