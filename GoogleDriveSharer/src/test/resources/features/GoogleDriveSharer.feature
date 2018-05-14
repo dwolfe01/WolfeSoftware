@@ -23,9 +23,12 @@ When I navigate to /
 Then I see an age
 
 Scenario: Should Upload File
-When I navigate to /test_folder
+When I navigate to /login
+When I enter credentials username password
+When I navigate to /test
 Then I see no images
+When I navigate to /upload
 Then I upload an image test_image.jpeg
-When I navigate to /test_folder
+When I navigate to /
 Then I see an image test_image.jpeg
-
+Then I delete that test_image.jpeg

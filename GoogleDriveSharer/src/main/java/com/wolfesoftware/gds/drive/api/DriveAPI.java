@@ -21,7 +21,7 @@ public class DriveAPI {
 		File fileMetadata = new File();
 		fileMetadata.setName(name);
 		fileMetadata.setParents(Collections.singletonList(folder));
-		ByteArrayContent byteArrayContent = new ByteArrayContent(null, uploadData);
+		ByteArrayContent byteArrayContent = new ByteArrayContent("image/jpeg", uploadData);
 		File file = DriveFactory.getDrive().files().create(fileMetadata, byteArrayContent)
 		    .setFields("id")
 		    .execute();

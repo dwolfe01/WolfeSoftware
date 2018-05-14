@@ -40,7 +40,7 @@
       <div class="one-half column" style="margin-top: 5%">
        	<#list files as file>
        	<a href='https://drive.google.com/open?id=${file.id}'>
-       	<img src='https://drive.google.com/thumbnail?id=${file.id}' />
+       	<img src='https://drive.google.com/thumbnail?id=${file.id}' name="${file.name}" id="${file.id}"/>
        	</a>
        	</#list>
       </div>

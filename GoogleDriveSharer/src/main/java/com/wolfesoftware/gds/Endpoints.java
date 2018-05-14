@@ -57,10 +57,10 @@ public class Endpoints {
 		StringWriter writer = new StringWriter();
 		try {
 			Template formTemplate = configuration.getTemplate("templates/index.ftl");
-			List<File> files = driveAPI.listFiles(50, com.wolfesoftware.gds.configuration.Configuration.get("folder.in.google.drive"));
+			List<File> files = driveAPI.listFiles(50, request.session(true).attribute("folder"));
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("files", files);
-			model.put("header", this.getHeader());
+			model.put("header", this.getHeader(request));
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
@@ -81,12 +81,13 @@ public class Endpoints {
 		return writer;
 	}
 
-	public String getHeader() {
+	public String getHeader(Request request) {
 		StringWriter writer = new StringWriter();
 		try {
 			Template formTemplate = configuration.getTemplate("templates/header.ftl");
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("age", TimeElapsedSince.timeSinceJagosBirth(LocalDateTime.now()));
+			model.put("folder", request.session(true).attribute("folder"));
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
@@ -101,7 +102,7 @@ public class Endpoints {
 			Template formTemplate = configuration.getTemplate("templates/upload.ftl");
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("message", request.attribute("message"));
-			model.put("header", this.getHeader());
+			model.put("header", this.getHeader(request));
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
@@ -121,7 +122,7 @@ public class Endpoints {
 	    			response.redirect("/upload", 302);
 	    			return null;
 	    		};
-	    		driveAPI.upload(buffer, com.wolfesoftware.gds.configuration.Configuration.get("folder.in.google.drive"), this.getFileName(part));
+	    		driveAPI.upload(buffer, request.session(true).attribute("folder"), this.getFileName(part));
 	    }
 	    request.attribute("message", "File Uploaded");
 	    return this.upload(request, response);

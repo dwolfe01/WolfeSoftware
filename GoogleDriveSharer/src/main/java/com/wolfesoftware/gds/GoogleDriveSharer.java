@@ -13,6 +13,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import spark.Request;
+import spark.Response;
+
 public class GoogleDriveSharer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(GoogleDriveSharer.class);
@@ -54,6 +57,11 @@ public class GoogleDriveSharer {
 		post("/uploadPicture", (request, response) -> {
 		    return endpoints.saveFile(request, response);
 		});
+		get("/test", (request, response) -> {
+			request.session(true).attribute("folder", com.wolfesoftware.gds.configuration.Configuration.get("test.folder.in.google.drive"));
+			response.redirect("/", 302);
+			return "You are now using this site in test mode, recreate session to remove that";
+		});
 		post("/login", (request, response) -> {
 			String username = request.queryParams("uname");
 			String password = request.queryParams("psw");
@@ -80,11 +88,18 @@ public class GoogleDriveSharer {
 
 	private void createFilters() {
 		before((request, response) -> {
-			LOGGER.info(request.ip() + " " + request.uri());
-			if (request.session(true).attribute("user") == null && !request.uri().equals("/login")) {
-				response.redirect("/login", 302);
-			}
+			doBeforeFilter(request, response);
 		});
+	}
+
+	private void doBeforeFilter(Request request, Response response) {
+		LOGGER.info(request.ip() + " " + request.uri());
+		if (null==request.session(true).attribute("folder")) {
+			request.session(true).attribute("folder", com.wolfesoftware.gds.configuration.Configuration.get("folder.in.google.drive"));
+		}
+		if (null == request.session(true).attribute("user") && !request.uri().equals("/login")) {
+			response.redirect("/login", 302);
+		}
 	}
 
 }

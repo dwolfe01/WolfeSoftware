@@ -47,8 +47,8 @@
       <div class="one-half column" style="margin-top: 5%">
        	<div class="container">
        		<form method='post' enctype='multipart/form-data' action="uploadPicture">
-    				<input type='file' name='uploaded_file'>
-    				<button>Upload picture</button>
+    				<input type='file' name='uploaded_file' id="upload">
+    				<button id="upload_button">Upload file</button>
 			</form>
   		</div>
       </div>
