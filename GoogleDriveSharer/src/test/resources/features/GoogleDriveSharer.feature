@@ -18,9 +18,10 @@ When I navigate to /login
 When I enter credentials username password
 Then I should be on URL: /
 
-Scenario: Show age
+Scenario: Pics Page
 When I navigate to /
 Then I see an age
+Then I see a timestamp
 
 Scenario: Should Upload File
 When I navigate to /login

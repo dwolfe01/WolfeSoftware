@@ -12,7 +12,7 @@ import com.wolfesoftware.gds.drive.DriveFactory;
 public class DriveAPI {
 	
 	public List<File> listFiles(int x, String folder) throws IOException {
-		FileList result = DriveFactory.getDrive().files().list().setPageSize(x).setQ("'" + folder + "' in parents and trashed = false").setOrderBy("modifiedTime desc").setFields("files/name, files/mimeType, files/id, files/parents").execute();
+		FileList result = DriveFactory.getDrive().files().list().setPageSize(x).setQ("'" + folder + "' in parents and trashed = false").setOrderBy("modifiedTime desc").setFields("files/name, files/mimeType, files/id, files/parents, files/createdTime").execute();
 		List<File> files = result.getFiles();
 		return files;
 	}

@@ -42,6 +42,7 @@
        	<a href='https://drive.google.com/open?id=${file.id}'>
        	<img src='https://drive.google.com/thumbnail?id=${file.id}' name="${file.name}" id="${file.id}"/>
        	</a>
+       	<p class="date">${dateFormatter.apply(file.createdTime)}</p>
        	</#list>
       </div>
     </div>

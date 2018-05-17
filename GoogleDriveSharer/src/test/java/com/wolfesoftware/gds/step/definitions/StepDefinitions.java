@@ -50,6 +50,12 @@ public class StepDefinitions {
 		WebElement findElement = driver.findElement(By.id("age"));
 		assertNotNull(findElement);
 	}
+
+	@Then ("I see a timestamp")
+	public void checkTimeStamp() {
+		WebElement findElement = driver.findElement(By.className("date"));
+		assertNotNull(findElement);
+	}
 	
 	@Then ("I see no image")
 	public void noImage() {

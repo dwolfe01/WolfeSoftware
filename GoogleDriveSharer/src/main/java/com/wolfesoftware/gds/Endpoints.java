@@ -5,10 +5,16 @@ import static spark.Spark.halt;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletException;
@@ -17,6 +23,7 @@ import javax.servlet.http.Part;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.api.client.util.DateTime;
 import com.google.api.services.drive.model.File;
 import com.wolfesoftware.gds.dayselapsed.TimeElapsedSince;
 import com.wolfesoftware.gds.drive.api.DriveAPI;
@@ -61,6 +68,7 @@ public class Endpoints {
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("files", files);
 			model.put("header", this.getHeader(request));
+			model.put("dateFormatter", (Function<DateTime, String>)this::formatDate);
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
@@ -87,7 +95,6 @@ public class Endpoints {
 			Template formTemplate = configuration.getTemplate("templates/header.ftl");
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("age", TimeElapsedSince.timeSinceJagosBirth(LocalDateTime.now()));
-			model.put("folder", request.session(true).attribute("folder"));
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
@@ -113,29 +120,40 @@ public class Endpoints {
 
 	public StringWriter saveFile(Request request, Response response) throws IOException, ServletException {
 		request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
-	    Part part = request.raw().getPart("uploaded_file");
+		Part part = request.raw().getPart("uploaded_file");
 		try (InputStream is = part.getInputStream()) {
-	    		byte[] buffer = new byte[is.available()];
-	    		is.read(buffer);
-	    		is.close();
-	    		if (buffer.length==0) {
-	    			response.redirect("/upload", 302);
-	    			return null;
-	    		};
-	    		driveAPI.upload(buffer, request.session(true).attribute("folder"), this.getFileName(part));
-	    }
-	    request.attribute("message", "File Uploaded");
-	    return this.upload(request, response);
+			byte[] buffer = new byte[is.available()];
+			is.read(buffer);
+			is.close();
+			if (buffer.length == 0) {
+				response.redirect("/upload", 302);
+				return null;
+			}
+			;
+			driveAPI.upload(buffer, request.session(true).attribute("folder"), this.getFileName(part));
+		}
+		request.attribute("message", "File Uploaded");
+		return this.upload(request, response);
+	}
+
+	private String getFileName(Part part) {
+		for (String cd : part.getHeader("content-disposition").split(";")) {
+			if (cd.trim().startsWith("filename")) {
+				return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+			}
+		}
+		return "no_file_name";
 	}
 	
-	private String getFileName(Part part) {
-        for (String cd : part.getHeader("content-disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return "no_file_name";
-    }
+	public String formatDate(DateTime date) {
+		return formatDate(date.toString());
+	}
 
+	public String formatDate(String date) {
+		Instant instant = Instant.parse(date);
+		LocalDateTime ldt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+		DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+		return dtf.format(ldt);
+	}
 
 }

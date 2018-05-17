@@ -2,4 +2,3 @@
 <div id="age"><b>Age: ${age}</b></div>
 <a href="/" class="button">HOME</a>
 <a href="upload" class="button">UPLOAD</a>
-${folder}

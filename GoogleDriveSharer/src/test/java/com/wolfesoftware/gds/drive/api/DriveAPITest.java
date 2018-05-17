@@ -1,12 +1,12 @@
 package com.wolfesoftware.gds.drive.api;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.api.services.drive.model.File;
@@ -21,12 +21,16 @@ public class DriveAPITest {
 	public void shouldGet10FilesByMostRecent() throws IOException {
 		List<File> listFiles = driveAPI.listFiles(10, Configuration.get("folder.in.google.drive"));
 		assertEquals(listFiles.size(), 10);
+		assertNotNull(listFiles.get(0).getCreatedTime());
 	}
+	
+	
 
 	@Test
 	public void shouldUploadAndDeleteFile() throws IOException {
 		assertTestFolderSize(0);
 		java.io.File file = new java.io.File(this.getClass().getClassLoader().getResource("images/download.jpeg").getFile());
+		System.out.println(file.lastModified());
 		String id = driveAPI.upload(Files.readAllBytes(file.toPath()), Configuration.get("test.folder.in.google.drive"), file.getName());
 		assertTestFolderSize(1);
 		driveAPI.delete(id);
