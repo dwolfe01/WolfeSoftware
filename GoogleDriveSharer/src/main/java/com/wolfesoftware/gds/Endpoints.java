@@ -27,6 +27,7 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.drive.model.File;
 import com.wolfesoftware.gds.dayselapsed.TimeElapsedSince;
 import com.wolfesoftware.gds.drive.api.DriveAPI;
+import com.wolfesoftware.gds.sessionmanager.SessionManager;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -64,7 +65,7 @@ public class Endpoints {
 		StringWriter writer = new StringWriter();
 		try {
 			Template formTemplate = configuration.getTemplate("templates/index.ftl");
-			List<File> files = driveAPI.listFiles(50, request.session(true).attribute("folder"));
+			List<File> files = driveAPI.listFiles(50, (String)SessionManager.getAttribute("folder", request));
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("files", files);
 			model.put("header", this.getHeader(request));
@@ -130,7 +131,7 @@ public class Endpoints {
 				return null;
 			}
 			;
-			driveAPI.upload(buffer, request.session(true).attribute("folder"), this.getFileName(part));
+			driveAPI.upload(buffer, (String)SessionManager.getAttribute("folder", request), this.getFileName(part));
 		}
 		request.attribute("message", "File Uploaded");
 		return this.upload(request, response);

@@ -13,6 +13,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.wolfesoftware.gds.sessionmanager.SessionManager;
+
 import spark.Request;
 import spark.Response;
 
@@ -21,7 +23,6 @@ public class GoogleDriveSharer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(GoogleDriveSharer.class);
 	Endpoints endpoints = new Endpoints();
 	Map<String,String> users = new HashMap<>();
-	
 
 	public static void main(String[] args) {
 		HashMap<String, String> users = new HashMap<String,String>();
@@ -58,7 +59,7 @@ public class GoogleDriveSharer {
 		    return endpoints.saveFile(request, response);
 		});
 		get("/test", (request, response) -> {
-			request.session(true).attribute("folder", com.wolfesoftware.gds.configuration.Configuration.get("test.folder.in.google.drive"));
+			SessionManager.setAttribute("folder", com.wolfesoftware.gds.configuration.Configuration.get("test.folder.in.google.drive"), request);
 			response.redirect("/", 302);
 			return "You are now using this site in test mode, recreate session to remove that";
 		});
@@ -66,8 +67,8 @@ public class GoogleDriveSharer {
 			String username = request.queryParams("uname");
 			String password = request.queryParams("psw");
 			LOGGER.info("Username attempting login:" + username);
-			if (isValidUser(username, password)) {
-					request.session(true).attribute("user", "true");
+			SessionManager.login(username, password, request);
+			if (SessionManager.isLoggedIn(request)) {
 					response.redirect("/", 302);
 					return null;
 			} else {
@@ -76,29 +77,24 @@ public class GoogleDriveSharer {
 		});
 	}
 
-	private boolean isValidUser(String username, String password) {
-		if (null!=username && null!=password) {
-			String pass = users.get(username);
-			if (null !=pass && pass.equals(password)) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 	private void createFilters() {
 		before((request, response) -> {
 			doBeforeFilter(request, response);
 		});
 	}
-
+	
 	private void doBeforeFilter(Request request, Response response) {
 		LOGGER.info(request.ip() + " " + request.uri());
-		if (null==request.session(true).attribute("folder")) {
-			request.session(true).attribute("folder", com.wolfesoftware.gds.configuration.Configuration.get("folder.in.google.drive"));
-		}
-		if (null == request.session(true).attribute("user") && !request.uri().equals("/login")) {
+		setupDefaultFolder(request);
+		if (!(SessionManager.isLoggedIn(request)) && !request.uri().equals("/login")) {
 			response.redirect("/login", 302);
+		}
+	}
+
+	private void setupDefaultFolder(Request request) {
+		if (null==SessionManager.getAttribute("folder", request)) {
+			SessionManager.setAttribute("folder", com.wolfesoftware.gds.configuration.Configuration.get("folder.in.google.drive"), request);
 		}
 	}
 
