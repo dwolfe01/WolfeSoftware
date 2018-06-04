@@ -1,4 +1,4 @@
-package com.wolfesoftware.gds.sessionmanager;
+package com.wolfesoftware.gds.users.sessionmanager;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import com.wolfesoftware.gds.users.sessionmanager.SessionManager;
 
 import spark.Request;
 import spark.Session;

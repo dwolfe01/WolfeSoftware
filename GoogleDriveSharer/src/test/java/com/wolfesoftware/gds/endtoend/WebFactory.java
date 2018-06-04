@@ -10,6 +10,10 @@ import com.wolfesoftware.gds.configuration.Configuration;
 
 public class WebFactory {
 	
+	public static void main(String... args) {
+		new WebFactory();
+	}
+	
 	protected static WebDriver driver;
 	
 	static{

@@ -13,7 +13,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.wolfesoftware.gds.sessionmanager.SessionManager;
+import com.wolfesoftware.gds.users.User;
+import com.wolfesoftware.gds.users.UsersAPI;
+import com.wolfesoftware.gds.users.sessionmanager.SessionManager;
 
 import spark.Request;
 import spark.Response;
@@ -22,16 +24,18 @@ public class GoogleDriveSharer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(GoogleDriveSharer.class);
 	Endpoints endpoints = new Endpoints();
-	Map<String,String> users = new HashMap<>();
-
+	
 	public static void main(String[] args) {
-		HashMap<String, String> users = new HashMap<String,String>();
-		users.put(args[0], args[1]);
-		new GoogleDriveSharer(users);
+		User user = new User();
+		user.setFirstName("Test");
+		user.setLastName("Test");
+		user.setId(args[0]);
+		user.setPassword(args[1]);
+		new UsersAPI().addUser(user);
+		new GoogleDriveSharer();
 	}
 
-	public GoogleDriveSharer(Map<String,String> users) {
-		this.users = users;
+	public GoogleDriveSharer() {
 		port(4568);
 		staticFileLocation("/public");
 		createFilters();

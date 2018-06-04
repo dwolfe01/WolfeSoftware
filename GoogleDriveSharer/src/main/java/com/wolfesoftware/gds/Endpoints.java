@@ -27,7 +27,7 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.drive.model.File;
 import com.wolfesoftware.gds.dayselapsed.TimeElapsedSince;
 import com.wolfesoftware.gds.drive.api.DriveAPI;
-import com.wolfesoftware.gds.sessionmanager.SessionManager;
+import com.wolfesoftware.gds.users.sessionmanager.SessionManager;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

@@ -1,12 +1,13 @@
 package com.wolfesoftware.gds.endtoend;
 
-import java.util.HashMap;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import com.wolfesoftware.gds.GoogleDriveSharer;
+import com.wolfesoftware.gds.users.User;
+import com.wolfesoftware.gds.users.Users;
+import com.wolfesoftware.gds.users.UsersAPI;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -21,9 +22,8 @@ public class GoogleDriveSharerTest {
 
 	@BeforeClass
 	public static void beforeClass(){
-		HashMap<String, String> users = new HashMap<String,String>();
-		users.put("username", "password");
-		googleDriveSharer = new GoogleDriveSharer(users);
+		createTestUserInDatabase();
+		googleDriveSharer = new GoogleDriveSharer();
 	}
 
 	@AfterClass
@@ -31,5 +31,14 @@ public class GoogleDriveSharerTest {
 		googleDriveSharer.exit();
 	}
 	
-
+	private static void createTestUserInDatabase() {
+		Users users = new UsersAPI();
+		users.setPersitenceUnit("users-test");
+		User user = new User();
+		user.setFirstName("test-user");
+		user.setLastName("test-user");
+		user.setId("username");
+		user.setPassword("password");
+		users.addUser(user);
+	}
 }

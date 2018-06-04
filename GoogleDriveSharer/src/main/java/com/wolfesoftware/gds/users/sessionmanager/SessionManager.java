@@ -1,4 +1,4 @@
-package com.wolfesoftware.gds.sessionmanager;
+package com.wolfesoftware.gds.users.sessionmanager;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -18,7 +18,8 @@ import spark.Request;
 public class SessionManager {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(GoogleDriveSharer.class);
-	private static Factory<SecurityManager> factory = new IniSecurityManagerFactory(Configuration.get("credentials_folder") + "/shiro.ini");
+	//private static Factory<SecurityManager> factory = new IniSecurityManagerFactory(Configuration.get("credentials_folder") + "/shiro.ini");
+	private static Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
 	private static SecurityManager securityManager = factory.getInstance();
 	static {
 		SecurityUtils.setSecurityManager(securityManager);
