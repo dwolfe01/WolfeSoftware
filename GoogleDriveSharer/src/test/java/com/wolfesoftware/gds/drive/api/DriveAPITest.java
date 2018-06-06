@@ -23,23 +23,33 @@ public class DriveAPITest {
 		assertEquals(listFiles.size(), 10);
 		assertNotNull(listFiles.get(0).getCreatedTime());
 	}
-	
-	
 
 	@Test
 	public void shouldUploadAndDeleteFile() throws IOException {
 		assertTestFolderSize(0);
 		java.io.File file = new java.io.File(this.getClass().getClassLoader().getResource("images/download.jpeg").getFile());
-		System.out.println(file.lastModified());
 		String id = driveAPI.upload(Files.readAllBytes(file.toPath()), Configuration.get("test.folder.in.google.drive"), file.getName());
 		assertTestFolderSize(1);
+		driveAPI.delete(id);
+		assertTestFolderSize(0);
+	}
+	
+	@Test
+	public void shouldSetDescription() throws IOException {
+		assertTestFolderSize(0);
+		java.io.File file = new java.io.File(this.getClass().getClassLoader().getResource("images/download.jpeg").getFile());
+		String id = driveAPI.upload(Files.readAllBytes(file.toPath()), Configuration.get("test.folder.in.google.drive"), file.getName());
+		String description = "this is my test description 2";
+		driveAPI.setDescription(id, description);
+		File driveFile = driveAPI.getFile(id);
+		assertEquals(description, driveFile.getDescription());
 		driveAPI.delete(id);
 		assertTestFolderSize(0);
 	}
 
 	private void assertTestFolderSize(int size) throws IOException {
 		List<File> listFiles = driveAPI.listFiles(10, Configuration.get("test.folder.in.google.drive"));
-		assertEquals(listFiles.size(), size);
+		assertEquals(size,listFiles.size());
 	}
 
 }

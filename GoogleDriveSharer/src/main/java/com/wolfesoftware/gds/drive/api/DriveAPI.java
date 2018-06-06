@@ -12,7 +12,7 @@ import com.wolfesoftware.gds.drive.DriveFactory;
 public class DriveAPI {
 	
 	public List<File> listFiles(int x, String folder) throws IOException {
-		FileList result = DriveFactory.getDrive().files().list().setPageSize(x).setQ("'" + folder + "' in parents and trashed = false").setOrderBy("modifiedTime desc").setFields("files/name, files/mimeType, files/id, files/parents, files/createdTime").execute();
+		FileList result = DriveFactory.getDrive().files().list().setPageSize(x).setQ("'" + folder + "' in parents and trashed = false").setOrderBy("modifiedTime desc").setFields("files/name, files/mimeType, files/id, files/parents, files/createdTime, files/description").execute();
 		List<File> files = result.getFiles();
 		return files;
 	}
@@ -30,6 +30,16 @@ public class DriveAPI {
 
 	public void delete(String id) throws IOException {
 		DriveFactory.getDrive().files().delete(id).execute();
+	}
+
+	public void setDescription(String id, String description) throws IOException {
+		File fileMetadata = new File();
+		fileMetadata.setDescription(description);
+		DriveFactory.getDrive().files().update(id, fileMetadata).execute();
+	}
+
+	public File getFile(String id) throws IOException {
+		return DriveFactory.getDrive().files().get(id).setFields("*").execute();
 	}
 
 }

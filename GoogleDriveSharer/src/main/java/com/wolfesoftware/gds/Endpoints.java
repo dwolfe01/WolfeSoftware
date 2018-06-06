@@ -157,4 +157,8 @@ public class Endpoints {
 		return dtf.format(ldt);
 	}
 
+	public void updateDescription(String id, String description) throws IOException {
+		driveAPI.setDescription(id, description);
+	}
+
 }

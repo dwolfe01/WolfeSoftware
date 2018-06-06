@@ -20,6 +20,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <script src="js/script.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -42,6 +43,7 @@
        	<a href='https://drive.google.com/open?id=${file.id}'>
        	<img src='https://drive.google.com/thumbnail?id=${file.id}' name="${file.name}" id="${file.id}"/>
        	</a>
+       	<b><p><div id="${file.id}" contenteditable="true" class="description">${file.description!""}</div></p></b>
        	<p class="date">${dateFormatter.apply(file.createdTime)}</p>
        	</#list>
       </div>

@@ -7,9 +7,6 @@ import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 import static spark.Spark.stop;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,6 +56,10 @@ public class GoogleDriveSharer {
 		get("/upload", (request, response) -> {
 			return endpoints.upload(request, response);
 		});
+		post("/update/:id", (request, response) -> {
+			endpoints.updateDescription(request.params(":id"), request.body());
+			return "Job Done";
+		});
 		post("/uploadPicture", (request, response) -> {
 		    return endpoints.saveFile(request, response);
 		});
@@ -91,7 +92,7 @@ public class GoogleDriveSharer {
 	private void doBeforeFilter(Request request, Response response) {
 		LOGGER.info(request.ip() + " " + request.uri());
 		setupDefaultFolder(request);
-		if (!(SessionManager.isLoggedIn(request)) && !request.uri().equals("/login")) {
+		if (!(SessionManager.isLoggedIn(request)) && !request.uri().equals("/login") && !request.uri().startsWith("/update")) {
 			response.redirect("/login", 302);
 		}
 	}

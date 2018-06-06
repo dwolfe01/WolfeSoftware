@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -93,4 +96,24 @@ public class StepDefinitions {
 		driveAPI.delete(id);;
 	}
 	
+	@Then ("I set a description (.*)")
+	public void setDescription(String description) throws IOException, InterruptedException {
+		WebElement element = driver.findElement(By.className("description"));
+		String id = element.getAttribute("id");
+		URL url = new URL(WebFactory.getHost() + "/update/" + id);
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setDoOutput(true);
+		DataOutputStream out = new DataOutputStream(con.getOutputStream());
+		out.writeBytes(description);
+		out.flush();
+		out.close();
+		con.getResponseCode();
+	}
+
+	@Then ("I see a description (.*)")
+	public void getDescription(String description) throws IOException {
+		WebElement element = driver.findElement(By.className("description"));
+		assertEquals(description, element.getText());
+	}
 }
