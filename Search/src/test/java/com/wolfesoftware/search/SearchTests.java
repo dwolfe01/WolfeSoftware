@@ -36,7 +36,7 @@ public class SearchTests {
 	
 	@Test
 	public void search() {
-		List<Book> books = searchAPI.search("pro");
+		List<Book> books = searchAPI.search("promise");
 		books.stream().forEach(b -> System.out.println(b.getTitle()));
 	}
 }

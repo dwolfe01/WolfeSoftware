@@ -24,7 +24,7 @@ public class SearchAPI {
 	public List<Book> search(String term) {
 		 FullTextEntityManager fullTextEm = Search.getFullTextEntityManager(em);
 		 org.hibernate.search.query.dsl.QueryBuilder queryBuilder = fullTextEm.getSearchFactory().buildQueryBuilder().forEntity(Book.class).get();
-		 org.apache.lucene.search.Query query = queryBuilder.keyword().onFields("fullText").matching(term).createQuery();
+		 org.apache.lucene.search.Query query = queryBuilder.keyword().onFields("fullText").ignoreFieldBridge().matching(term).createQuery();
 		 List<Book> results = fullTextEm.createFullTextQuery(query).getResultList();
 		 return results;
 	}

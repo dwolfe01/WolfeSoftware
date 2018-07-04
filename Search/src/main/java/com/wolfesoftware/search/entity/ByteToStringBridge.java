@@ -8,9 +8,6 @@ public class ByteToStringBridge implements StringBridge {
 
 	@Override
 	public String objectToString(Object arg0) {
-		if (arg0 instanceof String) {
-			return (String) arg0;
-		}
 		byte[] myBytes = (byte[])arg0;
 		try {
 			return new String(myBytes,"UTF-8");
