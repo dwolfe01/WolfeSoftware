@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.nio.file.Paths;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.StringEntity;
@@ -29,7 +29,7 @@ public class SaveToFileResponseHandlerTest {
 	@Mock
 	ResponseHandlerFactory responseHandlerFactory;
 	
-	File directory = new File("/tmp/scratch/");
+	File directory = Paths.get("/tmp/scratch").toFile();
 
 	@Before
 	public void before() throws IOException {
