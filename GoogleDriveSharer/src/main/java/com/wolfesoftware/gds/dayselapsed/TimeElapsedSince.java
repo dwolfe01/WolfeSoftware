@@ -29,4 +29,8 @@ public class TimeElapsedSince {
 		return timeBetween(LocalDateTime.parse(Configuration.get("jagos.date.of.birth")), LocalDateTime.now());
 	}
 
+	public static String timeSinceKizzysBirth(LocalDateTime begin) {
+		return timeBetween(LocalDateTime.parse(Configuration.get("kizzys.date.of.birth")), LocalDateTime.now());
+	}
+
 }

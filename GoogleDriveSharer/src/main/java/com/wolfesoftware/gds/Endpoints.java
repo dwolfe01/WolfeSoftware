@@ -95,7 +95,8 @@ public class Endpoints {
 		try {
 			Template formTemplate = configuration.getTemplate("templates/header.ftl");
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("age", TimeElapsedSince.timeSinceJagosBirth(LocalDateTime.now()));
+			model.put("jagosAge", TimeElapsedSince.timeSinceJagosBirth(LocalDateTime.now()));
+			model.put("kizzysAge", TimeElapsedSince.timeSinceKizzysBirth(LocalDateTime.now()));
 			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
