@@ -9,7 +9,6 @@ import org.apache.http.client.ResponseHandler;
 
 public class QuickCloseResponseHandler implements ResponseHandler<StatusLine> {
 
-	@Override
 	public StatusLine handleResponse(HttpResponse response)
 			throws ClientProtocolException, IOException {
 		return response.getStatusLine();

@@ -3,6 +3,7 @@ package com.wolfesoftware.sailfish.http.main;
 import java.io.File;
 import java.io.IOException;
 
+import com.wolfesoftware.sailfish.http.worker.factory.HttpUserContinualWorkerFactoryFromLogFile;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,37 +21,42 @@ import com.wolfesoftware.sailfish.http.worker.factory.HttpUserWorkerFactoryFromL
 import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactoryFromLogFile;
 
 public class SailFish {
-	
-	private static final Logger Logger = LoggerFactory.getLogger(SailFish.class);
-	WorkerFactory factory = null;
-	
-	public static void main(String[] args) throws 
-			Exception {
-		String fileName = args[0];
-		int threadCount = Integer.parseInt(args[1]);
-		Logger.info(("Running SailFish with file: " + fileName
-				+ " thread count: " + threadCount));
-		SailFish sailfish = new SailFish();
-		File logFile = new File(fileName);
-		Logger.info(logFile.getAbsolutePath());
-		sailfish.go(logFile, threadCount);
-	}
 
-	private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
-		if (logFile.getAbsolutePath().endsWith("json")){
-			ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.SAVETOFILE);
-			factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile), responseHandlerFactory);
-		} 
-		if (logFile.getAbsolutePath().endsWith("uptime")){
-			Logger.info(FileUtils.readFileToString(logFile));
-			LogFileReader logFileReader = new LogFileReader(logFile);
-			factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader,  new ResponseHandlerFactory());
-		}
-		if (logFile.getAbsolutePath().endsWith("log")){
-			LogFileReader logFileReader = new LogFileReader(logFile);
-			factory = new HttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory(ResponseHandlers.SAVETOFILE));
-		}
-		new ReadySteadyThread(threadCount, factory).go();
-	}
+    private static final Logger Logger = LoggerFactory.getLogger(SailFish.class);
+    WorkerFactory factory = null;
 
+    public static void main(String[] args) throws
+            Exception {
+        String fileName = args[0];
+        int threadCount = Integer.parseInt(args[1]);
+        Logger.info(("Running SailFish with file: " + fileName
+                + " thread count: " + threadCount));
+        SailFish sailfish = new SailFish();
+        File logFile = new File(fileName);
+        Logger.info(logFile.getAbsolutePath());
+        sailfish.go(logFile, threadCount);
+    }
+
+    private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
+        while (true) {
+        if (logFile.getAbsolutePath().endsWith("json")) {
+            ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM);
+            factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile), responseHandlerFactory);
+        }
+        if (logFile.getAbsolutePath().endsWith("uptime")) {
+            Logger.info(FileUtils.readFileToString(logFile));
+            LogFileReader logFileReader = new LogFileReader(logFile);
+            factory = new UptimeHttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory());
+        }
+        if (logFile.getAbsolutePath().endsWith("log")) {
+            LogFileReader logFileReader = new LogFileReader(logFile);
+            factory = new HttpUserWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM));
+        }
+        if (logFile.getAbsolutePath().endsWith("continual")) {
+            LogFileReader logFileReader = new LogFileReader(logFile);
+            factory = new HttpUserContinualWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM));
+        }
+            new ReadySteadyThread(threadCount, factory).go();
+        }
+    }
 }
