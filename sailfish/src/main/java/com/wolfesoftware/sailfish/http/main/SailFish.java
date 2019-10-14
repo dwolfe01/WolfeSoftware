@@ -38,7 +38,6 @@ public class SailFish {
     }
 
     private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
-        while (true) {
         if (logFile.getAbsolutePath().endsWith("json")) {
             ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM);
             factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile), responseHandlerFactory);
@@ -57,6 +56,5 @@ public class SailFish {
             factory = new HttpUserContinualWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM));
         }
             new ReadySteadyThread(threadCount, factory).go();
-        }
     }
 }
