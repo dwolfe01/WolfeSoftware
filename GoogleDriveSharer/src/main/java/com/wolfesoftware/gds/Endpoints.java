@@ -81,8 +81,10 @@ public class Endpoints {
 	public Object getLoginPage(Request request, Response response) {
 		StringWriter writer = new StringWriter();
 		try {
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("header", this.getHeader(request));
 			Template formTemplate = configuration.getTemplate("templates/login.ftl");
-			formTemplate.process(null, writer);
+			formTemplate.process(model, writer);
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
 			halt(500);

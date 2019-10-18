@@ -1,6 +1,6 @@
-<h4>Jago William Wolfe</h4>
-<div id="age"><b>Age: ${jagosAge}</b></div>
-<h4>Kizzy Jean Wolfe</h4>
-<div id="age"><b>Age: ${kizzysAge}</b></div>
+<p><b>Jago William Wolfe</b>
+Age: ${jagosAge}</p>
+<p><b>Kizzy Jean Wolfe</b>
+Age: ${kizzysAge}</p>
 <a href="/" class="button">HOME</a>
 <a href="upload" class="button">UPLOAD</a>
