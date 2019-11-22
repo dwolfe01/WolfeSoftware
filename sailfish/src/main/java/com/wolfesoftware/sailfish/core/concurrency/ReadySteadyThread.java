@@ -55,6 +55,15 @@ public class ReadySteadyThread {
 		
 	}
 
+	public WorkerFactory getWorkerFactory() {
+		return workerFactory;
+	}
+
+	public void setWorkerFactory(WorkerFactory workerFactory) {
+		this.workerFactory = workerFactory;
+	}
+
+
 	private void addJobToExecutor() {
 		try {
 			Runnable worker = this.workerFactory.getWorker();

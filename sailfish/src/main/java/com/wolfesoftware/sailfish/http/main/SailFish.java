@@ -23,7 +23,7 @@ import com.wolfesoftware.sailfish.http.worker.factory.UptimeHttpUserWorkerFactor
 public class SailFish {
 
     private static final Logger Logger = LoggerFactory.getLogger(SailFish.class);
-    WorkerFactory factory = null;
+
 
     public static void main(String[] args) throws
             Exception {
@@ -34,10 +34,12 @@ public class SailFish {
         SailFish sailfish = new SailFish();
         File logFile = new File(fileName);
         Logger.info(logFile.getAbsolutePath());
-        sailfish.go(logFile, threadCount);
+        ReadySteadyThread readySteadyThread = sailfish.getReadySteadyThread(logFile, threadCount);
+        readySteadyThread.go();
     }
 
-    private void go(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
+    protected ReadySteadyThread getReadySteadyThread(File logFile, int threadCount) throws BadLogFileException, JsonParseException, JsonMappingException, IOException {
+        WorkerFactory factory = null;
         if (logFile.getAbsolutePath().endsWith("json")) {
             ResponseHandlerFactory responseHandlerFactory = new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM);
             factory = new HttpUserWorkerFactoryFromJSONFile(FileUtils.readFileToString(logFile), responseHandlerFactory);
@@ -55,6 +57,6 @@ public class SailFish {
             LogFileReader logFileReader = new LogFileReader(logFile);
             factory = new HttpUserContinualWorkerFactoryFromLogFile(logFileReader, new ResponseHandlerFactory(ResponseHandlers.OUTPUTSTREAM));
         }
-            new ReadySteadyThread(threadCount, factory).go();
+           return new ReadySteadyThread(threadCount, factory);
     }
 }
