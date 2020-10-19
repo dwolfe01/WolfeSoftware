@@ -2,7 +2,7 @@ package day;
 
 import java.time.DayOfWeek;
 
-public class DescribeDay {
+public class DescribeDay implements DayInterface {
 
     public static void main(String[] args){
         DescribeDay switchStatement = new DescribeDay();
