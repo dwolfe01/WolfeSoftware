@@ -1,4 +1,6 @@
-package day;
+package hidden.implementation;
+
+import day.DayInterface;
 
 import java.time.DayOfWeek;
 
