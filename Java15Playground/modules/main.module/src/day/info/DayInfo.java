@@ -10,11 +10,10 @@ public class DayInfo {
 
     public static void main(String[] args) {
         Iterable<DayInterface> services = ServiceLoader.load(DayInterface.class);
-        Iterator<DayInterface> iterator = services.iterator();
-        while (iterator.hasNext()){
-            DayInterface service = iterator.next();
-            DayOfWeek day = DayOfWeek.valueOf(args[0].toUpperCase());
-            service.whatSortOfDayIsIt(day);
+        DayOfWeek day = DayOfWeek.valueOf(args[0].toUpperCase());
+        for (DayInterface dayService: services) {
+            System.out.println(dayService.getClass());
+            dayService.whatSortOfDayIsIt(day);
         }
     }
 
