@@ -17,10 +17,12 @@ public class DescribeDay implements DayInterface {
     }
 
     private void goJava14(DayOfWeek day) {
-        switch (day) {
-            case MONDAY, WEDNESDAY -> System.out.println("This is a great day");
-            case TUESDAY -> System.out.println("Tuesday is a long day");
-        }
+        var thisDay = switch (day) {
+            case MONDAY, WEDNESDAY -> "This is a great day";
+            case TUESDAY -> "Tuesday is a long day";
+            default -> throw new IllegalStateException("Unexpected value: " + day);
+        };
+        System.out.println(thisDay);
     }
 
     private void goClassic(DayOfWeek day) {

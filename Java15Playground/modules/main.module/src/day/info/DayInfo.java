@@ -3,7 +3,6 @@ package day.info;
 import day.DayInterface;
 
 import java.time.DayOfWeek;
-import java.util.Iterator;
 import java.util.ServiceLoader;
 
 public class DayInfo {

@@ -8,7 +8,8 @@ public class StringLiterals {
              """;
 
     public static void main(String[] args){
-        new StringLiterals().go();
+        var stringLiterals = new StringLiterals();
+        stringLiterals.go();
     }
 
     private void go() {
